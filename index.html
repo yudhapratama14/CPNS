@@ -970,6 +970,18 @@
     .fq-x { margin-top: 14px; padding: 12px 14px; border: var(--out); border-radius: 14px; background: var(--cream); line-height: 1.65; }
     .fq-x p { margin: 6px 0 0; }
     @media (max-width: 420px) { .fq-o { grid-template-columns: repeat(3, 1fr); } }
+  
+    /* ===== Subtes: 3 kartu sejajar, muat satu layar tanpa geser ===== */
+    .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: auto; align-items: stretch; gap: 10px; padding: 2px 2px 10px; overflow: visible; scroll-snap-type: none; min-height: 0; }
+    .tile, .tile:nth-child(odd), .tile:nth-child(even) { width: auto; height: auto; min-height: 148px; min-width: 0; padding: 12px 10px 14px; border-radius: 18px; transform: none; scroll-snap-align: none;
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 3px; text-align: left; box-shadow: 0 4px 0 0 color-mix(in srgb, var(--c) 40%, #fff), 0 4px 0 2px #14161C; }
+    .tile:hover { transform: translateY(-2px); }
+    .tile .tl-ic { position: static; width: 36px; height: 36px; margin-bottom: 8px; flex: none; }
+    .tile .tl-ic svg { width: 20px; height: 20px; }
+    .tile b { font-size: 20px; line-height: 1.1; }
+    .tile span { font-size: 11px; line-height: 1.3; opacity: .9; overflow-wrap: anywhere; }
+    .tile small { margin-top: auto; padding-top: 6px; font-size: 10.5px; line-height: 1.3; font-weight: 700; opacity: .9; }
+    @media (max-width: 360px) { .tiles { gap: 8px; } .tile { padding: 10px 8px 12px; } .tile b { font-size: 18px; } }
   </style>
 </head>
 
@@ -1046,6 +1058,15 @@
             <div class="card sim" id="sim-fig-beda"></div>
             <div class="card sim" id="sim-fig-serial"></div>
             <div class="card sim" id="sim-alur-pancasila"></div>
+            <div class="card sim" id="sim-integritas"></div>
+            <div class="card sim" id="sim-beda-anim"></div>
+            <div class="card sim" id="sim-bahasa"></div>
+            <div class="card sim" id="sim-tkp-pel"></div>
+            <div class="card sim" id="sim-tkp-jej"></div>
+            <div class="card sim" id="sim-tkp-sos"></div>
+            <div class="card sim" id="sim-tkp-tik"></div>
+            <div class="card sim" id="sim-tkp-prof"></div>
+            <div class="card sim" id="sim-tkp-anti"></div>
             <div class="card sim" id="sim-alur-amandemen"></div>
             <div class="card sim" id="sim-alur-hierarki"></div>
             <div class="card sim" id="sim-alur-cerita"></div>
@@ -1691,8 +1712,8 @@
     const LESSONS = [
       // ===== TWK (5 materi menurut Kepmen PANRB 406/2026) =====
       Ls('nas', 'twk', 'Nasionalisme', 'Mewujudkan kepentingan nasional lewat cita-cita dan tujuan bersama, tanpa kehilangan identitas nasional.', ['Nasionalisme: ciri', 'Nasionalisme: beda', 'Sejarah dan urutan'], ['sim-beda', 'sim-kisah', 'sim-timeline']),
-      Ls('int', 'twk', 'Integritas', 'Menjunjung kejujuran, ketangguhan, komitmen, dan konsistensi sebagai satu kesatuan sikap untuk mencapai tujuan nasional.', ['Korupsi dan gratifikasi', 'Nilai dasar ASN', 'Soal kasus integritas']),
-      Ls('bela', 'twk', 'Bela Negara', 'Berperan aktif mempertahankan eksistensi bangsa dan negara.', ['Bela negara:', 'Nasionalisme: beda', 'Ancaman dan tantangan'], ['sim-beda']),
+      Ls('int', 'twk', 'Integritas', 'Menjunjung kejujuran, ketangguhan, komitmen, dan konsistensi sebagai satu kesatuan sikap untuk mencapai tujuan nasional.', ['Korupsi dan gratifikasi', 'Nilai dasar ASN', 'Soal kasus integritas'], ['sim-integritas']),
+      Ls('bela', 'twk', 'Bela Negara', 'Berperan aktif mempertahankan eksistensi bangsa dan negara.', ['Bela negara:', 'Nasionalisme: beda', 'Ancaman dan tantangan'], ['sim-beda-anim', 'sim-beda']),
       Pl('pilar', 'twk', 'Pilar Negara', 'Membentuk karakter positif melalui pemahaman dan pengamalan nilai Pancasila, UUD 1945, NKRI, dan Bhinneka Tunggal Ika.', ['pancasila', 'uud', 'nkri', 'bti']),
       Ls('pancasila', 'twk', 'Pancasila', 'Lima sila, 45 butir pengamalannya, fungsi, dan proses lahirnya Pancasila.',
          ['Sila Pancasila', '45 butir Pancasila', 'Fungsi dan kedudukan', 'Nilai dasar, instrumental'],
@@ -1704,7 +1725,7 @@
          ['Otonomi daerah', 'Wilayah dan kedaulatan'], [], true),
       Ls('bti', 'twk', 'Bhinneka Tunggal Ika', 'Semboyan Bhinneka Tunggal Ika serta lambang dan identitas negara.',
          ['Lambang dan identitas'], [], true),
-      Ls('bhs', 'twk', 'Bahasa Negara', 'Menggunakan bahasa Indonesia sebagai bahasa persatuan dalam kehidupan bermasyarakat, berbangsa, dan bernegara.', ['Kedudukan bahasa', 'Kalimat efektif', 'Awalan di-']),
+      Ls('bhs', 'twk', 'Bahasa Negara', 'Menggunakan bahasa Indonesia sebagai bahasa persatuan dalam kehidupan bermasyarakat, berbangsa, dan bernegara.', ['Kedudukan bahasa', 'Kalimat efektif', 'Awalan di-'], ['sim-bahasa']),
 
       // ===== TIU (3 kemampuan menurut Kepmen) =====
       Pl('verbal', 'tiu', 'Kemampuan Verbal', 'Bernalar dan menarik kesimpulan lewat kata: analogi, silogisme, dan analitis.', ['analogi', 'silo', 'analitis']),
@@ -1722,12 +1743,12 @@
       Ls('figserial', 'tiu', 'Serial', 'Melihat pola hubungan dalam bentuk gambar.', ['Figural · Serial'], ['sim-fig-serial'], true),
 
       // ===== TKP (6 aspek menurut Kepmen) =====
-      Ls('pel', 'tkp', 'Pelayanan Publik', 'Ramah dan efektif memenuhi kebutuhan serta kepuasan orang lain sesuai tugas dan wewenang.', ['Memilih jawaban 5', 'Warga komplain', 'Tawaran uang pelicin'], ['sim-tkp']),
-      Ls('jej', 'tkp', 'Jejaring Kerja', 'Membangun hubungan, bekerja sama, berbagi informasi, dan berkolaborasi.', ['Konflik dengan rekan', 'Lintas unit'], ['sim-tkp']),
-      Ls('sos', 'tkp', 'Sosial Budaya', 'Beradaptasi dan bekerja efektif dalam masyarakat majemuk.', ['Penempatan di daerah', 'Sosial budaya:'], ['sim-tkp']),
-      Ls('tik', 'tkp', 'Teknologi Informasi dan Komunikasi', 'Memanfaatkan teknologi informasi secara efektif untuk meningkatkan kinerja.', ['Teknologi atau sistem baru', 'TIK:'], ['sim-tkp']),
-      Ls('prof', 'tkp', 'Profesionalisme', 'Melaksanakan tugas dan fungsi sesuai tuntutan jabatan.', ['Perintah atasan', 'Mengakui kesalahan', 'Beban kerja'], ['sim-tkp']),
-      Ls('anti', 'tkp', 'Anti Radikalisme', 'Mengukur pengetahuan anti radikalisme, kecenderungan bersikap, dan tindakan saat menanggapi berbagai alternatif situasi.', ['Hoaks, radikalisme', 'Rekan menyebarkan'], ['sim-tkp'])
+      Ls('pel', 'tkp', 'Pelayanan Publik', 'Ramah dan efektif memenuhi kebutuhan serta kepuasan orang lain sesuai tugas dan wewenang.', ['Memilih jawaban 5', 'Warga komplain', 'Tawaran uang pelicin'], ['sim-tkp-pel', 'sim-tkp']),
+      Ls('jej', 'tkp', 'Jejaring Kerja', 'Membangun hubungan, bekerja sama, berbagi informasi, dan berkolaborasi.', ['Konflik dengan rekan', 'Lintas unit'], ['sim-tkp-jej', 'sim-tkp']),
+      Ls('sos', 'tkp', 'Sosial Budaya', 'Beradaptasi dan bekerja efektif dalam masyarakat majemuk.', ['Penempatan di daerah', 'Sosial budaya:'], ['sim-tkp-sos', 'sim-tkp']),
+      Ls('tik', 'tkp', 'Teknologi Informasi dan Komunikasi', 'Memanfaatkan teknologi informasi secara efektif untuk meningkatkan kinerja.', ['Teknologi atau sistem baru', 'TIK:'], ['sim-tkp-tik', 'sim-tkp']),
+      Ls('prof', 'tkp', 'Profesionalisme', 'Melaksanakan tugas dan fungsi sesuai tuntutan jabatan.', ['Perintah atasan', 'Mengakui kesalahan', 'Beban kerja'], ['sim-tkp-prof', 'sim-tkp']),
+      Ls('anti', 'tkp', 'Anti Radikalisme', 'Mengukur pengetahuan anti radikalisme, kecenderungan bersikap, dan tindakan saat menanggapi berbagai alternatif situasi.', ['Hoaks, radikalisme', 'Rekan menyebarkan'], ['sim-tkp-anti', 'sim-tkp'])
     ];
     const TOP = () => LESSONS.filter(l => !l.hid);
     const lessonById = id => LESSONS.find(x => x.id === id);
@@ -1898,6 +1919,15 @@
       sos: `<h4>Pendalaman: pegangan memilih jawaban</h4><ul><li>Hormati adat dan kebiasaan setempat, tetapi tetap taat aturan negara.</li><li>Layani semua warga tanpa membeda-bedakan suku, agama, atau golongan.</li><li>Bila terjadi gesekan antarkelompok, pilih mediasi dan dialog yang mengutamakan persatuan (sila ketiga Pancasila).</li><li>Jawaban rendah: memaksakan kebiasaan sendiri, menghindar, atau memihak satu kelompok.</li></ul>`
     };
     Object.keys(EXTRA).forEach(k => { MATERI[k] += EXTRA[k]; });
+    const EXTRA_TKP = {
+      pel: `<h4>Pendalaman: lingkup dan standar pelayanan</h4><ul><li><b>Lingkup (UU 25/2009):</b> pelayanan barang publik, jasa publik, dan pelayanan administratif.</li><li><b>Standar pelayanan</b> antara lain memuat persyaratan, prosedur, jangka waktu penyelesaian, biaya atau tarif, produk pelayanan, serta penanganan pengaduan dan masukan.</li></ul><h4>Pendalaman: asas yang sering menjadi kunci</h4><div class="kv "><div><b>Tidak diskriminatif</b><span>Semua warga dilayani sama, tanpa membedakan suku, agama, atau status.</span></div><div><b>Keterbukaan</b><span>Persyaratan, biaya, dan jangka waktu disampaikan jelas.</span></div><div><b>Ketepatan waktu</b><span>Layanan selesai sesuai jangka waktu yang dijanjikan.</span></div><div><b>Kelompok rentan</b><span>Lansia, penyandang disabilitas, dan ibu hamil mendapat fasilitas dan perlakuan khusus.</span></div></div><h4>Pendalaman: keluhan dan pungutan liar</h4><ul><li>Terima keluhan dengan tenang, catat, dan tindak lanjuti. Jangan defensif atau melempar tanggung jawab.</li><li>Warga dapat mengadu lewat penyelenggara, kanal SP4N-LAPOR!, dan Ombudsman RI sebagai pengawas eksternal.</li><li>Pungutan di luar tarif resmi: tolak dengan sopan, jelaskan biaya resmi, dan laporkan bila terjadi.</li></ul>`,
+      jej: `<h4>Pendalaman: jenis jejaring dan keterampilan</h4><ul><li><b>Jejaring internal:</b> antarrekan dan antarunit. <b>Eksternal:</b> antarinstansi, mitra, dan masyarakat.</li><li>Keterampilan kunci: mendengarkan aktif, komunikasi asertif (tegas tetapi sopan), memberi dan menerima umpan balik, serta empati.</li></ul><h4>Pendalaman: pola situasi yang sering keluar</h4><div class="kv "><div><b>Rekan tidak kooperatif</b><span>Ajak bicara, tanyakan kendalanya, bagi peran dengan jelas, tawarkan bantuan.</span></div><div><b>Beda pendapat</b><span>Cari titik temu dan putuskan berdasarkan tujuan organisasi, bukan ego.</span></div><div><b>Butuh data unit lain</b><span>Minta langsung dengan sopan, jelaskan tujuan dan tenggat.</span></div><div><b>Tim lintas unit</b><span>Sepakati tujuan, tenggat, dan penanggung jawab sejak awal.</span></div></div><h4>Pendalaman: jawaban rendah</h4><p>Bergosip, menyindir di grup, menyalahkan di depan umum, melapor ke atasan tanpa mencoba bicara dulu, atau bekerja sendiri-sendiri.</p>`,
+      sos: `<h4>Pendalaman: peran ASN dalam masyarakat majemuk</h4><ul><li>ASN berfungsi sebagai perekat dan pemersatu bangsa, sejalan dengan Bhinneka Tunggal Ika dan sila ketiga Pancasila.</li><li>Pelayanan tidak boleh membedakan ras dan etnis (UU 40/2008 tentang Penghapusan Diskriminasi Ras dan Etnis).</li></ul><h4>Pendalaman: langkah beradaptasi di daerah baru</h4><ul><li>Amati, bertanya, dan belajar adat serta bahasa setempat.</li><li>Ikut kegiatan warga seperti kerja bakti dan acara adat yang tidak melanggar aturan.</li><li>Hormati kearifan lokal, tetapi tetap taat aturan negara.</li></ul><h4>Pendalaman: bila terjadi gesekan antarkelompok</h4><ul><li>Bersikap netral, jangan memihak satu kelompok.</li><li>Ajak pihak yang berselisih berdialog, libatkan tokoh masyarakat sebagai penengah.</li><li>Utamakan persatuan dan kepentingan bersama.</li></ul>`,
+      tik: `<h4>Pendalaman: literasi digital dan cek fakta</h4><ul><li>Periksa sumber, tanggal, dan penulisnya. Bandingkan dengan media atau situs resmi.</li><li>Waspadai judul provokatif dan pesan berantai. Jangan membagikan sebelum jelas kebenarannya.</li></ul><h4>Pendalaman: keamanan data</h4><ul><li>Gunakan kata sandi panjang dan berbeda-beda, aktifkan autentikasi dua langkah.</li><li>Kode OTP tidak boleh dibagikan kepada siapa pun.</li><li>Waspadai tautan atau lampiran asing (phishing). Laporkan, jangan diklik.</li><li>Data dinas disimpan dan dikirim lewat sistem atau kanal resmi, bukan akun pribadi.</li></ul><h4>Pendalaman: dasar hukum dan etika</h4><ul><li>UU ITE (UU 11/2008 dan perubahannya), UU 27/2022 tentang Pelindungan Data Pribadi, dan Perpres 95/2018 tentang SPBE.</li><li>ASN di media sosial: tidak memuat ujaran kebencian, SARA, atau hoaks, dan menjaga rahasia jabatan.</li></ul>`,
+      prof: `<h4>Pendalaman: disiplin dan netralitas</h4><ul><li>PP 94/2021 mengatur kewajiban, larangan, dan hukuman disiplin PNS dalam tiga tingkat: ringan, sedang, dan berat.</li><li>ASN wajib netral: tidak berpihak pada kepentingan politik, tidak berkampanye, dan tidak memakai fasilitas negara untuk politik.</li></ul><h4>Pendalaman: menyikapi perintah atasan</h4><ul><li>Patuhi selama sesuai aturan.</li><li>Bila melanggar aturan: tolak dengan sopan, jelaskan dasar aturannya, dan tawarkan alternatif yang benar.</li><li>Bila tetap dipaksa, gunakan jalur resmi, bukan membangkang atau diam-diam menuruti.</li></ul><h4>Pendalaman: mengelola tugas dan kesalahan</h4><ul><li>Susun prioritas: kerjakan yang mendesak dan penting lebih dulu, koordinasikan sisanya.</li><li>Bila tenggat terancam, laporkan lebih awal dan ajukan solusi.</li><li>Bila salah, akui, perbaiki, dan cegah terulang. Menutupi kesalahan selalu jawaban rendah.</li></ul>`,
+      anti: `<h4>Pendalaman: moderasi beragama</h4><p>Empat indikator moderasi beragama: komitmen kebangsaan, toleransi, anti kekerasan, dan akomodatif terhadap budaya lokal.</p><h4>Pendalaman: pencegahan dan penindakan</h4><ul><li>Radikalisme tidak melekat pada agama, suku, atau kelompok tertentu. Hindari stereotip.</li><li>BNPT berperan dalam penanggulangan terorisme. Dasar hukumnya UU 5/2018 tentang Pemberantasan Tindak Pidana Terorisme.</li><li>Pencegahan dilakukan lewat kontra radikalisasi dan deradikalisasi.</li><li>Paham radikal kerap menyebar lewat media sosial, jadi literasi digital penting.</li></ul><h4>Pendalaman: urutan menyikapi rekan atau lingkungan</h4><ul><li>Ingatkan dan rangkul dengan dialog santun serta penguatan nilai Pancasila.</li><li>Bila berulang atau membahayakan, laporkan lewat jalur resmi (atasan, unit pengawasan, atau aparat).</li><li>Jangan membiarkan, ikut menyebarkan, atau menanggapi dengan kekerasan.</li></ul>`
+    };
+    Object.keys(EXTRA_TKP).forEach(k => { MATERI[k] += EXTRA_TKP[k]; });
 
 
     Object.assign(MATERI, {
@@ -2241,6 +2271,11 @@
       tik: ['<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>', 'blink'],
       prof: ['<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 13h18"/>', 'bounce'],
       anti: ['<circle cx="12" cy="12" r="9"/><path d="M12 3v18M12 12l-6 6M12 12l6 6"/>', 'spin'],
+      pilar: ['<path d="M6 20V9M12 20V9M18 20V9"/><path d="M3 9l9-5 9 5"/><path d="M3 20h18"/>', 'float'],
+      bti: ['<path d="M3 18a9 9 0 0 1 18 0"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M11 18a1 1 0 0 1 2 0"/>', 'sway'],
+      verbal: ['<path d="M5 4h14v12H10l-5 4z"/><path d="M8 8h8M8 12h5"/>', 'float'],
+      numerik: ['<path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="3"/>', 'bounce'],
+      figural: ['<rect x="3" y="13" width="8" height="8" rx="1"/><circle cx="17" cy="17" r="4"/><path d="M12 3l5 8H7z"/>', 'spin'],
       twk: ['<path d="M5 21V4"/><path d="M5 5h12l-2 4 2 4H5"/>', 'sway'],
       tiu: ['<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>', 'pulse'],
       tkp: ['<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>', 'beat']
@@ -2687,6 +2722,300 @@
         draw();
       };
       mkP('sim-alur-pancasila', 'Alur lahirnya Pancasila', 'Tonton usulan tiap tokoh di sidang BPUPKI sampai disahkan PPKI. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi alur lahirnya Pancasila', PS);
+      // ---------- Animasi stikman: materi Integritas ----------
+      const GB = (x, y, dl, c) => `<g class="pop" style="animation-delay:${dl}s"><rect x="${x - 13}" y="${y - 14}" width="26" height="20" fill="${c || '#E5484D'}" stroke="${G}" stroke-width="2"/><path d="M${x} ${y - 14}V${y + 6}M${x - 13} ${y - 5}H${x + 13}" stroke="${G}" stroke-width="1.6" fill="none"/><path d="M${x} ${y - 14}q-8 -10 -11 -3q3 6 11 3q8 3 11 -3q-3 -7 -11 3" fill="#fff" stroke="${G}" stroke-width="1.4"/></g>`;
+      const AMP = (x, y, dl) => `<g class="pop" style="animation-delay:${dl}s"><rect x="${x - 15}" y="${y - 10}" width="30" height="20" rx="2" fill="#F6D77A" stroke="${G}" stroke-width="2"/><path d="M${x - 15} ${y - 10}L${x} ${y + 3}L${x + 15} ${y - 10}" fill="none" stroke="${G}" stroke-width="1.6"/></g>`;
+      const GIFTH = '<rect x="6" y="-22" width="12" height="9" fill="#E5484D" stroke="#14161C" stroke-width="1"/>';
+      const OK = (x, y, w, s, dl, c) => `<g class="stamp" style="--dl:${dl}s"><rect x="${x - w / 2}" y="${y}" width="${w}" height="34" rx="8" fill="#fff" stroke="${c || '#1FA971'}" stroke-width="3.5"/><text x="${x}" y="${y + 23}" text-anchor="middle" style="font-size:16px;fill:${c || '#1FA971'}">${s}</text></g>`;
+      const BOX3 = (x, lb, v, dl) => `<g class="pop" style="animation-delay:${dl}s"><rect x="${x - 64}" y="34" width="128" height="52" rx="10" fill="#fff" stroke="${G}" stroke-width="2.5"/><text x="${x}" y="54" text-anchor="middle" style="font-size:11px;fill:${R}">${lb}</text><text x="${x}" y="76" text-anchor="middle" style="font-size:17px">${v}</text></g>`;
+      const SKI = ['#EFE9FB', '#FBF8FF'], VAL = ['Jujur', 'Peduli', 'Mandiri', 'Disiplin', 'Tanggung jawab', 'Kerja keras', 'Sederhana', 'Berani', 'Adil'];
+      const PI = [
+        { d: 'Konsep', t: 'Pikiran, ucapan, tindakan: satu arah', p: 'ASN berintegritas', ms: 8500,
+          n: ['Integritas adalah keselarasan antara pikiran, ucapan, dan tindakan. Yang dipikirkan jujur, yang diucapkan jujur, yang dilakukan juga jujur.', 'Jujur, konsisten, berkomitmen, dan tangguh menghadapi godaan menjadi satu kesatuan sikap, bukan sifat yang dipakai bergantian.'],
+          k: 'Kata kunci soal: selaras, konsisten, jujur walau tidak diawasi.',
+          s: () => SC(SKI, '#9FC9B0', GD, SUN(440, 130, 18, '#FFD66B'),
+            BOX3(80, 'PIKIRAN', 'Jujur', .2) + BOX3(240, 'UCAPAN', 'Jujur', 1) + BOX3(400, 'TINDAKAN', 'Jujur', 1.8) +
+            T(160, 68, '=', 1.4, 26) + T(320, 68, '=', 2.2, 26) + OK(240, 94, 270, 'SELARAS = INTEGRITAS', 2.9) +
+            H(240, 205, { a: 'talk', h: 'peci', k: '#fff', s: 1.7 }) + H(130, 205, { a: 'walk', h: 'blangkon', k: '#FBF5EA', dl: 3 }) + H(350, 205, { f: -1, a: 'walk', h: 'topi', k: '#CFE9F1', dl: 3.2 }) +
+            T(240, 250, 'Sama di depan maupun di belakang orang', 3.6, 12, R)) },
+        { d: 'Tanpa saksi', t: 'Tetap menolak walau tidak ada yang lihat', p: 'ASN|Timbangan jujur', ms: 8500,
+          n: ['Ujian integritas yang sesungguhnya terjadi saat tidak ada yang mengawasi. Seperti timbangan toko yang jujur: angkanya sama, dilihat pembeli atau tidak.', 'ASN yang menolak bingkisan rekanan walau sepi dan tanpa saksi menunjukkan integritas.'],
+          k: 'Jawaban yang benar tidak bergantung pada ada atau tidaknya pengawas.',
+          s: () => SC(SKI, '#9FC9B0', GD, SUN(60, 56, 20, '#FFD66B'),
+            T(330, 62, 'Sepi. Tidak ada saksi.', .2, 13) +
+            `<rect x="285" y="172" width="90" height="10" fill="#C9A66B" stroke="${G}" stroke-width="2"/><path d="M295 182V215M365 182V215" stroke="${G}" stroke-width="3"/>` + GB(330, 168, .8) +
+            H(190, 205, { a: 'talk', h: 'peci', k: '#fff', s: 1.6 }) + BB(185, 122, 'Tetap saya tolak', 1.6) +
+            OK(330, 84, 130, 'DITOLAK', 2.6, R) + T(240, 250, 'Timbangan jujur: angkanya sama, dilihat atau tidak', 3.4, 12, R)) },
+        { d: 'Korupsi · Suap', t: 'Suap: ada kesepakatan dua arah', p: 'Pemberi|Penerima', ms: 9000,
+          n: ['Dalam suap ada kesepakatan atau timbal balik: pemberi memberi sesuatu agar penerima berbuat atau tidak berbuat sesuatu dalam jabatannya.', 'Suap termasuk salah satu dari tujuh kelompok korupsi menurut UU 31/1999 jo. UU 20/2001.'],
+          k: 'Ciri suap: ada janji timbal balik antara pemberi dan penerima.',
+          s: () => SC(['#FFE2B8', '#FBF5EA'], '#E3B98A', GD, SUN(440, 40, 16, '#FFB74D'),
+            T(240, 28, 'SUAP', .1, 22, R) + T(240, 46, 'Ada kesepakatan timbal balik', .4, 12) +
+            H(90, 205, { a: 'talk', h: 'topi', k: '#2F4B7C', s: 1.5, it: GIFTH }) + H(390, 205, { f: -1, a: 'talk', h: 'peci', k: '#4B5160', s: 1.5 }) +
+            BB(130, 108, 'Loloskan tender saya ya', 1) + BB(350, 138, 'Siap, asal ada amplop', 2) +
+            `<path class="pop" style="animation-delay:2.8s" d="M178 178H302M188 170L178 178L188 186M292 170L302 178L292 186" stroke="${R}" stroke-width="3" fill="none"/>` + AMP(240, 200, 2.8) +
+            T(240, 250, 'Ada janji timbal balik: itu suap', 3.6, 13, R)) },
+        { d: 'Korupsi · Gratifikasi', t: 'Gratifikasi: tanpa kesepakatan, wajib dilaporkan', p: 'KPK|30 hari kerja', ms: 10000,
+          n: ['Gratifikasi adalah pemberian dalam arti luas (uang, barang, diskon, fasilitas) yang berhubungan dengan jabatan dan bertentangan dengan kewajiban. Tidak ada kesepakatan, tetapi tetap berbahaya karena mengikat budi.', 'Bila tidak bisa menolak, laporkan ke KPK paling lambat 30 hari kerja sejak diterima.'],
+          k: 'Hafal: gratifikasi = tanpa kesepakatan, terkait jabatan, lapor KPK paling lambat 30 hari kerja.',
+          s: () => SC(['#CFE9F1', '#EAF6FA'], '#9FC9B0', GD, SUN(440, 130, 16, '#FFD66B'),
+            T(240, 24, 'GRATIFIKASI', .1, 20, R) + OK(240, 36, 270, 'Lapor KPK ≤ 30 hari kerja', 4, '#1FA971') +
+            H(80, 205, { a: 'talk', h: 'topi', k: '#2F4B7C', s: 1.5, it: GIFTH }) + H(390, 205, { f: -1, a: 'talk', h: 'peci', k: '#fff', s: 1.5 }) +
+            BB(120, 108, 'Sekadar tanda terima kasih', .6) + GB(240, 192, 1.6) + BB(350, 150, 'Saya lapor ke KPK', 2.8) +
+            T(240, 250, 'Tanpa kesepakatan, tetapi terkait jabatan', 3.4, 12, R)) },
+        { d: 'Korupsi · Pemerasan', t: 'Pemerasan: pejabat yang memaksa', p: 'Pejabat|Warga', ms: 9000,
+          n: ['Pada pemerasan, pejabat yang menyalahgunakan kekuasaan memaksa pihak lain memberi sesuatu. Inisiatif datang dari pejabat, bukan dari pemberi.', 'Pejabat yang meminta uang agar izin terbit termasuk pemerasan.'],
+          k: 'Bedakan: suap = sepakat, gratifikasi = pemberian terkait jabatan, pemerasan = pejabat memaksa.',
+          s: () => SC(['#FFD9A0', '#FBF5EA'], '#E3B98A', GD, SUN(440, 40, 16, '#E5484D'),
+            T(240, 28, 'PEMERASAN', .1, 22, R) +
+            H(110, 205, { a: 'fight', h: 'peci', k: '#4B5160', s: 1.5 }) + H(380, 205, { f: -1, h: 'caping', k: '#FBF5EA', s: 1.5 }) +
+            BB(150, 100, 'Mau izin cepat? Bayar dulu', 1) + BB(350, 140, 'Saya terpaksa membayar', 2.2) +
+            `<g class="pop" style="animation-delay:1.6s"><rect x="222" y="168" width="32" height="40" fill="#fff" stroke="${G}" stroke-width="2"/><text x="238" y="192" text-anchor="middle" style="font-size:10px">IZIN</text></g>` +
+            T(240, 250, 'Pejabat memaksa, warga adalah korban', 3.2, 13, R)) },
+        { d: 'Korupsi · Benturan kepentingan', t: 'Mundur bila ada kepentingan pribadi', p: 'Panitia tender', ms: 9500,
+          n: ['Benturan kepentingan terjadi ketika jabatan dipengaruhi kepentingan pribadi, keluarga, atau kelompok, misalnya ikut menentukan pemenang tender milik saudara.', 'Sikap yang tepat: sampaikan secara terbuka dan mundur dari proses pengambilan keputusan itu.'],
+          k: 'Jawaban aman: transparan, mundur dari keputusan, serahkan kepada pihak yang tidak berkepentingan.',
+          s: () => SC(SKI, '#9FC9B0', GD, SUN(60, 56, 18, '#FFD66B'),
+            `<g class="pop" style="animation-delay:.3s"><rect x="240" y="56" width="220" height="112" rx="10" fill="#fff" stroke="${G}" stroke-width="2.5"/><text x="350" y="78" text-anchor="middle" style="font-size:12px;fill:${R}">TENDER PENGADAAN</text><rect x="254" y="90" width="192" height="26" rx="6" fill="#EFE9FB" stroke="${G}" stroke-width="1.5"/><text x="350" y="108" text-anchor="middle" style="font-size:12px">PT Maju Jaya</text></g>` +
+            `<g class="pop" style="animation-delay:1.1s"><rect x="254" y="126" width="192" height="26" rx="6" fill="#FDE2E0" stroke="${R}" stroke-width="2"/><text x="350" y="144" text-anchor="middle" style="font-size:12px">PT milik adik saya</text></g>` +
+            H(110, 205, { a: 'talk', h: 'peci', k: '#fff', s: 1.6 }) + BB(125, 112, 'Saya mundur dari panitia', 2) +
+            OK(340, 178, 262, 'Hindari benturan kepentingan', 3.2) + T(240, 252, 'Transparan, lalu mundur dari keputusan', 4, 12, R)) },
+        { d: 'Nilai antikorupsi', t: 'Sembilan nilai antikorupsi KPK', p: 'Jujur|Peduli|Mandiri|Disiplin|Tanggung jawab|Kerja keras|Sederhana|Berani|Adil', ms: 11500,
+          n: ['Sembilan nilai antikorupsi KPK: Jujur, Peduli, Mandiri, Disiplin, Tanggung jawab, Kerja keras, Sederhana, Berani, Adil.', 'Seperti sembilan tiang rumah: satu tiang goyah, atap integritas ikut miring. Hadir tepat waktu dan taat jam kerja menunjukkan nilai disiplin.'],
+          k: 'Lima prinsip KPK (akuntabilitas, transparansi, kewajaran, kebijakan, kontrol kebijakan) ada di tingkat sistem, sembilan nilai di tingkat pribadi.',
+          s: () => SC(['#FFE2B8', '#FBF5EA'], '#E3B98A', GD, '',
+            VAL.map((v, k) => `<g class="pop" style="animation-delay:${.2 + k * .5}s"><rect x="${20 + (k % 3) * 150}" y="${26 + Math.floor(k / 3) * 40}" width="140" height="32" rx="9" fill="${['#FDE2E0', '#FFF1CC', '#DDF0EF'][k % 3]}" stroke="${G}" stroke-width="2"/><text x="${90 + (k % 3) * 150}" y="${47 + Math.floor(k / 3) * 40}" text-anchor="middle" style="font-size:${v.length > 11 ? 12 : 14}px">${v}</text></g>`).join('') +
+            [70, 160, 240, 320, 410].map((x, k) => H(x, 205, { a: 'cheer', h: ['peci', 'blangkon', 'topi'][k % 3], k: BG[k % 3], dl: k * .12 })).join('') +
+            T(240, 250, 'Satu tiang goyah, atap integritas ikut miring', 5.2, 12, R)) }
+      ];
+      mkP('sim-integritas', 'Animasi integritas dan antikorupsi', 'Tonton kasus pendeknya dulu. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman materi integritas', PI);
+      // ---------- Animasi stikman: pembeda cinta tanah air, nasionalisme, patriotisme, bela negara ----------
+      const BC = ['#1FA971', '#3B82F6', '#E5484D', '#6C5CE7'], BT = ['RASA', 'PAHAM', 'SEMANGAT', 'TINDAKAN'], BN = ['Cinta tanah air', 'Nasionalisme', 'Patriotisme', 'Bela negara'];
+      const HRT = (x, y, dl, sc) => `<path class="pop" style="animation-delay:${dl}s" transform="translate(${x} ${y}) scale(${sc || 1.6})" d="M0 8C-18 -6 -10 -22 0 -11C10 -22 18 -6 0 8Z" fill="#E5484D" stroke="${G}" stroke-width="1.6"/>`;
+      const PB = [
+        { d: 'Gambaran besar', t: 'Empat tangga: dari rasa sampai tindakan', p: 'Cinta tanah air|Nasionalisme|Patriotisme|Bela negara', ms: 11000,
+          n: ['Empat istilah ini berjenjang. Dimulai dari rasa di dalam hati (cinta tanah air), tumbuh jadi kesadaran bersatu (nasionalisme), menguat jadi kerelaan berkorban (patriotisme), lalu diwujudkan dalam peran nyata (bela negara).', 'Makin ke atas, makin terlihat dari perbuatan.'],
+          k: 'Urutan hafalan: rasa, paham, semangat, tindakan.',
+          s: () => SC(['#CFE9F1', '#EAF6FA'], '#9FC9B0', GD, SUN(60, 50, 18, '#FFD66B'),
+            [0, 1, 2, 3].map(i => { const h = 40 + i * 30, x = 30 + i * 105, top = 215 - h; return `<g class="pop" style="animation-delay:${.3 + i * 1.4}s"><rect x="${x}" y="${top}" width="105" height="${h}" fill="${BC[i]}" fill-opacity=".35" stroke="${G}" stroke-width="2.5"/><text x="${x + 52}" y="${top + 24}" text-anchor="middle" style="font-size:12px">${BN[i]}</text><text x="${x + 52}" y="${top - 52}" text-anchor="middle" style="font-size:13px;fill:${BC[i]}">${BT[i]}</text>` + H(x + 52, top, { a: i === 3 ? 'cheer' : 'talk', h: ['peci', 'blangkon', 'topi', 'peci'][i], k: BG[i % 3], s: 1.1 }).replace('<g transform', '<g transform') + '</g>'; }).join('') +
+            T(240, 250, 'Makin ke atas, makin terlihat dari perbuatan', 6, 12, R)) },
+        { d: 'RASA', t: 'Cinta tanah air: sayang dan bangga', p: 'Dimas|Warga kampung', ms: 9000,
+          n: ['Cinta tanah air adalah perasaan sayang dan bangga pada tanah kelahiran. Ini lapisan paling dasar.', 'Contoh: bangga memakai batik dan produk dalam negeri, ikut merawat sungai dan lingkungan sekitar.'],
+          k: 'Jebakan: baru perasaan. Bila soal menekankan tindakan nyata atau kewajiban, jawabannya bukan cinta tanah air.',
+          s: () => SC(['#DFF5E8', '#F4FBF7'], '#8FC98F', GD, SUN(440, 36, 16, '#FFD66B'),
+            T(240, 26, 'CINTA TANAH AIR', .1, 20, '#1FA971') + T(240, 44, 'Sayang dan bangga pada tanah kelahiran', .4, 12) +
+            H(110, 205, { a: 'talk', h: 'peci', k: '#E5C894', s: 1.6 }) + HRT(110, 120, .9) + BB(145, 100, 'Bangga pakai batik!', 1.4) +
+            `<path d="M270 210q20 -8 40 0t40 0t40 0t40 0V216H270Z" fill="#8FD3F0" stroke="${G}" stroke-width="2"/>` +
+            H(330, 205, { f: -1, a: 'talk', h: 'topi', k: '#fff', s: 1.4, it: BK }) + BB(350, 150, 'Sungai kampungku kujaga', 2.4) +
+            T(240, 250, 'Baru perasaan, belum kewajiban hukum', 3.4, 12, R)) },
+        { d: 'PAHAM', t: 'Nasionalisme: bersatu sebagai satu bangsa', p: 'Beda suku|Satu bangsa', ms: 9500,
+          n: ['Nasionalisme adalah paham yang mengutamakan kepentingan bangsa di atas kepentingan pribadi atau golongan, dengan identitas nasional sebagai pengikat.', 'Contoh: Sumpah Pemuda 1928, menolak kabar provokatif antarkelompok, menerima keberagaman suku dan agama.'],
+          k: 'Kata kunci: kolektif, persatuan, kepentingan bangsa di atas golongan.',
+          s: () => SC(['#D6E6FB', '#EEF5FE'], '#9FC9B0', GD, SUN(60, 70, 16, '#FFD66B'),
+            T(240, 26, 'NASIONALISME', .1, 20, '#3B82F6') + OK(240, 40, 280, 'Tolak hoaks pemecah belah', 2.6) +
+            [60, 150, 240, 330, 420].map((x, k) => E(k % 2 ? 300 : -300, k * .15, H(x, 205, { a: 'oath', h: ['blangkon', 'peci', 'caping', 'topi', 'peci'][k], k: ['#FBF5EA', '#fff', '#CFE9F1', '#FDE2E0', '#FFF1CC'][k], dl: k * .1, s: 1.35 }))).join('') +
+            BB(240, 135, 'Beda suku, satu bangsa', 1.8) + T(240, 250, 'Persatuan di atas kepentingan golongan', 3.4, 12, R)) },
+        { d: 'SEMANGAT', t: 'Patriotisme: berani dan rela berkorban', p: 'Pemuda Surabaya|Relawan', ms: 10000,
+          n: ['Patriotisme adalah semangat dan sikap rela berkorban, berani, dan setia berjuang demi kejayaan negara. Kata kuncinya pengorbanan.', 'Contoh: pertempuran 10 November 1945 di Surabaya, atlet yang berjuang mengharumkan nama bangsa, relawan yang turun ke daerah bencana.'],
+          k: 'Tidak harus perang. Pengorbanan waktu, tenaga, atau prestasi untuk bangsa juga patriotisme.',
+          s: () => SC(['#FFD9A0', '#FBF5EA'], '#E3B98A', GD, SUN(440, 40, 16, '#E5484D'),
+            T(240, 26, 'PATRIOTISME', .1, 20, R) + T(240, 44, '10 November 1945, Surabaya', .4, 12) +
+            [40, 95, 150, 205].map((x, k) => E(-240, k * .2, H(x, 205, { a: 'march', h: k % 2 ? 'peci' : 'blangkon', k: '#8A8F5A', it: k === 0 ? FLG : RIF, dl: k * .1 }))).join('') +
+            BB(125, 120, 'Rela berkorban!', 1.4) +
+            H(400, 205, { f: -1, a: 'talk', h: 'topi', k: '#F59E0B', it: GIFTH }) + BB(375, 150, 'Relawan turun ke bencana', 2.6) +
+            T(240, 250, 'Tidak harus perang: waktu dan tenaga pun pengorbanan', 3.6, 12, R)) },
+        { d: 'TINDAKAN', t: 'Bela negara: peran nyata, kewajiban warga', p: 'ASN|Pasal 27 ayat 3', ms: 10000,
+          n: ['Bela negara adalah hak dan kewajiban setiap warga negara (Pasal 27 ayat 3 dan Pasal 30 ayat 1 UUD 1945) untuk ikut menjaga eksistensi bangsa, baik fisik maupun nonfisik.', 'Contoh: menaati hukum, membayar pajak, bekerja jujur dan disiplin sebagai ASN, menjaga persatuan.'],
+          k: 'Bela negara tidak sama dengan angkat senjata. Bentuk nonfisik juga bela negara.',
+          s: () => SC(['#E6E0FA', '#F6F3FF'], '#9FC9B0', GD, SUN(60, 70, 16, '#FFD66B'),
+            T(240, 26, 'BELA NEGARA', .1, 20, '#6C5CE7') + OK(240, 40, 270, 'Nonfisik juga bela negara', 3.4, '#6C5CE7') +
+            H(120, 205, { a: 'talk', h: 'peci', k: '#fff', s: 1.6 }) + BB(190, 110, 'Taat aturan, bayar pajak, kerja jujur', 1) +
+            `<g class="pop" style="animation-delay:1.8s"><rect x="340" y="150" width="90" height="65" fill="#EBDDBB" stroke="${G}" stroke-width="2.5"/><text x="385" y="188" text-anchor="middle" style="font-size:13px">PAJAK</text></g>` +
+            [0, 1, 2].map(k => `<circle class="pop" style="animation-delay:${2.2 + k * .5}s" cx="${240 + k * 30}" cy="${196 - k * 8}" r="8" fill="#F6D77A" stroke="${G}" stroke-width="2"/>`).join('') +
+            T(240, 250, 'Kewajiban warga negara, bukan sekadar perasaan', 4, 12, R)) },
+        { d: 'Jebakan soal', t: 'Chauvinisme bukan nasionalisme', p: 'Chauvinisme|Nasionalisme', ms: 9500,
+          n: ['Bangga pada bangsa sendiri sambil merendahkan bangsa lain disebut chauvinisme. Itu bukan nasionalisme.', 'Nasionalisme yang sehat tetap bangga pada bangsa sendiri tanpa merendahkan bangsa lain.'],
+          k: 'Bila ada unsur merendahkan bangsa lain, pilih chauvinisme.',
+          s: () => SC(['#FFE2B8', '#FBF5EA'], '#E3B98A', GD, SUN(440, 40, 16, '#FFB74D'),
+            T(240, 26, 'JEBAKAN SOAL', .1, 20, R) + OK(240, 40, 270, 'BUKAN NASIONALISME', 2.6, R) +
+            H(110, 205, { a: 'fight', h: 'peci', k: '#4B5160', s: 1.5 }) + BB(125, 125, 'Bangsa lain rendah!', 1) +
+            H(370, 205, { f: -1, a: 'talk', h: 'blangkon', k: '#fff', s: 1.5 }) + BB(350, 150, 'Bangga tanpa merendahkan', 3.2) +
+            T(240, 250, 'Bangga boleh, merendahkan bangsa lain jangan', 4, 12, R)) }
+      ];
+      mkP('sim-beda-anim', 'Animasi pembeda: dari rasa sampai tindakan', 'Tonton contoh tiap istilah lewat stikman. Tekan Putar, atau ketuk nomor untuk melompat. Habis itu coba grafik dan tebakan di bawah.', 'Animasi stikman pembeda cinta tanah air, nasionalisme, patriotisme, dan bela negara', PB);
+      // ---------- Animasi stikman: materi Bahasa Negara ----------
+      const CDB = (x, y, w, a, b, c, dl, col) => `<g class="pop" style="animation-delay:${dl}s"><rect x="${x}" y="${y}" width="${w}" height="76" rx="10" fill="#fff" stroke="${G}" stroke-width="2.5"/><text x="${x + w / 2}" y="${y + 24}" text-anchor="middle" style="font-size:13px;fill:${col || R}">${a}</text><text x="${x + w / 2}" y="${y + 46}" text-anchor="middle" style="font-size:13px">${b}</text><text x="${x + w / 2}" y="${y + 64}" text-anchor="middle" style="font-size:11px">${c}</text></g>`;
+      const WD = (x, y, w, s, c, dl) => `<g class="pop" style="animation-delay:${dl}s"><rect x="${x}" y="${y}" width="${w}" height="28" rx="8" fill="${c}" stroke="${G}" stroke-width="2"/><text x="${x + w / 2}" y="${y + 19}" text-anchor="middle" style="font-size:14px">${s}</text></g>`;
+      const PBH = [
+        { d: 'Kedudukan', t: 'Satu bahasa, dua kedudukan', p: 'Bahasa nasional|Bahasa negara', ms: 9500,
+          n: ['Bahasa Indonesia berkedudukan sebagai bahasa nasional (sejak Sumpah Pemuda 1928) dan bahasa negara (Pasal 36 UUD 1945).', 'Sebagai bahasa nasional: lambang kebanggaan dan identitas, alat pemersatu suku bangsa, serta alat perhubungan antardaerah dan antarbudaya. Sebagai bahasa negara: bahasa resmi kenegaraan, pengantar pendidikan, penghubung tingkat nasional, dan sarana pengembangan kebudayaan serta IPTEK.'],
+          k: 'Seperti satu kepala dengan dua topi: bahasa nasional (1928) dan bahasa negara (Pasal 36).',
+          s: () => SC(['#FFE2B8', '#FBF5EA'], '#E3B98A', GD, SUN(440, 130, 16, '#FFB74D'),
+            T(240, 26, 'KEDUDUKAN BAHASA INDONESIA', .1, 17, R) +
+            CDB(20, 44, 195, 'BAHASA NASIONAL', 'Sumpah Pemuda 1928', 'pemersatu dan identitas', .5, '#3B82F6') + CDB(265, 44, 195, 'BAHASA NEGARA', 'Pasal 36 UUD 1945', 'bahasa resmi kenegaraan', 1.5, '#6C5CE7') +
+            `<path class="pop" style="animation-delay:2.2s" d="M118 124L215 158M362 124L265 158" stroke="${G}" stroke-width="2" fill="none"/>` +
+            H(240, 205, { a: 'talk', h: 'peci', k: '#fff', s: 1.6 }) + T(240, 250, 'Satu bahasa, dua kedudukan', 3, 12, R)) },
+        { d: 'Bahasa nasional', t: 'Pemersatu antarsuku dan daerah', p: 'Jawa|Batak|Sunda', ms: 9500,
+          n: ['Indonesia punya ratusan bahasa daerah. Bahasa Indonesia menjadi alat perhubungan antardaerah dan antarbudaya sehingga orang dari suku berbeda saling paham.', 'Ikrar \"menjunjung bahasa persatuan, bahasa Indonesia\" lahir di Sumpah Pemuda 1928.'],
+          k: 'Kata kunci: pemersatu suku bangsa, perhubungan antardaerah, lambang identitas.',
+          s: () => SC(['#DFF5E8', '#F4FBF7'], '#8FC98F', GD, SUN(440, 130, 16, '#FFD66B'),
+            T(240, 26, 'BAHASA PERSATUAN', .1, 20, '#1FA971') + OK(240, 40, 290, 'Selamat pagi! Semua paham', 3.4) +
+            [[90, 'blangkon', 'Sugeng enjing'], [240, 'peci', 'Horas'], [390, 'caping', 'Wilujeng enjing']].map(([x, h, w], k) => H(x, 205, { a: 'talk', h, k: BG[k], s: 1.4, dl: k * .2 }) + BB(x, 128, w, .6 + k * .8)).join('') +
+            T(240, 250, 'Beda daerah, satu bahasa persatuan', 4, 12, R)) },
+        { d: 'Bahasa negara', t: 'Dokumen resmi wajib berbahasa Indonesia', p: 'Pasal 36 UUD 1945|UU 24/2009', ms: 9500,
+          n: ['Sebagai bahasa negara, bahasa Indonesia dipakai dalam urusan resmi kenegaraan. UU 24/2009 mewajibkan bahasa Indonesia dalam dokumen resmi negara.', 'Contoh: surat dinas instansi pemerintah ditulis dalam bahasa Indonesia baku.'],
+          k: 'Bahasa negara: resmi, pengantar pendidikan, penghubung nasional, pengembangan kebudayaan dan IPTEK.',
+          s: () => SC(['#E6E0FA', '#F6F3FF'], '#9FC9B0', GD, SUN(60, 130, 16, '#FFD66B'),
+            T(240, 26, 'BAHASA NEGARA', .1, 20, '#6C5CE7') + T(240, 44, 'Pasal 36 UUD 1945 · UU 24/2009', .4, 12) +
+            H(110, 205, { a: 'talk', h: 'peci', k: '#fff', s: 1.6 }) + BB(125, 118, 'Dokumen resmi', 1) +
+            `<g class="pop" style="animation-delay:1.4s"><rect x="250" y="62" width="160" height="128" fill="#fff" stroke="${G}" stroke-width="2.5"/><text x="330" y="86" text-anchor="middle" style="font-size:12px">SURAT DINAS</text><path d="M266 100H394M266 114H394M266 128H370" stroke="#B8BCC8" stroke-width="3"/></g>` +
+            OK(330, 146, 140, 'Bahasa baku', 2.8) + T(240, 250, 'Dokumen resmi negara: bahasa Indonesia', 3.6, 12, R)) },
+        { d: 'Ejaan', t: 'di- awalan serangkai, di kata depan dipisah', p: 'dibaca|di rumah', ms: 9500,
+          n: ['Awalan \"di-\" ditulis serangkai dengan kata di belakangnya: dibaca, dimakan, ditulis.', 'Kata depan \"di\" ditulis terpisah: di rumah, di kantor, di sekolah. Cara cepat: bila bisa diganti \"ke\" atau \"dari\" (ke rumah, dari rumah), itu kata depan.'],
+          k: 'Awalan = serangkai. Kata depan (tempat) = dipisah.',
+          s: () => SC(['#CFE9F1', '#EAF6FA'], '#9FC9B0', GD, SUN(440, 130, 16, '#FFD66B'),
+            T(240, 26, 'AWALAN DI- DAN KATA DEPAN DI', .1, 17, R) +
+            CDB(20, 44, 205, 'AWALAN', 'dibaca', 'serangkai', .5, '#3B82F6') + CDB(255, 44, 205, 'KATA DEPAN', 'di rumah', 'dipisah', 1.7, '#E5484D') +
+            H(110, 205, { a: 'talk', h: 'blangkon', k: '#fff', s: 1.4, it: BK }) +
+            `<g class="pop" style="animation-delay:2.4s"><rect x="390" y="168" width="56" height="47" fill="#EBDDBB" stroke="${G}" stroke-width="2.5"/><path d="M382 168L418 140L454 168Z" fill="#C0594F" stroke="${G}" stroke-width="2.5"/></g>` + H(330, 205, { f: -1, a: 'talk', h: 'peci', k: '#FBF5EA', s: 1.4 }) +
+            T(240, 250, 'Awalan serangkai, kata depan dipisah', 3.2, 12, R)) },
+        { d: 'Kata baku', t: 'Dokumen resmi pakai bentuk baku', p: 'risiko|izin|analisis', ms: 9500,
+          n: ['Kata baku sering keluar di soal. Pasangan yang perlu dihafal: risiko (bukan resiko), izin (bukan ijin), analisis (bukan analisa).', 'Seperti seragam kantor: santai boleh di rumah, dokumen resmi harus rapi.'],
+          k: 'Hafal juga: apotek, objek, kualitas, aktivitas, nasihat, praktik, teknik, sistem, jadwal, silakan, ubah, hakikat.',
+          s: () => SC(['#FFD9A0', '#FBF5EA'], '#E3B98A', GD, SUN(440, 30, 14, '#E5484D'),
+            T(240, 24, 'KATA BAKU', .1, 18, R) +
+            [['resiko', 'risiko'], ['ijin', 'izin'], ['analisa', 'analisis']].map(([x, y], k) => { const yy = 40 + k * 36, dl = .4 + k * 1.4; return WD(50, yy, 140, x, '#FDE2E0', dl) + `<path class="pop" style="animation-delay:${dl + .5}s" d="M58 ${yy + 14}H182" stroke="${R}" stroke-width="3"/>` + `<path class="pop" style="animation-delay:${dl + .5}s" d="M200 ${yy + 14}H278M268 ${yy + 7}L278 ${yy + 14}L268 ${yy + 21}" stroke="${G}" stroke-width="2.5" fill="none"/>` + WD(290, yy, 140, y, '#DDF5E8', dl + .9); }).join('') +
+            [90, 240, 390].map((x, k) => H(x, 205, { a: 'cheer', h: ['peci', 'blangkon', 'topi'][k], k: BG[k], s: 1.2, dl: k * .12 })).join('') +
+            T(240, 250, 'Seragam kantor: dokumen resmi harus rapi', 5.4, 12, R)) },
+        { d: 'Kalimat efektif', t: 'Hemat: buang kata yang berlebihan', p: 'Pleonasme', ms: 10000,
+          n: ['Kalimat efektif punya ciri kesepadanan, kesejajaran, kehematan, kecermatan, kepaduan, dan kelogisan. Pada kehematan, kata berlebihan (pleonasme) dibuang.', 'Contoh pleonasme: naik ke atas, agar supaya, para hadirin sekalian. Bentuk efektifnya: naik, agar, hadirin.'],
+          k: 'Seperti pesan singkat ojek online: jelas, hemat, tepat sasaran.',
+          s: () => SC(['#E6E0FA', '#F6F3FF'], '#9FC9B0', GD, SUN(60, 130, 16, '#FFD66B'),
+            T(240, 26, 'KALIMAT EFEKTIF', .1, 20, '#6C5CE7') + T(240, 46, 'Hemat: tanpa pleonasme', .4, 12) +
+            T(240, 74, 'agar supaya → agar', 3.8, 13, '#1FA971') + T(240, 94, 'para hadirin sekalian → hadirin', 4.6, 13, '#1FA971') +
+            H(110, 205, { a: 'talk', h: 'peci', k: '#fff', s: 1.5 }) + BB(125, 135, 'Naik ke atas', 1) + `<path class="pop" style="animation-delay:2s" d="M80 130H170" stroke="${R}" stroke-width="3"/>` +
+            H(370, 205, { f: -1, a: 'talk', h: 'blangkon', k: '#fff', s: 1.5 }) + BB(355, 135, 'Naik', 2.8) +
+            T(240, 250, 'Kehematan: tanpa kata berlebihan', 5.4, 12, R)) }
+      ];
+      mkP('sim-bahasa', 'Animasi bahasa negara dan ejaan', 'Tonton kedudukan bahasa Indonesia sampai kalimat efektif lewat stikman. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman materi bahasa negara', PBH);
+      // ---------- Animasi stikman: materi TKP ----------
+      const OKA = (s, dl, c) => OK(240, 40, Math.min(450, s.length * 9.4 + 30), s, dl, c);
+      const TK = o => ({ d: o.d, t: o.t, p: o.p, ms: o.ms || 9000, n: o.n, k: o.k,
+        s: () => SC(o.sky || SKI, '#9FC9B0', GD, SUN(440, 130, 16, '#FFD66B'),
+          T(240, 26, o.ti, .1, 18, o.tc || R) + (o.st ? OKA(o.st, 3.2, o.sc) : '') + (o.pr || '') +
+          (o.M ? H(240, 205, Object.assign({ a: 'cheer', h: 'topi', k: '#CFE9F1', s: 1.3 }, o.M)) : '') + (o.mb ? BB(240, o.my || 96, o.mb, 1.8) : '') +
+          (o.L ? H(110, 205, Object.assign({ a: 'talk', h: 'peci', k: '#fff', s: 1.5 }, o.L)) + (o.ls ? BB(125, o.ly || 118, o.ls, 1) : '') : '') +
+          (o.R ? H(370, 205, Object.assign({ f: -1, a: 'talk', h: 'blangkon', k: '#FBF5EA', s: 1.5 }, o.R)) + (o.rs ? BB(355, o.ry || 150, o.rs, 2.2) : '') : '') +
+          T(240, 250, o.ft, 3.8, 12, R)) });
+      const RED = '#D9625A', GRN = '#1FA971';
+      const LOK = `<g class="pop" style="animation-delay:.2s"><rect x="195" y="166" width="90" height="49" fill="#EBDDBB" stroke="${G}" stroke-width="2.5"/><text x="240" y="196" text-anchor="middle" style="font-size:12px">LOKET</text></g>`;
+      const DOCP = (t, dl) => `<g class="pop" style="animation-delay:${dl || .3}s"><rect x="208" y="150" width="64" height="62" fill="#fff" stroke="${G}" stroke-width="2.5"/><text x="240" y="170" text-anchor="middle" style="font-size:11px">${t}</text><path d="M218 182H262M218 194H250" stroke="#B8BCC8" stroke-width="3"/></g>`;
+      const PHN = (a, b, dl) => `<g class="pop" style="animation-delay:${dl || .3}s"><rect x="312" y="96" width="92" height="112" rx="12" fill="#fff" stroke="${G}" stroke-width="3"/><text x="358" y="130" text-anchor="middle" style="font-size:11px;fill:${RED}">${a}</text><text x="358" y="156" text-anchor="middle" style="font-size:11px">${b}</text><rect x="326" y="170" width="64" height="22" rx="6" fill="#F6D77A" stroke="${G}" stroke-width="2"/></g>`;
+      const LAP = `<g class="pop" style="animation-delay:.3s"><rect x="205" y="166" width="70" height="42" rx="4" fill="#CFE9F1" stroke="${G}" stroke-width="2.5"/><path d="M195 212H285" stroke="${G}" stroke-width="4"/></g>`;
+      const GR = (cx, y, w, dl) => `<g class="pop" style="animation-delay:${dl}s"><rect x="${cx - w / 2}" y="${y}" width="${w}" height="26" rx="8" fill="#fff" stroke="${G}" stroke-width="2"/></g>`;
+      const GRN2 = ['#DFF5E8', '#F4FBF7'], BLU = ['#D6E6FB', '#EEF5FE'], WRM = ['#FFE2B8', '#FBF5EA'], ORG = ['#FFD9A0', '#FBF5EA'], PRP = ['#E6E0FA', '#F6F3FF'], TEAL = ['#CFE9F1', '#EAF6FA'];
+      const WRG = { h: 'caping', k: '#FBF5EA' }, ATS = { h: 'peci', k: '#4B5160' };
+
+      const P_PEL = [
+        TK({ d: 'Konsep', t: 'Ramah dan efektif memenuhi kebutuhan warga', p: 'Petugas|Warga', sky: GRN2, ti: 'PELAYANAN PUBLIK', tc: GRN, st: 'Ramah dan efektif', pr: LOK, L: {}, ls: 'Silakan, ada yang bisa dibantu?', R: WRG, rs: 'Saya mau mengurus KTP', ft: 'UU 25/2009: kebutuhan dan kepuasan masyarakat',
+          n: ['Pelayanan publik adalah kegiatan memenuhi kebutuhan pelayanan sesuai peraturan bagi warga negara dan penduduk, berupa barang publik, jasa publik, dan pelayanan administratif (UU 25/2009).', 'Sikap yang diharapkan: ramah, cepat, dan efektif sesuai tugas dan wewenang.'], k: 'Kata kunci jawaban 5: segera, ramah, memberi solusi, sesuai prosedur.' }),
+        TK({ d: 'Situasi 1', t: 'Berkas warga kurang: bantu, jangan tolak mentah-mentah', p: 'Petugas|Warga', sky: BLU, ti: 'BERKAS KURANG', st: 'SKOR 5: solutif sesuai prosedur', pr: DOCP('BERKAS'), L: {}, ls: 'Kurang satu berkas, ini caranya', R: WRG, rs: 'Waduh, berkasnya kurang', ft: 'Jelaskan persyaratan, lalu bantu cari jalan keluar',
+          n: ['Persyaratan adalah bagian standar pelayanan yang harus dijelaskan dengan jelas. Petugas tidak boleh menolak mentah-mentah atau mengubah aturan seenaknya.', 'Jawaban terbaik: jelaskan kekurangan berkas, beri tahu cara melengkapinya, tetap layani sesuai prosedur.'], k: 'Pola skor 5: aturan ditaati dan warga tetap terbantu.' }),
+        TK({ d: 'Situasi 2', t: 'Ditawari uang pelicin: tolak dengan sopan', p: 'Petugas|Warga', sky: ORG, ti: 'UANG PELICIN', st: 'SKOR 5: tolak pungutan di luar aturan', pr: `<g class="pop" style="animation-delay:1.6s"><rect x="215" y="188" width="30" height="20" rx="2" fill="#F6D77A" stroke="${G}" stroke-width="2"/></g>`, L: {}, ls: 'Maaf, biayanya sesuai aturan', R: WRG, rs: 'Ini uang terima kasih, Pak', ry: 118, ly: 150, ft: 'Jelaskan biaya resmi, laporkan bila terjadi',
+          n: ['Pungutan di luar tarif resmi tidak dibenarkan. Petugas menolak dengan sopan dan menjelaskan biaya resmi.', 'Bila terjadi, laporkan sesuai aturan. Gratifikasi yang berhubungan dengan jabatan wajib dilaporkan ke KPK paling lambat 30 hari kerja.'], k: 'Menerima atau meminta uang tambahan: skor 1.' }),
+        TK({ d: 'Situasi 3', t: 'Kelompok rentan mendapat fasilitas khusus', p: 'Petugas|Lansia', sky: WRM, ti: 'KELOMPOK RENTAN', st: 'Fasilitas dan perlakuan khusus', pr: LOK, L: {}, ls: 'Silakan, Bapak, loket prioritas', R: { h: 'caping', k: '#FBF5EA', it: '<path d="M8 -16L8 0"/>' }, rs: 'Terima kasih, Nak', ft: 'Lansia, disabilitas, ibu hamil didahulukan',
+          n: ['Salah satu asas pelayanan publik adalah fasilitas dan perlakuan khusus bagi kelompok rentan, misalnya lansia, penyandang disabilitas, dan ibu hamil.', 'Layanan prioritas tidak melanggar asas kesamaan hak, karena kebutuhannya memang berbeda.'], k: 'Pilih jawaban yang menyediakan jalur atau bantuan khusus.' }),
+        TK({ d: 'Situasi 4', t: 'Warga mengeluh: terima dan tindak lanjuti', p: 'Petugas|Warga', sky: PRP, ti: 'KELUHAN WARGA', st: 'SKOR 5: terima keluhan, tindak lanjuti', L: {}, ls: 'Mohon maaf, kami tindak lanjuti', R: { h: 'caping', k: '#FBF5EA', a: 'fight' }, rs: 'Pelayanannya lambat sekali!', ft: 'Tenang, catat, dan beri solusi',
+          n: ['Terima keluhan dengan tenang, catat, dan tindak lanjuti. Jangan defensif atau melempar tanggung jawab.', 'Warga juga dapat mengadu lewat kanal SP4N-LAPOR! dan Ombudsman RI.'], k: 'Skor 5: mendengar, mencatat, menindaklanjuti.' }),
+        TK({ d: 'Jawaban rendah', t: 'Mengabaikan warga: skor 1', p: 'Petugas|Warga', sky: WRM, ti: 'JANGAN DITIRU', st: 'SKOR 1: mengabaikan warga', sc: RED, L: ATS, ls: 'Besok saja ya, saya sibuk', R: WRG, rs: 'Saya sudah antre dari pagi', ft: 'Menunda, melempar tanggung jawab, atau cuek',
+          n: ['Jawaban rendah: menunda tanpa alasan, melempar tanggung jawab ke orang lain, atau tidak peduli pada kebutuhan warga.', 'Ingat asas ketepatan waktu, kecepatan, dan kemudahan.'], k: 'Pasif atau melempar tanggung jawab: skor 2. Mengabaikan: skor 1.' })
+      ];
+      mkP('sim-tkp-pel', 'Animasi pelayanan publik', 'Lihat situasi dan jawaban bernilai tinggi lewat stikman. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman pelayanan publik', P_PEL);
+
+      const P_JEJ = [
+        TK({ d: 'Konsep', t: 'Berbagi informasi dan berkolaborasi', p: 'Lintas unit', sky: TEAL, ti: 'JEJARING KERJA', tc: '#3B82F6', st: 'Berbagi informasi, berkolaborasi', L: {}, ls: 'Ini datanya, silakan dipakai', R: { h: 'topi', k: '#CFE9F1' }, rs: 'Terima kasih, kita padukan', M: {}, ft: 'Tujuan organisasi di atas ego pribadi',
+          n: ['Jejaring kerja adalah membangun hubungan, bekerja sama, berbagi informasi, dan berkolaborasi secara efektif.', 'Jejaring internal mencakup rekan dan antarunit. Jejaring eksternal mencakup antarinstansi, mitra, dan masyarakat.'], k: 'Jawaban 5: ambil inisiatif berkomunikasi dan cari solusi bersama.' }),
+        TK({ d: 'Situasi 1', t: 'Konflik dengan rekan: bicara langsung dulu', p: 'ASN|Rekan', sky: GRN2, ti: 'KONFLIK DENGAN REKAN', st: 'SKOR 5: bicara langsung baik-baik', L: {}, ls: 'Boleh kita bicara berdua?', R: { h: 'topi', k: '#CFE9F1' }, rs: 'Boleh, kujelaskan kendalaku', ft: 'Langkah pertama: dialog, cari titik temu',
+          n: ['Bicara langsung dengan rekan secara baik-baik dan cari titik temu. Tanyakan dulu kendalanya, jangan langsung menyalahkan.', 'Hindari melapor ke atasan tanpa mencoba berkomunikasi lebih dulu.'], k: 'Urutan: bicara langsung, baru libatkan atasan bila buntu.' }),
+        TK({ d: 'Situasi 2', t: 'Buntu: libatkan atasan dengan fakta', p: 'ASN|Atasan', sky: WRM, ti: 'BILA BUNTU', st: 'Libatkan atasan dengan fakta', L: {}, ls: 'Sudah dicoba bicara, ini faktanya', R: ATS, rs: 'Baik, kita cari solusi bersama', pr: DOCP('FAKTA'), ft: 'Bawa fakta, bukan keluhan',
+          n: ['Bila dialog langsung buntu, libatkan atasan atau pihak penengah dengan membawa fakta, bukan keluhan.', 'Jawaban 5 menggabungkan inisiatif, komunikasi, dan solusi bersama.'], k: 'Fakta, bukan keluhan, saat melibatkan atasan.' }),
+        TK({ d: 'Situasi 3', t: 'Butuh data dari unit lain', p: 'ASN|Unit lain', sky: BLU, ti: 'LINTAS UNIT', st: 'Komunikasi terbuka lintas unit', L: {}, ls: 'Bu, boleh minta data bulan ini?', R: { h: 'blangkon', k: '#FBF5EA' }, rs: 'Boleh, saya kirim hari ini', ft: 'Jelaskan tujuan dan tenggat dengan sopan',
+          n: ['Saat butuh data unit lain, minta langsung dengan sopan, jelaskan tujuan dan tenggatnya.', 'Pada tim lintas unit, sepakati tujuan, tenggat, dan penanggung jawab sejak awal.'], k: 'Komunikasi terbuka dan sopan, termasuk lintas unit.' }),
+        TK({ d: 'Situasi 4', t: 'Rekan kewalahan: tawarkan bantuan', p: 'ASN|Rekan', sky: PRP, ti: 'MEMBANTU REKAN', st: 'Mau berbagi dan membantu', L: {}, ls: 'Ada yang bisa kubantu?', R: { h: 'topi', k: '#CFE9F1' }, rs: 'Terima kasih, tolong cek ini', pr: DOCP('TUGAS'), ft: 'Kolaborasi membuat kerja lebih ringan',
+          n: ['Mau membantu rekan dan berbagi informasi termasuk indikator perilaku ideal jejaring kerja.', 'Pilih jawaban yang menunjukkan kerja sama, bukan bekerja sendiri-sendiri.'], k: 'Menawarkan bantuan dan berbagi informasi: skor tinggi.' }),
+        TK({ d: 'Jawaban rendah', t: 'Bergosip dan menyalahkan: skor rendah', p: 'Rekan', sky: WRM, ti: 'JANGAN DITIRU', st: 'SKOR 1-2: bergosip, menyalahkan', sc: RED, L: ATS, ls: 'Dia memang malas, ya', R: { h: 'topi', k: '#FDE2E0' }, rs: 'Iya, kita sindir saja', ft: 'Gosip dan sindiran memutus jejaring kerja',
+          n: ['Jawaban rendah: bergosip, menyindir di grup, menyalahkan di depan umum, atau bekerja sendiri-sendiri.', 'Menghindari konflik tanpa menyelesaikannya juga bukan jawaban terbaik.'], k: 'Menghindar, bergosip, menyalahkan: skor rendah.' })
+      ];
+      mkP('sim-tkp-jej', 'Animasi jejaring kerja', 'Lihat urutan menyikapi rekan dan lintas unit. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman jejaring kerja', P_JEJ);
+
+      const P_SOS = [
+        TK({ d: 'Konsep', t: 'Masyarakat majemuk: saling menghargai', p: 'Warga', sky: GRN2, ti: 'SOSIAL BUDAYA', tc: GRN, st: 'Masyarakat majemuk, tetap rukun', L: {}, ls: 'Selamat datang di sini', R: WRG, rs: 'Terima kasih, salam kenal', M: { h: 'blangkon' }, ft: 'Beda agama, suku, budaya: tetap rukun',
+          n: ['Sosial budaya adalah kemampuan beradaptasi dan bekerja efektif dalam masyarakat majemuk yang beragam agama, suku, dan budaya.', 'ASN berfungsi sebagai perekat dan pemersatu bangsa.'], k: 'Indikator: toleransi, tidak diskriminatif, menyesuaikan dengan adat, gotong royong.' }),
+        TK({ d: 'Situasi 1', t: 'Ditempatkan di daerah baru: pelajari adat', p: 'ASN baru|Warga', sky: WRM, ti: 'PENEMPATAN DI DAERAH', st: 'SKOR 5: pelajari adat setempat', L: {}, ls: 'Mohon diajari adat di sini', R: WRG, rs: 'Mari, kami kenalkan', ft: 'Hormati adat, tetap taat aturan negara',
+          n: ['Amati, bertanya, dan belajar adat serta bahasa setempat. Ikut kegiatan warga yang tidak melanggar aturan.', 'Hormati kearifan lokal, tetapi tetap taat aturan negara.'], k: 'Jawaban 5: mempelajari dan menghormati kebiasaan setempat.' }),
+        TK({ d: 'Situasi 2', t: 'Layani semua warga tanpa membeda-bedakan', p: 'Petugas|Warga', sky: BLU, ti: 'TANPA DISKRIMINASI', st: 'Tidak membeda-bedakan suku dan agama', pr: LOK, L: {}, ls: 'Antrean sesuai nomor, siapa pun', R: { h: 'topi', k: '#FDE2E0' }, rs: 'Baik, Pak, terima kasih', ft: 'Semua warga berhak dilayani sama',
+          n: ['Layani semua warga tanpa membedakan suku, agama, atau golongan. Pelayanan tidak boleh membedakan ras dan etnis (UU 40/2008).', 'Pilih jawaban yang memperlakukan semua orang sama sesuai aturan.'], k: 'Tidak diskriminatif adalah kata kunci.' }),
+        TK({ d: 'Situasi 3', t: 'Gesekan antarkelompok: mediasi dan dialog', p: 'Mediator|Dua kelompok', sky: PRP, ti: 'GESEKAN ANTARKELOMPOK', st: 'SKOR 5: mediasi, utamakan persatuan', L: { a: 'fight', h: 'topi', k: '#FDE2E0' }, ls: 'Kelompok kami yang benar!', ly: 126, R: { a: 'fight', h: 'caping', k: '#FFF1CC' }, rs: 'Bukan, kami yang benar!', ry: 158, M: { a: 'talk', h: 'peci', k: '#fff' }, mb: 'Mari duduk, kita bicara', my: 96, ft: 'Sila ketiga: Persatuan Indonesia',
+          n: ['Bersikap netral dan jangan memihak. Ajak pihak yang berselisih berdialog dan libatkan tokoh masyarakat sebagai penengah.', 'Utamakan persatuan, sejalan dengan sila ketiga Pancasila.'], k: 'Pilih mediasi dan dialog, bukan memihak atau menghindar.' }),
+        TK({ d: 'Situasi 4', t: 'Gotong royong menjaga kerukunan', p: 'Warga', sky: GRN2, ti: 'GOTONG ROYONG', st: 'Gotong royong menjaga kerukunan', L: {}, ls: 'Ayo kerja bakti bersama!', R: WRG, rs: 'Siap, kami ikut!', M: { h: 'blangkon' }, ft: 'Ikut kegiatan warga yang positif',
+          n: ['Gotong royong dan menjaga kerukunan adalah indikator perilaku ideal sosial budaya.', 'Ikut kerja bakti dan kegiatan warga mempererat hubungan dengan masyarakat setempat.'], k: 'Ikut serta, bukan menonton dari jauh.' }),
+        TK({ d: 'Jawaban rendah', t: 'Memaksakan kebiasaan sendiri: skor 1', p: 'ASN|Warga', sky: WRM, ti: 'JANGAN DITIRU', st: 'SKOR 1: memaksakan kebiasaan sendiri', sc: RED, L: ATS, ls: 'Di tempatku tidak begitu!', R: WRG, rs: 'Di sini adatnya berbeda, Pak', ft: 'Memaksakan, memandang rendah, atau menghindar',
+          n: ['Jawaban rendah: memaksakan kebiasaan sendiri, memandang rendah adat lain, menghindar, atau memihak satu kelompok.', 'Menghormati adat tidak berarti melanggar aturan negara.'], k: 'Hormati adat, tetap taat aturan negara.' })
+      ];
+      mkP('sim-tkp-sos', 'Animasi sosial budaya', 'Lihat cara beradaptasi dan menyikapi perbedaan. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman sosial budaya', P_SOS);
+
+      const P_TIK = [
+        TK({ d: 'Konsep', t: 'Teknologi untuk meningkatkan kinerja', p: 'SPBE', sky: TEAL, ti: 'TEKNOLOGI INFORMASI', tc: '#3B82F6', st: 'Teknologi untuk meningkatkan kinerja', pr: LAP, L: {}, ls: 'Aplikasi ini mempercepat kerja', R: { h: 'topi', k: '#CFE9F1' }, rs: 'Ajari aku juga, ya', ft: 'SPBE: pemerintahan berbasis elektronik',
+          n: ['TIK adalah memanfaatkan teknologi informasi secara efektif untuk meningkatkan kinerja. Dasar SPBE: Perpres 95/2018.', 'Jawaban 5: belajar, memanfaatkan teknologi untuk mempercepat pekerjaan, dan membantu rekan.'], k: 'Mau belajar sistem dan aplikasi baru adalah indikator utama.' }),
+        TK({ d: 'Situasi 1', t: 'Sistem baru: belajar lalu berbagi', p: 'ASN|Rekan', sky: BLU, ti: 'APLIKASI BARU', st: 'SKOR 5: belajar lalu berbagi', L: { h: 'topi', k: '#FDE2E0' }, ls: 'Ribet, pakai cara lama saja', R: {}, rs: 'Kupelajari, lalu kubantu rekan', ft: 'Mau belajar, memanfaatkan, membantu rekan',
+          n: ['Saat ada sistem atau aplikasi baru, pelajari dulu, manfaatkan, lalu bantu rekan yang kesulitan.', 'Menolak teknologi atau tetap memakai cara lama adalah jawaban rendah.'], k: 'Menolak teknologi baru: skor rendah.' }),
+        TK({ d: 'Situasi 2', t: 'Pesan phishing: jangan diklik', p: 'ASN|Phishing', sky: WRM, ti: 'PESAN MENCURIGAKAN', st: 'SKOR 5: waspada phishing', pr: PHN('AKUN DIBLOKIR!', 'Klik di sini'), L: {}, ls: 'Tidak kuklik, kulaporkan', ft: 'Tautan palsu mencuri data, jangan diklik',
+          n: ['Phishing adalah tipuan lewat tautan atau pesan palsu untuk mencuri data.', 'Jangan mengeklik tautan atau lampiran asing. Laporkan, lalu verifikasi lewat kanal resmi.'], k: 'Waspadai tautan asing dan pesan yang mendesak.' }),
+        TK({ d: 'Situasi 3', t: 'Pesan berantai: cek sumber resmi', p: 'ASN|Hoaks', sky: ORG, ti: 'PESAN BERANTAI', st: 'SKOR 5: verifikasi sebelum membagikan', pr: PHN('BELUM JELAS!', 'Sebarkan!'), L: {}, ls: 'Cek sumber resmi dulu', ft: 'Hoaks adalah informasi palsu',
+          n: ['Hoaks adalah informasi palsu. Periksa sumber, tanggal, dan penulisnya, lalu bandingkan dengan situs resmi.', 'Jangan membagikan sebelum jelas kebenarannya.'], k: 'Cek sumber resmi sebelum membagikan.' }),
+        TK({ d: 'Situasi 4', t: 'Jaga data dan kata sandi', p: 'ASN', sky: PRP, ti: 'KEAMANAN DATA', st: 'Jaga data dan kata sandi', pr: `<g class="pop" style="animation-delay:.3s"><rect x="330" y="150" width="56" height="46" rx="6" fill="#F6D77A" stroke="${G}" stroke-width="3"/><path d="M342 150V136a16 16 0 0 1 32 0V150" fill="none" stroke="${G}" stroke-width="3.5"/></g>`, L: {}, ls: 'OTP dan sandi tidak kubagikan', ft: 'Data dinas lewat kanal resmi saja',
+          n: ['Gunakan kata sandi panjang dan berbeda-beda serta aktifkan autentikasi dua langkah. Kode OTP tidak boleh dibagikan kepada siapa pun.', 'Data dinas disimpan dan dikirim lewat sistem atau kanal resmi, bukan akun pribadi.'], k: 'Berbagi data lewat jalur tidak resmi: skor rendah.' }),
+        TK({ d: 'Situasi 5', t: 'Beretika di media sosial sebagai ASN', p: 'ASN', sky: GRN2, ti: 'MEDIA SOSIAL', st: 'Beretika sebagai ASN', L: {}, ls: 'Menulis sopan, tanpa SARA', R: { h: 'topi', k: '#CFE9F1' }, rs: 'Kita ASN, harus beretika', ft: 'Tanpa hoaks dan ujaran kebencian',
+          n: ['ASN di media sosial tidak memuat ujaran kebencian, SARA, atau hoaks, dan menjaga rahasia jabatan.', 'Rujukan: UU ITE dan UU 27/2022 tentang Pelindungan Data Pribadi.'], k: 'Etika media sosial adalah bagian jawaban 5.' })
+      ];
+      mkP('sim-tkp-tik', 'Animasi teknologi informasi dan komunikasi', 'Lihat sikap yang tepat soal aplikasi baru, phishing, hoaks, dan data. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman TIK', P_TIK);
+
+      const P_PRF = [
+        TK({ d: 'Konsep', t: 'Menjalankan tugas sesuai tuntutan jabatan', p: 'ASN|Atasan', sky: TEAL, ti: 'PROFESIONALISME', tc: '#3B82F6', st: 'Tugas sesuai tuntutan jabatan', pr: DOCP('SOP'), L: {}, ls: 'Kukerjakan sesuai SOP', R: ATS, rs: 'Bagus, tuntas dan tertib', ft: 'Bertanggung jawab, disiplin, sesuai SOP',
+          n: ['Profesionalisme adalah melaksanakan tugas dan fungsi sesuai tuntutan jabatan.', 'Indikatornya: bertanggung jawab, disiplin, bekerja sesuai SOP, mengelola waktu, mau belajar, dan netral dari kepentingan politik.'], k: 'Dasar hukum: UU 20/2023 tentang ASN dan PP 94/2021 tentang Disiplin PNS.' }),
+        TK({ d: 'Situasi 1', t: 'Perintah atasan melanggar aturan: tolak sopan', p: 'ASN|Atasan', sky: WRM, ti: 'PERINTAH MELANGGAR', st: 'SKOR 5: tolak sopan, tawarkan solusi', L: ATS, ls: 'Ubah saja angkanya, ya', R: { h: 'blangkon', k: '#fff' }, rs: 'Maaf, itu melanggar aturan, Pak', ft: 'Tolak yang melanggar dengan sopan',
+          n: ['Patuhi perintah selama sesuai aturan. Bila melanggar, tolak dengan sopan, jelaskan dasar aturannya, dan tawarkan alternatif yang benar.', 'Bila tetap dipaksa, gunakan jalur resmi.'], k: 'Menurut tanpa mempertimbangkan aturan: skor rendah.' }),
+        TK({ d: 'Situasi 2', t: 'Mengakui kesalahan dan memperbaikinya', p: 'ASN|Atasan', sky: GRN2, ti: 'MENGAKUI KESALAHAN', st: 'SKOR 5: mengakui dan memperbaiki', L: {}, ls: 'Saya salah input, ini perbaikannya', R: ATS, rs: 'Terima kasih sudah jujur', ft: 'Akui, perbaiki, cegah terulang',
+          n: ['Bila salah, akui lebih awal, perbaiki, dan cegah agar tidak terulang.', 'Melapor lebih awal membuat atasan dapat mengambil langkah tepat.'], k: 'Menutupi kesalahan selalu jawaban rendah.' }),
+        TK({ d: 'Situasi 3', t: 'Beban kerja banyak: atur prioritas', p: 'ASN|Atasan', sky: BLU, ti: 'BEBAN KERJA BANYAK', st: 'Kelola waktu dan prioritas', pr: [['MENDESAK', 140], ['PENTING', 170], ['RUTIN', 200]].map(([t, y], k) => `<g class="pop" style="animation-delay:${.6 + k * .5}s"><rect x="205" y="${y - 26}" width="70" height="24" rx="6" fill="${['#FDE2E0', '#FFF1CC', '#DDF0EF'][k]}" stroke="${G}" stroke-width="2"/><text x="240" y="${y - 9}" text-anchor="middle" style="font-size:10px">${t}</text></g>`).join(''), L: {}, ls: 'Saya atur prioritas, lapor atasan', R: ATS, rs: 'Baik, koordinasikan terus', ry: 160, ft: 'Mendesak dan penting dikerjakan lebih dulu',
+          n: ['Susun prioritas: kerjakan yang mendesak dan penting lebih dulu, lalu koordinasikan sisanya.', 'Bila tenggat terancam, laporkan lebih awal dan ajukan solusi.'], k: 'Koordinasi dan lapor lebih awal adalah ciri skor 5.' }),
+        TK({ d: 'Situasi 4', t: 'Netral dari kepentingan politik', p: 'ASN|Teman', sky: PRP, ti: 'NETRALITAS ASN', st: 'Netral dari kepentingan politik', L: { h: 'topi', k: '#FFF1CC' }, ls: 'Pilih calon ini ya, Pak', R: {}, rs: 'Maaf, ASN harus netral', ft: 'ASN tidak berpihak pada kepentingan politik',
+          n: ['ASN wajib netral: tidak berpihak pada kepentingan politik tertentu, tidak berkampanye, dan tidak memakai fasilitas negara untuk politik.', 'Pilih jawaban yang menjaga netralitas dengan sopan.'], k: 'Netral dan tidak menyalahgunakan wewenang.' }),
+        TK({ d: 'Jawaban rendah', t: 'Menutupi kesalahan: skor 1', p: 'ASN|Atasan', sky: WRM, ti: 'JANGAN DITIRU', st: 'SKOR 1: menutupi kesalahan', sc: RED, L: {}, ls: 'Biar tidak ketahuan saja', R: ATS, rs: 'Kesalahan harus dilaporkan', ft: 'Menutupi, lalai, atau menurut tanpa aturan',
+          n: ['Jawaban rendah: menutupi kesalahan, menurut tanpa mempertimbangkan aturan, atau lalai.', 'Profesional berarti jujur pada tugas dan bertanggung jawab pada hasilnya.'], k: 'Pelanggaran disiplin dapat dikenai hukuman ringan, sedang, atau berat (PP 94/2021).' })
+      ];
+      mkP('sim-tkp-prof', 'Animasi profesionalisme', 'Lihat sikap profesional dalam perintah, kesalahan, dan netralitas. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman profesionalisme', P_PRF);
+
+      const P_ANT = [
+        TK({ d: 'Konsep', t: 'Setia pada Pancasila, UUD 1945, dan NKRI', p: 'ASN', sky: WRM, ti: 'ANTI RADIKALISME', st: 'Setia pada Pancasila dan NKRI', pr: FL(204, 84, 72, 44), L: { a: 'oath' }, ls: 'Setia pada Pancasila', R: { a: 'oath', h: 'topi', k: '#CFE9F1' }, rs: 'Setia pada NKRI', M: { a: 'oath', h: 'blangkon', k: '#FBF5EA' }, ft: 'Menolak paham yang memaksakan dengan kekerasan', ly: 140, ry: 168,
+          n: ['Anti radikalisme adalah pengetahuan dan sikap menolak paham yang ingin mengubah dasar negara dengan kekerasan atau pemaksaan.', 'Sikap ASN: setia pada Pancasila, UUD 1945, NKRI, dan pemerintah yang sah.'], k: 'Radikalisme tidak melekat pada agama atau kelompok tertentu.' }),
+        { d: 'Ciri paham', t: 'Empat ciri paham radikal', p: 'Intoleran|Fanatik|Eksklusif|Revolusioner', ms: 9500,
+          n: ['Ciri paham radikal: intoleran (tidak menghargai pendapat atau keyakinan lain), fanatik (merasa paling benar sendiri), eksklusif (menutup diri dari masyarakat luas), dan revolusioner (ingin perubahan drastis, sering lewat kekerasan).', 'Istilah lain: intoleransi dan terorisme (kekerasan untuk menimbulkan ketakutan demi tujuan ideologi atau politik).'],
+          k: 'Hafal: intoleran, fanatik, eksklusif, revolusioner.',
+          s: () => SC(PRP, '#9FC9B0', GD, SUN(440, 130, 16, '#FFD66B'),
+            T(240, 26, 'CIRI PAHAM RADIKAL', .1, 18, RED) +
+            [['INTOLERAN', 'tak menghargai perbedaan'], ['FANATIK', 'merasa paling benar'], ['EKSKLUSIF', 'menutup diri'], ['REVOLUSIONER', 'ubah drastis, kekerasan']].map(([a, b], k) => `<g class="pop" style="animation-delay:${.5 + k * 1.1}s"><rect x="${16 + (k % 2) * 232}" y="${44 + Math.floor(k / 2) * 52}" width="216" height="44" rx="10" fill="#fff" stroke="${G}" stroke-width="2.5"/><text x="${124 + (k % 2) * 232}" y="${64 + Math.floor(k / 2) * 52}" text-anchor="middle" style="font-size:12px;fill:${RED}">${a}</text><text x="${124 + (k % 2) * 232}" y="${80 + Math.floor(k / 2) * 52}" text-anchor="middle" style="font-size:11px">${b}</text></g>`).join('') +
+            H(240, 205, { a: 'talk', h: 'peci', k: '#fff', s: 1.5 }) + T(240, 250, 'Waspadai ciri, bukan menuduh kelompok tertentu', 5, 12, R)) },
+        TK({ d: 'Situasi 1', t: 'Rekan menyebar ujaran kebencian: nasihati', p: 'ASN|Rekan', sky: GRN2, ti: 'UJARAN KEBENCIAN', st: 'SKOR 5: menasihati dan merangkul', L: { h: 'topi', k: '#FDE2E0' }, ls: 'Sebarkan, kelompok itu jahat!', R: {}, rs: 'Mari bicara, jangan disebarkan', ft: 'Dialog santun dan penguatan nilai Pancasila',
+          n: ['Ingatkan dan rangkul rekan dengan dialog santun disertai penguatan nilai Pancasila.', 'Jangan ikut menyebarkan ujaran kebencian.'], k: 'Jawaban 5: dialog santun, lalu lapor bila perlu.' }),
+        TK({ d: 'Situasi 2', t: 'Berulang: laporkan lewat jalur resmi', p: 'ASN|Atasan', sky: BLU, ti: 'BILA BERULANG', st: 'Berulang: lapor lewat jalur resmi', pr: DOCP('LAPORAN'), L: {}, ls: 'Sudah kuingatkan, kulaporkan resmi', R: ATS, rs: 'Terima kasih, kami tindak lanjuti', ft: 'Atasan, unit pengawasan, atau aparat',
+          n: ['Bila sudah diingatkan tetapi berulang atau membahayakan, laporkan lewat jalur resmi: atasan, unit pengawasan, atau aparat.', 'Pelaporan melengkapi, bukan menggantikan, upaya merangkul.'], k: 'Urutan: ingatkan dan rangkul, lalu lapor bila berulang.' }),
+        TK({ d: 'Situasi 3', t: 'Hoaks provokatif di grup: jangan ikut menyebarkan', p: 'ASN|Hoaks', sky: ORG, ti: 'KONTEN PROVOKATIF', st: 'SKOR 5: tidak ikut menyebarkan', pr: PHN('PROVOKASI!', 'Sebarkan!'), L: {}, ls: 'Cek dulu, tidak ikut menyebarkan', ft: 'Paham radikal kerap menyebar lewat media sosial',
+          n: ['Paham radikal kerap menyebar lewat media sosial, sehingga literasi digital penting.', 'Cek kebenaran dan jangan ikut menyebarkan. Ajak anggota grup berhenti membagikan.'], k: 'Ikut menyebarkan: skor rendah.' }),
+        TK({ d: 'Jawaban rendah', t: 'Membiarkan atau membalas dengan kekerasan', p: 'ASN', sky: WRM, ti: 'JANGAN DITIRU', st: 'SKOR 1: membiarkan atau ikut serta', sc: RED, L: ATS, ls: 'Biarkan saja, bukan urusanku', R: { h: 'topi', k: '#FDE2E0' }, rs: 'Sudah, hajar saja mereka!', ft: 'Membiarkan, ikut menyebarkan, atau kekerasan',
+          n: ['Jawaban rendah: membiarkan, ikut menyebarkan, atau menanggapi dengan kekerasan.', 'Jawaban terbaik tetap dialog santun, penguatan Pancasila, dan pelaporan bila perlu.'], k: 'Kekerasan bukan jawaban, bahkan terhadap paham radikal.' })
+      ];
+      mkP('sim-tkp-anti', 'Animasi anti radikalisme', 'Lihat ciri paham radikal dan sikap ASN yang tepat. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman anti radikalisme', P_ANT);
       const BD2 = (r, y, dl) => `<g class="pop" style="animation-delay:${dl}s"><circle cx="70" cy="92" r="38" fill="#fff" stroke="${G}" stroke-width="3"/><text x="70" y="104" text-anchor="middle" style="font-size:${r.length > 2 ? 26 : 32}px;fill:${R}">${r}</text></g>` + T(70, 150, y, dl + .3, 13);
       const AM = (r, y, sk, items, ft, ms, d, t, p, n, k) => ({ d, t, p, n: [n], k, ms,
         s: () => SC(sk, '#9FC9B0', GD, SUN(440, 30, 14, '#FFD66B'), BD2(r, y, .1) + [0, 1].map(i => E(-200, i * .3, H(40 + i * 60, 205, { a: 'talk', h: i ? 'peci' : 'blangkon', k: BG[i], dl: i * .2 }))).join('') + LI(items, 1) + T(240, 252, ft, 1 + items.length * .9 + .4, 12, R)) });
