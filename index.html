@@ -982,6 +982,14 @@
     .tile span { font-size: 11px; line-height: 1.3; opacity: .9; overflow-wrap: anywhere; }
     .tile small { margin-top: auto; padding-top: 6px; font-size: 10.5px; line-height: 1.3; font-weight: 700; opacity: .9; }
     @media (max-width: 360px) { .tiles { gap: 8px; } .tile { padding: 10px 8px 12px; } .tile b { font-size: 18px; } }
+  
+    /* ===== Kontrol animasi: kecil, tepat di bawah panggung ===== */
+    .ks-bar { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; margin: 12px 0 0 !important; }
+    .ks-bar .btn { padding: 0 14px; height: 34px; min-height: 0; font-size: 13px; line-height: 1; box-shadow: 0 2px 0 #14161C; flex: none; }
+    .ks-bar .btn[data-a="prev"], .ks-bar .btn[data-a="next"] { width: 38px; padding: 0; }
+    .ks-bar .btn:hover { box-shadow: 0 3px 0 #14161C; } .ks-bar .btn:active { box-shadow: 0 0 0 #14161C; transform: translateY(2px); }
+    .ks-bar .ks-prog { flex: 1; min-width: 20px; margin: 0 0 0 4px; height: 8px; }
+    .ks-bar + .ks-era, .ks-bar + .hs-cap { margin-top: 12px; }
   </style>
 </head>
 
@@ -2616,8 +2624,9 @@
       let i = 0, timer = null, tk = 0, playing = false, skip = false;
       box.innerHTML = `<h4>Kisah panjang: dari penjajahan sampai amandemen UUD 1945</h4><p class="hint">Baca narasinya sambil menonton. Tekan Putar kisah untuk menonton berurutan, ketuk teks untuk mempercepat, atau ketuk nomor bab untuk melompat.</p>
         <div class="hs-st"><svg class="ks-sv" viewBox="0 0 480 270" role="img" aria-label="Animasi stikman kisah menuju kemerdekaan"></svg></div>
-        <div class="ks-era">${EN.map(e => `<span>${e}</span>`).join('')}</div><div class="hs-cap"><small></small><strong></strong><div class="ks-p"></div><div class="ks-n"></div></div><div class="ks-prog"><i></i></div>
-        <div class="fl-ctl"><button class="btn ghost" data-a="prev">Sebelumnya</button><button class="btn" data-a="play">Putar kisah</button><button class="btn ghost" data-a="next">Berikutnya</button></div>
+        <div class="fl-ctl ks-bar"><button class="btn ghost" data-a="prev" aria-label="Sebelumnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="btn" data-a="play">Putar kisah</button><button class="btn ghost" data-a="next" aria-label="Berikutnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><div class="ks-prog"><i></i></div></div>
+        <div class="ks-era">${EN.map(e => `<span>${e}</span>`).join('')}</div><div class="hs-cap"><small></small><strong></strong><div class="ks-p"></div><div class="ks-n"></div></div>
+        
         <div class="hs-dots">${CH.map((c, k) => `<button data-k="${k}" title="${c.d}: ${c.t}">${k + 1}</button>`).join('')}</div>`;
       const sv = $('.ks-sv', box), nn = $('.ks-n', box), pb = $('[data-a="play"]', box), sl = ms => new Promise(r => setTimeout(r, ms));
       nn.onclick = () => { skip = true; };
@@ -2700,7 +2709,7 @@
       const mkP = (id, title, hint, aria, PS) => {
         const bx = $('#' + id); if (!bx) return;
         let j = 0, tm = null, pl = false;
-        bx.innerHTML = `<h4>${title}</h4><p class="hint">${hint}</p><div class="hs-st"><svg class="ks-sv" viewBox="0 0 480 270" role="img" aria-label="${aria}"></svg></div><div class="hs-cap"><small></small><strong></strong><div class="ks-p"></div><div class="ks-n"></div></div><div class="ks-prog"><i></i></div><div class="fl-ctl"><button class="btn ghost" data-a="prev">Sebelumnya</button><button class="btn" data-a="play">Putar</button><button class="btn ghost" data-a="next">Berikutnya</button></div><div class="hs-dots">${PS.map((c, k) => `<button data-k="${k}" title="${c.d}: ${c.t}">${k + 1}</button>`).join('')}</div>`;
+        bx.innerHTML = `<h4>${title}</h4><p class="hint">${hint}</p><div class="hs-st"><svg class="ks-sv" viewBox="0 0 480 270" role="img" aria-label="${aria}"></svg></div><div class="fl-ctl ks-bar"><button class="btn ghost" data-a="prev" aria-label="Sebelumnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="btn" data-a="play">Putar</button><button class="btn ghost" data-a="next" aria-label="Berikutnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><div class="ks-prog"><i></i></div></div><div class="hs-cap"><small></small><strong></strong><div class="ks-p"></div><div class="ks-n"></div></div><div class="hs-dots">${PS.map((c, k) => `<button data-k="${k}" title="${c.d}: ${c.t}">${k + 1}</button>`).join('')}</div>`;
         const v = $('.ks-sv', bx), pbn = $('[data-a="play"]', bx);
         const stop = () => { pl = false; clearTimeout(tm); pbn.textContent = 'Putar'; };
         const nx = () => { if (j < PS.length - 1) { j++; draw(); } else { pl = false; pbn.textContent = 'Putar ulang'; } };
