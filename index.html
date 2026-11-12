@@ -5,6 +5,8 @@
   <!-- viewport-fit=cover: biar rapi di HP berponi / punya gesture bar -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#F6F6FA">
+  <meta name="color-scheme" content="only light">
+  <style>:root { color-scheme: only light; }</style>
   <title>Pejuang NIP · Belajar &amp; Tryout SKD CPNS 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -906,8 +908,8 @@
     .nav-btn.is-active { color: var(--ink); font-weight: 800; }
     .brand-mark { border: var(--out); background: var(--ora); color: var(--ink); }
     @media (max-width: 899px) {
-      #nav { padding: 0 6px; border: var(--out); border-radius: 26px; background: var(--teal); box-shadow: 0 5px 0 0 #A9DAD9, 0 5px 0 2px #14161C; backdrop-filter: none; }
-      .nav-list li { padding: 7px 3px; } .nav-btn { border-radius: 16px; color: rgba(20, 22, 28, .72); }
+      #nav { padding: 0 6px; border: 2px solid #5FBFA4; border-radius: 26px; background: #C9F0E3; box-shadow: 0 5px 0 0 #8FD6C0; backdrop-filter: none; }
+      .nav-list li { padding: 7px 3px; } .nav-btn { border-radius: 16px; color: #2F6F5F; font-weight: 700; }
       .nav-btn.is-active { background: var(--ora); border-color: #14161C; color: var(--ink); }
     }
     @media (min-width: 900px) {
@@ -1161,6 +1163,35 @@
 .hs-dots button { transition: transform .15s, background .2s; }
 .hs-dots button:hover { transform: scale(1.18); }
 .hs-dots button.is-active { transform: scale(1.18); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 30%, transparent); }
+/* ===== Panggung kecil + teks di samping, teks per halaman ===== */
+.sx-w { container-type: inline-size; }
+.sx { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-items: stretch; }
+.sx-l { width: 100%; max-width: 480px; margin: 0 auto; }
+.sx .hs-cap { display: flex; flex-direction: column; margin-top: 0; min-width: 0; }
+.sx .ks-n { flex: 1 1 auto; min-height: 7.5em; }
+.sx .ks-n > * { animation: txIn .25s ease-out; }
+.tx-chip { display: inline-block; margin-top: 8px; font-style: normal; font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--red); }
+.tx-nav { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.tx-nav .btn { flex: none; width: 38px; height: 34px; min-height: 0; padding: 0; box-shadow: 0 2px 0 #14161C; }
+.tx-nav .btn:disabled { opacity: .35; box-shadow: none; cursor: default; }
+.tx-dots { flex: 1; display: flex; justify-content: center; gap: 6px; }
+.tx-dots i { width: 9px; height: 9px; border: 1.5px solid #14161C; border-radius: 50%; background: #fff; transition: transform .2s, background .2s; }
+.tx-dots i.k { border-radius: 2px; }
+.tx-dots i.on { background: var(--ora, #F8B461); transform: scale(1.3); }
+.tx-ct { min-width: 3.4em; text-align: right; font-size: 12px; font-weight: 800; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+@keyframes txIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@container (min-width: 720px) { .sx { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: 18px; } .sx-l { max-width: none; margin: 0; } }
+@supports not (container-type: inline-size) { @media (min-width: 1100px) { .sx { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); } .sx-l { max-width: none; margin: 0; } } }
+/* bom atom */
+.bm-pl { animation: bmFly 3.2s linear both; }
+.bm-bomb { opacity: 0; animation: bmDrop 1.3s ease-in 1.6s forwards; }
+.bm-fl { opacity: 0; transform-box: fill-box; transform-origin: center; animation: bmFl 1.4s ease-out 2.8s both; }
+.bm-mu { transform-box: fill-box; transform-origin: 50% 100%; animation: bmUp 2.2s ease-out 3.1s both; }
+@keyframes bmFly { from { transform: translateX(-60px); } to { transform: translateX(540px); } }
+@keyframes bmDrop { 0% { opacity: 1; transform: none; } 92% { opacity: 1; } 100% { opacity: 0; transform: translateY(140px); } }
+@keyframes bmFl { 0% { opacity: 0; transform: scale(.2); } 25% { opacity: 1; } 100% { opacity: 0; transform: scale(2.6); } }
+@keyframes bmUp { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .sx .ks-n > *, .bm-pl, .bm-bomb, .bm-fl, .bm-mu { animation: none; } .bm-pl, .bm-bomb, .bm-fl { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .ks-far, .ks-pt, .ks-wv, .ks-ship, .ks-sv, .talk .hd, .point .hd, .point .a2 { animation: none; } }
 </style>
 </head>
@@ -2977,6 +3008,15 @@
       const SC = (sk, hc, gc, sun, body, nc) => `<defs><linearGradient id="ksg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sk[0]}"/><stop offset="1" stop-color="${sk[1]}"/></linearGradient><radialGradient id="ksv" cx=".5" cy=".5" r=".78"><stop offset=".62" stop-color="#2A1A0A" stop-opacity="0"/><stop offset="1" stop-color="#2A1A0A" stop-opacity=".3"/></radialGradient><linearGradient id="ksd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient><radialGradient id="ksh"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="480" height="270" fill="url(#ksg)"/><circle cx="430" cy="48" r="130" fill="url(#ksh)" opacity=".5"/>${sun}${nc ? '' : CL(46, 70, 0) + CL(92, 100, 40) + CL(24, 140, 90) + BD}<g class="ks-far"><path d="M-20 175Q50 112 120 158T250 146T390 164T500 132V218H-20Z" fill="${hc}" opacity=".32"/><path d="M-20 190Q80 150 170 180T330 172T500 168V218H-20Z" fill="${hc}" opacity=".28"/></g>${__bgx(window.__bg, hc)}<rect y="215" width="480" height="55" fill="${gc}"/><rect y="215" width="480" height="55" fill="url(#ksd)"/><path d="M0 215H480" stroke="${G}" stroke-width="2.5"/><path d="M0 240Q120 229 240 241T480 233" stroke="#fff" stroke-opacity=".4" stroke-width="7" fill="none"/>${TF}${PTC}${body}<rect width="480" height="270" fill="url(#ksv)" pointer-events="none"/>`;
       const SUN = (x, y, r, c) => `<circle class="ks-sun" cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="none"/>`;
       const GD = '#E3D3AE';
+      // ---------- Teks per halaman: dipakai semua animasi ----------
+      const TXH = '<div class="ks-n" aria-live="polite"></div><div class="tx-nav"><button type="button" class="btn ghost" data-tx="prev" aria-label="Teks sebelumnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="tx-dots"></div><span class="tx-ct"></span><button type="button" class="btn ghost" data-tx="next" aria-label="Teks berikutnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div>';
+      const txPages = c => c.n.map(x => ({ x })).concat(c.k ? [{ x: c.k, k: 1 }] : []);
+      const txPut = (r, pg, tp, h) => { const q = pg[tp];
+        $('.ks-n', r).innerHTML = h !== undefined ? h : q.k ? '<em class="tx-chip">Kunci</em><div class="ks-k">' + q.x + '</div>' : '<p>' + q.x + '</p>';
+        $('.tx-dots', r).innerHTML = pg.map((z, k) => '<i class="' + (k === tp ? 'on ' : '') + (z.k ? 'k' : '') + '"></i>').join('');
+        $('.tx-ct', r).textContent = (tp + 1) + ' / ' + pg.length;
+        $('[data-tx="prev"]', r).disabled = tp === 0; $('[data-tx="next"]', r).disabled = tp === pg.length - 1; };
+      const txMs = q => Math.min(9000, Math.max(3500, 2200 + q.x.length * 32));
 
       const CH = [
         { d: '1825 – 1900', t: 'Sebelum 1908: berani, tapi sendiri-sendiri',
@@ -3046,7 +3086,7 @@
             [50, 110, 170, 310, 370, 430].map((x, k) => H(x, 174, { a: 'talk', h: k % 2 ? 'peci' : 'blangkon', k: ['#fff', '#FBF5EA', '#CFE9F1'][k % 3], dl: k * .15 })).join('') +
             H(240, 174, { a: 'talk', t: 'soekarno', s: 1.6 }) + T(240, 250, 'BPUPKI · Panitia Sembilan · PPKI', 2.6, 12, R) },
         { d: 'Agustus 1945', t: 'Detik-detik menjelang',
-          n: ['Pada 6 dan 9 Agustus Jepang dibom atom di Hiroshima dan Nagasaki, lalu menyerah kepada Sekutu (diumumkan 15 Agustus). Terjadi kekosongan kekuasaan di Indonesia.',
+          n: ['Berita kekalahan Jepang menyebar cepat dan suasana di Jakarta makin tegang. Arah kemerdekaan harus segera ditentukan.',
             'Para pemuda mendesak agar kemerdekaan segera diproklamasikan tanpa menunggu Jepang. Pada 16 Agustus, Soekarno dan Hatta dibawa ke Rengasdengklok, lalu malamnya kembali ke Jakarta.',
             'Dinihari 17 Agustus, di rumah Laksamana Maeda, naskah proklamasi disusun. Soekarno menulis, Sayuti Melik mengetiknya.'],
           k: 'Urutan: bom atom, Jepang menyerah, Rengasdengklok, rumah Maeda, proklamasi.',
@@ -3186,30 +3226,85 @@
       const PT = { '1825 – 1900': 'Pattimura|Imam Bonjol|Diponegoro|Teuku Umar', '1830 – 1870': 'Van den Bosch|Multatuli', '1901 – 1907': 'dr. Wahidin|dr. Soetomo', '20 Mei 1908': 'dr. Soetomo|Goenawan Mangoenkoesoemo|Soeradji', '1911 – 1927': 'Samanhudi|Tjokroaminoto|Tiga Serangkai|Soekarno', '1925 – 1926': 'Mohammad Hatta|M. Tabrani', '28 Oktober 1928': 'W.R. Supratman|Mohammad Yamin|Soegondo', '1929 – 1938': 'Soekarno|Hatta|Sjahrir', '1942 – 1944': 'Soekarno|Hatta|Ki Hajar Dewantara|K.H. Mas Mansyur', 'Mei – Agustus 1945': 'Yamin|Soepomo|Soekarno|Panitia Sembilan', 'Agustus 1945': 'Soekarno|Hatta|Laksamana Maeda|Sayuti Melik', '17 Agustus 1945': 'Fatmawati|Latief Hendraningrat|Suhud', '1945 – 1949': 'Bung Tomo|Jenderal Soedirman', '1946 – 1949': 'Soedirman|Syafruddin Prawiranegara|Sultan HB IX', '1949 – 1950': 'Hatta|Mohammad Natsir', '1950 – 1959': 'Soekarno', '1999 – 2002': 'MPR', '1959 – 1966': 'Soekarno|MPRS', '1966 – 1998': 'Soeharto|MPR', '1997 – 1998': 'Mahasiswa|Soeharto|B.J. Habibie' };
       const EN = ['Perlawanan daerah', 'Pergerakan nasional', 'Masa Jepang', 'Menuju proklamasi', 'Mempertahankan dan menata'];
       const EI = d => /^(1825|1830)/.test(d) ? 0 : /^(1901|20 Mei|1911|1925|28 Okt|1929)/.test(d) ? 1 : /^1942/.test(d) ? 2 : (/1945$/.test(d) && !/^1945/.test(d)) ? 3 : 4;
+      // ---------- Bab bom atom Hiroshima dan Nagasaki ----------
+      const BM = '<g class="bm-pl"><g transform="translate(0 40)"><ellipse rx="26" ry="6" fill="#C9D1DC" stroke="' + G + '" stroke-width="2"/><path d="M-4 0L-14 -14H-6L6 0ZM-4 0L-14 12H-6L6 0Z" fill="#AEB8C6" stroke="' + G + '" stroke-width="1.5"/><path d="M-24 0L-30 -10H-24L-18 0Z" fill="#AEB8C6" stroke="' + G + '" stroke-width="1.5"/></g></g>'
+        + '<g class="bm-bomb"><ellipse cx="240" cy="48" rx="5" ry="8" fill="#3A3F4B" stroke="' + G + '" stroke-width="1.5"/></g><circle class="bm-fl" cx="240" cy="190" r="46" fill="#FFF3B0" stroke="none"/>'
+        + '<g class="bm-mu"><path d="M232 215Q236 185 230 168H250Q244 185 248 215Z" fill="#B08968" stroke="' + G + '" stroke-width="2"/><ellipse cx="240" cy="154" rx="34" ry="20" fill="#C9966B" stroke="' + G + '" stroke-width="2"/><ellipse cx="218" cy="166" rx="15" ry="10" fill="#C9966B" stroke="' + G + '" stroke-width="2"/><ellipse cx="262" cy="166" rx="15" ry="10" fill="#C9966B" stroke="' + G + '" stroke-width="2"/></g>';
+      const BMC = [
+        { d: '6 Agustus 1945', t: 'Hiroshima: bom atom pertama', p: 'Amerika Serikat|Enola Gay|Little Boy', ms: 11000, bg: 'kota',
+          n: ['Pada 6 Agustus 1945 Amerika Serikat menjatuhkan bom atom pertama di Hiroshima, Jepang. Bomnya bernama Little Boy (berbahan uranium) dan dijatuhkan dari pesawat pengebom B-29 Enola Gay.', 'Kota hancur dalam sekejap dengan korban jiwa sangat besar. Serangan ini menunjukkan Jepang tidak sanggup lagi melawan Sekutu.'],
+          k: 'Hiroshima = 6 Agustus 1945 = bom pertama (Little Boy).',
+          s: () => SC(['#FFE2B8', '#FFF6E5'], '#C9A66B', GD, SUN(60, 50, 16, '#FFB74D'), T(240, 26, 'HIROSHIMA · 6 AGUSTUS 1945', .1, 16, R) + BM + BB(110, 100, 'Bom atom pertama', 3.8) + T(240, 252, 'Little Boy · uranium · Enola Gay', 4.6, 12, R)) },
+        { d: '9 Agustus 1945', t: 'Nagasaki: bom atom kedua', p: 'Amerika Serikat|Bockscar|Fat Man', ms: 11000, bg: 'laut',
+          n: ['Tiga hari kemudian, 9 Agustus 1945, bom atom kedua dijatuhkan di Nagasaki. Bomnya bernama Fat Man (berbahan plutonium) dari pesawat B-29 Bockscar.', 'Sasaran awalnya kota Kokura, tetapi tertutup awan sehingga pesawat berpindah ke Nagasaki.'],
+          k: 'Nagasaki = 9 Agustus 1945 = bom kedua (Fat Man).',
+          s: () => SC(['#CFE9F1', '#EAF6FA'], '#8FC98F', GD, SUN(60, 50, 16, '#FFD66B'), T(240, 26, 'NAGASAKI · 9 AGUSTUS 1945', .1, 16, R) + BM + BB(110, 100, 'Bom atom kedua', 3.8) + T(240, 252, 'Fat Man · plutonium · Bockscar', 4.6, 12, R)) },
+        { d: '6 – 9 Agustus 1945', t: 'Hiroshima dulu, Nagasaki kemudian', p: 'Hiroshima|Nagasaki', ms: 8500, bg: 'x',
+          n: ['Urutan mudah diingat: Hiroshima lebih dulu (6 Agustus), Nagasaki menyusul (9 Agustus), sama seperti urutan abjad H lalu N.', 'Kedua bom dijatuhkan Amerika Serikat, anggota Sekutu, pada Perang Dunia II di front Pasifik.'],
+          k: 'H dulu, N kemudian: 6 Agustus Hiroshima, 9 Agustus Nagasaki.',
+          s: () => SC(['#FFE2B8', '#FBF5EA'], '#E3B98A', GD, SUN(440, 30, 14, '#FFB74D'), T(240, 26, 'H DULU, N KEMUDIAN', .1, 17, R) + [['6 AGUSTUS', 'HIROSHIMA', 'Little Boy · uranium', 70], ['9 AGUSTUS', 'NAGASAKI', 'Fat Man · plutonium', 270]].map(([a, b, c, x], k) => `<g class="pop" style="animation-delay:${.8 + k * 1.2}s"><rect x="${x}" y="48" width="140" height="104" rx="10" fill="#fff" stroke="${G}" stroke-width="2.5"/><text x="${x + 70}" y="76" text-anchor="middle" style="font-size:13px;fill:${R}">${a}</text><text x="${x + 70}" y="102" text-anchor="middle" style="font-size:16px">${b}</text><text x="${x + 70}" y="128" text-anchor="middle" style="font-size:11px">${c}</text></g>`).join('') + H(240, 205, { a: 'talk', h: 'peci', k: '#fff', s: 1.5 }) + T(240, 252, 'Urutan abjad: H lalu N', 3.2, 12, R)) },
+        { d: '14 – 15 Agustus 1945', t: 'Jepang menyerah kepada Sekutu', p: 'Kaisar Hirohito|Sekutu', ms: 9000, bg: 'kota',
+          n: ['Setelah dua bom atom, Jepang menyerah tanpa syarat kepada Sekutu pada 14 Agustus 1945. Kaisar Hirohito mengumumkannya lewat siaran radio pada 15 Agustus.', 'Kekalahan ini terjadi saat Indonesia masih diduduki Jepang.'],
+          k: 'Bom atom, lalu Jepang menyerah (14 Agustus, diumumkan lewat radio 15 Agustus 1945).',
+          s: () => SC(['#CFE9F1', '#EAF6FA'], '#C9A66B', GD, SUN(440, 34, 14, '#FFD66B'), T(240, 26, 'JEPANG MENYERAH', .1, 17, R) + '<g class="pop" style="animation-delay:.6s"><rect x="250" y="150" width="120" height="14" fill="#C9A66B" stroke="' + G + '" stroke-width="2"/><path d="M262 164V214M358 164V214" stroke="' + G + '" stroke-width="3"/><rect x="282" y="124" width="56" height="26" rx="4" fill="#9AA6BC" stroke="' + G + '" stroke-width="2"/><circle cx="298" cy="137" r="7" fill="#fff" stroke="' + G + '" stroke-width="1.5"/><path d="M322 130h10M322 137h10M322 144h10M300 124l-12-26" stroke="' + G + '" stroke-width="2"/></g>' + H(180, 205, { a: 'talk', h: 'topi', k: '#CFE9F1', s: 1.6 }) + BB(120, 100, 'Jepang menyerah kepada Sekutu', 1.6) + '<g class="pop" style="animation-delay:2.4s"><rect x="372" y="60" width="72" height="48" fill="#fff" stroke="' + G + '" stroke-width="2"/><circle cx="408" cy="84" r="14" fill="#E5484D" stroke="none"/></g>' + T(240, 252, 'Diumumkan Kaisar Hirohito lewat radio, 15 Agustus', 3.4, 12, R)) },
+        { d: '14 – 16 Agustus 1945', t: 'Kekosongan kekuasaan di Indonesia', p: 'Golongan muda|Golongan tua|Soekarno|Hatta', ms: 10000, bg: 'sidang',
+          n: ['Jepang sudah kalah, tetapi pasukan Sekutu belum tiba di Indonesia. Keadaan ini disebut kekosongan kekuasaan (vacuum of power).', 'Golongan muda mendesak proklamasi segera tanpa menunggu Jepang. Golongan tua, termasuk Soekarno dan Hatta, ingin membahasnya lewat PPKI.'],
+          k: 'Kekosongan kekuasaan = peluang proklamasi. Muda: segera. Tua: lewat PPKI.',
+          s: () => SC(['#FFD9A8', '#FFF1D6'], '#C9A66B', GD, SUN(430, 46, 20, '#E5484D'), T(240, 26, 'KEKOSONGAN KEKUASAAN', .1, 17, R) + '<path d="M240 44V205" stroke="' + G + '" stroke-width="3" stroke-dasharray="6 6"/>' + T(120, 60, 'GOLONGAN MUDA', .4, 13) + T(360, 60, 'GOLONGAN TUA', .4, 13) + [70, 120, 170].map((x, k) => H(x, 205, { a: 'fight', h: ['peci', 'topi', 'blangkon'][k], k: BG[k], s: 1.2, dl: k * .15 })).join('') + ['soekarno', 'hatta'].map((t, k) => H(320 + k * 80, 205, { t, a: 'talk', s: 1.3 })).join('') + BB(120, 110, 'Proklamasikan sekarang!', 1.2) + BB(360, 110, 'Lewat PPKI dulu', 2.2) + T(240, 252, 'Jepang kalah, Sekutu belum tiba', 3.2, 12, R)) }
+      ];
+      BMC.forEach(o => { PT[o.d] = o.p; ins('Agustus 1945', o); });
+      // ---------- Bab PPKI: dibentuk, tiga sidang pertama ----------
+      const PPK = [
+        { a: '14 – 15 Agustus 1945', d: '7 – 14 Agustus 1945', t: 'PPKI dibentuk, Soekarno dan Hatta ke Dalat', p: 'Soekarno|Hatta|dr. Radjiman|Marsekal Terauchi', bg: 'sidang',
+          n: ['Pada 7 Agustus 1945 Jepang membentuk PPKI (Panitia Persiapan Kemerdekaan Indonesia) untuk menggantikan BPUPKI. Ketuanya Soekarno, wakilnya Hatta, beranggota 21 orang yang kemudian ditambah 6 orang sehingga menjadi 27.',
+            'Pada 9 Agustus Soekarno, Hatta, dan dr. Radjiman diterbangkan ke Dalat, Vietnam, untuk menemui Marsekal Terauchi (pertemuan 12 Agustus). Mereka diberi tahu bahwa kemerdekaan akan diberikan dan PPKI ditugasi mempersiapkannya. Ketiganya kembali ke Jakarta pada 14 Agustus.'],
+          k: 'PPKI dibentuk 7 Agustus 1945: ketua Soekarno, wakil Hatta. BPUPKI menyelidiki, PPKI mengesahkan.',
+          s: () => SC(['#E3F6E8', '#FBFFFC'], '#9FC9B0', GD, SUN(440, 34, 16, '#FFD66B'), T(240, 26, 'PPKI DIBENTUK · 7 AGUSTUS 1945', .1, 15, R) +
+            H(120, 205, { t: 'soekarno', a: 'talk', s: 1.5 }) + H(240, 205, { t: 'radjiman', a: 'talk', s: 1.5, f: -1 }) + H(360, 205, { t: 'hatta', a: 'talk', s: 1.5, f: -1 }) +
+            BB(120, 112, 'Ketua: Soekarno', .8) + BB(360, 112, 'Wakil: Hatta', 1.6) + T(240, 252, 'Dalat, 12 Agustus: kemerdekaan akan diberikan', 2.6, 12, R)) },
+        { a: '1945 – 1949', d: '18 Agustus 1945', t: 'Sidang I PPKI: UUD dan presiden', p: 'Soekarno|Hatta|PPKI', bg: 'sidang',
+          n: ['Sehari setelah proklamasi, PPKI bersidang untuk pertama kali. Hasilnya: mengesahkan UUD 1945 sebagai konstitusi. Rumusan sila pertama di Pembukaan diubah menjadi Ketuhanan Yang Maha Esa.',
+            'PPKI juga memilih Soekarno sebagai Presiden dan Hatta sebagai Wakil Presiden secara aklamasi, serta menetapkan Komite Nasional untuk membantu presiden sebelum MPR dan DPR terbentuk.'],
+          k: '18 Agustus: sahkan UUD 1945, pilih Soekarno-Hatta, Komite Nasional membantu presiden.',
+          s: () => SC(['#FFE2B8', '#FBF5EA'], '#E3B98A', GD, SUN(440, 30, 14, '#FFB74D'), T(240, 24, 'SIDANG I PPKI · 18 AGUSTUS 1945', .1, 15, R) +
+            LI(['Mengesahkan UUD 1945', 'Sila I: Ketuhanan Yang Maha Esa', 'Soekarno: Presiden', 'Hatta: Wakil Presiden', 'Komite Nasional membantu presiden'], .6) + H(70, 205, { t: 'soekarno', a: 'talk', s: 1.6 })) },
+        { a: '1945 – 1949', d: '19 Agustus 1945', t: 'Sidang II PPKI: 8 provinsi, 12 departemen', p: 'Soekarno|PPKI', bg: 'sidang',
+          n: ['Pada 19 Agustus 1945 PPKI membagi wilayah Indonesia menjadi 8 provinsi: Sumatera, Jawa Barat, Jawa Tengah, Jawa Timur, Sunda Kecil, Kalimantan, Sulawesi, dan Maluku. Tiap provinsi dipimpin seorang gubernur.', 'PPKI juga menetapkan 12 departemen (kementerian) untuk membantu presiden.'],
+          k: '19 Agustus: 8 provinsi dan 12 departemen.',
+          s: () => SC(['#CFE9F1', '#EAF6FA'], '#9FC9B0', GD, SUN(440, 34, 14, '#FFD66B'), T(240, 24, 'SIDANG II PPKI · 19 AGUSTUS 1945', .1, 15, R) +
+            ['Sumatera', 'Jawa Barat', 'Jawa Tengah', 'Jawa Timur', 'Sunda Kecil', 'Kalimantan', 'Sulawesi', 'Maluku'].map((v, k) => `<g class="pop" style="animation-delay:${.6 + k * .4}s"><rect x="${20 + (k % 4) * 115}" y="${44 + Math.floor(k / 4) * 40}" width="105" height="30" rx="8" fill="${['#FDE2E0', '#FFF1CC', '#DDF0EF'][k % 3]}" stroke="${G}" stroke-width="2"/><text x="${72 + (k % 4) * 115}" y="${64 + Math.floor(k / 4) * 40}" text-anchor="middle" style="font-size:11px">${v}</text></g>`).join('') +
+            H(70, 205, { t: 'soekarno', a: 'point', s: 1.4 }) + OK(300, 150, 250, '12 DEPARTEMEN', 4.4) + T(240, 252, '8 provinsi, tiap provinsi satu gubernur', 3.4, 12, R)) },
+        { a: '1945 – 1949', d: '22 Agustus 1945', t: 'Sidang III PPKI: KNI, PNI, BKR', p: 'PPKI|KNI|PNI|BKR', bg: 'sidang',
+          n: ['Pada 22 Agustus 1945 PPKI membentuk tiga badan: Komite Nasional Indonesia (KNI), Partai Nasional Indonesia (PNI) yang direncanakan menjadi partai tunggal, dan Badan Keamanan Rakyat (BKR).', 'BKR belum berupa tentara resmi. Pada 5 Oktober 1945 BKR diubah menjadi TKR (Tentara Keamanan Rakyat), cikal bakal TNI, sehingga 5 Oktober diperingati sebagai Hari TNI.'],
+          k: '22 Agustus: KNI, PNI, BKR. BKR jadi TKR pada 5 Oktober 1945.',
+          s: () => SC(['#FFD9A8', '#FFF1D6'], '#C9A66B', GD, SUN(60, 50, 16, '#E5484D'), T(240, 24, 'SIDANG III PPKI · 22 AGUSTUS 1945', .1, 15, R) +
+            LI(['KNI: Komite Nasional Indonesia', 'PNI: partai (rencana tunggal)', 'BKR: Badan Keamanan Rakyat'], .6) +
+            [30, 70, 110].map((x, k) => H(x, 205, { a: 'march', h: 'peci', k: '#8A8F5A', it: SPR, dl: k * .1 })).join('') + T(240, 252, '5 Oktober 1945: BKR menjadi TKR', 3.4, 12, R)) }
+      ];
+      PPK.forEach(o => { PT[o.d] = o.p; ins(o.a, o); });
 
-      let i = 0, timer = null, tk = 0, playing = false, skip = false;
+      let i = 0, tp = 0, pg = [], timer = null, tk = 0, playing = false, skip = false;
       box.innerHTML = `<h4>Kisah panjang: dari penjajahan sampai amandemen UUD 1945</h4><p class="hint">Baca narasinya sambil menonton. Tekan Putar kisah untuk menonton berurutan, ketuk teks untuk mempercepat, atau ketuk nomor bab untuk melompat.</p>
-        <div class="hs-st"><svg class="ks-sv" viewBox="0 0 480 270" role="img" aria-label="Animasi stikman kisah menuju kemerdekaan"></svg></div>
+        <div class="sx-w"><div class="sx"><div class="sx-l"><div class="hs-st"><svg class="ks-sv" viewBox="0 0 480 270" role="img" aria-label="Animasi stikman kisah menuju kemerdekaan"></svg></div>
         <div class="fl-ctl ks-bar"><button class="btn ghost" data-a="prev" aria-label="Sebelumnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="btn" data-a="play">Putar kisah</button><button class="btn ghost" data-a="next" aria-label="Berikutnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><div class="ks-prog"><i></i></div></div>
-        <div class="ks-era">${EN.map(e => `<span>${e}</span>`).join('')}</div><div class="hs-cap"><small></small><strong></strong><div class="ks-p"></div><div class="ks-n"></div></div>
+        <div class="ks-era">${EN.map(e => `<span>${e}</span>`).join('')}</div></div><div class="hs-cap"><small></small><strong></strong><div class="ks-p"></div>${TXH}</div></div></div>
         
         <div class="hs-dots">${CH.map((c, k) => `<button data-k="${k}" title="${c.d}: ${c.t}">${k + 1}</button>`).join('')}</div>`;
       const sv = $('.ks-sv', box), nn = $('.ks-n', box), pb = $('[data-a="play"]', box), sl = ms => new Promise(r => setTimeout(r, ms));
       nn.onclick = () => { skip = true; };
       const next = () => { if (i < CH.length - 1) { i++; show(); } else { playing = false; pb.textContent = 'Putar ulang'; } };
       async function typeIt(my) {
-        const c = CH[i]; nn.innerHTML = '';
-        for (const t of c.n) {
-          const p = document.createElement('p'); nn.appendChild(p);
-          for (let k = 1; k <= t.length; k++) { if (my !== tk) return; if (RM || skip) { p.textContent = t; break; } p.textContent = t.slice(0, k); await sl(9); }
-          if (!(RM || skip)) await sl(350);
+        const q = pg[tp];
+        if (q.k) txPut(box, pg, tp); else {
+          txPut(box, pg, tp, '<p></p>'); const p = $('.ks-n p', box);
+          for (let k = 1; k <= q.x.length; k++) { if (my !== tk) return; if (RM || skip) { p.textContent = q.x; break; } p.textContent = q.x.slice(0, k); await sl(9); }
         }
-        if (my !== tk) return;
-        const q = document.createElement('div'); q.className = 'ks-k'; q.textContent = c.k; nn.appendChild(q);
-        if (playing) timer = setTimeout(() => { if (my === tk) next(); }, 3200);
+        if (my !== tk || !playing) return;
+        timer = setTimeout(() => { if (my !== tk) return; if (tp < pg.length - 1) { tp++; typeIt(my); } else next(); }, q.k ? 3200 : Math.min(6500, Math.max(2600, 1400 + q.x.length * 18)));
       }
+      const tgK = n => { if (playing) { playing = false; clearTimeout(timer); pb.textContent = 'Putar kisah'; } skip = true; const my = ++tk; tp = Math.max(0, Math.min(pg.length - 1, n)); typeIt(my); };
       function show() {
-        clearTimeout(timer); skip = false; const my = ++tk, c = CH[i];
+        clearTimeout(timer); skip = false; const my = ++tk, c = CH[i]; tp = 0; pg = txPages(c);
         window.__bg = __bgp(c); window.__bg = __bgp(c); sv.innerHTML = c.s(); sv.style.animation = 'none'; void sv.offsetWidth; sv.style.animation = '';
         $$('.ks-era span', box).forEach((s, k) => s.classList.toggle('on', k === EI(c.d)));
         $('.ks-p', box).innerHTML = (PT[c.d] || '').split('|').filter(Boolean).map(x => `<b>${x}</b>`).join('');
@@ -3224,6 +3319,8 @@
         if (i >= CH.length - 1 && pb.textContent === 'Putar ulang') i = 0;
         playing = true; pb.textContent = 'Jeda'; show();
       };
+      $('[data-tx="prev"]', box).onclick = () => tgK(tp - 1);
+      $('[data-tx="next"]', box).onclick = () => tgK(tp + 1);
       $('[data-a="prev"]', box).onclick = () => go(i - 1);
       $('[data-a="next"]', box).onclick = () => go(i + 1);
       $$('.hs-dots button', box).forEach(b => b.onclick = () => go(+b.dataset.k));
@@ -3335,23 +3432,28 @@
       ];
       const mkP = (id, title, hint, aria, PS) => {
         const bx = $('#' + id); if (!bx) return;
-        let j = 0, tm = null, pl = false;
-        bx.innerHTML = `<h4>${title}</h4><p class="hint">${hint}</p><div class="hs-st"><svg class="ks-sv" viewBox="0 0 480 270" role="img" aria-label="${aria}"></svg></div><div class="fl-ctl ks-bar"><button class="btn ghost" data-a="prev" aria-label="Sebelumnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="btn" data-a="play">Putar</button><button class="btn ghost" data-a="next" aria-label="Berikutnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><div class="ks-prog"><i></i></div></div><div class="hs-cap"><small></small><strong></strong><div class="ks-p"></div><div class="ks-n"></div></div><div class="hs-dots">${PS.map((c, k) => `<button data-k="${k}" title="${c.d}: ${c.t}">${k + 1}</button>`).join('')}</div>`;
+        let j = 0, tp = 0, pg = [], tm = null, pl = false;
+        bx.innerHTML = `<h4>${title}</h4><p class="hint">${hint}</p><div class="sx-w"><div class="sx"><div class="sx-l"><div class="hs-st"><svg class="ks-sv" viewBox="0 0 480 270" role="img" aria-label="${aria}"></svg></div><div class="fl-ctl ks-bar"><button class="btn ghost" data-a="prev" aria-label="Sebelumnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="btn" data-a="play">Putar</button><button class="btn ghost" data-a="next" aria-label="Berikutnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><div class="ks-prog"><i></i></div></div></div><div class="hs-cap"><small></small><strong></strong><div class="ks-p"></div>${TXH}</div></div></div><div class="hs-dots">${PS.map((c, k) => `<button data-k="${k}" title="${c.d}: ${c.t}">${k + 1}</button>`).join('')}</div>`;
         const v = $('.ks-sv', bx), pbn = $('[data-a="play"]', bx);
         const stop = () => { pl = false; clearTimeout(tm); pbn.textContent = 'Putar'; };
         const nx = () => { if (j < PS.length - 1) { j++; draw(); } else { pl = false; pbn.textContent = 'Putar ulang'; } };
+        const sched = () => { clearTimeout(tm); if (!pl) return; const d = pg.map(txMs), ex = Math.max(0, PS[j].ms - d.reduce((s, x) => s + x, 0)), last = tp === pg.length - 1;
+          tm = setTimeout(() => { if (last) nx(); else { tp++; txPut(bx, pg, tp); sched(); } }, d[tp] + (last ? ex : 0)); };
         function draw() {
-          clearTimeout(tm); const c = PS[j];
+          clearTimeout(tm); const c = PS[j]; tp = 0; pg = txPages(c);
           window.__bg = __bgp(c); v.innerHTML = c.s(); v.style.animation = 'none'; void v.offsetWidth; v.style.animation = '';
           $('.hs-cap small', bx).textContent = c.d; $('.hs-cap strong', bx).textContent = c.t;
           $('.ks-p', bx).innerHTML = c.p.split('|').map(x => `<b>${x}</b>`).join('');
-          $('.ks-n', bx).innerHTML = c.n.map(x => `<p>${x}</p>`).join('') + `<div class="ks-k">${c.k}</div>`;
+          txPut(bx, pg, tp);
           $('.ks-prog i', bx).style.width = ((j + 1) / PS.length * 100) + '%';
           $$('.hs-dots button', bx).forEach((b, k) => b.classList.toggle('is-active', k === j));
-          if (pl) tm = setTimeout(nx, c.ms);
+          sched();
         }
         const gt = n => { stop(); j = Math.max(0, Math.min(PS.length - 1, n)); draw(); };
-        pbn.onclick = () => { if (pl) return stop(); if (pbn.textContent === 'Putar ulang') j = 0; pl = true; pbn.textContent = 'Jeda'; draw(); };
+        pbn.onclick = () => { if (pl) return stop(); const again = pbn.textContent === 'Putar ulang'; if (again) j = 0; pl = true; pbn.textContent = 'Jeda'; if (tp > 0 && !again) sched(); else draw(); };
+        const tg = n => { stop(); tp = Math.max(0, Math.min(pg.length - 1, n)); txPut(bx, pg, tp); };
+        $('[data-tx="prev"]', bx).onclick = () => tg(tp - 1);
+        $('[data-tx="next"]', bx).onclick = () => tg(tp + 1);
         $('[data-a="prev"]', bx).onclick = () => gt(j - 1);
         $('[data-a="next"]', bx).onclick = () => gt(j + 1);
         $$('.hs-dots button', bx).forEach(b => b.onclick = () => gt(+b.dataset.k));
@@ -4636,14 +4738,14 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
 .sg-sug{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 </style>
 <style>
-/* Nav bawah: navy tinta + pil aktif oranye */
+/* Nav bawah: mint terang + pil aktif oranye */
 @media (max-width: 899px) {
-  #nav { background: #1B2B3C; padding: 0 8px; box-shadow: 0 5px 0 0 var(--teal), 0 5px 0 2px #14161C; }
+  #nav { background: #C9F0E3; border: 2px solid #5FBFA4; padding: 0 8px; box-shadow: 0 5px 0 0 #8FD6C0; }
   .nav-list li { padding: 7px 2px; }
-  .nav-btn { color: rgba(251, 245, 234, .74); }
+  .nav-btn { color: #2F6F5F; font-weight: 700; }
   .nav-btn span { font-size: 11px; white-space: nowrap; }
   .nav-btn:active { transform: scale(.95); }
-  .nav-btn.is-active { background: var(--ora); border-color: #14161C; color: #14161C; box-shadow: 0 2px 0 rgba(0, 0, 0, .35); }
+  .nav-btn.is-active { background: var(--ora); border-color: #14161C; color: #14161C; box-shadow: 0 2px 0 #14161C; }
 }
 @media (max-width: 380px) { .nav-btn span { font-size: 10px; } }
 /* Cari dalam + glosarium */
