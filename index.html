@@ -779,6 +779,9 @@
 
     .point .a2 { transform-origin: 0 -22px; transform: rotate(-95deg); }
     .think .a2 { transform-origin: 0 -22px; transform: rotate(-150deg); }
+    .think .hd { animation: sgTilt 1.6s ease-in-out infinite alternate; transform-origin: 0 -24px; }
+    @keyframes sgTilt { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+    .think .a2 { transform-origin: 0 -22px; transform: rotate(-150deg); }
     .run .l1, .run .l2 { transform-origin: 0 -12px; animation: hsw .22s ease-in-out infinite alternate; }
     .run .l2 { animation-direction: alternate-reverse; }
     .bow { transform-origin: 0 -10px; animation: hbw 1.6s ease-in-out infinite alternate; }
@@ -1134,6 +1137,32 @@
     @media (min-width: 900px) { .kn { left: auto; right: 104px; bottom: 32px; margin: 0; } }
     @media (prefers-reduced-motion: reduce) { .kn { transition: none; } }
   </style>
+<style>
+/* ===== Upgrade animasi stikman: adegan, karakter, kamera ===== */
+.ks-far { animation: ksFar 28s ease-in-out infinite alternate; }
+.ks-pt { animation: ksPt 7s ease-in infinite; opacity: 0; }
+.ks-wv { animation: ksWv 3.2s linear infinite; }
+.ks-ship { transform-box: fill-box; transform-origin: center bottom; animation: ksSh 3.4s ease-in-out infinite alternate; }
+.ks-sv { transform-origin: 50% 62%; animation: ksIn .6s ease-out, ksZoom 11s ease-in-out .6s both; }
+@keyframes ksFar { from { transform: translateX(-14px); } to { transform: translateX(14px); } }
+@keyframes ksPt { 0% { transform: translate(0, 0); opacity: 0; } 20% { opacity: .85; } 100% { transform: translate(14px, -130px); opacity: 0; } }
+@keyframes ksWv { from { transform: translateX(0); } to { transform: translateX(-24px); } }
+@keyframes ksSh { from { transform: rotate(-3deg) translateY(0); } to { transform: rotate(3deg) translateY(-3px); } }
+@keyframes ksZoom { from { transform: scale(1); } to { transform: scale(1.05); } }
+.talk .hd, .point .hd { transform-origin: 0 -24px; animation: sgTalk .45s ease-in-out infinite alternate; }
+.point .a2 { animation: hpt .9s ease-in-out infinite alternate; }
+.walk .a1, .march .a1 { transform-origin: 0 -22px; animation: hsw .4s ease-in-out infinite alternate-reverse; }
+@keyframes sgTalk { from { transform: rotate(-3deg) translateY(0); } to { transform: rotate(3deg) translateY(.8px); } }
+@keyframes hpt { from { transform: rotate(-95deg); } to { transform: rotate(-72deg); } }
+.hs-st { position: relative; touch-action: pan-y; }
+.hs-st::after { content: "geser ↔"; position: absolute; right: 12px; top: 8px; font: 800 10px/1 system-ui, sans-serif; letter-spacing: .06em; padding: 4px 8px; border-radius: 99px; background: rgba(255,255,255,.75); color: #14161C; opacity: .75; pointer-events: none; }
+.hs-cap { border-left: 6px solid var(--brand); box-shadow: 0 3px 0 #14161C; }
+.hs-cap small { display: inline-block; padding: 3px 10px; border-radius: 99px; background: var(--red); color: #fff; margin-bottom: 4px; }
+.hs-dots button { transition: transform .15s, background .2s; }
+.hs-dots button:hover { transform: scale(1.18); }
+.hs-dots button.is-active { transform: scale(1.18); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 30%, transparent); }
+@media (prefers-reduced-motion: reduce) { .ks-far, .ks-pt, .ks-wv, .ks-ship, .ks-sv, .talk .hd, .point .hd, .point .a2 { animation: none; } }
+</style>
 </head>
 
 <body>
@@ -1204,8 +1233,8 @@
             <div class="card sim" id="sim-angka"></div>
             <div class="card sim" id="sim-alur-berhenti"></div>
             <div class="card sim" id="sim-timeline"></div>
+            <div class="card sim" id="sim-alur-lembaga"></div>
             <div class="card sim" id="sim-lembaga"></div>
-            <div class="card sim" id="sim-venn"></div>
             <div class="card sim" id="sim-mobil"></div>
             <div class="card sim" id="sim-ctabel"></div>
             <div class="card sim" id="sim-tkp"></div>
@@ -1235,6 +1264,21 @@
             <div class="card sim" id="sim-bti"></div>
             <div class="card sim" id="sim-sila"></div>
             <div class="card sim" id="sim-uud-isi"></div>
+            <div class="card sim" id="sim-tiu-analogi"></div>
+            <div class="card sim" id="sim-tiu-silo"></div>
+            <div class="card sim" id="sim-tiu-silo-lab"></div>
+            <div class="card sim" id="sim-tiu-analitis"></div>
+            <div class="card sim" id="sim-tiu-argumen"></div>
+            <div class="card sim" id="sim-tiu-hitung"></div>
+            <div class="card sim" id="sim-tiu-deret"></div>
+            <div class="card sim" id="sim-tiu-poltab"></div>
+            <div class="card sim" id="sim-tiu-banding"></div>
+            <div class="card sim" id="sim-tiu-cerita"></div>
+            <div class="card sim" id="sim-tiu-ctabel"></div>
+            <div class="card sim" id="sim-tiu-kecdata"></div>
+            <div class="card sim" id="sim-tiu-figanalogi"></div>
+            <div class="card sim" id="sim-tiu-figbeda"></div>
+            <div class="card sim" id="sim-tiu-figserial"></div>
 
           </div>
 
@@ -1866,30 +1910,6 @@
       pick('MPR');
     })();
 
-    // 4b. Venn silogisme: lingkaran A bergeser sesuai pernyataan
-    (function () {
-      const box = $('#sim-venn');
-      const st = {
-        semua:   [190, 'Semua A adalah B: A berada di dalam B. Kesimpulan aman: setiap A pasti B.'],
-        sebagian:[135, 'Sebagian A adalah B: A beririsan dengan B. Sebagian A bukan B, jadi jangan menyimpulkan "semua".'],
-        tidak:   [60,  'Tidak ada A adalah B: A terpisah dari B. Tidak ada satu pun A yang B.']
-      };
-      box.innerHTML = `<h4>Venn silogisme</h4><p class="hint">Pilih jenis pernyataan dan lihat lingkarannya bergerak.</p>
-        <div class="pks"><button class="pk is-active" data-k="semua">Semua A adalah B</button><button class="pk" data-k="sebagian">Sebagian A adalah B</button><button class="pk" data-k="tidak">Tidak ada A adalah B</button></div>
-        <svg class="venn" viewBox="0 0 300 150" role="img" aria-label="Diagram Venn A dan B">
-          <circle cx="190" cy="75" r="65" fill="#6C5CE7" fill-opacity=".18" stroke="#6C5CE7"/>
-          <circle id="vA" cx="0" cy="75" r="32" fill="#F59E0B" fill-opacity=".35" stroke="#D99A0B" style="transform:translateX(190px)"/>
-          <text x="190" y="20" text-anchor="middle" font-size="13" fill="#5546D4">B</text>
-          <text id="vAt" x="0" y="20" text-anchor="middle" font-size="13" fill="#D99A0B" style="transform:translateX(190px)">A</text>
-        </svg><div class="pk-detail" id="vtxt"></div>`;
-      const go = k => {
-        $$('.pk', box).forEach(b => b.classList.toggle('is-active', b.dataset.k === k));
-        $('#vA').style.transform = $('#vAt').style.transform = `translateX(${st[k][0]}px)`;
-        $('#vtxt').textContent = st[k][1];
-      };
-      $$('.pk', box).forEach(b => b.addEventListener('click', () => go(b.dataset.k)));
-      go('semua');
-    })();
 
     // 4c. Dua mobil berpapasan
     (function () {
@@ -2028,7 +2048,7 @@
          ['sim-alur-pancasila', 'sim-sila', 'sim-butir'], true),
       Ls('uud', 'twk', 'UUD 1945', 'Isi pasal, perubahan, lembaga negara, sistem pemerintahan, dan hierarki peraturan menurut UUD 1945.',
          ['Pasal UUD 1945', 'Peta pasal', 'Amandemen', 'Lembaga negara', 'Sistem pemerintahan', 'Hierarki peraturan', 'Hak asasi', 'Angka kunci'],
-         ['sim-uud-isi', 'sim-pasal', 'sim-alur-amandemen', 'sim-lembaga', 'sim-alur-berhenti', 'sim-alur-hierarki', 'sim-angka'], true),
+         ['sim-uud-isi', 'sim-pasal', 'sim-alur-amandemen', 'sim-alur-lembaga', 'sim-lembaga', 'sim-alur-berhenti', 'sim-alur-hierarki', 'sim-angka'], true),
       Ls('nkri', 'twk', 'NKRI', 'Bentuk negara kesatuan, otonomi daerah, serta wilayah dan kedaulatan.',
          ['Otonomi daerah', 'Wilayah dan kedaulatan'], ['sim-nkri'], true),
       Ls('bti', 'twk', 'Bhinneka Tunggal Ika', 'Semboyan Bhinneka Tunggal Ika serta lambang dan identitas negara.',
@@ -2037,22 +2057,22 @@
 
       // ===== TIU (3 kemampuan menurut Kepmen) =====
       Pl('verbal', 'tiu', 'Kemampuan Verbal', 'Bernalar dan menarik kesimpulan lewat kata: analogi, silogisme, analitis, serta penguatan dan pelemahan argumen.', ['analogi', 'silo', 'analitis', 'argumen']),
-      Ls('analogi', 'tiu', 'Analogi', 'Bernalar lewat hubungan dua kata, lalu memakai hubungan itu pada situasi lain.', ['Verbal · Analogi kata'], [], true),
-      Ls('silo', 'tiu', 'Silogisme', 'Menarik kesimpulan dari dua pernyataan.', ['Verbal · Silogisme'], ['sim-venn'], true),
-      Ls('analitis', 'tiu', 'Analitis', 'Menganalisis informasi lalu menarik kesimpulan.', ['Verbal · Analitis'], [], true),
-      Ls('argumen', 'tiu', 'Penguatan dan Pelemahan Argumen', 'Menilai apakah pernyataan tambahan memperkuat atau memperlemah kesimpulan sebuah paragraf.', ['Verbal · Argumen'], [], true),
+      Ls('analogi', 'tiu', 'Analogi', 'Bernalar lewat hubungan dua kata, lalu memakai hubungan itu pada situasi lain.', ['Verbal · Analogi kata'], ['sim-tiu-analogi'], true),
+      Ls('silo', 'tiu', 'Silogisme', 'Menarik kesimpulan dari dua pernyataan.', ['Verbal · Silogisme'], ['sim-tiu-silo', 'sim-tiu-silo-lab'], true),
+      Ls('analitis', 'tiu', 'Analitis', 'Menganalisis informasi lalu menarik kesimpulan.', ['Verbal · Analitis'], ['sim-tiu-analitis'], true),
+      Ls('argumen', 'tiu', 'Penguatan dan Pelemahan Argumen', 'Menilai apakah pernyataan tambahan memperkuat atau memperlemah kesimpulan sebuah paragraf.', ['Verbal · Argumen'], ['sim-tiu-argumen'], true),
       Pl('numerik', 'tiu', 'Kemampuan Numerik', 'Berhitung, melihat pola angka, membandingkan data kuantitatif, menyelesaikan soal cerita, pola bilangan dalam tabel, dan menilai kecukupan data.', ['hitung', 'deret', 'poltab', 'banding', 'cerita', 'ctabel', 'kecdata']),
-      Ls('hitung', 'tiu', 'Berhitung', 'Kemampuan hitung sederhana dengan cepat dan tepat.', ['Numerik · Berhitung'], [], true),
-      Ls('deret', 'tiu', 'Deret Angka', 'Melihat pola hubungan antarangka.', ['Numerik · Deret angka'], ['sim-alur-deret'], true),
-      Ls('poltab', 'tiu', 'Pola Bilangan dalam Tabel', 'Menemukan rumus pola dari tabel urutan ke dan nilai, lalu menghitung suku yang jauh dengan cepat.', ['Numerik · Pola tabel'], [], true),
-      Ls('banding', 'tiu', 'Perbandingan Kuantitatif', 'Menarik kesimpulan dari dua data kuantitatif.', ['Numerik · Perbandingan kuantitatif'], [], true),
-      Ls('cerita', 'tiu', 'Soal Cerita', 'Analisis kuantitatif dari informasi yang diberikan.', ['Numerik · Soal cerita'], ['sim-alur-cerita', 'sim-mobil'], true),
-      Ls('ctabel', 'tiu', 'Soal Cerita Tabel', 'Memilih kombinasi paling hemat dari tabel harga dan beberapa ketentuan, dengan cara menyaring opsi lebih dulu.', ['Numerik · Cerita tabel'], ['sim-ctabel'], true),
-      Ls('kecdata', 'tiu', 'Kecukupan Data', 'Menilai apakah data pada dua pernyataan sudah cukup untuk menjawab pertanyaan, tanpa harus menghitung sampai akhir.', ['Numerik · Kecukupan data'], [], true),
+      Ls('hitung', 'tiu', 'Berhitung', 'Kemampuan hitung sederhana dengan cepat dan tepat.', ['Numerik · Berhitung'], ['sim-tiu-hitung'], true),
+      Ls('deret', 'tiu', 'Deret Angka', 'Melihat pola hubungan antarangka.', ['Numerik · Deret angka'], ['sim-tiu-deret', 'sim-alur-deret'], true),
+      Ls('poltab', 'tiu', 'Pola Bilangan dalam Tabel', 'Menemukan rumus pola dari tabel urutan ke dan nilai, lalu menghitung suku yang jauh dengan cepat.', ['Numerik · Pola tabel'], ['sim-tiu-poltab'], true),
+      Ls('banding', 'tiu', 'Perbandingan Kuantitatif', 'Menarik kesimpulan dari dua data kuantitatif.', ['Numerik · Perbandingan kuantitatif'], ['sim-tiu-banding'], true),
+      Ls('cerita', 'tiu', 'Soal Cerita', 'Analisis kuantitatif dari informasi yang diberikan.', ['Numerik · Soal cerita'], ['sim-tiu-cerita', 'sim-alur-cerita', 'sim-mobil'], true),
+      Ls('ctabel', 'tiu', 'Soal Cerita Tabel', 'Memilih kombinasi paling hemat dari tabel harga dan beberapa ketentuan, dengan cara menyaring opsi lebih dulu.', ['Numerik · Cerita tabel'], ['sim-tiu-ctabel', 'sim-ctabel'], true),
+      Ls('kecdata', 'tiu', 'Kecukupan Data', 'Menilai apakah data pada dua pernyataan sudah cukup untuk menjawab pertanyaan, tanpa harus menghitung sampai akhir.', ['Numerik · Kecukupan data'], ['sim-tiu-kecdata'], true),
       Pl('figural', 'tiu', 'Kemampuan Figural', 'Bernalar lewat gambar: analogi, ketidaksamaan, dan serial.', ['figanalogi', 'figbeda', 'figserial']),
-      Ls('figanalogi', 'tiu', 'Analogi', 'Bernalar lewat hubungan dua gambar, lalu memakainya pada gambar lain.', ['Figural · Analogi'], ['sim-fig-lab', 'sim-fig-analogi'], true),
-      Ls('figbeda', 'tiu', 'Ketidaksamaan', 'Melihat perbedaan di antara beberapa gambar.', ['Figural · Ketidaksamaan'], ['sim-fig-lab2', 'sim-fig-beda'], true),
-      Ls('figserial', 'tiu', 'Serial', 'Melihat pola hubungan dalam bentuk gambar.', ['Figural · Serial'], ['sim-fig-flip', 'sim-fig-serial'], true),
+      Ls('figanalogi', 'tiu', 'Analogi', 'Bernalar lewat hubungan dua gambar, lalu memakainya pada gambar lain.', ['Figural · Analogi'], ['sim-tiu-figanalogi', 'sim-fig-lab', 'sim-fig-analogi'], true),
+      Ls('figbeda', 'tiu', 'Ketidaksamaan', 'Melihat perbedaan di antara beberapa gambar.', ['Figural · Ketidaksamaan'], ['sim-tiu-figbeda', 'sim-fig-lab2', 'sim-fig-beda'], true),
+      Ls('figserial', 'tiu', 'Serial', 'Melihat pola hubungan dalam bentuk gambar.', ['Figural · Serial'], ['sim-tiu-figserial', 'sim-fig-flip', 'sim-fig-serial'], true),
 
       // ===== TKP (6 aspek menurut Kepmen) =====
       Ls('pel', 'tkp', 'Pelayanan Publik', 'Ramah dan efektif memenuhi kebutuhan serta kepuasan orang lain sesuai tugas dan wewenang.', ['Memilih jawaban 5', 'Warga komplain', 'Tawaran uang pelicin'], ['sim-tkp-pel', 'sim-tkp']),
@@ -2297,7 +2317,7 @@
       pancasila: `<h4>Pendalaman: ideologi terbuka dan sumber hukum</h4><ul><li><b>Ideologi terbuka:</b> nilai dasar tetap, nilai instrumental dan praksis menyesuaikan zaman. Ideologi tertutup tidak boleh diubah dan dipaksakan.</li><li>Pancasila adalah sumber dari segala sumber hukum negara (UU 12/2011 Pasal 2). TAP MPR XVIII/MPR/1998 menegaskannya sebagai dasar negara.</li></ul>
         <h4>Pendalaman: Panitia Sembilan</h4><ul><li>Soekarno, Hatta, A.A. Maramis, Abikoesno Tjokrosoejoso, Abdul Kahar Muzakir, H. Agus Salim, Achmad Soebardjo, Wahid Hasjim, Muhammad Yamin.</li><li>Tujuh kata dalam sila pertama Piagam Jakarta dihapus pada 18 Agustus 1945 demi persatuan.</li></ul>`,
       uud: `<h4>Pendalaman: hak yang tidak dapat dikurangi (Pasal 28I ayat 1)</h4><ul><li>Hak hidup, bebas dari penyiksaan, merdeka berpikir dan berhati nurani, beragama, tidak diperbudak, diakui sebagai pribadi di hadapan hukum, dan tidak dituntut atas hukum yang berlaku surut.</li><li>Hak lain boleh dibatasi dengan UU demi hak orang lain, moral, nilai agama, keamanan, dan ketertiban umum (Pasal 28J ayat 2).</li></ul>`,
-      nkri: `<h4>Pendalaman: pembagian urusan pemerintahan (UU 23/2014)</h4><ul><li><b>Absolut (6):</b> politik luar negeri, pertahanan, keamanan, yustisi, moneter dan fiskal nasional, agama. Hanya pusat.</li><li><b>Konkuren:</b> dibagi pusat, provinsi, kabupaten/kota; terdiri atas wajib (termasuk pelayanan dasar seperti pendidikan dan kesehatan) dan pilihan.</li><li><b>Umum:</b> tanggung jawab Presiden, dilaksanakan gubernur, bupati, dan wali kota.</li><li>Indonesia kini 38 provinsi setelah pemekaran Papua 2022.</li></ul>`,
+      nkri: `<h4>Pendalaman: pembagian urusan pemerintahan (UU 23/2014)</h4><ul><li><b>Absolut (6):</b> politik luar negeri, pertahanan, keamanan, yustisi, moneter dan fiskal nasional, agama. Hanya pusat.</li><li><b>Konkuren:</b> dibagi pusat, provinsi, kabupaten/kota; terdiri atas wajib (termasuk pelayanan dasar seperti pendidikan dan kesehatan) dan pilihan.</li><li><b>Umum:</b> tanggung jawab Presiden, dilaksanakan gubernur, bupati, dan wali kota.</li><li>Indonesia kini 38 provinsi setelah pemekaran Papua 2022.</li></ul><h4>Contoh nyata yang benar-benar terjadi</h4><div class="tbw"><table class="tb "><thead><tr><th>Jenis</th><th>Bagian urusan</th><th>Contoh nyata</th></tr></thead><tbody><tr><td>Absolut</td><td>Moneter</td><td>Bank Indonesia menetapkan BI-Rate untuk seluruh negeri. Pemprov atau pemkab tidak boleh menetapkan suku bunga atau mencetak uang sendiri.</td></tr><tr><td>Absolut</td><td>Agama</td><td>Sidang isbat Kementerian Agama menetapkan awal Ramadan dan 1 Syawal secara nasional. Pemda tidak menetapkannya sendiri.</td></tr><tr><td>Absolut</td><td>Politik luar negeri</td><td>Konferensi Asia-Afrika 1955 di Bandung diselenggarakan oleh pemerintah pusat, bukan pemerintah daerah.</td></tr><tr><td>Absolut</td><td>Keamanan</td><td>Pengungkapan kasus Bom Bali 2002 ditangani Polri, bukan Pemprov Bali.</td></tr><tr><td>Absolut</td><td>Yustisi</td><td>Perkara hukum diadili pengadilan dan Mahkamah Agung. Perda tidak bisa membentuk pengadilan sendiri.</td></tr><tr><td>Konkuren wajib (pelayanan dasar)</td><td>Pendidikan</td><td>Sejak 2017 pengelolaan SMA dan SMK dialihkan ke pemerintah provinsi, sedangkan SD dan SMP tetap di kabupaten/kota.</td></tr><tr><td>Konkuren pilihan</td><td>Pariwisata</td><td>Pemkab Banyuwangi mengembangkan wisata lewat Banyuwangi Ethno Carnival. Pariwisata termasuk urusan pilihan, daerah menyesuaikan potensinya.</td></tr><tr><td>Umum</td><td>Wawasan kebangsaan dan kerukunan</td><td>Upacara Hari Lahir Pancasila 1 Juni di daerah dipimpin kepala daerah. Forum Kerukunan Umat Beragama (FKUB) dibentuk di provinsi dan kabupaten/kota.</td></tr></tbody></table></div><h4>Cara membedakan dalam 5 detik</h4><div class="tbw"><table class="tb "><thead><tr><th>Tanyakan</th><th>Jawabannya</th></tr></thead><tbody><tr><td>Apakah hanya pusat yang boleh mengurus, daerah tidak ikut sama sekali?</td><td class="ya">Absolut</td></tr><tr><td>Apakah dibagi tingkatannya antara pusat, provinsi, dan kabupaten/kota?</td><td class="ya">Konkuren</td></tr><tr><td>Apakah menyangkut persatuan, kerukunan, wawasan kebangsaan, dan dijalankan kepala daerah atas nama Presiden?</td><td class="ya">Umum</td></tr></tbody></table></div><div class="memo"><b>Pegangan:</b> bayangkan menetapkan 1 Syawal (absolut, satu keputusan untuk semua), mengelola SMA (konkuren, dibagi tingkatan), dan upacara 1 Juni di daerah (umum, kepala daerah mewakili Presiden).</div><h4>Tiga asas, dengan contoh</h4><div class="tbw"><table class="tb "><thead><tr><th>Asas</th><th>Artinya</th><th>Contoh nyata</th></tr></thead><tbody><tr><td>Desentralisasi</td><td>Pusat menyerahkan urusan kepada daerah otonom</td><td>Pemkot Surabaya mengoperasikan Suroboyo Bus sebagai layanan angkutan kota.</td></tr><tr><td>Dekonsentrasi</td><td>Pusat melimpahkan wewenang kepada gubernur atau instansi vertikalnya di daerah</td><td>Kantor Imigrasi di daerah menerbitkan paspor atas nama pemerintah pusat, bukan Pemda.</td></tr><tr><td>Tugas pembantuan</td><td>Daerah ditugasi pusat menjalankan urusan tertentu, dengan pembiayaan dari pusat</td><td>Urusan tetap milik pusat. Daerah hanya membantu melaksanakan.</td></tr></tbody></table></div>`,
       bti: `<h4>Pendalaman: kutipan Sutasoma dan lambang perisai</h4><ul><li>Kutipan asli: bhinneka tunggal ika tan hana dharma mangrwa, artinya berbeda-beda tetapi satu, tidak ada kebenaran yang mendua.</li><li>Perisai Garuda: bintang (sila 1), rantai (2), pohon beringin (3), kepala banteng (4), padi dan kapas (5).</li><li>Bendera: merah di atas putih, perbandingan lebar dan panjang 2:3.</li></ul>`,
       bhs: `<h4>Pendalaman: pasangan kata baku tambahan</h4><ul><li><b>Baku:</b> antre, andal, azan, cabai, ijazah, imbau, kuitansi, lembap, napas, saksama, sekadar, teladan, terampil, utang, asas, ekstrem, hipotesis.</li><li><b>Tidak baku:</b> antri, handal, adzan, cabe, ijasah, himbau, kwitansi, lembab, nafas, seksama, sekedar, tauladan, trampil, hutang, azas, ekstrim, hipotesa.</li></ul>`
     }).forEach(([k, v]) => { MATERI[k] += v; });
@@ -2947,13 +2967,14 @@
         if (t === 'kantor') return `<rect x="0" y="62" width="480" height="153" ${o}/><rect x="30" y="84" width="90" height="70" rx="3" fill="#fff" opacity=".7" stroke="${L}" stroke-width="2"/><path d="M75 84V154M30 119H120" stroke="${L}" stroke-width="2"/><rect x="360" y="86" width="84" height="56" rx="3" fill="#fff" opacity=".75" stroke="${L}" stroke-width="2"/><circle cx="240" cy="96" r="20" fill="#fff" opacity=".85" stroke="${L}" stroke-width="2.5"/><path d="M240 96V84M240 96L249 100" stroke="${L}" stroke-width="2"/><rect x="150" y="184" width="180" height="9" fill="#C9A66B" stroke="${L}" stroke-width="2"/><path d="M160 193V214M320 193V214" stroke="${L}" stroke-width="3"/><rect x="420" y="150" width="40" height="64" fill="#9AA6BC" stroke="${L}" stroke-width="2"/><path d="M420 172H460M420 194H460" stroke="${L}" stroke-width="2"/>`;
         if (t === 'kelas') return `<rect x="0" y="62" width="480" height="153" ${o}/><rect x="130" y="76" width="220" height="86" rx="4" fill="#2F5D4A" opacity=".85" stroke="#8A6A44" stroke-width="5"/><path d="M148 100H260M148 120H320M148 140H230" stroke="#fff" opacity=".6" stroke-width="3" stroke-dasharray="9 5"/><rect x="26" y="84" width="70" height="66" rx="3" fill="#fff" opacity=".7" stroke="${L}" stroke-width="2"/><path d="M61 84V150" stroke="${L}" stroke-width="2"/>${[40,200,360].map(x=>`<rect x="${x}" y="186" width="80" height="8" fill="#C9A66B" stroke="${L}" stroke-width="2"/><path d="M${x+8} 194V214M${x+72} 194V214" stroke="${L}" stroke-width="3"/>`).join('')}`;
         if (t === 'sawah') return `<path d="M0 196Q120 168 240 190T480 176V215H0Z" fill="#8FC98F" opacity=".7" stroke="${L}" stroke-width="1.5"/><path d="M0 206Q140 186 260 204T480 194" fill="none" stroke="#5E9B5E" stroke-width="5" opacity=".7"/><path d="M420 214V132" stroke="#8A6A44" stroke-width="5"/><path d="M420 134Q440 118 462 132M420 134Q404 116 382 128M420 134Q430 112 448 108M420 134Q412 110 394 108" fill="none" stroke="#2F8F5B" stroke-width="4"/><path d="M60 190l22-26l22 26Z" fill="${c}" opacity=".8" stroke="${L}" stroke-width="2"/><rect x="68" y="190" width="28" height="22" fill="#C9A66B" stroke="${L}" stroke-width="2"/>`;
-        if (t === 'laut') return `<rect y="150" width="480" height="65" fill="#6FB6D6" opacity=".75"/><path d="M0 160q12-8 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0" fill="none" stroke="#fff" stroke-width="2" opacity=".8"/><path d="M20 152Q50 120 90 152Z M360 152Q400 112 450 152Z" fill="#3E8E5A" stroke="${L}" stroke-width="2"/><path d="M215 188h60l-8 14h-44Z" fill="#C9A66B" stroke="${L}" stroke-width="2"/><path d="M245 188V140L274 184Z" fill="#fff" stroke="${L}" stroke-width="2"/>`;
+        if (t === 'laut') return `<rect y="150" width="480" height="65" fill="#6FB6D6" opacity=".75"/><path d="M0 160q12-8 24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0t24 0" fill="none" stroke="#fff" stroke-width="2" opacity=".8" class="ks-wv"/><path d="M20 152Q50 120 90 152Z M360 152Q400 112 450 152Z" fill="#3E8E5A" stroke="${L}" stroke-width="2"/><g class="ks-ship"><path d="M215 188h60l-8 14h-44Z" fill="#C9A66B" stroke="${L}" stroke-width="2"/><path d="M245 188V140L274 184Z" fill="#fff" stroke="${L}" stroke-width="2"/></g>`;
         if (t === 'sidang') return `<rect x="0" y="52" width="480" height="163" ${o}/>` + [24, 130, 326, 432].map(x => `<rect x="${x}" y="52" width="24" height="163" fill="#fff" opacity=".6" stroke="${L}" stroke-width="2"/>`).join('') + `<path d="M0 52h480" stroke="${L}" stroke-width="4"/><path d="M200 52q40 26 80 0" fill="#D9625A" opacity=".8" stroke="${L}" stroke-width="2"/>`;
         return `<path d="M0 200Q80 150 160 190T320 185T480 170V220H0Z" fill="${c}" opacity=".6" stroke="${L}" stroke-width="1.5"/>`; };
       const __bgp = c => { const q = (c.t + ' ' + c.d).toLowerCase(); if (c.bg) return c.bg;
         for (const [r, k] of [[/tanam|petani|sawah|otonomi/, 'sawah'], [/laut|wilayah|djuanda|banda|ende|kedaulatan|nusantara/, 'laut'], [/gerilya|perlawanan|1825|sebelum 1908|padri|diponegoro/, 'bukit'], [/tender|suap|gratifikasi|pemerasan|benturan/, 'kantor'], [/bahasa|ejaan|kalimat|paragraf|baku/, 'kelas'], [/bpupki|ppki|panitia sembilan|piagam|amandemen/, 'sidang']]) if (r.test(q)) return k;
         return ['kota', 'bukit', 'sawah', 'kota'][q.length % 4]; };
-      const SC = (sk, hc, gc, sun, body, nc) => `<defs><linearGradient id="ksg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sk[0]}"/><stop offset="1" stop-color="${sk[1]}"/></linearGradient></defs><rect width="480" height="270" fill="url(#ksg)"/>${sun}${nc ? '' : CL(46, 70, 0) + CL(92, 100, 40) + BD}${__bgx(window.__bg, hc)}<rect y="215" width="480" height="55" fill="${gc}"/><path d="M0 215H480" stroke="${G}" stroke-width="2.5"/>${TF}${body}`;
+      const PTC = [40, 120, 190, 260, 330, 400, 450].map((x, k) => `<circle class="ks-pt" cx="${x}" cy="212" r="${1.6 + k % 3 * .5}" fill="#fff" style="animation-duration:${6 + k}s;animation-delay:-${k * 1.7}s"/>`).join('');
+      const SC = (sk, hc, gc, sun, body, nc) => `<defs><linearGradient id="ksg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sk[0]}"/><stop offset="1" stop-color="${sk[1]}"/></linearGradient><radialGradient id="ksv" cx=".5" cy=".5" r=".78"><stop offset=".62" stop-color="#2A1A0A" stop-opacity="0"/><stop offset="1" stop-color="#2A1A0A" stop-opacity=".3"/></radialGradient><linearGradient id="ksd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient><radialGradient id="ksh"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="480" height="270" fill="url(#ksg)"/><circle cx="430" cy="48" r="130" fill="url(#ksh)" opacity=".5"/>${sun}${nc ? '' : CL(46, 70, 0) + CL(92, 100, 40) + CL(24, 140, 90) + BD}<g class="ks-far"><path d="M-20 175Q50 112 120 158T250 146T390 164T500 132V218H-20Z" fill="${hc}" opacity=".32"/><path d="M-20 190Q80 150 170 180T330 172T500 168V218H-20Z" fill="${hc}" opacity=".28"/></g>${__bgx(window.__bg, hc)}<rect y="215" width="480" height="55" fill="${gc}"/><rect y="215" width="480" height="55" fill="url(#ksd)"/><path d="M0 215H480" stroke="${G}" stroke-width="2.5"/><path d="M0 240Q120 229 240 241T480 233" stroke="#fff" stroke-opacity=".4" stroke-width="7" fill="none"/>${TF}${PTC}${body}<rect width="480" height="270" fill="url(#ksv)" pointer-events="none"/>`;
       const SUN = (x, y, r, c) => `<circle class="ks-sun" cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="none"/>`;
       const GD = '#E3D3AE';
 
@@ -3212,6 +3233,12 @@
       const OR = (nm, tg, hat) => H(70, 205, { a: 'talk', h: hat || 'peci', k: '#fff', s: 1.6, t: ({ 'M. Yamin': 'yamin', 'Soepomo': 'soepomo', 'Soekarno': 'soekarno' })[nm] }) + T(70, 112, nm, .2, 13) + T(70, 128, tg, .5, 11);
       const BG = ['#fff', '#FBF5EA', '#CFE9F1'];
       const PS = [
+        { d: '29 April 1945', t: 'Jepang mengumumkan BPUPKI', p: 'dr. Radjiman|Jepang', ms: 8500, bg: 'sidang',
+          n: ['Jepang yang terdesak dalam Perang Pasifik menjanjikan kemerdekaan di kemudian hari. Untuk itu dibentuk BPUPKI (Badan Penyelidik Usaha Persiapan Kemerdekaan Indonesia), diumumkan 29 April 1945 dan dilantik 28 Mei 1945.', 'Ketuanya dr. Radjiman Wedyodiningrat. BPUPKI bertugas menyelidiki dan mempersiapkan, bukan memerdekakan.'],
+          k: 'BPUPKI menyelidiki dan mempersiapkan. Yang mengesahkan nanti PPKI.',
+          s: () => SC(['#FFD9A8', '#FFF1D6'], '#C9A66B', GD, SUN(430, 46, 20, '#E5484D'),
+            H(110, 205, { a: 'talk', h: 'helm', k: '#7A7F4A', s: 1.6 }) + H(370, 205, { f: -1, a: 'talk', t: 'radjiman', s: 1.6 }) +
+            BB(110, 130, 'Kemerdekaan kelak', .8) + BB(370, 130, 'BPUPKI dibentuk', 1.8) + T(240, 30, 'BPUPKI DIBENTUK JEPANG', .1, 18, R) + T(240, 252, 'Janji kemerdekaan Jepang, 1945', 2.8, 12)) },
         { d: '28 Mei 1945', t: 'BPUPKI dilantik, pertanyaan dilempar', p: 'dr. Radjiman|BPUPKI', ms: 7000,
           n: ['BPUPKI dilantik dengan ketua dr. Radjiman Wedyodiningrat. Pertanyaan pembuka sidang: apa dasar negara Indonesia merdeka? Tiga tokoh menjawabnya pada sidang pertama (29 Mei sampai 1 Juni 1945).'],
           k: 'Ingat: BPUPKI merumuskan, PPKI mengesahkan.',
@@ -3240,6 +3267,56 @@
             T(240, 148, 'Dirumuskan 9 tokoh', .8, 13) +
             [0, 1, 2, 3, 4, 5, 6, 7, 8].map(k => E(-250, k * .12, H(36 + k * 51, 205, { a: 'talk', t: ['soekarno', 'hatta', 'yamin', 'soebardjo', 'maramis', 'kahar', 'wahid', 'abikoesno', 'salim'][k], s: 1.1, dl: k * .1 }))).join('') +
             T(240, 252, 'Naskah awal Pembukaan UUD 1945', 3.4, 12, R)) },
+        { d: '10 – 17 Juli 1945', t: 'Sidang kedua: menyusun UUD', p: 'Soekarno|Soepomo|Panitia Perancang UUD', ms: 11000, bg: 'sidang',
+          n: ['Sidang kedua BPUPKI (10–17 Juli 1945) membahas rancangan UUD, wilayah negara, kewarganegaraan, ekonomi dan keuangan, serta pembelaan negara.', 'Panitia Perancang UUD dipimpin Soekarno. Rancangan Pembukaan UUD diambil dari Piagam Jakarta.'],
+          k: 'Sidang I: dasar negara. Sidang II: rancangan UUD.',
+          s: () => SC(['#E3F6E8', '#FBFFFC'], '#9FC9B0', GD, SUN(440, 34, 16, '#FFD66B'), OR('Soekarno', 'Ketua panitia') +
+            LI(['Rancangan UUD', 'Wilayah negara', 'Kewarganegaraan', 'Ekonomi dan keuangan', 'Pembelaan negara'], 1) + T(240, 252, 'Sidang I: dasar negara · Sidang II: UUD', 6, 12, R)) },
+        { d: '6 – 9 Agustus 1945', t: 'Bom atom Hiroshima dan Nagasaki', p: 'Amerika Serikat|Jepang|Sekutu', ms: 10000, bg: 'kota',
+          n: ['Pada 6 Agustus 1945 Amerika Serikat menjatuhkan bom atom di Hiroshima, dan pada 9 Agustus di Nagasaki. Kekuatan Jepang runtuh.', 'Kaisar Hirohito lalu mengumumkan penyerahan Jepang lewat siaran radio pada 15 Agustus 1945. Inilah yang membuka kekosongan kekuasaan di Indonesia dan peluang untuk memproklamasikan kemerdekaan.'],
+          k: 'Hiroshima 6 Agustus, Nagasaki 9 Agustus, Jepang menyerah 15 Agustus 1945.',
+          s: () => SC(['#C9C2D8', '#F2E6D8'], '#9A8F9A', '#D9C9A8', SUN(60, 44, 16, '#FFB74D'),
+            '<circle class="boom" cx="333" cy="122" r="62" fill="#FFD66B" stroke="none"/>' +
+            '<g class="pop" style="animation-delay:.6s"><path d="M322 215Q314 172 326 132L342 132Q352 172 344 215Z" fill="#8E8E99" stroke="' + G + '" stroke-width="2.5"/></g>' +
+            '<g class="pop" style="animation-delay:1.1s"><ellipse cx="300" cy="132" rx="30" ry="16" fill="#9A9AA8" stroke="' + G + '" stroke-width="2.5"/><ellipse cx="366" cy="132" rx="30" ry="16" fill="#9A9AA8" stroke="' + G + '" stroke-width="2.5"/><ellipse cx="333" cy="112" rx="50" ry="28" fill="#B8B8C4" stroke="' + G + '" stroke-width="2.5"/></g>' +
+            H(70, 205, { a: 'stand', h: 'topi', k: '#CFE9F1', s: 1.5 }) + H(135, 205, { a: 'stand', h: 'peci', k: '#fff', s: 1.5 }) +
+            T(240, 28, 'BOM ATOM', .1, 20, R) + T(125, 66, '6 AGUSTUS: HIROSHIMA', 1.4, 13) + T(125, 90, '9 AGUSTUS: NAGASAKI', 2.4, 13) + BB(110, 130, 'Jepang melemah', 3.2) +
+            T(240, 252, 'Jepang menyerah 15 Agustus: Indonesia punya peluang', 4.2, 12, R)) },
+        { d: '7 – 9 Agustus 1945', t: 'PPKI dibentuk, delegasi ke Dalat', p: 'Soekarno|Hatta|Radjiman', ms: 9000, bg: 'sidang',
+          n: ['Pada 7 Agustus 1945 dibentuk PPKI (Panitia Persiapan Kemerdekaan Indonesia) dengan ketua Soekarno dan wakil Mohammad Hatta.', 'Pada 9 Agustus, Soekarno, Hatta, dan dr. Radjiman bertemu pimpinan militer Jepang di Dalat, Vietnam, dan menerima janji kemerdekaan.'],
+          k: 'PPKI: ketua Soekarno, wakil Hatta. Tugasnya mempersiapkan dan mengesahkan.',
+          s: () => SC(['#CFE9F1', '#F1FAFD'], '#8FB7C9', GD, SUN(430, 44, 18, '#FFD66B'),
+            H(150, 205, { a: 'talk', t: 'soekarno', s: 1.7 }) + H(240, 205, { a: 'talk', t: 'hatta', s: 1.7 }) + H(330, 205, { a: 'stand', t: 'radjiman', s: 1.7 }) +
+            T(240, 30, 'PPKI · 7 AGUSTUS 1945', .1, 18, R) + BB(240, 118, 'Ketua: Soekarno · Wakil: Hatta', .8) + T(240, 252, '9 Agustus: bertemu pimpinan Jepang di Dalat', 2.4, 12)) },
+        { d: '14 – 15 Agustus 1945', t: 'Jepang menyerah, pemuda mendesak', p: 'Golongan muda|Soekarno|Hatta', ms: 9000, bg: 'kota',
+          n: ['Setelah bom atom di Hiroshima dan Nagasaki, Jepang menyerah kepada Sekutu pada 14–15 Agustus 1945. Terjadi kekosongan kekuasaan di Indonesia.', 'Golongan muda mendesak proklamasi segera, tanpa menunggu hadiah dari Jepang. Golongan tua ingin membahasnya lewat PPKI.'],
+          k: 'Kekosongan kekuasaan: golongan muda mendesak, golongan tua berhati-hati.',
+          s: () => SC(['#FFE0DC', '#FFF5F3'], '#C9A0A0', GD, SUN(430, 44, 16, '#FFD66B'),
+            E(-150, .1, H(55, 205, { a: 'fight', h: 'topi', k: '#CFE9F1', s: 1.5 })) + E(-150, .3, H(115, 205, { a: 'talk', h: 'topi', k: '#FDE2E0', s: 1.5 })) +
+            H(365, 205, { f: -1, a: 'stand', t: 'soekarno', s: 1.5 }) + H(425, 205, { f: -1, a: 'stand', t: 'hatta', s: 1.5 }) +
+            T(240, 30, 'JEPANG MENYERAH', .1, 18, R) + BB(100, 130, 'Proklamasikan sekarang!', .8) + BB(390, 130, 'Bahas lewat PPKI dulu', 1.8) + T(240, 252, 'Terjadi kekosongan kekuasaan', 3, 12)) },
+        { d: '16 Agustus 1945', t: 'Rengasdengklok: dibawa pemuda', p: 'Soekarno|Hatta|Golongan muda', ms: 8500, bg: 'sawah',
+          n: ['Pada dini hari 16 Agustus 1945, golongan muda membawa Soekarno dan Hatta ke Rengasdengklok, Karawang, agar jauh dari pengaruh Jepang.', 'Setelah ada kesepakatan bahwa proklamasi dilakukan di Jakarta, keduanya kembali pada malam hari.'],
+          k: 'Rengasdengklok: Soekarno dan Hatta diamankan golongan muda.',
+          s: () => SC(['#FFE2B8', '#FFF4DC'], '#8FC98F', GD, SUN(60, 50, 18, '#FFB74D'),
+            H(160, 205, { a: 'stand', t: 'soekarno', s: 1.6 }) + H(220, 205, { a: 'stand', t: 'hatta', s: 1.6 }) + E(150, .2, H(330, 205, { f: -1, a: 'talk', h: 'topi', k: '#CFE9F1', s: 1.5 })) + E(150, .4, H(390, 205, { f: -1, a: 'fight', h: 'topi', k: '#FDE2E0', s: 1.5 })) +
+            T(240, 30, 'RENGASDENGKLOK', .1, 18, R) + BB(300, 120, 'Proklamasi harus segera', .8) + T(240, 252, 'Agar jauh dari pengaruh Jepang', 2.4, 12)) },
+        { d: '16 – 17 Agustus 1945', t: 'Teks proklamasi dirumuskan', p: 'Soekarno|Hatta|A. Soebardjo|Sayuti Melik', ms: 11000, bg: 'kota',
+          n: ['Malam 16 Agustus, teks proklamasi dirumuskan di rumah Laksamana Maeda, Jakarta, oleh Soekarno, Hatta, dan Achmad Soebardjo. Soekarno menulis, Hatta dan Soebardjo memberi usul.', 'Teks lalu diketik Sayuti Melik, dan ditandatangani Soekarno-Hatta atas nama bangsa Indonesia.'],
+          k: 'Dirumuskan di rumah Maeda, diketik Sayuti Melik, ditandatangani Soekarno-Hatta.',
+          s: () => SC(['#EFE9FB', '#FBF8FF'], '#B9A9D9', GD, SUN(440, 36, 14, '#FFD66B'),
+            H(45, 205, { a: 'talk', t: 'soekarno', s: 1.5 }) + H(95, 205, { a: 'talk', t: 'hatta', s: 1.5 }) + H(145, 205, { a: 'talk', t: 'soebardjo', s: 1.5 }) +
+            '<g class="pop" style="animation-delay:.6s"><rect x="190" y="44" width="250" height="118" rx="6" fill="#fff" stroke="' + G + '" stroke-width="2.5"/></g>' +
+            T(315, 72, 'PROKLAMASI', .8, 17, R) + T(315, 98, 'Kami bangsa Indonesia dengan ini', 1.4, 11) + T(315, 114, 'menjatakan kemerdekaan Indonesia.', 2, 11) + T(315, 146, 'Soekarno - Hatta', 2.8, 13) +
+            T(240, 30, 'RUMAH LAKSAMANA MAEDA', .1, 16, R) + T(240, 252, 'Diketik oleh Sayuti Melik', 3.4, 12, R)) },
+        { d: '17 Agustus 1945', t: 'Proklamasi kemerdekaan', p: 'Soekarno|Hatta', ms: 11000, bg: 'kota',
+          n: ['Jumat 17 Agustus 1945 pukul 10.00, di Jalan Pegangsaan Timur 56, Jakarta, Soekarno membacakan proklamasi atas nama bangsa Indonesia, didampingi Hatta.', 'Sang Saka Merah Putih dikibarkan, lalu lagu Indonesia Raya dinyanyikan.'],
+          k: '17 Agustus 1945, pukul 10.00, Jl. Pegangsaan Timur 56, dibacakan Soekarno.',
+          s: () => SC(['#9ED8F0', '#E8F6FB'], '#8FC98F', GD, SUN(60, 46, 20, '#FFD66B'),
+            '<path d="M240 56V215" stroke="' + G + '" stroke-width="3.5"/><g class="rise">' + FL(242, 60, 62, 36) + '</g>' +
+            H(170, 205, { a: 'talk', t: 'soekarno', s: 1.7 }) + H(310, 205, { a: 'stand', t: 'hatta', s: 1.7 }) +
+            [40, 90, 390, 440].map((x, k) => E(k < 2 ? -150 : 150, k * .12, H(x, 205, { a: 'cheer', h: k % 2 ? 'peci' : 'topi', k: ['#fff', '#CFE9F1', '#FBF5EA'][k % 3], it: FLG, dl: k * .1 }))).join('') +
+            T(240, 30, 'PROKLAMASI', .1, 20, R) + T(240, 252, 'Jumat, 17 Agustus 1945, pukul 10.00', 3, 12, R)) },
         { d: '18 Agustus 1945', t: 'PPKI: rumusan final', p: 'Mohammad Hatta|Ki Bagus Hadikusumo|Wahid Hasjim|Kasman|T.M. Hasan', ms: 9500,
           n: ['Setelah proklamasi, PPKI bersidang. Atas keberatan wakil daerah yang mayoritas non-Muslim, dan setelah Hatta berunding dengan tokoh Islam, kalimat kewajiban syariat dihapus demi persatuan. Sila pertama menjadi Ketuhanan Yang Maha Esa, dan Pancasila disahkan dalam Pembukaan UUD 1945.'],
           k: 'Rumusan final: 18 Agustus 1945, PPKI.',
@@ -3250,6 +3327,11 @@
             '<g class="stamp" style="--dl:2.6s"><rect x="80" y="92" width="320" height="40" rx="8" fill="#fff" stroke="#1FA971" stroke-width="3.5"/><text x="240" y="119" text-anchor="middle" style="font-size:20px;fill:#1FA971">Ketuhanan Yang Maha Esa</text></g>' +
             [50, 110, 370, 430].map((x, k) => H(x, 205, { a: 'cheer', t: ['hadiku', 'wahid', 'kasman', 'hasan'][k], dl: k * .12 })).join('') + H(240, 205, { a: 'talk', t: 'hatta', s: 1.5 }) +
             T(240, 160, 'Demi persatuan bangsa', 3.6, 13) + T(240, 252, 'Pancasila disahkan dalam Pembukaan UUD 1945', 4.4, 12, R)) }
+        , { d: 'Ringkasan', t: 'Urutan yang wajib hafal', p: 'Urutan|Tanggal', ms: 11000, bg: 'sidang',
+          n: ['Urutkan dari BPUPKI (sidang I dan II), Piagam Jakarta, PPKI, proklamasi, sampai pengesahan Pancasila dan UUD 1945.'],
+          k: 'BPUPKI merumuskan, PPKI mengesahkan. Proklamasi lebih dulu dari pengesahan.',
+          s: () => SC(['#EFE9FB', '#FBF8FF'], '#B9A9D9', GD, SUN(440, 30, 12, '#FFD66B'), H(70, 205, { a: 'point', h: 'peci', k: '#fff', s: 1.6 }) +
+            LI(['28 Mei – 1 Juni: sidang I BPUPKI', '22 Juni: Piagam Jakarta', '10 – 17 Juli: sidang II BPUPKI', '6 – 7 Agustus: Hiroshima, PPKI dibentuk', '17 Agustus: proklamasi', '18 Agustus: Pancasila dan UUD disahkan'], .4)) }
       ];
       const mkP = (id, title, hint, aria, PS) => {
         const bx = $('#' + id); if (!bx) return;
@@ -3686,6 +3768,175 @@
         UIS('Lembaga negara', 'Penegak hukum dan pemeriksa', 'MA|MK|KY|BPK', ['MA: peradilan, uji aturan di bawah UU', 'MK: uji UU terhadap UUD, sengketa pemilu', 'KY: menjaga kehormatan hakim', 'BPK: memeriksa keuangan negara'], 'MA dan MK menjalankan kekuasaan kehakiman. KY mengawasi perilaku hakim, sedangkan BPK memeriksa pengelolaan dan tanggung jawab keuangan negara.', 'MK menguji UU terhadap UUD, MA menguji peraturan di bawah UU terhadap UU.', 'kota', 'MK: UU vs UUD. MA: di bawah UU vs UU')
       ];
       mkP('sim-uud-isi', 'Animasi isi UUD 1945', 'Pembukaan, tujuan negara, jumlah bab dan pasal, sampai tugas lembaga negara. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman isi UUD 1945', UI);
+
+      // ---------- Animasi stikman: materi TIU ----------
+      const SKT = [['#DDEBFF', '#F4F8FF'], ['#FFE9C2', '#FFF7E6'], ['#E3F6E8', '#F6FCF8'], ['#F1E6FF', '#FBF7FF'], ['#FFE0DC', '#FFF5F3']];
+      const TQ = (d, t, bd, ln, ok, n, k, a, i) => ({ d, t, p: 'Stikman|Papan tulis', ms: 8500, bg: 'x', n: [n], k,
+        s: () => SC(SKT[i % 5], '#9FC9B0', GD, SUN(445, 36, 14, '#FFD66B'),
+          `<rect x="168" y="44" width="302" height="144" rx="10" fill="#fff" stroke="${G}" stroke-width="2.5"/>` + T(319, 34, bd, .1, 14, R) +
+          ln.map((x, j) => T(319, 76 + j * 30, x, .5 + j * .9, 14)).join('') + OK(319, 148, 280, ok, .5 + ln.length * .9) +
+          H(80, 205, { a, h: 'peci', k: '#fff', s: 1.8 }) + (a === 'think' ? T(112, 128, '?', .6, 24, R) : '')) });
+      const TQS = (id, nm, rows) => mkP(id, 'Animasi ' + nm, 'Tonton langkahnya lewat stikman. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi stikman ' + nm, rows.map((r, i) => TQ(...r, i)));
+      TQS('sim-tiu-analogi', 'analogi kata', [
+        ['Langkah 1', 'Tulis hubungan pasangan pertama', 'ANALOGI KATA', ['DOKTER : RUMAH SAKIT', 'Hubungan A dan B?', 'Dokter bekerja di rumah sakit'], 'RUMUS: A bekerja di B', 'Ubah pasangan pertama menjadi satu kalimat hubungan yang pendek dan spesifik.', 'Satu kalimat hubungan, jangan dua.', 'think'],
+        ['Langkah 2', 'Pasang kalimat ke pilihan', 'ANALOGI KATA', ['GURU : ?', 'Guru bekerja di ...', 'Pilihan: sekolah, buku, kapur'], 'JAWAB: SEKOLAH', 'Masukkan kalimat hubungan tadi ke pasangan kedua, lalu uji tiap pilihan.', 'Uji pilihan dengan kalimat yang sama.', 'point'],
+        ['Jebakan', 'Hubungan sama, urutan terbalik', 'JEBAKAN ANALOGI', ['DOKTER : RUMAH SAKIT', 'bukan RUMAH SAKIT : DOKTER', 'Urutan A dan B harus sama'], 'CEK URUTAN', 'Pilihan yang hubungannya benar tetapi urutannya terbalik adalah pengecoh klasik.', 'Cek urutan A dan B sebelum memilih.', 'talk']]);
+      // ---------- Diagram Venn: silogisme (tanpa stikman) ----------
+      const VC = (x, y, r, c, lb, lx, ly, dl) => `<g class="pop" style="animation-delay:${dl}s"><circle cx="${x}" cy="${y}" r="${r}" fill="${c}" fill-opacity=".4" stroke="${G}" stroke-width="2.5"/><text x="${lx}" y="${ly}" text-anchor="middle" style="font-size:14px">${lb}</text></g>`;
+      const VD = (x, y, lb, dl, c) => `<g class="pop" style="animation-delay:${dl}s"><circle cx="${x}" cy="${y}" r="6" fill="${c || '#E5484D'}" stroke="${G}" stroke-width="2"/><text x="${x}" y="${y - 11}" text-anchor="middle" style="font-size:12px">${lb}</text></g>`;
+      const CA = '#6FA8FF', CB = '#FFB74D', CC = '#7ED6A5';
+      const VP = (d, t, st, body, ok, n, k) => ({ d, t, p: 'Diagram Venn', ms: 8500, n: [n], k,
+        s: () => `<rect width="480" height="270" fill="#FBF5EA"/>` + T(240, 28, st, .1, 15, R) + body + OK(240, 228, 320, ok, 2.4) });
+      const VB = (x, y, w, h, ls, dl) => `<g class="pop" style="animation-delay:${dl}s"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="#fff" stroke="${G}" stroke-width="2.5"/>` + ls.map((q, i) => `<text x="${x + w / 2}" y="${y + h / 2 + (i - (ls.length - 1) / 2) * 17 + 5}" text-anchor="middle" style="font-size:13px">${q}</text>`).join('') + '</g>';
+      mkP('sim-tiu-silo', 'Diagram silogisme', 'Gambar premis sebagai lingkaran, lalu lihat kesimpulan yang pasti benar. Tekan Putar, atau ketuk nomor untuk melompat.', 'Diagram Venn silogisme', [
+        VP('Premis 1', 'Semua A adalah B', 'Semua A adalah B', VC(240, 135, 82, CB, 'B', 240, 72, .3) + VC(240, 160, 45, CA, 'A', 240, 164, 1), 'A TERCAKUP DALAM B', 'Premis umum "semua" digambar sebagai lingkaran kecil di dalam lingkaran besar.', 'Semua A adalah B: A di dalam B.'),
+        VP('Premis 2', 'Sebagian A adalah B', 'Sebagian A adalah B', VC(200, 135, 62, CA, 'A', 165, 64, .3) + VC(280, 135, 62, CB, 'B', 315, 64, 1) + VD(240, 135, 'ada', 1.8), 'ADA IRISAN, BUKAN SEMUA', 'Kata "sebagian" digambar sebagai dua lingkaran yang beririsan, dengan titik di irisannya.', 'Sebagian: ada irisan, tidak harus semua.'),
+        VP('Premis 3', 'Tidak ada A yang B', 'Tidak ada A yang B', VC(145, 135, 58, CA, 'A', 145, 70, .3) + VC(335, 135, 58, CB, 'B', 335, 70, 1), 'DUA LINGKARAN TERPISAH', 'Premis negatif digambar sebagai dua lingkaran yang tidak bersentuhan.', 'Tidak ada: terpisah sama sekali.'),
+        VP('Premis 4', 'Sebagian A bukan B', 'Sebagian A bukan B', VC(205, 135, 62, CA, 'A', 170, 64, .3) + VC(285, 135, 62, CB, 'B', 320, 64, 1) + VD(165, 135, 'ada', 1.8), 'ADA A DI LUAR B', 'Titik diletakkan di bagian A yang tidak masuk B.', 'Sebagian bukan: ada titik di luar irisan.'),
+        VP('Kesimpulan 1', 'Tiga lingkaran bersarang', 'Semua A adalah B; semua B adalah C', VC(240, 135, 82, CC, 'C', 240, 70, .3) + VC(240, 152, 58, CB, 'B', 240, 108, 1) + VC(240, 170, 32, CA, 'A', 240, 174, 1.7), 'MAKA SEMUA A ADALAH C', 'Bila A di dalam B dan B di dalam C, maka A pasti di dalam C.', 'Bersarang: kesimpulan pasti benar.'),
+        VP('Kesimpulan 2', 'Titik di dalam A', 'Semua A adalah B; Budi adalah A', VC(240, 135, 82, CB, 'B', 240, 72, .3) + VC(240, 160, 45, CA, 'A', 240, 190, 1) + VD(240, 150, 'Budi', 1.8), 'MAKA BUDI ADALAH B', 'Budi di dalam A, dan A di dalam B, jadi Budi pasti di dalam B.', 'Titik di dalam A pasti di dalam B.'),
+        VP('Jebakan', 'Premis dibalik', 'Semua A adalah B; Budi adalah B', VC(240, 135, 82, CB, 'B', 240, 72, .3) + VC(210, 158, 38, CA, 'A', 210, 184, 1) + VD(210, 158, 'Budi?', 1.8) + VD(290, 125, 'Budi?', 2), 'BUDI A? TIDAK PASTI', 'Budi di dalam B bisa saja di dalam A, bisa juga tidak. Kesimpulan tidak pasti.', 'Jangan membalik: B belum tentu A.'),
+        VP('Kesimpulan 3', 'Premis negatif', 'Tidak ada A yang B; Budi adalah A', VC(145, 135, 58, CA, 'A', 145, 70, .3) + VC(335, 135, 58, CB, 'B', 335, 70, 1) + VD(145, 140, 'Budi', 1.8) + T(335, 140, 'Budi tidak di sini', 2, 12, R), 'MAKA BUDI BUKAN B', 'Karena A dan B terpisah, titik di A pasti bukan di B.', 'Tidak ada: yang di A bukan B.'),
+        VP('Kesimpulan 4', 'Sebagian dan semua', 'Sebagian A adalah B; semua B adalah C', VC(290, 135, 88, CC, 'C', 372, 62, .3) + VC(225, 135, 50, CA, 'A', 190, 80, 1) + VC(290, 135, 55, CB, 'B', 330, 96, 1.5) + VD(255, 135, 'ada', 2), 'MAKA SEBAGIAN A ADALAH C', 'Irisan A dan B berada di dalam B, sehingga juga di dalam C.', 'Sebagian + semua: sebagian.'),
+        VP('Kontraposisi', 'Jika p maka q', 'Jika p maka q; Budi bukan q', VC(240, 135, 82, CB, 'q', 240, 72, .3) + VC(240, 160, 45, CA, 'p', 240, 164, 1) + VD(415, 135, 'Budi', 1.8) + T(415, 162, 'di luar q', 2, 12), 'MAKA BUDI BUKAN p', 'Titik di luar q pasti di luar p, karena p seluruhnya ada di dalam q.', 'Bukan q, maka bukan p.'),
+        { d: 'Negasi', t: 'Pasangan negasi yang wajib hafal', p: 'Tabel negasi', ms: 8500, n: ['Negasi pernyataan "semua" adalah "ada yang tidak", bukan "tidak ada". Negasi "ada" adalah "tidak ada satu pun".'], k: 'Semua dan ada saling berlawanan.',
+          s: () => `<rect width="480" height="270" fill="#FBF5EA"/>` + T(240, 28, 'Pernyataan dan negasinya', .1, 15, R) +
+            [['Semua A adalah B', 'Ada A yang bukan B'], ['Ada A yang B', 'Tidak ada A yang B'], ['Jika p maka q', 'p dan bukan q']].map((r, i) => VB(20, 50 + i * 55, 190, 40, [r[0]], .4 + i * .9) + T(240, 76 + i * 55, '↔', .6 + i * .9, 22, R) + VB(270, 50 + i * 55, 190, 40, [r[1]], .6 + i * .9)).join('') + OK(240, 228, 320, 'HAFALKAN PASANGANNYA', 3.4) },
+        { d: 'Alur', t: 'Empat langkah mengerjakan', p: 'Alur silogisme', ms: 8500, n: ['Gambar tiap premis, gabungkan menjadi satu diagram, uji tiap pilihan dengan gambar itu, lalu pilih yang pasti benar.'], k: 'Pilih kesimpulan yang pasti benar, bukan yang mungkin.',
+          s: () => `<rect width="480" height="270" fill="#FBF5EA"/>` + T(240, 28, 'Alur mengerjakan silogisme', .1, 15, R) +
+            [['1. Gambar', 'tiap premis'], ['2. Gabung', 'jadi satu diagram'], ['3. Uji', 'tiap pilihan'], ['4. Pilih', 'yang pasti benar']].map((r, i) => VB(12 + i * 118, 90, 104, 70, r, .4 + i * .8) + (i < 3 ? T(122 + i * 118, 130, '→', .8 + i * .8, 20, R) : '')).join('') + OK(240, 228, 320, 'PASTI BENAR, BUKAN MUNGKIN', 3.6) }
+      ]);
+      TQS('sim-tiu-analitis', 'analitis', [
+        ['Susun', 'Ubah cerita menjadi tabel posisi', 'ANALITIS', ['3 orang: A, B, C', 'A di kiri B', 'C tidak di ujung'], 'BUAT 3 KOTAK: 1 2 3', 'Gambar kotak posisi lebih dulu, lalu isi satu per satu.', 'Visualkan sebelum menalar.', 'think'],
+        ['Coret', 'Mulai dari syarat paling pasti', 'ANALITIS', ['C tidak di ujung', 'maka C di posisi 2', 'A kiri B: A = 1, B = 3'], 'URUTAN: A, C, B', 'Mulai dari syarat yang paling membatasi, lalu isi sisanya.', 'Syarat paling pasti dikerjakan dulu.', 'point'],
+        ['Cek', 'Uji semua syarat', 'ANALITIS', ['A(1) C(2) B(3)', 'A di kiri B: ya', 'C tidak di ujung: ya'], 'SEMUA SYARAT LOLOS', 'Cocokkan urutan akhir dengan setiap syarat sebelum menjawab.', 'Satu syarat gagal, urutan salah.', 'cheer']]);
+      TQS('sim-tiu-argumen', 'argumen', [
+        ['Kerangka', 'Bukti, kesimpulan, celah', 'ARGUMEN', ['BUKTI: siswa sakit menurun', 'KESIMPULAN: susu penyebabnya', 'CELAH: penyebab lain?'], 'CARI CELAHNYA', 'Baca bukti dan kesimpulan, lalu tanya apa celah di antara keduanya.', 'Jawaban selalu menyentuh celah.', 'think'],
+        ['Memperlemah', 'Buka celahnya', 'MEMPERLEMAH', ['Air bersih diperbaiki juga', 'Itu penyebab lain', 'Susu belum tentu sebab'], 'MEMPERLEMAH', 'Penyebab lain yang muncul bersamaan melemahkan kesimpulan.', 'Penyebab lain: memperlemah.', 'talk'],
+        ['Memperkuat', 'Tutup celahnya', 'MEMPERKUAT', ['Sekolah tanpa susu: tetap', 'Itu kelompok pembanding', 'Susu lebih mungkin sebab'], 'MEMPERKUAT', 'Kelompok pembanding yang tidak berubah menutup penjelasan lain.', 'Pembanding: memperkuat.', 'cheer']]);
+      TQS('sim-tiu-hitung', 'berhitung', [
+        ['Urutan', 'Pangkat dulu, tambah belakangan', 'URUTAN OPERASI', ['8 + 6 × 3² ÷ 2', '= 8 + 6 × 9 ÷ 2', '= 8 + 27'], 'HASIL: 35', 'Kurung, pangkat, kali dan bagi dari kiri, lalu tambah dan kurang.', 'KUPAKA-KABATA.', 'point'],
+        ['Trik', 'Kali 25 itu bagi 4', 'TRIK CEPAT', ['25 × 48', '= 100 × 12', '= 1.200'], 'KALI 25: ÷ 4 × 100', 'Ubah perkalian sulit menjadi bilangan bulat yang mudah.', 'Cari kelipatan 100.', 'cheer'],
+        ['Persen', 'Pecah jadi 10% dan 5%', 'PERSEN CEPAT', ['15% × 80', '10% = 8, 5% = 4', '8 + 4'], 'HASIL: 12', 'Persen sulit dipecah menjadi 10% dan 5%.', '10% geser koma, 5% setengahnya.', 'talk']]);
+      TQS('sim-tiu-deret', 'deret angka', [
+        ['Beda tetap', 'Selisih sama terus', 'DERET', ['3, 7, 11, 15, ?', 'selisih +4 tetap', '15 + 4'], 'JAWAB: 19', 'Cek selisih antarsuku lebih dulu.', 'Selisih sama berarti aritmetika.', 'point'],
+        ['Selisih naik', 'Selisihnya punya pola', 'DERET', ['1, 2, 4, 7, 11, ?', 'selisih: 1, 2, 3, 4', 'selisih berikutnya +5'], 'JAWAB: 16', 'Bila selisih tidak rata, cek selisih dari selisih.', 'Selisih ikut naik.', 'think'],
+        ['Selang-seling', 'Pisahkan dua deret', 'DERET', ['2, 5, 4, 8, 6, 11, ?', 'ganjil: 2, 4, 6, lalu 8', 'genap: 5, 8, 11'], 'JAWAB: 8', 'Bila naik turun, pisahkan posisi ganjil dan genap.', 'Jangan jadikan satu deret.', 'talk']]);
+      TQS('sim-tiu-poltab', 'pola bilangan tabel', [
+        ['Pengali', 'Cari tambahan tiap urutan', 'POLA TABEL', ['Urutan 5 → nilai 27', 'Urutan 8 → nilai 39', 'a = 12 ÷ 3'], 'PENGALI a = 4', 'Selisih nilai dibagi selisih urutan memberi pengali.', 'Bagi dengan selisih urutan, bukan 1.', 'point'],
+        ['Rumus', 'Cari b lalu uji', 'POLA TABEL', ['b = 27 − 4 × 5 = 7', 'U = 4n + 7', 'Cek: 4 × 8 + 7 = 39'], 'RUMUS: 4n + 7', 'Cari penyesuai b dari satu baris, lalu uji di baris lain.', 'Selalu cek di baris lain.', 'think'],
+        ['Jawab', 'Masukkan urutan yang ditanya', 'POLA TABEL', ['U20 = 4 × 20 + 7', '= 80 + 7', 'tanpa hitung satu per satu'], 'JAWAB: 87', 'Pakai rumus, jangan menghitung suku demi suku.', 'Jangan lupa tambah b.', 'cheer']]);
+      TQS('sim-tiu-banding', 'perbandingan kuantitatif', [
+        ['Pecahan', 'Kali silang', 'BANDING', ['P = 3/7, Q = 4/9', '3 × 9 = 27', '4 × 7 = 28'], 'P LEBIH KECIL', 'Kali silang untuk membandingkan dua pecahan tanpa desimal.', 'Pembilang kali penyebut lawan.', 'point'],
+        ['Variabel', 'Coba beberapa nilai', 'BANDING', ['P = x², Q = x', 'x = 2: P lebih besar', 'x = 0,5: P lebih kecil'], 'TIDAK DAPAT DITENTUKAN', 'Bila hasil berbalik saat nilai diganti, jawabannya tidak dapat ditentukan.', 'Uji 0, 1, pecahan, dan bilangan besar.', 'think'],
+        ['Pangkat', 'Hitung sampai pasti', 'BANDING', ['P = 2¹⁰, Q = 10³', '2¹⁰ = 1.024', '10³ = 1.000'], 'P LEBIH BESAR', 'Hitung keduanya bila memungkinkan, lalu bandingkan.', 'Baca definisi pilihan dulu.', 'talk']]);
+      TQS('sim-tiu-cerita', 'soal cerita', [
+        ['Menyusul', 'Kecepatan dikurang', 'SOAL CERITA', ['Andi 60 km/jam, jalan 07.00', 'Budi 80 km/jam, jalan 08.00', 'unggul 60 km, ÷ 20 km/jam'], '3 JAM → PUKUL 11.00', 'Searah, kecepatan dikurang. Jarak awal dibagi selisih kecepatan.', 'Cek: 240 km sama.', 'point'],
+        ['Kerja bareng', 'Jumlahkan per hari', 'SOAL CERITA', ['A 6 hari, B 3 hari', '1/6 + 1/3 = 1/2', '1 ÷ 1/2'], 'JAWAB: 2 HARI', 'Jumlahkan bagian kerja per hari, lalu balik.', 'Pasti lebih cepat dari 3 hari.', 'think'],
+        ['Rata-rata', 'Pakai total, bukan rata-rata', 'SOAL CERITA', ['5 siswa, rata-rata 70', '350 + 82 = 432', '432 ÷ 6'], 'JAWAB: 72', 'Ubah rata-rata menjadi total dulu, tambahkan, lalu bagi banyak data baru.', 'Jumlah data ikut berubah.', 'talk']]);
+      TQS('sim-tiu-ctabel', 'soal cerita tabel', [
+        ['Saringan', 'Ketentuan itu saringan', 'CERITA TABEL', ['Ketentuan = saringan', 'Opsi melanggar → coret', 'Hitung harga yang lolos'], 'SARING DULU', 'Coret opsi yang melanggar ketentuan sebelum menghitung harga.', 'Hitung harga paling akhir.', 'think'],
+        ['Coret', 'Gugurkan satu per satu', 'CERITA TABEL', ['E tanpa Alfa: gugur', 'B, Beta 2: gugur', 'D lebih 3 m: gugur'], 'TINGGAL A DAN C', 'Mulai dari ketentuan yang paling cepat dicek.', 'Sama seperti seleksi administrasi.', 'point'],
+        ['Hitung', 'Harga hanya yang lolos', 'CERITA TABEL', ['A = Rp138.000', 'C = Rp147.000', 'Beda 1 Alfa lawan 1 Beta'], 'JAWAB: A', 'Hitung dua opsi yang lolos, atau bandingkan selisih barangnya saja.', 'Pakai trik selisih.', 'cheer']]);
+      TQS('sim-tiu-kecdata', 'kecukupan data', [
+        ['Uji', 'Satu-satu, jangan dicampur', 'KECUKUPAN DATA', ['(1) saja cukup?', '(2) saja cukup?', 'Gabung hanya bila gagal'], 'UJI SATU-SATU', 'Cukup berarti menghasilkan satu jawaban pasti.', 'Jangan hitung sampai akhir.', 'think'],
+        ['Contoh', 'Kelereng biru di Kotak B', 'KECUKUPAN DATA', ['(1) rasio 3 : 2: b belum pasti', '(2) 50 − 30 = 20: b pasti', '(2) saja cukup'], 'JAWAB: B', 'Pernyataan (1) hanya memberi rasio, (2) memberi angka nyata.', 'Rasio saja belum cukup.', 'point'],
+        ['Gabung', 'Gagal sendiri, berhasil berdua', 'KECUKUPAN DATA', ['(1) tidak cukup', '(2) tidak cukup', 'Digabung jadi pasti'], 'JAWAB: C', 'Gabungkan hanya bila keduanya gagal sendirian.', 'Gagal gabung: E.', 'cheer']]);
+      TQS('sim-tiu-figanalogi', 'analogi gambar', [
+        ['Aturan', 'Tulis aturan A ke B', 'ANALOGI GAMBAR', ['■ : □', 'aturan: warna dibalik', '● : ?'], 'JAWAB: ○', 'Cari satu aturan, lalu terapkan ke gambar C.', 'Aturan dulu, baru C.', 'think'],
+        ['Putaran', 'Putar bukan cermin', 'ANALOGI GAMBAR', ['L → diputar 90°', 'bendera → putar 90° juga', 'cermin = bentuk beda'], 'PUTAR, BUKAN CERMIN', 'Putar dan cermin menghasilkan bentuk yang berbeda.', 'Putar tidak membalik.', 'point'],
+        ['Jumlah', 'Jumlah bertambah satu', 'ANALOGI GAMBAR', ['● → ●●', '▲▲ → ?', 'jumlah + 1'], 'JAWAB: ▲▲▲', 'Bentuk dan warna tetap, jumlah naik satu.', 'Ubah hanya satu ciri.', 'talk']]);
+      TQS('sim-tiu-figbeda', 'ketidaksamaan gambar', [
+        ['Ciri', 'Periksa satu ciri sekali', 'KETIDAKSAMAAN', ['Bentuk, warna, jumlah', 'Arah, ukuran', 'Satu ciri per putaran'], 'JANGAN MENATAP', 'Periksa satu ciri pada semua gambar, lalu pindah ke ciri lain.', 'Jangan menatap gambar sama.', 'think'],
+        ['Cermin', 'Si cermin itu beda', 'KETIDAKSAMAAN', ['L  L  L  L  L', 'satu L dicerminkan', 'tak bisa dicapai diputar'], 'SI CERMIN = BEDA', 'Gambar yang dicerminkan selalu menjadi si berbeda.', 'Putar-putar dulu di kepala.', 'point'],
+        ['Warna', 'Yang sendirian', 'KETIDAKSAMAAN', ['■ ■ □ ■ ■', 'satu putih sendiri', 'sisanya hitam'], 'SENDIRI = JAWABAN', 'Cari ciri yang hanya dimiliki satu gambar.', 'Sendiri = berbeda.', 'cheer']]);
+      TQS('sim-tiu-figserial', 'serial gambar', [
+        ['Jumlah', 'Bertambah tiap langkah', 'SERIAL', ['▲ → ▲▲ → ▲▲▲ → ?', 'jumlah + 1', 'berikutnya empat'], 'JAWAB: ▲▲▲▲', 'Satu ciri berubah dengan aturan tetap.', 'Cari aturan tetapnya.', 'point'],
+        ['Putaran', 'Putar tetap tiap langkah', 'SERIAL', ['0° → 90° → 180° → ?', 'putar 90° tiap kali', 'berikutnya 270°'], 'JAWAB: 270°', 'Putaran tetap dihitung searah.', 'Cek arah putaran.', 'think'],
+        ['Matriks', 'Baca baris dan kolom', 'SERIAL', ['Matriks 3 × 3', 'baca per baris', 'lalu per kolom'], 'POLA SAMA TIAP BARIS', 'Pada matriks, aturan berlaku sama pada tiap baris atau kolom.', 'Cek baris dan kolom.', 'talk']]);
+
+      // ---------- Lab Venn silogisme interaktif ----------
+      (function () {
+        const bx = $('#sim-tiu-silo-lab'); if (!bx) return;
+        const sty = document.createElement('style');
+        sty.textContent = `.vn-chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.vn-chips button{width:34px;height:34px;border:var(--out);border-radius:50%;background:#fff;font-weight:800}.vn-chips button.on{background:var(--brand);color:#fff}.vn-chips button.ok{background:#CDEFD9;color:#14161C}.vn-chips button.no{background:#FAD4D0;color:#14161C}
+.vn-pr{padding:10px 14px;border:var(--out);border-radius:14px;background:var(--cream);font-weight:700;font-size:15px;line-height:1.6}.vn-pr small{display:block;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--red)}
+.vn-sv{width:100%;display:block;margin-top:10px;border:var(--out);border-radius:18px;box-shadow:0 3px 0 #14161C;background:radial-gradient(circle at 50% 40%,#fff,#FBF5EA);touch-action:none}
+.vn-sv .c{stroke:#14161C;stroke-width:2.5;fill-opacity:.42;transition:cx .8s cubic-bezier(.3,1.35,.5,1),cy .8s cubic-bezier(.3,1.35,.5,1),r .8s cubic-bezier(.3,1.35,.5,1),opacity .5s}
+.vn-sv .lb{font-weight:800;font-size:14px;fill:#14161C;pointer-events:none;text-anchor:middle;transition:transform .8s cubic-bezier(.3,1.35,.5,1),opacity .5s}
+.vn-dot{cursor:grab;transition:transform .8s cubic-bezier(.3,1.35,.5,1),opacity .4s}.vn-dot.dr{transition:none;cursor:grabbing}
+.vn-dot .d{fill:#E5484D;stroke:#14161C;stroke-width:2}.vn-dot .rg{fill:none;stroke:#E5484D;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:vnRing 1.6s ease-out infinite}.vn-dot text{font-weight:800;font-size:12px;text-anchor:middle;pointer-events:none}
+@keyframes vnRing{from{transform:scale(1);opacity:.9}to{transform:scale(2.6);opacity:0}}
+.vn-rd{margin-top:8px;font-size:13.5px;font-weight:700;color:var(--ink-soft)}.vn-q{margin-top:12px;font-weight:800;font-size:16px}
+.vn-opt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.vn-opt button{padding:11px 6px;border:var(--out);border-radius:12px;background:#fff;font-weight:800;font-size:13.5px;box-shadow:0 3px 0 #14161C}.vn-opt button:active{transform:translateY(2px);box-shadow:0 1px 0 #14161C}.vn-opt button.good{background:#CDEFD9}.vn-opt button.bad{background:#FAD4D0}
+.vn-fb{display:none;margin-top:10px;padding:10px 14px;border-left:4px solid var(--red);background:#fff;border-radius:0 10px 10px 0;font-size:14px;line-height:1.6}.vn-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;font-weight:800;font-size:13.5px}
+@media (prefers-reduced-motion:reduce){.vn-sv .c,.vn-sv .lb,.vn-dot{transition:none}.vn-dot .rg{animation:none}}`;
+        document.head.appendChild(sty);
+        const CO = { A: '#6FA8FF', B: '#FFB74D', C: '#7ED6A5' }, OP = ['Pasti benar', 'Belum tentu', 'Pasti salah'];
+        const PT = [
+          { pr: ['Semua A adalah B', 'Budi adalah A'], q: 'Budi adalah B', a: 0, ex: 'Budi ada di dalam A, dan A seluruhnya di dalam B. Jadi Budi pasti di dalam B.', c: { B: [240, 135, 86], A: [240, 160, 46] }, d: [[240, 160, 'Budi']] },
+          { pr: ['Semua A adalah B', 'Budi adalah B'], q: 'Budi adalah A', a: 1, ex: 'Budi di dalam B bisa saja di dalam A, bisa juga di bagian B yang bukan A. Geser titiknya: dua-duanya mungkin. Jangan membalik premis.', c: { B: [240, 135, 86], A: [210, 158, 38] }, d: [[290, 120, 'Budi']] },
+          { pr: ['Semua A adalah B', 'Semua B adalah C'], q: 'Semua A adalah C', a: 0, ex: 'Tiga lingkaran bersarang: A di dalam B, B di dalam C. Maka A pasti di dalam C.', c: { C: [240, 135, 88], B: [240, 152, 62], A: [240, 172, 34] }, d: [] },
+          { pr: ['Tidak ada A yang B', 'Budi adalah A'], q: 'Budi adalah B', a: 2, ex: 'A dan B terpisah total. Titik di A tidak mungkin berada di B. Coba seret Budi ke B: tidak ada tempat untuknya.', c: { A: [140, 135, 58], B: [340, 135, 58] }, d: [[140, 135, 'Budi']] },
+          { pr: ['Sebagian A adalah B', 'Semua B adalah C'], q: 'Sebagian A adalah C', a: 0, ex: 'Irisan A dan B berada di dalam B, dan B di dalam C. Maka irisan itu juga di dalam C, jadi sebagian A adalah C.', c: { C: [290, 135, 90], B: [290, 135, 56], A: [222, 135, 52] }, d: [[252, 135, 'ada']] },
+          { pr: ['Sebagian A adalah B'], q: 'Semua A adalah B', a: 1, ex: 'Sebagian hanya menjamin ada irisan. Bisa jadi semua A masuk B, bisa jadi tidak. Kata sebagian tidak boleh diubah menjadi semua.', c: { A: [205, 135, 64], B: [275, 135, 64] }, d: [[240, 135, 'ada']] },
+          { pr: ['Jika p maka q', 'Budi bukan q'], q: 'Budi adalah p', a: 2, ex: 'Kontraposisi: bukan q maka bukan p. Budi di luar q, dan p seluruhnya di dalam q, jadi Budi pasti bukan p.', nm: { A: 'p', B: 'q' }, c: { B: [240, 135, 86], A: [240, 160, 46] }, d: [[410, 135, 'Budi']] }
+        ];
+        let i = 0, sc = 0; const done = PT.map(() => -1), pos = PT.map(p => p.d.map(x => [x[0], x[1]]));
+        bx.innerHTML = `<h4>Lab Venn: geser, tebak, lihat jawabannya</h4><p class="hint">Pilih soal, geser titik merah, lalu tebak kesimpulannya. Lingkaran bergeser sendiri sesuai premis.</p><div class="vn-chips"></div><div class="vn-pr"></div>
+          <svg class="vn-sv" viewBox="0 0 480 270" role="img" aria-label="Lab diagram Venn silogisme">${['C', 'B', 'A'].map(k => `<circle class="c" data-k="${k}" fill="${CO[k]}" style="cx:240px;cy:135px;r:0px;opacity:0"/>`).join('')}${['C', 'B', 'A'].map(k => `<text class="lb" data-l="${k}" style="opacity:0"></text>`).join('')}${[0, 1].map(j => `<g class="vn-dot" data-j="${j}" style="opacity:0"><circle class="rg" r="8"/><circle class="d" r="8"/><text y="-13"></text></g>`).join('')}</svg>
+          <div class="vn-rd"></div><div class="vn-q"></div><div class="vn-opt">${OP.map((o, k) => `<button data-k="${k}">${o}</button>`).join('')}</div><div class="vn-fb"></div>
+          <div class="vn-bar"><span class="vn-sc"></span><button class="btn" data-a="next">Soal berikutnya</button></div>`;
+        const sv = $('.vn-sv', bx), ch = $('.vn-chips', bx), fb = $('.vn-fb', bx), rd = $('.vn-rd', bx), ob = $$('.vn-opt button', bx);
+        ch.innerHTML = PT.map((_, k) => `<button data-i="${k}" aria-label="Soal ${k + 1}">${k + 1}</button>`).join('');
+        const dots = $$('.vn-dot', sv);
+        function readout() {
+          const P = PT[i]; if (!P.d.length) { rd.textContent = 'Soal ini tanpa titik. Perhatikan susunan lingkarannya.'; return; }
+          const [x, y] = pos[i][0], inn = Object.keys(P.c).filter(k => Math.hypot(x - P.c[k][0], y - P.c[k][1]) <= P.c[k][2]).map(k => (P.nm || {})[k] || k);
+          rd.textContent = 'Titik ' + P.d[0][2] + ' sekarang ' + (inn.length ? 'berada di: ' + inn.join(' dan ') : 'di luar semua lingkaran') + '.';
+        }
+        function load() {
+          const P = PT[i]; clearTimeout(load.t);
+          ['A', 'B', 'C'].forEach(k => { const c = $('.c[data-k="' + k + '"]', sv), l = $('.lb[data-l="' + k + '"]', sv), g = P.c[k];
+            if (g) { c.style.cssText = `cx:${g[0]}px;cy:${g[1]}px;r:${g[2]}px;opacity:1`; l.textContent = (P.nm || {})[k] || k; l.style.transform = `translate(${g[0]}px,${g[1] - g[2] + 17}px)`; l.style.opacity = 1; }
+            else { c.style.opacity = 0; c.style.r = '0px'; l.style.opacity = 0; } });
+          dots.forEach((d, j) => { const q = P.d[j]; if (q) { d.style.opacity = 1; d.style.transform = `translate(${pos[i][j][0]}px,${pos[i][j][1]}px)`; $('text', d).textContent = q[2]; } else d.style.opacity = 0; });
+          $('.vn-pr', bx).innerHTML = '<small>Premis</small>' + P.pr.map((t, k) => `<span>${k + 1}. ${t}</span>`).join('');
+          $('.vn-q', bx).textContent = 'Kesimpulan: ' + P.q;
+          $$('button', ch).forEach((b, k) => { b.className = (k === i ? 'on ' : '') + (done[k] < 0 ? '' : done[k] === PT[k].a ? 'ok' : 'no'); });
+          ob.forEach((b, k) => { b.className = ''; b.disabled = done[i] >= 0; if (done[i] >= 0) b.className = k === P.a ? 'good' : k === done[i] ? 'bad' : ''; });
+          fb.style.display = done[i] >= 0 ? 'block' : 'none'; if (done[i] >= 0) fb.innerHTML = (done[i] === P.a ? '<b>Tepat.</b> ' : '<b>Belum tepat.</b> Jawabannya: ' + OP[P.a] + '. ') + P.ex;
+          $('.vn-sc', bx).textContent = 'Benar ' + sc + ' dari ' + PT.length; readout();
+        }
+        ob.forEach((b, k) => b.onclick = () => { if (done[i] >= 0) return; done[i] = k; if (k === PT[i].a) sc++; load(); });
+        $$('button', ch).forEach(b => b.onclick = () => { i = +b.dataset.i; load(); });
+        $('[data-a="next"]', bx).onclick = () => { i = (i + 1) % PT.length; load(); };
+        dots.forEach((d, j) => {
+          d.onpointerdown = e => { d.setPointerCapture(e.pointerId); d.classList.add('dr'); e.preventDefault(); };
+          d.onpointermove = e => { if (!d.classList.contains('dr')) return; const r = sv.getBoundingClientRect(), x = Math.max(14, Math.min(466, (e.clientX - r.left) * 480 / r.width)), y = Math.max(24, Math.min(256, (e.clientY - r.top) * 270 / r.height)); pos[i][j] = [x, y]; d.style.transform = `translate(${x}px,${y}px)`; if (j === 0) readout(); };
+          d.onpointerup = d.onpointercancel = () => d.classList.remove('dr');
+        });
+        load();
+      })();
+
+      // ---------- Alur sejarah lembaga negara ----------
+      const LGB = (x, y, w, t, dl, f) => `<g class="pop" style="animation-delay:${dl}s"><rect x="${x}" y="${y}" width="${w}" height="30" rx="8" fill="${f || '#fff'}" stroke="${G}" stroke-width="2.2"/><text x="${x + w / 2}" y="${y + 19}" text-anchor="middle" style="font-size:${Math.max(8.5, Math.min(11.5, w * .92 / (t.length * .62))).toFixed(1)}px">${t}</text></g>`;
+      const LGR = (a, y, dl, f) => { const g = 5, w = (360 - g * (a.length - 1)) / a.length; return a.map((t, k) => LGB(110 + k * (w + g), y, w, t, dl + k * .35, f)).join(''); };
+      const LG = (d, t, p, top, rows, ft, n, k, i) => ({ d, t, p, ms: 9500, bg: 'sidang', n, k,
+        s: () => SC(SKT[i % 5], '#9FC9B0', GD, SUN(440, 30, 12, '#FFD66B'), LGB(110, 44, 360, top[0], .3, top[1]) + rows.map((r, j) => LGR(r, 92 + j * 48, 1 + j * 1.2, '#fff')).join('') +
+          H(50, 205, { a: i % 2 ? 'point' : 'talk', h: ['peci', 'blangkon', 'topi'][i % 3], k: '#fff', s: 1.5 }) + T(300, 252, ft, 3, 12, R)) });
+      mkP('sim-alur-lembaga', 'Alur sejarah lembaga negara', 'Dari UUD 1945 asli sampai peta lembaga sekarang. Tekan Putar, atau ketuk nomor untuk melompat.', 'Animasi alur sejarah lembaga negara', [
+        ['18 Agustus 1945', 'UUD 1945 asli: MPR lembaga tertinggi', 'MPR|UUD 1945', ['MPR: lembaga tertinggi negara', '#FFE29A'], [['Presiden', 'DPR', 'DPA', 'BPK', 'MA']], 'Kedaulatan rakyat dijalankan penuh oleh MPR', ['Sebelum amandemen, MPR adalah lembaga tertinggi negara pemegang kedaulatan rakyat. Di bawahnya ada lembaga tinggi negara: Presiden, DPR, DPA, BPK, dan MA.', 'Presiden bertanggung jawab kepada MPR dan disebut mandataris MPR.'], 'Sebelum amandemen: MPR tertinggi, ada lima lembaga tinggi termasuk DPA.'],
+        ['1945 – 1949', 'Masa darurat: KNIP membantu Presiden', 'KNIP|Maklumat', ['Aturan Peralihan: Presiden dibantu KNIP', '#FFE29A'], [['KNIP', 'Presiden', 'Kabinet']], '14 Nov 1945: kabinet bertanggung jawab ke KNIP', ['MPR, DPR, dan DPA belum terbentuk. Menurut Aturan Peralihan, Presiden dibantu Komite Nasional (KNIP). Maklumat 16 Oktober 1945 memberi KNIP kekuasaan legislatif.', 'Maklumat Pemerintah 14 November 1945 mengubah sistem menjadi parlementer: menteri bertanggung jawab kepada KNIP.'], 'KNIP: Komite Nasional Indonesia Pusat. 14 November 1945: parlementer.'],
+        ['27 Des 1949 – 1950', 'Konstitusi RIS: negara serikat', 'RIS|Senat', ['Republik Indonesia Serikat', '#CFE9F1'], [['Presiden', 'Senat', 'DPR'], ['Mahkamah Agung', 'Dewan Pengawas Keuangan']], 'Dua kamar: Senat mewakili negara bagian', ['Hasil Konferensi Meja Bundar: Indonesia berbentuk negara serikat (RIS) dengan Konstitusi RIS. Lembaganya: Presiden, Senat, DPR, Mahkamah Agung, dan Dewan Pengawas Keuangan.', 'Senat mewakili negara bagian, DPR mewakili rakyat. Ini bentuk dua kamar (bikameral).'], 'KMB: RIS punya Senat dan DPR. Bentuk negara serikat, bukan kesatuan.'],
+        ['1950 – 1959', 'UUDS 1950: demokrasi parlementer', 'UUDS 1950|Konstituante', ['Kembali negara kesatuan', '#FFE29A'], [['Presiden', 'Perdana Menteri', 'DPR'], ['Konstituante', 'MA', 'Pengawas Keuangan']], 'Konstituante hasil Pemilu 1955 gagal', ['Pada 17 Agustus 1950 Indonesia kembali menjadi negara kesatuan dengan UUDS 1950. Sistemnya parlementer: kabinet bertanggung jawab kepada DPR, Presiden hanya kepala negara.', 'Konstituante hasil Pemilu 1955 ditugasi menyusun UUD baru, tetapi gagal mencapai kesepakatan.'], 'UUDS 1950: parlementer, ada Konstituante, kabinet sering berganti.'],
+        ['5 Juli 1959', 'Dekrit Presiden: kembali ke UUD 1945', 'Dekrit|Soekarno', ['Dekrit Presiden 5 Juli 1959', '#F9B8B0'], [['Kembali ke UUD 1945', 'Konstituante dibubarkan', 'Bentuk MPRS dan DPAS']], 'Konstituante gagal, Presiden mengeluarkan dekrit', ['Karena Konstituante gagal dan situasi politik tidak stabil, Presiden Soekarno mengeluarkan Dekrit Presiden pada 5 Juli 1959.', 'Isinya: kembali ke UUD 1945, membubarkan Konstituante, serta membentuk MPRS dan DPAS.'], 'Tiga isi dekrit: UUD 1945 berlaku lagi, Konstituante bubar, MPRS dan DPAS dibentuk.'],
+        ['1959 – 1966', 'Demokrasi Terpimpin', 'MPRS|DPR-GR|DPAS', ['Presiden berkuasa besar', '#FFE29A'], [['MPRS', 'DPR-GR', 'DPAS', 'BPK', 'MA']], 'Terjadi penyimpangan dari UUD 1945', ['Pada masa Demokrasi Terpimpin, lembaga negara berada di bawah kepemimpinan Presiden: MPRS, DPR-GR (Gotong Royong), DPAS, BPK, dan MA.', 'Terjadi penyimpangan, misalnya DPR hasil pemilu dibubarkan pada 1960 dan Presiden diangkat seumur hidup oleh MPRS (1963).'], 'Penyimpangan: DPR dibubarkan 1960, Presiden seumur hidup (Tap MPRS 1963).'],
+        ['1966 – 1998', 'Orde Baru: MPR di puncak', 'Orde Baru|MPR', ['MPR: lembaga tertinggi, memilih Presiden', '#FFE29A'], [['Presiden', 'DPR', 'DPA', 'BPK', 'MA']], 'Presiden mandataris MPR, sidang umum 5 tahunan', ['Pada masa Orde Baru, UUD 1945 diklaim dilaksanakan secara murni dan konsekuen. MPR tetap lembaga tertinggi dan memilih Presiden dalam sidang umum lima tahunan.', 'Kekuasaan Presiden sangat besar dan masa jabatan tidak dibatasi, sehingga Soeharto terpilih berulang kali sampai 1998.'], 'Orde Baru: Presiden dipilih MPR, masa jabatan tanpa batas.'],
+        ['1999 – 2002', 'Reformasi: UUD diubah empat kali', 'Amandemen I – IV', ['MPR bukan lagi lembaga tertinggi', '#FFE29A'], [['DPD dibentuk', 'MK dibentuk', 'KY dibentuk'], ['DPA dihapus', 'Pilpres langsung', 'Lembaga sejajar']], 'Sejajar dan saling mengawasi', ['Amandemen 1999–2002 mengubah kedudukan MPR: bukan lagi lembaga tertinggi. Muncul DPD, MK, dan KY, sedangkan DPA dihapus.', 'Presiden dan Wakil dipilih langsung oleh rakyat. Lembaga negara kini sejajar dan saling mengawasi.'], 'Baru: DPD, MK, KY. Hilang: DPA. Presiden dipilih langsung.'],
+        ['2003 – 2004', 'Lembaga baru mulai bekerja', 'MK|KY|DPD', ['Wujud hasil amandemen', '#CFE9F1'], [['MK: 13 Agustus 2003', 'KY: 2004'], ['DPD: Pemilu 2004', 'Pilpres langsung 2004']], 'Pemilu 2004: pertama kali memilih Presiden langsung', ['Mahkamah Konstitusi berdiri 13 Agustus 2003 sebagai pengawal konstitusi. Komisi Yudisial dibentuk pada 2004, dan anggota DPD pertama dipilih lewat Pemilu 2004.', 'Pada 2004 rakyat pertama kali memilih Presiden dan Wakil Presiden secara langsung.'], 'MK 2003, KY 2004, DPD 2004, pilpres langsung 2004.'],
+        ['Sekarang', 'Peta lembaga negara kini', 'Sejajar', ['MPR = DPR + DPD (sidang gabungan)', '#FFE29A'], [['Presiden', 'DPR', 'DPD'], ['MA', 'MK', 'BPK']], 'KY menjaga kehormatan hakim. Semua sejajar', ['Sekarang lembaga negara menurut UUD 1945: MPR (anggotanya DPR dan DPD), Presiden, DPR, DPD, BPK, MA, MK, dan KY. Semuanya sejajar, tidak ada yang tertinggi.'], 'Delapan lembaga: MPR, Presiden, DPR, DPD, BPK, MA, MK, KY. Sejajar.']
+      ].map((r, i) => LG(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], i)));
 
       // ---------- Soal figural bergambar ----------
       const K = '#14161C', W = '#fff', FS = 'stroke="#14161C" stroke-width="2.5" stroke-linejoin="round"';
@@ -4709,5 +4960,13 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
 })();
 </script>
 
+<script>
+// geser kiri/kanan pada adegan untuk pindah slide
+(function () { let sx = null;
+  document.addEventListener('pointerdown', e => { const t = e.target.closest && e.target.closest('.hs-st'); sx = t ? [e.clientX, e.clientY, t] : null; });
+  document.addEventListener('pointerup', e => { if (!sx) return; const [x, y, t] = sx; sx = null; const dx = e.clientX - x, dy = e.clientY - y;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > 2 * Math.abs(dy)) { const c = t.closest('.sim'), b = c && c.querySelector('[data-a="' + (dx < 0 ? 'next' : 'prev') + '"]'); if (b) b.click(); } });
+})();
+</script>
 </body>
 </html>
