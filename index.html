@@ -1165,6 +1165,106 @@
     .kn-x:hover { background: rgba(20, 22, 28, .08); }
     @media (min-width: 900px) { .kn { left: auto; right: 104px; bottom: 32px; margin: 0; } }
     @media (prefers-reduced-motion: reduce) { .kn { transition: none; } }
+
+    /* ===== Upgrade kotak traktir: bottom sheet di HP, nominal pilihan, tab pembayaran ===== */
+    .kp-ov { align-items: flex-end; }
+    @media (min-width: 560px) { .kp-ov { align-items: center; } }
+    .kp-box { width: min(100%, 420px); padding: 0 20px 20px; animation: kpUp .32s cubic-bezier(.2, .9, .3, 1) both; }
+    @keyframes kpUp { from { transform: translateY(28px); opacity: 0; } to { transform: none; opacity: 1; } }
+    .kp-hero { display: flex; align-items: center; gap: 14px; margin: 0 -20px 16px; padding: 22px 54px 16px 20px; background: #FFE9C2; border-bottom: var(--out, 1px solid var(--line)); }
+    .kp-hero-ic { flex: none; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: #fff; border: var(--out, 1px solid var(--line)); box-shadow: 0 3px 0 #14161C; }
+    .kp-hero-ic svg { display: block; width: 42px; height: 42px; }
+    .kp-box .kp-hero h3 { margin: 0 0 4px; font-size: 21px; line-height: 1.2; }
+    .kp-box .kp-hero p { margin: 0; font-size: 13.5px; line-height: 1.5; color: #5B4A33; }
+    .kp-lbl { margin: 0 0 8px; font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
+    .kp-tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .kp-tier { position: relative; display: flex; flex-direction: column; gap: 1px; padding: 10px 12px; text-align: left; border: var(--out, 1px solid var(--line)); border-radius: 14px; background: #fff; color: var(--ink); font-family: var(--font); cursor: pointer; transition: transform .12s, box-shadow .12s, background .15s; }
+    .kp-tier .te { font-size: 20px; line-height: 1.2; }
+    .kp-tier .tn { font-size: 12.5px; color: var(--ink-soft); }
+    .kp-tier .tp { font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .kp-tier.is-on { background: #FFE9C2; box-shadow: 0 3px 0 #14161C; transform: translateY(-2px); }
+    .kp-fav { position: absolute; top: -9px; right: 8px; padding: 2px 8px; border: var(--out, 1px solid var(--line)); border-radius: 99px; background: var(--brand); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+    .kp-pick { margin: 10px 0 14px; font-size: 13px; line-height: 1.5; color: var(--ink-soft); text-align: center; }
+    .kp-pick b { color: var(--ink); }
+    .kp-tabs { display: flex; gap: 4px; padding: 4px; border: var(--out, 1px solid var(--line)); border-radius: 999px; background: var(--cream, #FBF5EA); }
+    .kp-tab { flex: 1; padding: 9px 6px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-soft); font: 700 13.5px var(--font); cursor: pointer; transition: background .15s, color .15s; }
+    .kp-tab.is-on { background: var(--ink, #14161C); color: #fff; }
+    .kp-pane { margin-top: 12px; }
+    .kp-pane[hidden] { display: none; }
+    .kp-pane .kp-rek { margin-top: 0; }
+    .kp-app a.kp-big { padding: 14px 12px; border-radius: 999px; background: var(--ora, #F8B461); color: var(--ink, #14161C); font-size: 15.5px; font-weight: 800; box-shadow: 0 4px 0 #14161C; }
+    .kp-app a.kp-big:active { transform: translateY(3px); box-shadow: 0 1px 0 #14161C; }
+    .kp-app.kp-one { grid-template-columns: 1fr; margin-top: 0; }
+    .kp-saw { margin: 0 0 12px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+    .kp-saw ul { margin: 6px 0 0; padding-left: 18px; }
+    .kp-trust { margin: 14px 0 0; padding: 10px 12px; border-radius: 12px; background: var(--brand-soft, #EEF1FF); font-size: 12.5px; line-height: 1.5; color: var(--ink); text-align: center; }
+    .kp-box .kp-done { margin-top: 14px; }
+    /* kartu di beranda: lebih hangat, tombol berdenyut halus */
+    .kopi { align-items: center; box-shadow: 0 4px 0 #14161C; }
+    .kopi-tx strong { font-size: 16px; line-height: 1.3; }
+    .kopi-btn { padding: 12px 20px; font-size: 14.5px; animation: kopiBtn 2.6s ease-in-out infinite; }
+    @keyframes kopiBtn { 0%, 70%, 100% { transform: none; } 80% { transform: translateY(-3px); } 90% { transform: translateY(0); } }
+    .kn-go { background: var(--ora, #F8B461); color: var(--ink, #14161C); box-shadow: 0 3px 0 #14161C; }
+    @media (prefers-reduced-motion: reduce) { .kp-box, .kopi-btn { animation: none; } .kp-tier { transition: none; } }
+
+    /* ===== Kotak traktir di beranda: seluruh kotak bisa diklik, papan neon hangat ===== */
+    #kopiHome { position: relative; cursor: pointer; border: 3px solid #F8A53A; -webkit-tap-highlight-color: transparent;
+      background: radial-gradient(120% 140% at 0% 0%, #FFF3D6 0%, #FFE9C2 55%, #FFDDA3 100%);
+      box-shadow: 0 4px 0 #14161C, 0 0 14px 2px rgba(248, 165, 58, .5);
+      animation: kopiNeon 5s linear infinite; transition: transform .18s cubic-bezier(.2, 1.3, .4, 1); }
+    #kopiHome:hover { transform: translateY(-4px) rotate(-.4deg); }
+    #kopiHome:active { transform: translateY(1px) scale(.99); }
+    #kopiHome:focus-visible { outline: 3px solid #14161C; outline-offset: 3px; }
+    /* kedip ala lampu neon: menyala stabil, lalu berkedip cepat dua kali, lalu menyala lagi */
+    @keyframes kopiNeon {
+      0%, 52%, 58%, 62%, 100% { border-color: #F8A53A; box-shadow: 0 4px 0 #14161C, 0 0 14px 2px rgba(248, 165, 58, .55), 0 0 34px 6px rgba(255, 190, 80, .35); }
+      54%, 60% { border-color: #D9A867; box-shadow: 0 4px 0 #14161C, 0 0 2px 0 rgba(248, 165, 58, .15); }
+      30% { border-color: #FFC35C; box-shadow: 0 4px 0 #14161C, 0 0 20px 4px rgba(255, 190, 80, .8), 0 0 46px 10px rgba(255, 190, 80, .45); } }
+    /* ikon: riak lembut seperti denyut hangat */
+    #kopiHome .kopi-ic { position: relative; animation: kopiRipple 2.6s ease-out infinite; }
+    @keyframes kopiRipple { 0% { box-shadow: 0 0 0 0 rgba(248, 165, 58, .55); } 70%, 100% { box-shadow: 0 0 0 16px rgba(248, 165, 58, 0); } }
+    /* kerlip bintang kecil di sudut */
+    #kopiHome::before, #kopiHome::after { position: absolute; pointer-events: none; color: #E58A00; opacity: 0; }
+    #kopiHome::before { content: "\2726"; top: 10px; right: 22px; font-size: 18px; animation: kopiSpark 3.2s ease-in-out infinite; }
+    #kopiHome::after { content: "\2726"; bottom: 14px; right: 52%; font-size: 12px; animation: kopiSpark 3.2s ease-in-out 1.4s infinite; }
+    @keyframes kopiSpark { 0%, 100% { opacity: 0; transform: scale(.4) rotate(0); } 40% { opacity: 1; transform: scale(1.1) rotate(25deg); } 70% { opacity: 0; transform: scale(.6) rotate(50deg); } }
+    /* tombol: napas halus + panah geser */
+    #kopiHome .kopi-btn { animation: kopiBreath 2.2s ease-in-out infinite; }
+    #kopiHome .kopi-btn::after { content: " \2192"; display: inline-block; animation: kopiArrow 1.4s ease-in-out infinite; }
+    @keyframes kopiBreath { 0%, 100% { transform: none; box-shadow: 0 3px 0 #14161C; } 50% { transform: translateY(-2px) scale(1.03); box-shadow: 0 5px 0 #14161C, 0 0 18px 3px rgba(255, 190, 80, .7); } }
+    @keyframes kopiArrow { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+    @media (prefers-reduced-motion: reduce) { #kopiHome, #kopiHome .kopi-ic, #kopiHome .kopi-btn, #kopiHome .kopi-btn::after, #kopiHome::before, #kopiHome::after { animation: none; } #kopiHome::before, #kopiHome::after { display: none; } }
+    /* nominal di popup: hanya gambaran, tidak bisa dipilih atau disalin */
+    .kp-tier { cursor: default; pointer-events: none; user-select: none; -webkit-user-select: none; transform: none; box-shadow: none; }
+
+    /* ===== Kartu pembuat: latar hangat, avatar dengan orbit, chip, tombol berikon ===== */
+    .me { position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 100% 0, rgba(168, 216, 195, .6), transparent 44%),
+        radial-gradient(circle at 0 100%, rgba(248, 180, 97, .3), transparent 40%),
+        radial-gradient(rgba(20, 22, 28, .07) 1px, transparent 1.5px) 0 0 / 16px 16px,
+        #fff; }
+    .me-av { position: relative; overflow: visible; animation: meFloat 5s ease-in-out infinite; }
+    .me-av::before { content: ""; position: absolute; inset: -9px; border: 2px dashed rgba(20, 22, 28, .35); border-radius: 50%; animation: meOrbit 28s linear infinite; }
+    .me-av::after { content: "\2713"; position: absolute; right: -2px; bottom: 2px; display: grid; place-items: center; width: 24px; height: 24px; border: var(--out); border-radius: 50%; background: var(--mint); color: var(--ink); font: 800 13px/1 var(--font); }
+    @keyframes meOrbit { to { transform: rotate(360deg); } }
+    @keyframes meFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+    .me .me-id strong { display: inline; background: linear-gradient(transparent 64%, rgba(246, 215, 122, .85) 64%); padding: 0 2px; }
+    .me-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .me-chips .me-chip { margin-top: 0; }
+    .me-chip2 { background: var(--ora); }
+    .me p { padding-left: 14px; border-left: 4px solid var(--mint); }
+    .me-links a { gap: 9px; padding: 6px 16px 6px 6px; transition: transform .15s, box-shadow .15s; }
+    .me-links a svg { width: 30px; height: 30px; padding: 6px; border-radius: 50%; color: #fff; background: #14161C; transition: transform .25s; }
+    .me-links a:nth-child(1) svg { background: linear-gradient(45deg, #F9A03F, #E1306C 55%, #833AB4); }
+    .me-links a:nth-child(2) svg { background: #0A66C2; }
+    .me-links a.gold svg { background: #14161C; color: #FBE3B0; }
+    .me-links a:hover { transform: translateY(-3px); box-shadow: 0 5px 0 #14161C; }
+    .me-links a:active { transform: translateY(1px); box-shadow: 0 1px 0 #14161C; }
+    .me-links a:hover svg { transform: rotate(-10deg) scale(1.08); }
+    .me-links a.gold { animation: meGold 3s ease-in-out infinite; }
+    @keyframes meGold { 0%, 80%, 100% { box-shadow: 0 3px 0 #14161C; } 90% { box-shadow: 0 3px 0 #14161C, 0 0 16px 3px rgba(255, 190, 80, .75); } }
+    @media (prefers-reduced-motion: reduce) { .me-av, .me-av::before, .me-links a.gold { animation: none; } .me-links a, .me-links a svg { transition: none; } }
   </style>
 <style>
 /* ===== Upgrade animasi stikman: adegan, karakter, kamera ===== */
@@ -1266,10 +1366,10 @@
               <div class="chips" id="chips"><button class="is-active" data-f="all">Semua</button><button data-f="twk">TWK</button><button data-f="tiu">TIU</button><button data-f="tkp">TKP</button></div>
             </header>
             <h3 class="sec">Subtes</h3><div class="tiles" id="tiles"></div>
-            <div class="kopi" id="kopiHome">
+            <div class="kopi" id="kopiHome" data-kopi role="button" tabindex="0" aria-label="Traktir kopi: buka pilihan cara traktir">
               <div class="kopi-ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true"><g class="cup-st" fill="none" stroke="#14161C" stroke-width="2" stroke-linecap="round"><path d="M18 14q-3-3 0-6M26 14q-3-3 0-6"/></g><path d="M36 25h2a5 5 0 0 1 0 10h-4" fill="none" stroke="#14161C" stroke-width="2.5"/><path d="M9 20h27v10a13.5 13.5 0 0 1-27 0z" fill="#fff" stroke="#14161C" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="22.5" cy="20" rx="13.5" ry="3" fill="#8A5A3B" stroke="#14161C" stroke-width="2"/><path d="M16 30q2-3 4 0M25 30q2-3 4 0M20.5 34q2 2.5 4 0" fill="none" stroke="#14161C" stroke-width="2" stroke-linecap="round"/><circle cx="14.5" cy="34" r="2" fill="#F4A6A0"/><circle cx="30.5" cy="34" r="2" fill="#F4A6A0"/><path d="M7 44h31" stroke="#14161C" stroke-width="2.5" stroke-linecap="round"/></svg></div>
-              <div class="kopi-tx"><strong>Semoga terbantu ya!</strong><span>Kalau berkenan, boleh traktir kopi. Makasih banyak!</span></div>
-              <a class="kopi-btn" href="#traktir" data-kopi>Traktir kopi</a>
+              <div class="kopi-tx"><strong>Terbantu belajar di sini?</strong><span>Kalau materi dan soalnya bermanfaat, kamu bisa traktir kopi untuk bantu aku terus update isinya. Nominal bebas.</span></div>
+              <a class="kopi-btn" href="#traktir" data-kopi tabindex="-1">☕ Traktir kopi</a>
             </div>
             <h3 class="sec">Semua materi</h3>
             <button class="fab" id="fab" aria-label="Lanjutkan belajar"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></button>
@@ -1358,9 +1458,9 @@
         <div class="me-id">
           <small>Dibuat oleh</small>
           <strong>Muhammad Yudha Pratama</strong>
-          <span class="me-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l2.4 1.7 2.9-.1 1 2.7 2.4 1.7-.9 2.8.9 2.8-2.4 1.7-1 2.7-2.9-.1L12 21.2l-2.4-1.7-2.9.1-1-2.7-2.4-1.7.9-2.8-.9-2.8 2.4-1.7 1-2.7 2.9.1z"/><path d="M8.6 12.2l2.4 2.4 4.4-4.8"/></svg>CPNS Pemprov DKI Jakarta 2024</span>
+          <div class="me-chips"><span class="me-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l2.4 1.7 2.9-.1 1 2.7 2.4 1.7-.9 2.8.9 2.8-2.4 1.7-1 2.7-2.9-.1L12 21.2l-2.4-1.7-2.9.1-1-2.7-2.4-1.7.9-2.8-.9-2.8 2.4-1.7 1-2.7 2.9.1z"/><path d="M8.6 12.2l2.4 2.4 4.4-4.8"/></svg>CPNS Pemprov DKI Jakarta 2024</span><span class="me-chip me-chip2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/></svg>Dinas Pendidikan</span></div>
         </div>
-        <p>Halo, aku Yudha. Aku sendiri sudah melewati seleksi CPNS. Aplikasi belajar dan tryout SKD ini kubuat dengan banyak begadang. Semoga membantu langkahmu menuju NIP. Yuk terhubung, atau traktir kopinya kalau materinya terasa berguna.</p>
+        <p>Halo, aku Yudha. Aku lolos CPNS Pemprov DKI Jakarta tahun 2024 dan sekarang bertugas di Dinas Pendidikan. Aplikasi belajar dan tryout SKD ini kubuat untuk membantu kamu yang sedang mempersiapkan diri. Boleh terhubung lewat media sosial, atau traktir kopi kalau materinya bermanfaat.</p>
         <div class="me-links">
           <a href="https://www.instagram.com/yud.prt/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
           <a href="https://www.linkedin.com/in/muhammad-yudha-pratama-b217742b7/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="9" width="4" height="12" rx="1"/><circle cx="5" cy="5" r="2.2"/><path d="M10 9h3.8v1.8c.7-1.3 2.1-2.1 3.9-2.1 3.1 0 4.3 2 4.3 5.1V21h-4v-6.2c0-1.5-.5-2.4-1.8-2.4s-2.2.9-2.2 2.5V21h-4z"/></svg>LinkedIn</a>
@@ -4608,17 +4708,44 @@
       ] }
     ];
 
+    const CUP = (document.querySelector('.kopi-ic svg') || { outerHTML: '' }).outerHTML;
+    const TIER = [
+      { e: '🥤', n: 'Es kopi susu', p: 'Rp15rb' },
+      { e: '🍞', n: 'Kopi + roti bakar', p: 'Rp25rb' },
+      { e: '🌙', n: 'Paket begadang', p: 'Rp50rb' },
+      { e: '🎉', n: 'Traktir spesial', p: 'Lebih dari 50rb' }
+    ];
+    const PICK = 'Ini hanya gambaran. Nominal bebas, berapa pun aku terima dengan senang hati.';
+
     const FORM =
-      '<h3 id="kp-jdl">Traktir kopi \u2615</h3>' +
-      '<p>Makasih udah belajar di sini! Kalau berkenan, boleh lewat Saweria atau transfer.</p>' +
-      '<div class="kp-rek"><small>LEWAT SAWERIA</small><span class="kp-an">Cukup beberapa ketukan, tanpa salin rekening.</span><div class="kp-app"><a href="https://saweria.co/yudprt" data-b="Saweria" target="_blank" rel="noopener noreferrer">Traktir lewat Saweria</a></div></div>' +
+      '<div class="kp-hero"><div class="kp-hero-ic" aria-hidden="true">' + CUP + '</div>' +
+        '<div><h3 id="kp-jdl">Traktir kopi \u2615</h3>' +
+        '<p>Kalau materi dan soal di sini bermanfaat, kamu bisa traktir kopi untuk bantu aku terus mengembangkannya.</p></div></div>' +
+      '<p class="kp-lbl">Gambaran traktiran</p>' +
+      '<div class="kp-tiers" aria-label="Contoh nominal">' +
+        TIER.map((t) =>
+          '<div class="kp-tier"><span class="te">' + t.e + '</span><span class="tn">' + t.n + '</span><span class="tp">' + t.p + '</span></div>'
+        ).join('') +
+      '</div>' +
+      '<p class="kp-pick" id="kp-pick">' + PICK + '</p>' +
+      '<div class="kp-tabs" role="tablist" aria-label="Cara bayar">' +
+        '<button type="button" role="tab" class="kp-tab is-on" data-k="0" aria-selected="true">Saweria</button>' +
+        REKENING.map((r, i) => '<button type="button" role="tab" class="kp-tab" data-k="' + (i + 1) + '" aria-selected="false">' + r.bank + '</button>').join('') +
+      '</div>' +
+      '<div class="kp-pane" data-k="0" role="tabpanel">' +
+        '<div class="kp-rek"><small>PALING GAMPANG</small>' +
+        '<div class="kp-saw">Cukup beberapa ketukan, tanpa salin rekening. Tinggal isi nominal, lalu bayar pakai QRIS atau e-wallet.</div>' +
+        '<div class="kp-app kp-one"><a class="kp-big" href="https://saweria.co/yudprt" data-b="Saweria" target="_blank" rel="noopener noreferrer">☕ Traktir lewat Saweria</a></div></div>' +
+      '</div>' +
       REKENING.map((r, i) =>
-        '<div class="kp-rek"><small>BANK ' + r.bank.toUpperCase() + '</small>' +
+        '<div class="kp-pane" data-k="' + (i + 1) + '" role="tabpanel" hidden>' +
+        '<div class="kp-rek"><small>TRANSFER BANK ' + r.bank.toUpperCase() + '</small>' +
         '<span class="kp-no">' + r.no + '</span><span class="kp-an">a.n. ' + NAMA + '</span>' +
         '<button type="button" class="kp-salin" data-i="' + i + '">Salin nomor rekening</button>' +
-        '<div class="kp-app">' + r.apps.map(a => '<a href="' + a[1] + '" data-b="' + r.bank + '" target="_blank" rel="noopener noreferrer">' + a[0] + '</a>').join('') + '</div></div>'
+        '<div class="kp-app">' + r.apps.map(a => '<a href="' + a[1] + '" data-b="' + r.bank + '" target="_blank" rel="noopener noreferrer">' + a[0] + '</a>').join('') + '</div>' +
+        '<p class="kp-cat">Buka aplikasinya, pilih Transfer ke rekening ' + r.bank + ', lalu tempel nomor yang sudah disalin.</p></div></div>'
       ).join('') +
-      '<p class="kp-cat">Tombol aplikasi membuka halaman aplikasinya (kalau sudah terpasang, tinggal tekan Buka). Lalu pilih Transfer, ke rekening bank yang sama, dan tempel nomor yang sudah disalin.</p>' +
+      '<div class="kp-trust">Tanpa paksaan. Kalau belum bisa traktir, belajar dengan rajin sudah cukup. 💙</div>' +
       '<button type="button" class="kp-done">Sudah traktir \u2713</button>' +
       '<p class="kp-hint">Tekan kalau sudah traktir lewat Saweria atau transfer. Ini hanya penanda, nominal dan namamu tidak tercatat.</p>';
 
@@ -4626,7 +4753,7 @@
       '<div class="kp-thx">' +
         '<span class="kp-thx-ic" aria-hidden="true">\u2615</span>' +
         '<h3 id="kp-jdl">Makasih banyak!</h3>' +
-        '<p>Kopinya sudah sampai. Ini jadi bahan begadang untuk bikin materi dan soal baru. Semangat belajarnya, semoga NIP-mu segera keluar.</p>' +
+        '<p>Terima kasih, kopinya sudah sampai. Ini akan membantu aku menambah materi dan soal baru. Semangat belajarnya, semoga NIP-mu segera keluar!</p>' +
         '<button type="button" class="kp-done kp-ok">Lanjut belajar</button>' +
       '</div>';
 
@@ -4644,6 +4771,7 @@
     const dari = (t) => {
       const kn = t.closest('.kn');
       if (kn) return 'melayang/' + (kn.dataset.p || '?');
+      const sr = t.closest('[data-src]'); if (sr) return sr.dataset.src;
       if (t.closest('.kopi')) return 'beranda';
       if (t.closest('.nav-me')) return 'nav';
       return 'tentang';
@@ -4688,6 +4816,12 @@
     q('.kp-x').addEventListener('click', tutup);
     ov.addEventListener('click', (e) => {
       if (e.target === ov) return tutup();
+      const tb = e.target.closest('.kp-tab');
+      if (tb) {
+        ov.querySelectorAll('.kp-tab').forEach((x) => { const on = x === tb; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', on); });
+        ov.querySelectorAll('.kp-pane').forEach((p) => { p.hidden = p.dataset.k !== tb.dataset.k; });
+        return window.kopiLog('tab', tb.textContent);
+      }
       const b = e.target.closest('.kp-salin');
       if (b) return salin(b);
       const a = e.target.closest('.kp-app a');
@@ -4696,6 +4830,7 @@
       if (e.target.closest('.kp-done')) sudah();
     });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && ov.classList.contains('is-open')) tutup(); });
+    document.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target && (e.target.id === 'kopiHome' || (e.target.classList && e.target.classList.contains('kopi-inline')))) { e.preventDefault(); e.target.click(); } });
     document.addEventListener('click', (e) => {
       const t = e.target.closest('[data-kopi]');
       if (!t) return;
@@ -4741,6 +4876,7 @@
     const udah = () => !!(window.kopiSudah && window.kopiSudah());
     if (/[?&]kopi=1\b/.test(location.search)) {
       del(OFF); del(SHOWN); del(HOMESEEN); del(HOMEX);
+      try { sessionStorage.removeItem('kopi-n'); sessionStorage.removeItem('kopi-t'); } catch (_) {}
       try { localStorage.removeItem('kopi-done'); } catch (_) {}
     }
 
@@ -4758,10 +4894,16 @@
       setTimeout(() => n.remove(), 260);
     }
 
+    // Maksimal 3 kali per sesi, jeda minimal 3 menit, hilang sendiri setelah 15 detik. Ditutup sekali = berhenti untuk sesi itu.
+    const CAP = 3, JEDA = 180000;
+    const nget = (k) => { try { return +sessionStorage.getItem(k) || 0; } catch (_) { return 0; } };
+    const nset = (k, v) => { try { sessionStorage.setItem(k, String(v)); } catch (_) {} };
     function tampil(pemicu) {
-      if (get(OFF) || get(SHOWN) || udah()) return;
+      if (get(OFF) || udah() || nudge) return;
       if (document.querySelector('.kp-ov.is-open')) return;
-      set(SHOWN);
+      const n = nget('kopi-n'), tt = nget('kopi-t');
+      if (n >= CAP || (n && Date.now() - tt < JEDA)) return;
+      nset('kopi-n', n + 1); nset('kopi-t', Date.now());
       log('tampil', 'melayang/' + pemicu);
       nudge = document.createElement('div');
       nudge.className = 'kn';
@@ -4770,14 +4912,16 @@
       nudge.setAttribute('aria-label', 'Ajakan traktir kopi');
       nudge.innerHTML =
         '<div class="kn-ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true"><g class="cup-st" fill="none" stroke="#14161C" stroke-width="2" stroke-linecap="round"><path d="M18 14q-3-3 0-6M26 14q-3-3 0-6"/></g><path d="M36 25h2a5 5 0 0 1 0 10h-4" fill="none" stroke="#14161C" stroke-width="2.5"/><path d="M9 20h27v10a13.5 13.5 0 0 1-27 0z" fill="#fff" stroke="#14161C" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="22.5" cy="20" rx="13.5" ry="3" fill="#8A5A3B" stroke="#14161C" stroke-width="2"/><path d="M16 30q2-3 4 0M25 30q2-3 4 0M20.5 34q2 2.5 4 0" fill="none" stroke="#14161C" stroke-width="2" stroke-linecap="round"/><circle cx="14.5" cy="34" r="2" fill="#F4A6A0"/><circle cx="30.5" cy="34" r="2" fill="#F4A6A0"/><path d="M7 44h31" stroke="#14161C" stroke-width="2.5" stroke-linecap="round"/></svg></div>' +
-        '<div class="kn-tx"><strong>Semoga terbantu ya!</strong>' +
-        '<span>Kalau berkenan, boleh traktir kopi. Makasih!</span>' +
-        '<a class="kn-go" href="#traktir" data-kopi>Traktir kopi</a></div>' +
+        '<div class="kn-tx"><strong>Terbantu dengan materinya?</strong>' +
+        '<span>Kalau berkenan, boleh traktir kopi untuk bantu update soal baru.</span>' +
+        '<a class="kn-go" href="#traktir" data-kopi>☕ Traktir kopi</a></div>' +
         '<button type="button" class="kn-x" aria-label="Tutup">\u2715</button>';
       document.body.appendChild(nudge);
       nudge.classList.add('is-show');
       requestAnimationFrame(() => requestAnimationFrame(() => nudge && nudge.classList.add('is-in')));
       nudge.querySelector('.kn-x').addEventListener('click', () => { log('tutup', 'melayang/' + pemicu); set(OFF); tutup(); });
+      const el = nudge;
+      setTimeout(() => { if (nudge === el) { log('lewat', 'melayang/' + pemicu); tutup(); } }, 15000);
     }
 
     // Preview: ?kopi=1 menampilkan kartu melayang 3 detik setelah halaman dimuat.
@@ -4799,10 +4943,11 @@
     document.addEventListener('click', (e) => {
       if (e.target.closest('.lcard, #fab')) mulai = Date.now();
       if (e.target.closest('[data-m="paham"]') && ++paham >= 2) setTimeout(() => tampil('paham'), 1200);
+      if (e.target.closest('.lc-act [data-t="teknik"]')) setTimeout(() => tampil('selesai-materi'), 1400);
     });
     const cekBawah = () => {
       tunggu = false;
-      if (get(OFF) || get(SHOWN) || !diMateri()) return;
+      if (get(OFF) || !diMateri()) return;
       const dasar = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
       if (dasar && mulai && Date.now() - mulai >= 20000) tampil('scroll');
     };
@@ -4810,8 +4955,8 @@
 
     let detik = 0;
     const jam = setInterval(() => {
-      if (get(OFF) || get(SHOWN)) return clearInterval(jam);
-      if (!document.hidden && diMateri() && ++detik >= 240) { clearInterval(jam); tampil('waktu'); }
+      if (get(OFF) || nget('kopi-n') >= CAP || udah()) return clearInterval(jam);
+      if (!document.hidden && diMateri() && ++detik >= 150) { detik = 0; tampil('waktu'); }
     }, 1000);
   })();
 </script>
@@ -4843,16 +4988,79 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
 .sg-sug{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 </style>
 <style>
-/* Nav bawah: bar gelap, ikon mint, tab aktif pil oranye */
+/* Nav bawah: bar putih bersih, tab aktif pil teal lembut */
 @media (max-width: 899px) {
-  #nav { background: #14161C; border: 2px solid #14161C; border-radius: 28px; padding: 0 8px; box-shadow: 0 5px 0 0 var(--mint, #A8D8C3), 0 5px 0 2px #14161C; }
+  #nav { background: #fff; border: 2px solid #14161C; border-radius: 26px; padding: 0 6px; box-shadow: 0 4px 0 #14161C; backdrop-filter: none; }
   .nav-list li { padding: 7px 2px; }
-  .nav-btn { color: #A8D8C3; font-weight: 700; }
+  .nav-btn { position: relative; border-radius: 18px; color: #6B7080; font-weight: 700; transition: background .2s, color .2s, transform .15s; }
   .nav-btn span { font-size: 11px; white-space: nowrap; }
   .nav-btn:active { transform: scale(.95); }
-  .nav-btn:focus-visible { outline: 2px solid #A8D8C3; outline-offset: -2px; }
-  .nav-btn.is-active { background: var(--ora); border-color: var(--ora); color: #14161C; box-shadow: inset 0 -3px 0 rgba(20, 22, 28, .16); }
+  .nav-btn:focus-visible { outline: 2px solid #14161C; outline-offset: -2px; }
+  .nav-btn.is-active { background: var(--brand-soft, #DDF0EF); border-color: transparent; color: var(--brand-strong, #1F7274); box-shadow: none; }
+  .nav-btn.is-active svg { stroke-width: 2.2; animation: navPop .35s cubic-bezier(.2, 1.5, .4, 1); }
+  .nav-btn.is-active::after { content: ""; position: absolute; top: 5px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--brand, #2B8F91); }
+  @keyframes navPop { 0% { transform: translateY(3px) scale(.8); } 100% { transform: none; } }
 }
+@media (min-width: 900px) {
+  .nav-btn.is-active { background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); border-color: #14161C; box-shadow: 0 3px 0 #14161C; }
+}
+@media (prefers-reduced-motion: reduce) { .nav-btn.is-active svg { animation: none; } .nav-btn { transition: none; } }
+/* ===== Halaman materi (semua subtes): header, tab, analogi, accordion, kotak contoh ===== */
+#lesson > .back { padding: 7px 16px 7px 8px; border-radius: 99px; background: #fff; color: var(--ink); font-weight: 800; box-shadow: 0 3px 0 #14161C; transition: transform .12s, box-shadow .12s; }
+#lesson > .back:hover { transform: translateY(-1px); box-shadow: 0 4px 0 #14161C; }
+#lesson > h2 { margin: 4px 0 0; font-size: clamp(26px, 6.5vw, 34px); line-height: 1.15; font-weight: 800; letter-spacing: -.02em; }
+#lesson > .goal { margin: 8px 0 16px; font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); }
+#lesson .bar { height: 12px; border: 2px solid #14161C; background: #fff; }
+#lesson .bar i { background: repeating-linear-gradient(135deg, var(--brand) 0 8px, var(--brand-strong, #1F7274) 8px 16px); }
+.tabs2 { margin-top: 18px; }
+.tabs2 button { border: 2px solid transparent; transition: background .2s, color .2s; }
+.tabs2 button.is-active { background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); border-color: #14161C; box-shadow: 0 2px 0 #14161C; }
+
+/* analogi: seperti catatan ide */
+#lesson .analogi { position: relative; padding: 16px 18px 16px 20px; border-left: 7px solid var(--ora, #F8B461); background: #FFF7E0; box-shadow: 0 4px 0 #14161C; }
+#lesson .analogi b { display: inline-flex; align-items: center; gap: 6px; width: fit-content; margin-bottom: 6px; padding: 3px 11px; border: 1.5px solid #14161C; border-radius: 99px; background: #FFE29A; font-size: 11.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: #5B4300; }
+#lesson .analogi b::before { content: "\1F4A1"; font-size: 13px; letter-spacing: 0; }
+
+/* tombol buka/tutup semua */
+.mctl { margin: 14px 0 0; }
+.mctl .obtn { padding: 7px 16px; box-shadow: 0 2px 0 #14161C; font-weight: 800; color: var(--brand-strong, #1F7274); transition: transform .12s, box-shadow .12s; }
+.mctl .obtn:hover { transform: translateY(-1px); box-shadow: 0 3px 0 #14161C; }
+
+/* accordion materi */
+.mc { margin-top: 14px; border-radius: 20px; box-shadow: 0 4px 0 #14161C; transition: box-shadow .15s, transform .15s; animation: mcIn .4s ease both; }
+.mc:hover { transform: translateY(-1px); }
+.mc summary { padding: 15px 16px; gap: 13px; font-size: 16.5px; transition: background .15s; }
+.mc summary:hover { background: rgba(43, 143, 145, .06); }
+.mn { width: 32px; height: 32px; font-size: 14px; font-weight: 800; box-shadow: 0 2px 0 #14161C; }
+.mc summary::after { content: "+"; display: grid; place-items: center; width: 30px; height: 30px; border: 2px solid #14161C; border-radius: 50%; background: var(--brand-soft, #DDF0EF); font-size: 20px; font-weight: 800; line-height: 1; color: var(--brand-strong, #1F7274); transition: transform .25s, background .2s; }
+.mc[open] summary::after { content: "\2212"; background: var(--brand, #2B8F91); color: #fff; transform: rotate(180deg); }
+.mc[open] > summary { border-bottom: 2px dashed rgba(20, 22, 28, .18); margin-bottom: 12px; }
+.mc[open] { border-left: 7px solid var(--brand, #2B8F91); }
+.mc.key[open] { border-left-color: var(--red, #D9625A); }
+.mb { padding: 0 18px 16px; font-size: 16px; line-height: 1.7; }
+.mb li { margin-top: 10px; padding-left: 20px; }
+.mb li::before { width: 8px; height: 8px; top: .65em; box-shadow: 0 0 0 3px var(--brand-soft, #DDF0EF); }
+.mc:nth-of-type(2) { animation-delay: .04s; } .mc:nth-of-type(3) { animation-delay: .08s; } .mc:nth-of-type(4) { animation-delay: .12s; } .mc:nth-of-type(5) { animation-delay: .16s; } .mc:nth-of-type(n+6) { animation-delay: .2s; }
+@keyframes mcIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* kotak analogi + contoh soal di dalam materi (memperbaiki garis kuning yang melebar) */
+.anx { margin: 8px 0 12px; padding: 12px 14px 12px 16px; border: 2px solid #14161C; border-left: 6px solid var(--ora, #F8B461); border-radius: 16px; background: #FFF7E0; box-shadow: 0 3px 0 rgba(20, 22, 28, .9); font-size: 15px; line-height: 1.65; }
+.anx b, .mc.key .anx b { display: block; width: fit-content; margin: 8px 0 4px; padding: 2px 10px; border: 1.5px solid #14161C; border-radius: 99px; background: #FFE29A; font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: #5B4300; }
+.anx b:first-child { margin-top: 0; }
+.anx b:not(:first-child) { background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); }
+
+/* submateri */
+.subk { display: inline-block; padding: 3px 11px; border: 1.5px solid #14161C; border-radius: 99px; background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); }
+.subh { font-size: clamp(22px, 5.5vw, 28px); font-weight: 800; }
+.subn { background: var(--brand, #2B8F91); box-shadow: 0 3px 0 #14161C; }
+.subg { padding: 2px 0 2px 14px; border-left: 4px solid var(--brand, #2B8F91); font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+
+/* tampilan teknik: langkah, daftar, isi */
+.steps button.is-active { background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); border-color: #14161C; font-weight: 800; }
+.ilist button.is-active { background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); }
+.lc { --slab: var(--mint, #A8D8C3); }
+.lc-body { border-left: 6px solid var(--brand, #2B8F91); }
+@media (prefers-reduced-motion: reduce) { .mc { animation: none; transition: none; } .mc summary::after { transition: none; } #lesson > .back, .mctl .obtn { transition: none; } }
 @media (max-width: 380px) { .nav-btn span { font-size: 10px; } }
 /* Cari dalam + glosarium */
 .sg-box { height: min(100%, 680px); }
@@ -5174,6 +5382,144 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
   document.addEventListener('pointerdown', e => { const t = e.target.closest && e.target.closest('.hs-st'); sx = t ? [e.clientX, e.clientY, t] : null; });
   document.addEventListener('pointerup', e => { if (!sx) return; const [x, y, t] = sx; sx = null; const dx = e.clientX - x, dy = e.clientY - y;
     if (Math.abs(dx) > 50 && Math.abs(dx) > 2 * Math.abs(dy)) { const c = t.closest('.sim'), b = c && c.querySelector('[data-a="' + (dx < 0 ? 'next' : 'prev') + '"]'); if (b) b.click(); } });
+})();
+</script>
+<style>
+/* ===== Tombol melayang di materi: daftar isi + kembali ke atas ===== */
+.lf { position: fixed; right: 14px; bottom: calc(var(--bottombar-h, 64px) + 28px + env(safe-area-inset-bottom, 0px)); z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; pointer-events: none; }
+@media (min-width: 900px) { .lf { right: 28px; bottom: 28px; } }
+.lf button { pointer-events: none; opacity: 0; transform: translateY(10px) scale(.9); transition: opacity .2s, transform .2s; font-family: var(--font); }
+.lf button.is-show { pointer-events: auto; opacity: 1; transform: none; }
+.lf-toc { display: inline-flex; align-items: center; gap: 7px; padding: 10px 16px 10px 12px; border: 2px solid #14161C; border-radius: 99px; background: #fff; color: var(--ink, #14161C); font-weight: 800; font-size: 14px; box-shadow: 0 3px 0 #14161C; cursor: pointer; }
+.lf-toc:active { transform: translateY(2px); box-shadow: 0 1px 0 #14161C; }
+.lf svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+.lf-top { position: relative; width: 48px; height: 48px; padding: 0; border: 2px solid #14161C; border-radius: 50%; background: conic-gradient(var(--brand, #2B8F91) calc(var(--p, 0) * 1%), #E4E7EC 0); color: var(--ink, #14161C); box-shadow: 0 3px 0 #14161C; cursor: pointer; display: grid; place-items: center; }
+.lf-top::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: #fff; }
+.lf-top svg { position: relative; }
+.lf-top:active { transform: translateY(2px); box-shadow: 0 1px 0 #14161C; }
+.lf-ov { position: fixed; inset: 0; z-index: 260; display: none; align-items: flex-end; justify-content: center; background: rgba(20, 22, 28, .45); }
+.lf-ov.is-open { display: flex; }
+@media (min-width: 560px) { .lf-ov { align-items: center; } }
+.lf-sheet { width: min(100%, 460px); max-height: 74vh; display: flex; flex-direction: column; border: 2px solid #14161C; border-radius: 24px 24px 0 0; background: #fff; box-shadow: 0 -4px 0 rgba(20, 22, 28, .12); animation: lfUp .28s cubic-bezier(.2, .9, .3, 1) both; padding-bottom: env(safe-area-inset-bottom, 0px); }
+@media (min-width: 560px) { .lf-sheet { border-radius: 24px; box-shadow: 0 6px 0 #14161C; } }
+@keyframes lfUp { from { transform: translateY(30px); opacity: 0; } to { transform: none; opacity: 1; } }
+.lf-h { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px 10px; }
+.lf-h strong { font-size: 18px; }
+.lf-x { width: 34px; height: 34px; border: 2px solid #14161C; border-radius: 50%; background: #fff; font-size: 15px; cursor: pointer; }
+.lf-list { overflow: auto; padding: 0 12px 8px; }
+.lf-list button { display: block; width: 100%; margin: 3px 0; padding: 10px 12px; border: 2px solid transparent; border-radius: 14px; background: transparent; text-align: left; font: 700 14.5px/1.35 var(--font); color: var(--ink, #14161C); cursor: pointer; }
+.lf-list button.l2 { padding-left: 30px; font-weight: 600; font-size: 14px; color: var(--ink-soft); position: relative; }
+.lf-list button.l2::before { content: ""; position: absolute; left: 14px; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--brand, #2B8F91); opacity: .6; }
+.lf-list button:hover { background: rgba(43, 143, 145, .08); }
+.lf-list button.on { background: var(--brand-soft, #DDF0EF); border-color: #14161C; color: var(--brand-strong, #1F7274); }
+.lf-kopi { margin: 6px 14px 14px; padding: 11px 14px; border: 2px solid #14161C; border-radius: 99px; background: var(--ora, #F8B461); color: var(--ink, #14161C); font: 800 14px var(--font); box-shadow: 0 3px 0 #14161C; cursor: pointer; }
+.lf-kopi:active { transform: translateY(2px); box-shadow: 0 1px 0 #14161C; }
+.kopi-inline { margin: 26px 0 8px; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .lf button { transition: none; } .lf-sheet { animation: none; } }
+</style>
+<script>
+(function () {
+  const lesson = document.getElementById('lesson');
+  if (!lesson) return;
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ICON_LIST = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>';
+  const ICON_UP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+
+  const lf = document.createElement('div');
+  lf.className = 'lf';
+  lf.innerHTML = '<button type="button" class="lf-toc" aria-label="Buka daftar isi">' + ICON_LIST + '<span>Daftar isi</span></button>' +
+                 '<button type="button" class="lf-top" aria-label="Kembali ke atas">' + ICON_UP + '</button>';
+  document.body.appendChild(lf);
+  const btnToc = lf.querySelector('.lf-toc'), btnTop = lf.querySelector('.lf-top');
+
+  const ov = document.createElement('div');
+  ov.className = 'lf-ov';
+  ov.innerHTML = '<div class="lf-sheet" role="dialog" aria-modal="true" aria-label="Daftar isi"><div class="lf-h"><strong>Daftar isi</strong><button type="button" class="lf-x" aria-label="Tutup">\u2715</button></div><nav class="lf-list"></nav><button type="button" class="lf-kopi" data-kopi data-src="daftar-isi">\u2615 Terbantu? Traktir kopi</button></div>';
+  document.body.appendChild(ov);
+  const list = ov.querySelector('.lf-list');
+
+  const teks = (node) => {
+    const c = node.cloneNode(true);
+    c.querySelectorAll('.mn, .subn').forEach((x) => x.remove());
+    return c.textContent.replace(/\s+/g, ' ').trim();
+  };
+  function items() {
+    const out = [];
+    const subs = lesson.querySelectorAll('.sub-sec');
+    if (subs.length) {
+      subs.forEach((sec) => {
+        const h = sec.querySelector('.subh');
+        if (h) out.push({ el: h, t: teks(h), l: 1 });
+        sec.querySelectorAll('.mc > summary').forEach((sm) => out.push({ el: sm.parentNode, t: teks(sm), l: 2 }));
+      });
+    } else {
+      lesson.querySelectorAll('.mc > summary').forEach((sm) => out.push({ el: sm.parentNode, t: teks(sm), l: 1 }));
+    }
+    return out;
+  }
+
+  let cnt = 0, tick = false;
+  const aktif = () => !lesson.hidden && lesson.children.length > 0;
+  const hitung = () => { cnt = aktif() ? items().length : 0; update(); };
+  function update() {
+    tick = false;
+    const y = window.scrollY, tinggi = document.documentElement.scrollHeight - window.innerHeight;
+    const on = aktif();
+    btnToc.classList.toggle('is-show', on && cnt >= 4);
+    btnTop.classList.toggle('is-show', on && y > 500);
+    btnTop.style.setProperty('--p', tinggi > 0 ? Math.min(100, Math.round(y / tinggi * 100)) : 0);
+  }
+  const minta = () => { if (!tick) { tick = true; requestAnimationFrame(update); } };
+  window.addEventListener('scroll', minta, { passive: true });
+  window.addEventListener('resize', minta);
+  new MutationObserver(() => setTimeout(hitung, 0)).observe(lesson, { childList: true });
+  new MutationObserver(() => setTimeout(hitung, 0)).observe(lesson, { attributes: true, attributeFilter: ['hidden'] });
+
+  btnTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+
+  let pemicu = null;
+  function buka() {
+    const it = items();
+    let now = -1;
+    it.forEach((x, i) => { if (x.el.getBoundingClientRect().top <= 140) now = i; });
+    list.innerHTML = '';
+    it.forEach((x, i) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'l' + x.l + (i === now ? ' on' : ''); b.textContent = x.t;
+      b.addEventListener('click', () => {
+        tutup();
+        if (x.el.tagName === 'DETAILS' && !x.el.open) x.el.open = true;
+        setTimeout(() => window.scrollTo({ top: x.el.getBoundingClientRect().top + window.scrollY - 14, behavior: reduce ? 'auto' : 'smooth' }), 60);
+      });
+      list.appendChild(b);
+    });
+    pemicu = document.activeElement;
+    ov.classList.add('is-open');
+    const on = list.querySelector('.on'); if (on && on.scrollIntoView) on.scrollIntoView({ block: 'center' });
+  }
+  function tutup() { ov.classList.remove('is-open'); if (pemicu && pemicu.focus) pemicu.focus(); }
+  btnToc.addEventListener('click', buka);
+  ov.addEventListener('click', (e) => { if (e.target === ov || e.target.closest('.lf-x') || e.target.closest('.lf-kopi')) ov.classList.remove('is-open'); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && ov.classList.contains('is-open')) tutup(); });
+
+  // Kartu traktir kopi di ujung materi (pasif, tidak menutupi layar)
+  const ikon = () => { const s = document.querySelector('#kopiHome .kopi-ic svg'); return s ? s.outerHTML : ''; };
+  function kartuAkhir() {
+    if (!aktif() || lesson.querySelector('.kopi-inline')) return;
+    if (window.kopiSudah && window.kopiSudah()) return;
+    const c = document.createElement('div');
+    c.className = 'kopi kopi-inline';
+    c.setAttribute('data-kopi', ''); c.setAttribute('data-src', 'akhir-materi');
+    c.setAttribute('role', 'button'); c.tabIndex = 0;
+    c.innerHTML = '<div class="kopi-ic" aria-hidden="true">' + ikon() + '</div>' +
+      '<div class="kopi-tx"><strong>Sudah sampai di sini. Terbantu?</strong><span>Kalau materinya bermanfaat, boleh traktir kopi. Nominal bebas.</span></div>' +
+      '<a class="kopi-btn" href="#traktir" data-kopi tabindex="-1">\u2615 Traktir kopi</a>';
+    lesson.appendChild(c);
+    if (window.kopiLog) window.kopiLog('tampil', 'akhir-materi');
+  }
+  new MutationObserver(() => setTimeout(kartuAkhir, 0)).observe(lesson, { childList: true });
+  new MutationObserver(() => setTimeout(kartuAkhir, 0)).observe(lesson, { attributes: true, attributeFilter: ['hidden'] });
+  hitung();
 })();
 </script>
 </body>
