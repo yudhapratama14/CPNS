@@ -187,10 +187,7 @@
     /* =====================================================
        5. RUANG BELAJAR — sapaan, statistik, tab materi
        ===================================================== */
-    .hero h1 { font-size: clamp(26px, 5vw, 38px); }
-    .hero p { margin-top: 8px; max-width: 58ch; color: var(--ink-soft); }
 
-    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
     .stat {
       padding: 16px; border-radius: var(--radius-md);
       background: var(--surface); border: 1px solid var(--line);
@@ -215,19 +212,14 @@
       padding: 24px; border-radius: var(--radius-lg);
       background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-md);
     }
-    .card + .card, .card + .tricks { margin-top: 16px; }
+    .card + .card { margin-top: 16px; }
     .card h3 { font-size: 18px; margin-bottom: 8px; }
     .card p { color: var(--ink-soft); }
     .card p + p { margin-top: 8px; }
 
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .chip {
-      padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 500;
-      background: var(--brand-soft); color: var(--brand-strong);
-    }
 
     .tricks-title { margin: 28px 0 12px; font-size: 20px; }
-    .tricks { display: grid; gap: 12px; }
     .trick { border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--line); }
     .trick summary {
       display: flex; justify-content: space-between; align-items: center; gap: 12px;
@@ -238,17 +230,9 @@
     .trick[open] summary::after { content: "\2212"; }
     .trick-body { padding: 0 20px 18px; color: var(--ink-soft); }
     .trick-body p + p { margin-top: 8px; }
-    .formula {
-      margin: 10px 0; padding: 10px 14px; border-radius: var(--radius-sm);
-      background: var(--brand-soft); color: var(--brand-strong); font-weight: 600;
-    }
 
     .trick-body ul { margin: 4px 0 0 18px; list-style: disc; }
     .trick-body li { margin-top: 6px; }
-    .callout {
-      margin-top: 12px; padding: 12px 16px; border-radius: var(--radius-sm);
-      border-left: 3px solid var(--brand); background: var(--brand-soft); color: var(--ink);
-    }
 
     .cmp { display: grid; gap: 10px; }
     .cmp > div { padding: 12px 14px; border-radius: var(--radius-sm); background: var(--bg); }
@@ -300,8 +284,6 @@
     .pk-detail em { display: block; margin-top: 6px; font-style: normal; font-size: 13.5px; color: var(--ink-soft); }
     .pk-detail em b { color: var(--brand); }
     @keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-    .venn { width: 100%; max-width: 380px; display: block; margin: 8px auto; }
-    .venn circle { transition: transform .7s ease; }
     .simrow { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; margin-bottom: 14px; }
     .simrow label { font-size: 13px; color: var(--ink-soft); display: grid; gap: 4px; }
     .simrow input {
@@ -320,13 +302,6 @@
 
     /* ===== Sistem belajar baru ===== */
     body { background: radial-gradient(900px 420px at 85% -80px, #E9E5FF 0%, transparent 70%), var(--bg); background-attachment: fixed; }
-    .hero2 { padding: 28px; border-radius: var(--radius-lg); color: #fff; box-shadow: var(--shadow-md); background: linear-gradient(135deg, #6C5CE7 0%, #8B7CF0 100%); }
-    .hero2 h1 { font-size: clamp(26px, 5vw, 36px); }
-    .hero2 p { margin-top: 8px; max-width: 58ch; opacity: .92; }
-    .hero2 .btn { background: #fff; color: var(--brand-strong); }
-    .overall { display: flex; align-items: center; gap: 12px; margin: 18px 0; font-size: 14px; }
-    .overall .bar { flex: 1; background: rgba(255,255,255,.28); }
-    .overall .bar i { background: #fff; }
     .bar { height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
     .bar i { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--c, var(--brand)); transition: width .5s ease; }
     .grp { margin-top: 32px; }
@@ -360,7 +335,6 @@
     .subg { color: var(--ink); font-size: 14.5px; margin: 0 0 16px; padding: 10px 14px; border-left: 4px solid #14161C; background: var(--surface); border-radius: 0 14px 14px 0; }
     .subh2 { font-size: 15px; margin: 16px 0 8px; color: var(--ink-soft); }
     .sub-sec + .sub-sec { margin-top: 48px; padding-top: 32px; border-top: 3px dashed var(--line); }
-    .subtag { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); margin-bottom: 2px; }
     .ilh { flex: none; align-self: center; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); padding: 0 6px 0 12px; white-space: nowrap; }
     .ilist .ilh:first-child { padding-left: 4px; }
     @media (min-width: 900px) { .ilh { align-self: flex-start; padding: 12px 12px 2px; } .ilist .ilh:first-child { padding-top: 4px; } }
@@ -458,16 +432,8 @@
     .sp button { padding: 10px 6px; border-radius: var(--radius-sm); border: 2px solid var(--line); background: var(--surface); text-align: center; font-size: 13px; line-height: 1.25; }
     .sp button b { display: block; font-size: 15px; letter-spacing: .04em; color: var(--c); }
     .sp button.is-active { border-color: var(--c); background: color-mix(in srgb, var(--c) 10%, white); }
-    .sp-arrow { height: 6px; border-radius: 3px; background: linear-gradient(90deg, #1FA971, #3B82F6, #E5484D, #6C5CE7); margin-bottom: 4px; }
-    .sp-cap { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-faint); margin-bottom: 12px; }
     .bd-det { margin-top: 10px; padding: 14px 16px; border-radius: var(--radius-md); background: var(--bg); border-left: 5px solid var(--c); display: grid; gap: 8px; }
     .bd-det small { display: block; font-size: 12px; font-weight: 700; color: var(--c); text-transform: uppercase; letter-spacing: .05em; }
-    .bd-wrap { overflow-x: auto; margin-top: 14px; border: 1px solid var(--line); border-radius: var(--radius-md); }
-    .bd-tbl { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14px; }
-    .bd-tbl th, .bd-tbl td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
-    .bd-tbl thead th { background: var(--brand-soft); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
-    .bd-tbl tbody th { color: var(--c); white-space: nowrap; }
-    .bd-tbl tbody tr:last-child > * { border-bottom: 0; }
     .bd-q .opt.ok { background: var(--ok-soft); } .bd-q .opt.no { background: var(--bad-soft); }
     @media (max-width: 480px) { .sp button { font-size: 11.5px; padding: 8px 2px; } .sp button b { font-size: 12.5px; } }
   
@@ -498,22 +464,9 @@
       #nav { left: 14px; right: 14px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); border: 0; border-radius: 30px; box-shadow: 0 12px 34px rgba(70, 110, 160, .22); }
       #main { padding-bottom: calc(var(--bottombar-h) + 48px); }
     }
-    .card, .trick, .lc, .card2 { border: 0; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
-    .card2 { background: #fff; padding: 20px; margin-top: 16px; }
-    .home-top { display: flex; justify-content: space-between; align-items: center; }
+    .card, .trick, .lc { border: 0; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
     .home h1 { font-size: clamp(32px, 7vw, 40px); font-weight: 800; }
-    .pill { padding: 6px 14px; border-radius: 99px; background: var(--brand-soft); color: var(--brand-strong); font-size: 12px; font-weight: 700; }
-    .pill.soft { background: var(--bg); color: var(--ink-soft); }
-    .who { display: flex; align-items: center; gap: 12px; margin: 16px 0 4px; }
-    .who small { display: block; color: var(--ink-faint); font-size: 13px; }
-    .flag { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; background: linear-gradient(180deg, #F96B57 50%, #FFD84A 50%); text-shadow: 0 1px 2px rgba(0,0,0,.25); }
-    .daily { display: flex; gap: 20px; align-items: center; }
-    .daily p { font-size: 15px; margin: 2px 0; } .daily small { display: block; color: var(--ink-faint); font-size: 12px; margin-bottom: 10px; }
-    .ring { --p: 0; flex: none; width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--brand) calc(var(--p) * 1%), #F3E4E1 0); }
-    .ring span { width: 70px; height: 70px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-weight: 800; }
-    .row { display: flex; justify-content: space-between; align-items: center; }
-    .vbars { display: flex; align-items: flex-end; gap: 8px; height: 110px; margin-top: 14px; padding: 0 4px; }
-    .vbars i { flex: 1; border-radius: 99px; background: linear-gradient(180deg, var(--c), color-mix(in srgb, var(--c) 25%, white)); transition: height .6s; }
+   
     .sec { margin: 28px 0 12px; font-size: 20px; }
     .tiles { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; min-height: 280px; }
     .tile { text-align: left; padding: 18px; border-radius: var(--radius-lg); background: var(--c); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; box-shadow: var(--shadow-md); transition: transform .15s; }
@@ -547,13 +500,9 @@
       --radius-md: 20px; --radius-lg: 24px; --out: 2px solid #14161C;
     }
     [hidden] { display: none !important; }
-    .card, .card2, .trick, .lc, .lcard, .tile, .analogi, .opt, .pk-detail { border: var(--out); box-shadow: 0 3px 0 #14161C; }
-    .card, .card2, .trick, .lc { border-radius: var(--radius-lg); }
-    .card2 { margin-top: 16px; }
-    .home-top { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; }
+    .card, .trick, .lc, .lcard, .tile, .analogi, .opt, .pk-detail { border: var(--out); box-shadow: 0 3px 0 #14161C; }
+    .card, .trick, .lc { border-radius: var(--radius-lg); }
     .home h1 { font-size: 16px; font-weight: 700; text-align: center; }
-    .logo { width: 44px; height: 44px; border-radius: 50%; background: var(--brand); border: var(--out); display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 11px; }
-    .logo i { background: #fff; border-radius: 50%; }
     .hello { font-size: 26px; font-weight: 800; margin-top: 22px; letter-spacing: -0.02em; }
     .subhello { color: var(--ink-soft); font-size: 14px; margin: 4px 0 14px; }
     .chips { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 8px; }
@@ -564,11 +513,6 @@
     .cream .x { position: absolute; top: -10px; right: -6px; width: 28px; height: 28px; border-radius: 50%; background: var(--red); color: #fff; border: var(--out); font-size: 18px; line-height: 1; }
     .obtn { padding: 12px 16px; border: var(--out); border-radius: 99px; background: #fff; font-weight: 600; font-size: 14.5px; }
     .obtn:active, .btn:active { transform: translateY(1px); }
-    .pill { background: #fff; border: var(--out); color: var(--ink); }
-    .pill.soft { background: var(--cream); }
-    .ring { background: conic-gradient(var(--brand) calc(var(--p) * 1%), #E6EEED 0); border: var(--out); }
-    .ring span { border: var(--out); }
-    .vbars i { border: 1.5px solid #14161C; background: color-mix(in srgb, var(--c) 55%, white); }
     .sec { font-size: 17px; font-weight: 800; }
     .tiles { display: flex; gap: 12px; overflow-x: auto; min-height: 0; padding: 2px 2px 8px; scroll-snap-type: x mandatory; }
     .tile { flex: none; width: 190px; height: 130px; scroll-snap-align: start; grid-row: auto; }
@@ -656,24 +600,8 @@
     .sp { gap: 8px; margin-bottom: 10px; }
     .sp button { border: var(--out); border-radius: 18px; background: #fff; box-shadow: 0 3px 0 #14161C; padding: 10px 4px; transition: transform .1s, box-shadow .1s; }
     .sp button.is-active { background: color-mix(in srgb, var(--c) 22%, white); transform: translateY(2px); box-shadow: 0 1px 0 #14161C; }
-    .sp-arrow { height: 8px; border: 1.5px solid #14161C; }
-    .sp-cap { font-weight: 600; color: var(--ink-soft); }
     .bd-det { background: var(--cream); border: var(--out); border-left: 6px solid var(--c); box-shadow: 0 3px 0 #14161C; }
-    .bd-wrap { border: var(--out); border-radius: var(--radius-md); }
-    .bd-tbl thead th { background: var(--cream); border-bottom: var(--out); }
     .bd-q .opt { background: #fff; border: var(--out); border-radius: 16px; font-weight: 600; }
-    @media (max-width: 700px) {
-      .bd-wrap { overflow: visible; border: 0; }
-      .bd-tbl, .bd-tbl tbody { display: block; min-width: 0; }
-      .bd-tbl thead { display: none; }
-      .bd-tbl tbody tr { display: block; margin-top: 10px; padding: 12px 14px; border: var(--out); border-left: 6px solid var(--c); border-radius: var(--radius-md); background: #fff; box-shadow: 0 3px 0 #14161C; }
-      .bd-tbl tbody tr > * { display: block; padding: 2px 0; border: 0; }
-      .bd-tbl tbody th { font-size: 16px; }
-      .bd-tbl td::before { display: block; font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .05em; }
-      .bd-tbl td:nth-of-type(1)::before { content: 'Hakikat'; }
-      .bd-tbl td:nth-of-type(2)::before { content: 'Fokus'; }
-      .bd-tbl td:nth-of-type(3)::before { content: 'Contoh singkat'; }
-    }
     .lg-top { fill: var(--cream); stroke: #14161C; stroke-width: 2; }
     .lg-band { fill-opacity: .14; stroke: #14161C; stroke-opacity: 1; stroke-width: 1.6; }
     .lg-bl { font-size: 10px; font-weight: 800; }
@@ -701,8 +629,6 @@
     .anx b:first-child { margin-top: 0; }
     /* ===== Animasi stikman alur sejarah ===== */
     .hs-st { border: var(--out); border-radius: 18px; overflow: hidden; box-shadow: 0 3px 0 #14161C; background: #fff; }
-    .hs-sv { width: 100%; display: block; }
-    .hs-sv text { font-weight: 800; fill: #14161C; pointer-events: none; }
     .hs-cap { margin-top: 12px; padding: 12px 14px; border: var(--out); border-radius: 16px; background: var(--cream); }
     .hs-cap small { display: block; font-size: 12px; font-weight: 800; letter-spacing: .05em; color: var(--red); text-transform: uppercase; }
     .hs-cap strong { display: block; font-size: 17px; }
@@ -727,7 +653,6 @@
     .cheer { animation: hjm .5s ease-in-out infinite alternate; animation-delay: var(--dl, 0s); }
     .cheer .a1 { transform-origin: 0 -22px; transform: rotate(135deg); } .cheer .a2 { transform-origin: 0 -22px; transform: rotate(-135deg); }
     .in { animation: hin 1.6s ease-out both; }
-    .loop { animation: hlp 6s linear infinite; }
     .pop { opacity: 0; animation: hpp .5s ease-out forwards; }
     .rise { animation: hrs 2.4s ease-out both; }
     .wave { transform-box: fill-box; transform-origin: left center; animation: hwv .6s ease-in-out infinite alternate; }
@@ -746,10 +671,6 @@
     .kopi-btn { display: inline-block; padding: 10px 16px; border: var(--out, 1px solid var(--line)); border-radius: 999px; background: var(--brand); color: #fff; font-weight: 700; font-size: 14px; text-decoration: none; }
     .kopi-btn:hover { filter: brightness(1.06); }
     .kopi { position: relative; }
-    .kopi-x { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border: 0; border-radius: 50%; background: transparent; color: var(--ink-soft); font-size: 16px; line-height: 1; cursor: pointer; }
-    .kopi-x:hover { background: rgba(20, 22, 28, .08); }
-    .kopi-nav { display: none; margin-top: 10px; text-align: center; padding: 10px 12px; border-radius: 12px; background: var(--brand-soft); color: var(--ink); font-size: 13.5px; font-weight: 700; text-decoration: none; }
-    @media (min-width: 900px) { .kopi-nav { display: block; } }
     .kopi { background: #FFE9C2; }
     .kopi-tx span { color: #5B4A33; }
     .kopi-btn { background: var(--ora, #F8B461); color: var(--ink, #14161C); box-shadow: 0 3px 0 #14161C; }
@@ -774,7 +695,6 @@
     @keyframes knt { 0% { opacity: 0; transform: translateY(0); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateY(-50px); } }
     @media (prefers-reduced-motion: reduce) { .ks-cl, .ks-sun, .ks-tw, .ks-nt { animation: none; } }
     .boom { transform-box: fill-box; transform-origin: center; animation: hbm .8s ease-out infinite; }
-    .bul { animation: hbl 1s linear infinite; }
     @keyframes hsw { from { transform: rotate(-35deg); } to { transform: rotate(35deg); } }
     @keyframes hoa { from { transform: rotate(var(--r1)); } to { transform: rotate(var(--r2)); } }
     @keyframes hjm { from { transform: translateY(0); } to { transform: translateY(-9px); } }
@@ -792,13 +712,10 @@
     .think .hd { animation: sgTilt 1.6s ease-in-out infinite alternate; transform-origin: 0 -24px; }
     @keyframes sgTilt { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
     .think .a2 { transform-origin: 0 -22px; transform: rotate(-150deg); }
-    .run .l1, .run .l2 { transform-origin: 0 -12px; animation: hsw .22s ease-in-out infinite alternate; }
-    .run .l2 { animation-direction: alternate-reverse; }
-    .bow { transform-origin: 0 -10px; animation: hbw 1.6s ease-in-out infinite alternate; }
     .sad { animation: hsd 1.6s ease-in-out infinite alternate; }
     @keyframes hbw { to { transform: rotate(16deg); } }
     @keyframes hsd { to { transform: translateY(2px); } }
-    @media (prefers-reduced-motion: reduce) { .bow, .sad, .run .l1, .run .l2 { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .sad { animation: none; } }
     /* ===== Chart timeline ringkasan ===== */
     .tlc-f { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 16px; }
     .tlc-f button { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; background: #fff; font-size: 12.5px; font-weight: 700; color: var(--ink-soft); }
@@ -825,7 +742,6 @@
     /* ===== Profil pembuat ===== */
     .me { position: relative; overflow: hidden; margin: 30px 0 8px; padding: 22px 20px; border-radius: 22px; background: linear-gradient(150deg, #1E2A55, #2E3E7C); color: #fff; box-shadow: 0 2px 4px rgba(21, 26, 45, .05), 0 18px 40px rgba(30, 42, 85, .25); }
     .me::after { content: ""; position: absolute; right: -40px; top: -40px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(235, 199, 107, .35), transparent 70%); }
-    .me-top { position: relative; z-index: 1; display: flex; align-items: center; gap: 14px; }
     .me-av { flex: none; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font: 700 20px var(--serif, inherit); color: #14193A; background: linear-gradient(150deg, #EBC76B, #B8892B); box-shadow: 0 0 0 3px rgba(255, 255, 255, .25); }
     .me small { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #EBC76B; }
     .me strong { display: block; margin-top: 2px; font-family: var(--serif, inherit); font-size: 19px; }
@@ -890,9 +806,8 @@
     .lcard .tx small { color: var(--ink-soft); font-weight: 700; letter-spacing: 0; } .lcard em { color: var(--ink); font-weight: 700; }
 
     /* Kartu umum */
-    .card, .card2, .trick, .lc, .analogi, .opt, .pk-detail { background: #fff; border: var(--out); border-radius: var(--radius-lg); margin-bottom: 8px;
+    .card, .trick, .lc, .analogi, .opt, .pk-detail { background: #fff; border: var(--out); border-radius: var(--radius-lg); margin-bottom: 8px;
       box-shadow: 0 5px 0 0 var(--slab, var(--yel)), 0 5px 0 2px #14161C; }
-    .card2 { margin-top: 16px; }
     .card:nth-of-type(3n+2), .trick:nth-of-type(3n+2) { --slab: var(--mint); }
     .card:nth-of-type(3n), .trick:nth-of-type(3n) { --slab: #CFE9F1; }
     .lc { --slab: var(--ora); } .card.sim { --slab: var(--mint); }
@@ -1188,7 +1103,6 @@
     .kp-tier .tn { font-size: 12.5px; color: var(--ink-soft); }
     .kp-tier .tp { font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; }
     .kp-tier.is-on { background: #FFE9C2; box-shadow: 0 3px 0 #14161C; transform: translateY(-2px); }
-    .kp-fav { position: absolute; top: -9px; right: 8px; padding: 2px 8px; border: var(--out, 1px solid var(--line)); border-radius: 99px; background: var(--brand); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .04em; }
     .kp-pick { margin: 10px 0 14px; font-size: 13px; line-height: 1.5; color: var(--ink-soft); text-align: center; }
     .kp-pick b { color: var(--ink); }
     .kp-tabs { display: flex; gap: 4px; padding: 4px; border: var(--out, 1px solid var(--line)); border-radius: 999px; background: var(--cream, #FBF5EA); }
@@ -1326,6 +1240,74 @@
 @media (prefers-reduced-motion: reduce) { .sx .ks-n > *, .bm-pl, .bm-bomb, .bm-fl, .bm-mu { animation: none; } .bm-pl, .bm-bomb, .bm-fl { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .ks-far, .ks-pt, .ks-wv, .ks-ship, .ks-sv, .talk .hd, .point .hd, .point .a2 { animation: none; } }
 </style>
+<style id="maskot-css">
+/* ===== Maskot Pejuang NIP: interaktif ===== */
+.mk-row { display: flex; align-items: center; gap: 16px; margin: 16px 0 10px; }
+.mk-bubble {
+  position: relative; flex: 1 1 auto; min-width: 0; display: flex; align-items: center;
+  min-height: calc(3 * 1.4em + 24px); padding: 12px 16px; box-sizing: border-box;
+  background: #fff; color: #14161C; border: 2px solid #14161C; border-radius: 16px; box-shadow: 0 3px 0 #14161C;
+  font-size: 14px; line-height: 1.4; font-weight: 600; opacity: 1; visibility: visible;
+}
+.mk-bubble::after {
+  content: ""; position: absolute; left: -9px; top: 50%; width: 14px; height: 14px; margin-top: -7px;
+  background: #fff; border-left: 2px solid #14161C; border-bottom: 2px solid #14161C; transform: rotate(45deg);
+}
+.mk-bubble p { margin: 0; }
+.mk-bubble.mk-pop { animation: mkPop .35s ease; }
+.home-mascot { position: relative; flex: none; width: 84px; animation: mkFloat 3.4s ease-in-out infinite; }
+.mk-btn {
+  display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; transform-origin: 50% 100%;
+}
+.mk-btn:focus-visible { outline: 3px solid #6C5CE7; outline-offset: 4px; border-radius: 24px; }
+.mk-btn.mk-jump { animation: mkJump .55s ease; }
+.mk-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.mk-arm { transform-box: view-box; transform-origin: 266px 200px; animation: mkWave 1.6s ease-in-out infinite; }
+.mk-arm-l { transform-box: view-box; transform-origin: 108px 212px; }
+.mk-eyes { transform-box: fill-box; transform-origin: center; animation: mkBlink 4.5s infinite; }
+.mk-look { transition: transform .12s ease-out; }
+.mk-tail { transform-box: view-box; transform-origin: 106px 118px; animation: mkTail 2.2s ease-in-out infinite; }
+/* ekspresi */
+.mk-svg .mk-e-h, .mk-svg .mk-e-w, .mk-svg .mk-e-z, .mk-svg .mk-e-d,
+.mk-svg .mk-m-o, .mk-svg .mk-m-w, .mk-svg .mk-m-f, .mk-svg .mk-m-d, .mk-svg .mk-zz { display: none; }
+[data-mood="happy"] .mk-e-n, [data-mood="wow"] .mk-e-n, [data-mood="sleep"] .mk-e-n, [data-mood="dizzy"] .mk-e-n,
+[data-mood="happy"] .mk-m-s, [data-mood="wow"] .mk-m-s, [data-mood="sleep"] .mk-m-s, [data-mood="dizzy"] .mk-m-s { display: none; }
+[data-mood="happy"] .mk-e-h, [data-mood="happy"] .mk-m-o { display: inline; }
+[data-mood="wow"] .mk-e-w, [data-mood="wow"] .mk-m-w { display: inline; }
+[data-mood="sleep"] .mk-e-z, [data-mood="sleep"] .mk-m-f, [data-mood="sleep"] .mk-zz { display: inline; }
+[data-mood="dizzy"] .mk-e-d, [data-mood="dizzy"] .mk-m-d { display: inline; }
+[data-mood="happy"] .mk-arm { animation-duration: .45s; }
+[data-mood="happy"] .mk-arm-l { animation: mkWaveL .45s ease-in-out infinite; }
+[data-mood="wow"] .mk-arm { animation-duration: .7s; }
+[data-mood="sleep"] .mk-arm, [data-mood="sleep"] .mk-tail { animation: none; }
+[data-mood="sleep"].home-mascot { animation: mkSnooze 4s ease-in-out infinite; }
+[data-mood="dizzy"] .mk-btn { animation: mkDizzy .5s ease-in-out infinite; }
+.mk-zz text { animation: mkZ 2.4s ease-in-out infinite; }
+.mk-zz text:nth-child(2) { animation-delay: .5s; } .mk-zz text:nth-child(3) { animation-delay: 1s; }
+.mk-p { position: absolute; left: 50%; top: 45%; z-index: 3; font-size: 18px; line-height: 1; pointer-events: none; }
+@keyframes mkFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes mkSnooze { 0%,100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(3px) rotate(1.5deg); } }
+@keyframes mkWave { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-16deg); } }
+@keyframes mkWaveL { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(14deg); } }
+@keyframes mkTail { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(7deg); } }
+@keyframes mkBlink { 0%,92%,100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+@keyframes mkJump {
+  0% { transform: translateY(0) scale(1,1); } 18% { transform: translateY(0) scale(1.08,.9); }
+  50% { transform: translateY(-28px) scale(.95,1.06); } 80% { transform: translateY(0) scale(1.06,.94); } 100% { transform: translateY(0) scale(1,1); }
+}
+@keyframes mkDizzy { 0%,100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+@keyframes mkPop { 0% { transform: scale(.95); } 60% { transform: scale(1.025); } 100% { transform: scale(1); } }
+@keyframes mkZ { 0% { opacity: 0; transform: translate(-6px, 8px); } 40% { opacity: 1; } 100% { opacity: 0; transform: translate(6px, -8px); } }
+@media (min-width: 900px) {
+  .home-mascot { width: 100px; }
+  .mk-bubble { min-height: calc(2 * 1.4em + 28px); font-size: 15px; padding: 14px 20px; max-width: 560px; }
+}
+@media (max-width: 380px) { .home-mascot { width: 72px; } .mk-bubble { font-size: 13px; } .mk-row { gap: 14px; } }
+@media (prefers-reduced-motion: reduce) {
+  .home-mascot, .mk-arm, .mk-arm-l, .mk-tail, .mk-eyes, .mk-zz text, .mk-btn, .mk-bubble { animation: none !important; }
+}
+</style>
 </head>
 
 <body>
@@ -1370,6 +1352,42 @@
               <h1 id="judul-belajar" class="sr-only">Beranda</h1>
               <p class="hello">Halo, Pejuang NIP!</p>
               <p class="subhello">Selamat belajar, target 450+ dari maksimal 550</p>
+              <div class="mk-row">
+                <div class="home-mascot" data-mood="normal">
+                  <button class="mk-btn" type="button" aria-label="Maskot Pejuang NIP. Ketuk untuk menyapa"><svg class="mk-svg" viewBox="58 28 264 324" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <g stroke="#14161C" stroke-width="7" stroke-linecap="round"><line x1="157" y1="296" x2="157" y2="326"/><line x1="214" y1="296" x2="214" y2="326"/></g>
+  <g fill="#EF4B4B" stroke="#14161C" stroke-width="5"><ellipse cx="147" cy="336" rx="22" ry="10"/><ellipse cx="226" cy="336" rx="22" ry="10"/></g>
+  <g class="mk-arm-l"><line x1="108" y1="212" x2="82" y2="244" stroke="#14161C" stroke-width="7" stroke-linecap="round"/><circle cx="77" cy="250" r="13" fill="#FBF3DC" stroke="#14161C" stroke-width="5"/></g>
+  <g class="mk-arm"><line x1="266" y1="200" x2="295" y2="153" stroke="#14161C" stroke-width="7" stroke-linecap="round"/><circle cx="301" cy="148" r="14" fill="#FBF3DC" stroke="#14161C" stroke-width="5"/></g>
+  <rect x="108" y="36" width="158" height="260" rx="22" fill="#fff"/>
+  <path d="M130 38 H244 a20 20 0 0 1 20 20 V92 H110 V58 a20 20 0 0 1 20 -20z" fill="#6C5CE7"/>
+  <rect x="108" y="36" width="158" height="260" rx="22" fill="none" stroke="#14161C" stroke-width="5"/>
+  <rect x="164" y="51" width="46" height="13" rx="6.5" fill="#fff" stroke="#14161C" stroke-width="3.5"/>
+  <g class="mk-tail" fill="#EF4B4B" stroke="#14161C" stroke-width="4.5" stroke-linejoin="round"><path d="M106 108 L74 96 L84 118 Z"/><path d="M106 122 L70 130 L96 144 Z"/></g>
+  <rect x="104" y="102" width="166" height="22" rx="6" fill="#EF4B4B" stroke="#14161C" stroke-width="5"/>
+  <g class="mk-look">
+    <g class="mk-e-n mk-eyes" fill="#14161C"><circle cx="155" cy="148" r="8"/><circle cx="219" cy="148" r="8"/></g>
+    <g class="mk-e-h" fill="none" stroke="#14161C" stroke-width="5" stroke-linecap="round"><path d="M146 153 Q155 139 164 153"/><path d="M210 153 Q219 139 228 153"/></g>
+    <g class="mk-e-w"><circle cx="155" cy="148" r="12" fill="#fff" stroke="#14161C" stroke-width="4"/><circle cx="155" cy="148" r="5.5" fill="#14161C"/><circle cx="219" cy="148" r="12" fill="#fff" stroke="#14161C" stroke-width="4"/><circle cx="219" cy="148" r="5.5" fill="#14161C"/></g>
+    <g class="mk-e-z" fill="none" stroke="#14161C" stroke-width="5" stroke-linecap="round"><path d="M146 148 Q155 157 164 148"/><path d="M210 148 Q219 157 228 148"/></g>
+    <g class="mk-e-d" fill="none" stroke="#14161C" stroke-width="5" stroke-linecap="round"><path d="M148 141 L162 155 M162 141 L148 155"/><path d="M212 141 L226 155 M226 141 L212 155"/></g>
+  </g>
+  <circle cx="134" cy="168" r="8" fill="#F9B4B4"/><circle cx="240" cy="168" r="8" fill="#F9B4B4"/>
+  <path class="mk-m-s" d="M166 172 Q187 190 208 172" fill="none" stroke="#14161C" stroke-width="5" stroke-linecap="round"/>
+  <g class="mk-m-o"><path d="M160 169 Q187 205 214 169 Z" fill="#14161C" stroke="#14161C" stroke-width="3" stroke-linejoin="round"/><path d="M174 185 Q187 177 200 185 Q187 196 174 185Z" fill="#F28B9B"/></g>
+  <ellipse class="mk-m-w" cx="187" cy="181" rx="7" ry="9" fill="#14161C"/>
+  <path class="mk-m-f" d="M177 179 Q187 184 197 179" fill="none" stroke="#14161C" stroke-width="5" stroke-linecap="round"/>
+  <path class="mk-m-d" d="M165 178 q5 -7 10 0 t10 0 t10 0 t10 0" fill="none" stroke="#14161C" stroke-width="4.5" stroke-linecap="round"/>
+  <text x="187" y="226" text-anchor="middle" font-family="Poppins,'Segoe UI',Arial,sans-serif" font-size="13" font-weight="800" letter-spacing="1.2" fill="#6C5CE7">PEJUANG NIP</text>
+  <rect x="147" y="239" width="80" height="9" rx="4.5" fill="#E6E6F0"/>
+  <rect x="147" y="261" width="42" height="15" rx="7.5" fill="#6C5CE7" stroke="#14161C" stroke-width="4"/>
+  <g class="mk-zz" font-family="Poppins,'Segoe UI',Arial,sans-serif" font-weight="800" fill="#14161C">
+    <text x="262" y="78" font-size="26">Z</text><text x="284" y="56" font-size="20">z</text><text x="300" y="38" font-size="15">z</text>
+  </g>
+</svg></button>
+                </div>
+                <div class="mk-bubble"><p id="mkBubbleText">Halo, Pejuang NIP! Ayo belajar bareng aku.</p></div>
+              </div>
               <div class="chips" id="chips"><button class="is-active" data-f="all">Semua</button><button data-f="twk">TWK</button><button data-f="tiu">TIU</button><button data-f="tkp">TKP</button></div>
             </header>
             <h3 class="sec">Subtes</h3><div class="tiles" id="tiles"></div>
@@ -5219,7 +5237,7 @@ h1, h2, h3, .subh, .hello { text-wrap: balance; }
 .mb > p, .mb > ul, .mb > ol, .anx, .lc-body, .ks-n p { max-width: var(--read); }
 .hint, .sim .hint { font-size: 14px; line-height: 1.6; }
 /* label kecil: minimal 12px */
-.subk, .ilh, .tx-chip, .mcq-t, .coret .tt, #lesson .analogi b, .anx b, .mc.key .anx b, .sx .hs-cap small, .tk-meta span, .lc-body b, .tg b, .ks-era span, .ks-era span::before, .tlc li.era span, .tlc .bx em, .hs-dots button, .sl-b u, .bd-tbl td::before, .tb.st td[data-l]::before, .sp button { font-size: 12px; }
+.subk, .ilh, .tx-chip, .mcq-t, .coret .tt, #lesson .analogi b, .anx b, .mc.key .anx b, .sx .hs-cap small, .tk-meta span, .lc-body b, .tg b, .ks-era span, .ks-era span::before, .tlc li.era span, .tlc .bx em, .hs-dots button, .sl-b u, .tb.st td[data-l]::before, .sp button { font-size: 12px; }
 .me small, .tg small, .tile small { font-size: 12px; }
 .tile span, .sg-r small { font-size: 12.5px; }
 .nav-btn span { font-size: 12px; }
@@ -5827,6 +5845,140 @@ button, a, summary, [role="button"] { touch-action: manipulation; }
     if (++n >= 2) banner();
   });
   window.addEventListener('unhandledrejection', () => { if (++n >= 2) banner(); });
+})();
+</script>
+<script id="maskot-js">
+(function () {
+  var root = document.querySelector('.home-mascot'); if (!root) return;
+  var btn = root.querySelector('.mk-btn'), bubble = document.querySelector('.mk-bubble');
+  var txt = document.getElementById('mkBubbleText'), look = root.querySelector('.mk-look');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var typeT, moodT, sleeping = false, lastTip = -1, taps = [], totalTaps = 0, idleT;
+
+  var TIPS = [
+    ["Tidak ada nilai minus di SKD, jadi jangan kosongkan jawaban. Tebak yang paling masuk akal!", "wow"],
+    ["Latihan soal sedikit tapi rutin itu lebih ampuh daripada maraton semalam suntuk.", "happy"],
+    ["Selesai tryout, baca pembahasan soal yang salah. Di situ nilai naiknya!", "happy"],
+    ["TIU: kerjakan dulu soal yang kamu kuasai, soal yang bikin macet dilewati sebentar.", ""],
+    ["TKP: pilih sikap yang melayani, profesional, dan bertanggung jawab. Nilainya 1 sampai 5 lho!", ""],
+    ["TWK: Pancasila, UUD 1945, NKRI, Bhinneka Tunggal Ika. Kuasai satu-satu ya.", ""],
+    ["Jangan lupa cek ambang batas tiap subtes. Lolos total saja belum cukup!", "wow"],
+    ["Belajar 45 menit, istirahat 5 menit. Otak juga butuh napas.", "happy"],
+    ["Minum air dulu yuk. Otak yang segar mengerjakan soal lebih cepat.", "happy"],
+    ["Target kita 450+. Sedikit demi sedikit, pasti sampai!", "happy"],
+    ["Kerjakan tryout dengan timer, biar terbiasa dengan tekanan waktu aslinya.", ""],
+    ["Catat rumus dan trik yang sering lupa. Besok tinggal dibaca ulang.", ""],
+    ["Salah itu wajar. Yang penting tahu kenapa salah, lalu tidak diulang.", "happy"],
+    ["Tidur cukup itu bagian dari belajar, lho. Ingatan dirapikan saat kamu tidur.", ""]
+  ];
+  var TAPS = [
+    ["Hehe, geli! Ayo lanjut belajar.", "happy"], ["Semangat Pejuang NIP! Satu soal lagi!", "happy"],
+    ["Aku di sini nemenin kamu sampai lolos!", "happy"], ["Colek lagi, aku tetap semangat!", "happy"],
+    ["Kamu pasti bisa. Aku percaya sama kamu!", "happy"], ["Yuk, buka satu materi sekarang. Lima menit saja!", "wow"],
+    ["Nilai 450+ itu bukan mimpi. Ayo kejar!", "happy"]
+  ];
+  var CHIP = {
+    all: "Semua subtes, mantap! Pelan-pelan tapi pasti.",
+    twk: "TWK dipilih! Pancasila, UUD 1945, NKRI, Bhinneka Tunggal Ika. Yuk dikuasai.",
+    tiu: "TIU dipilih! Verbal, numerik, figural. Latihan rutin bikin kamu makin cepat.",
+    tkp: "TKP dipilih! Pilih sikap terbaik: melayani, profesional, bertanggung jawab."
+  };
+
+  function setMood(m, ms) {
+    root.setAttribute('data-mood', m); clearTimeout(moodT);
+    if (m !== 'normal' && m !== 'sleep') moodT = setTimeout(function () { root.setAttribute('data-mood', 'normal'); }, ms || 2800);
+  }
+  function say(text, mood, ms) {
+    clearInterval(typeT);
+    if (mood) setMood(mood, ms);
+    bubble.classList.remove('mk-pop'); void bubble.offsetWidth; if (!reduce) bubble.classList.add('mk-pop');
+    if (reduce) { txt.textContent = text; return; }
+    var ch = Array.from(text), i = 0; txt.textContent = '';
+    typeT = setInterval(function () { i++; txt.textContent = ch.slice(0, i).join(''); if (i >= ch.length) clearInterval(typeT); }, 24);
+  }
+  function visible() { return root.offsetParent !== null && !document.hidden; }
+  function greet() {
+    var h = new Date().getHours();
+    if (h >= 4 && h < 11) return "Selamat pagi, Pejuang! Sarapan dulu, lalu kita taklukkan soal hari ini.";
+    if (h >= 11 && h < 15) return "Selamat siang! Sudah makan? Habis itu lanjut latihan soal ya.";
+    if (h >= 15 && h < 18) return "Selamat sore! Pas banget buat satu sesi belajar santai.";
+    if (h >= 18 && h < 23) return "Selamat malam! Satu sesi belajar lagi sebelum istirahat, yuk.";
+    return "Sudah larut, Pejuang. Belajar sebentar boleh, tapi jangan lupa tidur ya!";
+  }
+  function jump() {
+    btn.classList.remove('mk-jump'); void btn.offsetWidth; btn.classList.add('mk-jump');
+    setTimeout(function () { btn.classList.remove('mk-jump'); }, 600);
+  }
+  function burst() {
+    if (reduce || !root.animate) return;
+    var em = ['⭐', '💜', '✨', '🎯', '📚', '🔥'];
+    for (var i = 0; i < 7; i++) {
+      var s = document.createElement('span'); s.className = 'mk-p'; s.textContent = em[(Math.random() * em.length) | 0];
+      root.appendChild(s);
+      var a = (Math.PI * 2) * (i / 7) + Math.random() * .6, d = 55 + Math.random() * 45;
+      var x = Math.cos(a) * d, y = Math.sin(a) * d - 30;
+      var an = s.animate([
+        { transform: 'translate(-50%,-50%) scale(.4)', opacity: 1 },
+        { transform: 'translate(calc(-50% + ' + x + 'px),calc(-50% + ' + y + 'px)) scale(1.15)', opacity: 0 }
+      ], { duration: 900 + Math.random() * 300, easing: 'cubic-bezier(.2,.8,.3,1)' });
+      an.onfinish = (function (el) { return function () { el.remove(); }; })(s);
+    }
+  }
+  function nextTip() {
+    var i; do { i = (Math.random() * TIPS.length) | 0; } while (i === lastTip && TIPS.length > 1);
+    lastTip = i; say(TIPS[i][0], TIPS[i][1] || 'normal', 3000);
+  }
+  function sleep() {
+    if (sleeping || !visible()) return;
+    sleeping = true; setMood('sleep');
+    say("Zzz... aku ngantuk. Ketuk aku kalau sudah siap belajar lagi!");
+  }
+  function wake() {
+    sleeping = false; jump(); setMood('wow', 2200);
+    say("Eh, kamu balik! Aku sudah segar lagi. Yuk lanjut belajar!");
+  }
+  function touchIdle() {
+    clearTimeout(idleT); idleT = setTimeout(sleep, 70000);
+  }
+
+  btn.addEventListener('click', function () {
+    touchIdle();
+    if (sleeping) { wake(); return; }
+    var now = Date.now(); taps = taps.filter(function (t) { return now - t < 6000; }); taps.push(now); totalTaps++;
+    jump(); burst();
+    if (taps.length >= 7) { taps = []; say("Pusing... pusing... Stop dong, nanti aku oleng!", 'dizzy', 3200); return; }
+    if (totalTaps === 25) { say("25 kali colek! Semangat segitu juga ya waktu ngerjain tryout.", 'wow', 3200); return; }
+    var m = TAPS[(Math.random() * TAPS.length) | 0]; say(m[0], m[1] || 'happy', 2800);
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!visible() || !e.target.closest) return;
+    var c = e.target.closest('#chips button');
+    if (c && CHIP[c.getAttribute('data-f')]) { if (sleeping) sleeping = false; say(CHIP[c.getAttribute('data-f')], 'happy', 2800); return; }
+    if (e.target.closest('#fab')) { if (sleeping) sleeping = false; jump(); say("Gas! Lanjutkan belajarnya, aku temani dari sini.", 'happy', 2800); }
+  });
+
+  ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, function () { if (!sleeping) touchIdle(); }, { passive: true });
+  });
+
+  if (look && !reduce) {
+    var raf = 0, px = 0, py = 0;
+    window.addEventListener('pointermove', function (e) {
+      px = e.clientX; py = e.clientY;
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = 0; if (sleeping || !visible()) return;
+        var r = btn.getBoundingClientRect(), cx = r.left + r.width * .5, cy = r.top + r.height * .4;
+        var dx = px - cx, dy = py - cy, dist = Math.hypot(dx, dy) || 1, k = Math.min(1, dist / 220);
+        look.style.transform = 'translate(' + (dx / dist * 4.5 * k).toFixed(2) + 'px,' + (dy / dist * 3.5 * k).toFixed(2) + 'px)';
+      });
+    }, { passive: true });
+  }
+
+  setTimeout(function () { say(greet(), 'happy', 2800); }, 600);
+  setInterval(function () { if (!sleeping && visible()) nextTip(); }, 10000);
+  touchIdle();
 })();
 </script>
 </body>
