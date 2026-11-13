@@ -5061,6 +5061,27 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
 .lc { --slab: var(--mint, #A8D8C3); }
 .lc-body { border-left: 6px solid var(--brand, #2B8F91); }
 @media (prefers-reduced-motion: reduce) { .mc { animation: none; transition: none; } .mc summary::after { transition: none; } #lesson > .back, .mctl .obtn { transition: none; } }
+/* ===== Panel animasi / simulasi: panggung, keterangan, navigasi halaman ===== */
+.hs-st { box-shadow: 0 5px 0 0 var(--mint, #A8D8C3), 0 5px 0 2px #14161C; }
+.sx .hs-cap { position: relative; padding: 18px 20px 16px; background: linear-gradient(180deg, #FFFDF7, #FBF5EA); border-left: 7px solid var(--brand, #2B8F91); box-shadow: 0 4px 0 #14161C; }
+.sx .hs-cap small { align-self: flex-start; display: inline-flex; align-items: center; gap: 7px; margin: 0 0 8px; padding: 4px 12px 4px 10px; border: 1.5px solid #14161C; background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); font-size: 11.5px; }
+.sx .hs-cap small::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--red, #D9625A); box-shadow: 0 0 0 3px rgba(217, 98, 90, .2); }
+.sx .hs-cap strong { font-size: 20px; line-height: 1.28; letter-spacing: -.01em; }
+.ks-p b { background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); font-weight: 800; }
+.sx .ks-n { min-height: 8em; }
+.sx .ks-n p { margin-top: 12px; padding-top: 12px; border-top: 2px dashed rgba(20, 22, 28, .15); font-size: 15.5px; line-height: 1.75; }
+.sx .ks-k { border-left: 5px solid var(--red, #D9625A); }
+.tx-nav { margin-top: 16px; padding-top: 12px; border-top: 2px dashed rgba(20, 22, 28, .15); }
+.tx-nav .btn { width: 42px; height: 38px; border-radius: 99px; background: #fff; transition: background .15s, transform .12s, box-shadow .12s; }
+.tx-nav .btn:not(:disabled):hover { background: var(--brand-soft, #DDF0EF); }
+.tx-dots i { width: 10px; height: 10px; }
+.tx-dots i.on { width: 24px; border-radius: 99px; background: var(--brand, #2B8F91); transform: none; }
+.tx-dots i.on.k { width: 24px; border-radius: 99px; }
+.tx-ct { min-width: 0; padding: 3px 10px; border: 1.5px solid #14161C; border-radius: 99px; background: #fff; color: var(--ink, #14161C); }
+.hs-dots button.is-active { background: var(--brand, #2B8F91); color: #fff; }
+.ks-bar [data-a="play"] { background: var(--brand, #2B8F91); color: #fff; }
+.ks-bar [data-a="prev"], .ks-bar [data-a="next"] { background: #fff; }
+.ks-prog i { background: var(--brand, #2B8F91); }
 @media (max-width: 380px) { .nav-btn span { font-size: 10px; } }
 /* Cari dalam + glosarium */
 .sg-box { height: min(100%, 680px); }
@@ -5458,19 +5479,25 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
     return out;
   }
 
-  let cnt = 0, tick = false;
+  let cnt = 0, tick = false, awake = false, lastY = window.scrollY, idleT = 0;
   const aktif = () => !lesson.hidden && lesson.children.length > 0;
   const hitung = () => { cnt = aktif() ? items().length : 0; update(); };
   function update() {
     tick = false;
     const y = window.scrollY, tinggi = document.documentElement.scrollHeight - window.innerHeight;
     const on = aktif();
-    btnToc.classList.toggle('is-show', on && cnt >= 4);
-    btnTop.classList.toggle('is-show', on && y > 500);
+    btnToc.classList.toggle('is-show', on && cnt >= 4 && awake);
+    btnTop.classList.toggle('is-show', on && y > 500 && awake);
     btnTop.style.setProperty('--p', tinggi > 0 ? Math.min(100, Math.round(y / tinggi * 100)) : 0);
   }
   const minta = () => { if (!tick) { tick = true; requestAnimationFrame(update); } };
-  window.addEventListener('scroll', minta, { passive: true });
+  const bangun = (ms) => { awake = true; clearTimeout(idleT); idleT = setTimeout(() => { awake = false; update(); }, ms); };
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY, dy = y - lastY;
+    if (dy < -6) bangun(3500); else if (dy > 6 && awake) { awake = false; clearTimeout(idleT); }
+    lastY = y; minta();
+  }, { passive: true });
+  lf.addEventListener('pointerenter', () => { if (awake) bangun(3500); });
   window.addEventListener('resize', minta);
   new MutationObserver(() => setTimeout(hitung, 0)).observe(lesson, { childList: true });
   new MutationObserver(() => setTimeout(hitung, 0)).observe(lesson, { attributes: true, attributeFilter: ['hidden'] });
