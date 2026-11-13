@@ -5,6 +5,11 @@
   <!-- viewport-fit=cover: biar rapi di HP berponi / punya gesture bar -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#F6F6FA">
+<meta name="description" content="Aplikasi belajar dan tryout SKD CPNS 2026: materi TWK, TIU, TKP, animasi, latihan soal, dan glosarium. Gratis.">
+<meta property="og:title" content="Pejuang NIP · Belajar &amp; Tryout SKD CPNS 2026">
+<meta property="og:description" content="Materi TWK, TIU, TKP dengan animasi, teknik cepat, dan latihan soal. Dibuat oleh Muhammad Yudha Pratama.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
   <meta name="color-scheme" content="only light">
   <style>:root { color-scheme: only light; }</style>
   <title>Pejuang NIP · Belajar &amp; Tryout SKD CPNS 2026</title>
@@ -842,7 +847,7 @@
        ===================================================== */
     :root {
       --bg: #F1F3F8; --surface: #fff; --ink: #14161C; --ink-soft: #4B5160; --ink-faint: #8A90A0; --line: #E1E4EC;
-      --brand: #2B8F91; --brand-strong: #1F7274; --brand-soft: #DDF0EF; --red: #D9625A; --cream: #FBF5EA;
+      --brand: #247B7D; --brand-strong: #1F7274; --brand-soft: #DDF0EF; --red: #D9625A; --cream: #FBF5EA;
       --teal: #35A7A9; --ora: #F8B461; --mint: #A8D8C3; --yel: #F6D77A; --pur: #A58BD6;
       --twk: #35A7A9; --tiu: #F8B461; --tkp: #A58BD6;
       --radius-sm: 14px; --radius-md: 20px; --radius-lg: 24px; --out: 2px solid #14161C;
@@ -1324,6 +1329,8 @@
 </head>
 
 <body>
+<a class="skip" href="#main">Lewati ke konten</a>
+<noscript><div style="margin:24px;padding:16px;border:2px solid #14161C;border-radius:16px;background:#FFF7E0;font:600 15px/1.6 system-ui,sans-serif">Aplikasi ini membutuhkan JavaScript. Aktifkan JavaScript di peramban, lalu muat ulang halaman.</div></noscript>
   <div id="app">
 
     <!-- ============ NAVIGASI ============ -->
@@ -1376,8 +1383,13 @@
             <div id="groups"></div>
             <div class="card" style="margin-top:32px">
               <h3>Target 450+ dan ambang batas</h3>
-              <p>Contoh peta 450: TWK 130 + TIU 140 + TKP 180.</p>
-              <p><b>Ambang batas</b> (Kepmenpan RB 406/2026): TWK 65, TIU 80, TKP 156, ketiganya harus terpenuhi. Nilai maksimal 550 (TWK 150, TIU 175, TKP 225). Ujian 100 menit, 110 soal.</p>
+              <p class="tg-lead">Contoh peta nilai 450:</p>
+              <div class="tg-row">
+                <div class="tg"><b>TWK</b><strong>130</strong><small>ambang 65<br>maks 150</small></div>
+                <div class="tg"><b>TIU</b><strong>140</strong><small>ambang 80<br>maks 175</small></div>
+                <div class="tg"><b>TKP</b><strong>180</strong><small>ambang 156<br>maks 225</small></div>
+              </div>
+              <p><b>Ambang batas</b> (Kepmenpan RB 406/2026): ketiganya harus terpenuhi. Nilai maksimal 550. Ujian 100 menit, 110 soal.</p>
               <p class="hint">Angka ini untuk sekolah kedinasan. Untuk CPNS, ikuti pengumuman MenPANRB dan BKN.</p>
               <div id="skd-chart"></div>
             </div>
@@ -1447,8 +1459,12 @@
       <section id="view-tryout" class="view" aria-labelledby="judul-tryout">
         <div class="view-inner">
           <h1 id="judul-tryout">Arena Tryout</h1>
-          <div class="empty">
-            <p>Arena dibuka di tahap berikutnya: 110 soal, 100 menit, dan skor langsung.</p>
+          <div class="empty arena">
+            <div class="arena-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg></div>
+            <h2>Arena belum dibuka</h2>
+            <p>Arena dibuka di tahap berikutnya. Sambil menunggu, asah dulu materinya lewat latihan soal di tiap bab.</p>
+            <div class="arena-f"><span>110 soal</span><span>100 menit</span><span>Skor langsung</span></div>
+            <button type="button" class="btn" onclick="var b=document.querySelector('.nav-btn[data-view=&quot;belajar&quot;]');if(b)b.click();">Mulai dari Ruang Belajar</button>
           </div>
         </div>
       </section>
@@ -2902,15 +2918,28 @@
       const qs = qzOf(l);
       if (!qs.length) return '<div class="lc"><p>Soal latihan untuk materi ini sedang disiapkan.</p></div>';
       const i = (cur.q || 0) % qs.length, x = qs[i], p = cur.pick;
-      return `<div class="lc qz"><small class="qn">Soal ${i + 1} dari ${qs.length}${x.tag ? ' · ' + x.tag : ''}</small><div class="qt">${x.q}</div>
-        ${x.o.map((o, j) => `<button class="opt ${p == null ? '' : (j === x.a ? 'ok' : (j === p ? 'no' : ''))}" data-j="${j}" ${p == null ? '' : 'disabled'}>${'ABCDE'[j]}. ${o}</button>`).join('')}
-        ${p == null ? '' : `<div class="pk-detail"><strong>${p === x.a ? 'Tepat' : 'Belum tepat, jawabannya ' + 'ABCDE'[x.a]}</strong>${x.e}</div><div class="lc-act" style="margin-top:12px"><button class="btn" id="qNext">${i < qs.length - 1 ? 'Soal berikutnya' : 'Ulangi dari awal'}</button></div>`}</div>`;
+      const T = cur.tally || {}, ans = Object.keys(T).filter(k => k.indexOf(l.id + ':') === 0), okN = ans.filter(k => T[k]).length;
+      const last = i === qs.length - 1;
+      return `<div class="lc qz"><div class="qhd"><small class="qn">Soal ${i + 1} dari ${qs.length}${x.tag ? ' · ' + x.tag : ''}</small>${ans.length ? `<span class="qsc">Benar ${okN}/${ans.length}</span>` : ''}</div>
+        <div class="qprog"><i style="width:${(i + (p == null ? 0 : 1)) / qs.length * 100}%"></i></div><div class="qt">${x.q}</div>
+        ${x.o.map((o, j) => `<button class="opt ${p == null ? '' : (j === x.a ? 'ok' : (j === p ? 'no' : ''))}" data-j="${j}" ${p == null ? '' : 'disabled'}><span class="ol">${'ABCDE'[j]}</span><span class="ot">${o}</span></button>`).join('')}
+        ${p == null ? '' : `<div class="pk-detail ${p === x.a ? 'good' : 'bad'}" role="status" aria-live="polite"><strong>${p === x.a ? 'Tepat' : 'Belum tepat, jawabannya ' + 'ABCDE'[x.a]}</strong>${x.e}</div>${last ? `<div class="qres">Satu putaran selesai: benar ${okN} dari ${ans.length} soal yang dijawab.</div>` : ''}<div class="lc-act" style="margin-top:12px"><button class="btn" id="qNext">${last ? 'Ulangi dari awal' : 'Soal berikutnya'}</button></div>`}</div>`;
     }
     function bindLatihan() {
       if (cur.t !== 'latihan') return;
       const n = qzOf(cur.l).length || 1;
-      $$('.qz .opt').forEach(b => b.onclick = () => { cur.pick = +b.dataset.j; renderLesson(); });
-      const nx = $('#qNext'); if (nx) nx.onclick = () => { cur.q = ((cur.q || 0) + 1) % n; cur.pick = null; renderLesson(); };
+      $$('.qz .opt').forEach(b => b.onclick = () => {
+        const qs = qzOf(cur.l), qi = (cur.q || 0) % qs.length;
+        (cur.tally = cur.tally || {})[cur.l.id + ':' + qi] = (+b.dataset.j === qs[qi].a);
+        cur.pick = +b.dataset.j; renderLesson();
+      });
+      const nx = $('#qNext');
+      if (nx) nx.onclick = () => {
+        const nq = ((cur.q || 0) + 1) % n;
+        if (nq === 0 && cur.tally) Object.keys(cur.tally).forEach(k => { if (k.indexOf(cur.l.id + ':') === 0) delete cur.tally[k]; });
+        cur.q = nq; cur.pick = null; renderLesson();
+      };
+      if (cur.pick != null) { const d = $('.qz .pk-detail'); if (d && d.scrollIntoView) setTimeout(() => d.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 80); }
     }
 
 
@@ -3072,7 +3101,7 @@
         const w = document.createElement('div'); w.className = 'mcq';
         w.innerHTML = '<span class="mcq-t">Coba jawab dulu</span><div class="mcq-q">' + m[0] + '</div>' +
           m[1].map((o, j) => '<button type="button" class="mo" data-j="' + j + '">' + 'ABCDE'[j] + '. ' + o + '</button>').join('') +
-          '<div class="mcq-v"></div><div class="mcq-x" hidden></div>';
+          '<div class="mcq-v" role="status" aria-live="polite"></div><div class="mcq-x" hidden></div>';
         c.parentNode.insertBefore(w, c); w.querySelector('.mcq-x').appendChild(c);
         w.querySelectorAll('.mo').forEach(b => b.onclick = () => {
           const j = +b.dataset.j;
@@ -3113,8 +3142,8 @@
         : `<div class="lgrid">
             <nav class="ilist" aria-label="Daftar teknik">${its.map((x, j) => (x.sub && (j === 0 || its[j - 1].sub !== x.sub) ? `<span class="ilh">${x.subt}</span>` : '') + `<button class="${j === cur.i ? 'is-active' : ''}" data-j="${j}"><span class="dot ${PR[key(l, x)] || ''}"></span>${short(x[0])}</button>`).join('')}</nav>
             <div class="lc">
-              ${it.subt ? `<small class="subtag">${it.subt}</small>` : ''}<h3>${short(it[0])}</h3>
-              <div class="steps">${STEPS.map((t, k) => `<button class="${k === cur.s ? 'is-active' : ''} ${k < cur.s ? 'done' : ''}" data-s="${k}">${k + 1}. ${t}</button>`).join('')}</div>
+              <div class="tk-meta"><span>Teknik ${cur.i + 1} dari ${its.length}</span>${it.subt ? `<span class="alt">${it.subt}</span>` : ''}</div><h3>${short(it[0])}</h3>
+              <div class="steps">${STEPS.map((t, k) => `<button class="${k === cur.s ? 'is-active' : ''} ${k < cur.s ? 'done' : ''}" data-s="${k}"><span class="sn">${k + 1}</span><span class="st">${t}</span></button>`).join('')}</div>
               <div class="lc-body">${body}</div>
               <div class="lc-act">${cur.s < 2 ? '<button class="btn" id="lNext">Lanjut</button>' : '<button class="btn" data-m="paham">Sudah paham</button><button class="btn ghost" data-m="ulang">Ulangi nanti</button>'}</div>
             </div>
@@ -4998,7 +5027,7 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
   .nav-btn:focus-visible { outline: 2px solid #14161C; outline-offset: -2px; }
   .nav-btn.is-active { background: var(--brand-soft, #DDF0EF); border-color: transparent; color: var(--brand-strong, #1F7274); box-shadow: none; }
   .nav-btn.is-active svg { stroke-width: 2.2; animation: navPop .35s cubic-bezier(.2, 1.5, .4, 1); }
-  .nav-btn.is-active::after { content: ""; position: absolute; top: 5px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--brand, #2B8F91); }
+  .nav-btn.is-active::after { content: ""; position: absolute; top: 5px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--brand, #247B7D); }
   @keyframes navPop { 0% { transform: translateY(3px) scale(.8); } 100% { transform: none; } }
 }
 @media (min-width: 900px) {
@@ -5033,9 +5062,9 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
 .mc summary:hover { background: rgba(43, 143, 145, .06); }
 .mn { width: 32px; height: 32px; font-size: 14px; font-weight: 800; box-shadow: 0 2px 0 #14161C; }
 .mc summary::after { content: "+"; display: grid; place-items: center; width: 30px; height: 30px; border: 2px solid #14161C; border-radius: 50%; background: var(--brand-soft, #DDF0EF); font-size: 20px; font-weight: 800; line-height: 1; color: var(--brand-strong, #1F7274); transition: transform .25s, background .2s; }
-.mc[open] summary::after { content: "\2212"; background: var(--brand, #2B8F91); color: #fff; transform: rotate(180deg); }
+.mc[open] summary::after { content: "\2212"; background: var(--brand, #247B7D); color: #fff; transform: rotate(180deg); }
 .mc[open] > summary { border-bottom: 2px dashed rgba(20, 22, 28, .18); margin-bottom: 12px; }
-.mc[open] { border-left: 7px solid var(--brand, #2B8F91); }
+.mc[open] { border-left: 7px solid var(--brand, #247B7D); }
 .mc.key[open] { border-left-color: var(--red, #D9625A); }
 .mb { padding: 0 18px 16px; font-size: 16px; line-height: 1.7; }
 .mb li { margin-top: 10px; padding-left: 20px; }
@@ -5052,18 +5081,18 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
 /* submateri */
 .subk { display: inline-block; padding: 3px 11px; border: 1.5px solid #14161C; border-radius: 99px; background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); }
 .subh { font-size: clamp(22px, 5.5vw, 28px); font-weight: 800; }
-.subn { background: var(--brand, #2B8F91); box-shadow: 0 3px 0 #14161C; }
-.subg { padding: 2px 0 2px 14px; border-left: 4px solid var(--brand, #2B8F91); font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.subn { background: var(--brand, #247B7D); box-shadow: 0 3px 0 #14161C; }
+.subg { padding: 2px 0 2px 14px; border-left: 4px solid var(--brand, #247B7D); font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
 
 /* tampilan teknik: langkah, daftar, isi */
 .steps button.is-active { background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); border-color: #14161C; font-weight: 800; }
 .ilist button.is-active { background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); }
 .lc { --slab: var(--mint, #A8D8C3); }
-.lc-body { border-left: 6px solid var(--brand, #2B8F91); }
+.lc-body { border-left: 6px solid var(--brand, #247B7D); }
 @media (prefers-reduced-motion: reduce) { .mc { animation: none; transition: none; } .mc summary::after { transition: none; } #lesson > .back, .mctl .obtn { transition: none; } }
 /* ===== Panel animasi / simulasi: panggung, keterangan, navigasi halaman ===== */
 .hs-st { box-shadow: 0 5px 0 0 var(--mint, #A8D8C3), 0 5px 0 2px #14161C; }
-.sx .hs-cap { position: relative; padding: 18px 20px 16px; background: linear-gradient(180deg, #FFFDF7, #FBF5EA); border-left: 7px solid var(--brand, #2B8F91); box-shadow: 0 4px 0 #14161C; }
+.sx .hs-cap { position: relative; padding: 18px 20px 16px; background: linear-gradient(180deg, #FFFDF7, #FBF5EA); border-left: 7px solid var(--brand, #247B7D); box-shadow: 0 4px 0 #14161C; }
 .sx .hs-cap small { align-self: flex-start; display: inline-flex; align-items: center; gap: 7px; margin: 0 0 8px; padding: 4px 12px 4px 10px; border: 1.5px solid #14161C; background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); font-size: 11.5px; }
 .sx .hs-cap small::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--red, #D9625A); box-shadow: 0 0 0 3px rgba(217, 98, 90, .2); }
 .sx .hs-cap strong { font-size: 20px; line-height: 1.28; letter-spacing: -.01em; }
@@ -5075,14 +5104,199 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
 .tx-nav .btn { width: 42px; height: 38px; border-radius: 99px; background: #fff; transition: background .15s, transform .12s, box-shadow .12s; }
 .tx-nav .btn:not(:disabled):hover { background: var(--brand-soft, #DDF0EF); }
 .tx-dots i { width: 10px; height: 10px; }
-.tx-dots i.on { width: 24px; border-radius: 99px; background: var(--brand, #2B8F91); transform: none; }
+.tx-dots i.on { width: 24px; border-radius: 99px; background: var(--brand, #247B7D); transform: none; }
 .tx-dots i.on.k { width: 24px; border-radius: 99px; }
 .tx-ct { min-width: 0; padding: 3px 10px; border: 1.5px solid #14161C; border-radius: 99px; background: #fff; color: var(--ink, #14161C); }
-.hs-dots button.is-active { background: var(--brand, #2B8F91); color: #fff; }
-.ks-bar [data-a="play"] { background: var(--brand, #2B8F91); color: #fff; }
+.hs-dots button.is-active { background: var(--brand, #247B7D); color: #fff; }
+.ks-bar [data-a="play"] { background: var(--brand, #247B7D); color: #fff; }
 .ks-bar [data-a="prev"], .ks-bar [data-a="next"] { background: #fff; }
-.ks-prog i { background: var(--brand, #2B8F91); }
-@media (max-width: 380px) { .nav-btn span { font-size: 10px; } }
+.ks-prog i { background: var(--brand, #247B7D); }
+/* ===== Kontrol animasi + lini masa babak sejarah ===== */
+.ks-bar { gap: 8px; align-items: center; }
+.ks-bar .btn { height: 40px; }
+.ks-bar .btn[data-a="prev"], .ks-bar .btn[data-a="next"] { width: 44px; border-radius: 99px; }
+.ks-bar .btn[data-a="play"] { padding: 0 20px; border-radius: 99px; font-size: 14px; font-weight: 800; letter-spacing: .01em; box-shadow: 0 3px 0 #14161C; white-space: nowrap; }
+.ks-bar .ks-prog { height: 12px; border: 2px solid #14161C; background: #fff; }
+.ks-bar .ks-prog i { background: repeating-linear-gradient(135deg, var(--brand, #247B7D) 0 8px, var(--brand-strong, #1F7274) 8px 16px); }
+.ks-era { counter-reset: era; gap: 14px; margin-top: 16px; padding: 4px 18px 10px 2px; scroll-snap-type: x proximity;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); }
+.ks-era span { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 6px; scroll-snap-align: center; transition: background .3s, color .3s, box-shadow .3s; }
+.ks-era span::before { counter-increment: era; content: counter(era); display: grid; place-items: center; width: 22px; height: 22px; border: 1.5px solid #14161C; border-radius: 50%; background: #F1F2F6; font-size: 11px; font-weight: 800; color: var(--ink, #14161C); transition: background .3s, color .3s; }
+.ks-era span + span::after { content: ""; position: absolute; left: -14px; top: 50%; width: 14px; height: 2px; background: rgba(20, 22, 28, .3); }
+.ks-era span.done { color: var(--brand-strong, #1F7274); border-color: var(--brand, #247B7D); }
+.ks-era span.done::before { content: "\2713"; background: var(--brand-soft, #DDF0EF); border-color: var(--brand, #247B7D); color: var(--brand-strong, #1F7274); }
+.ks-era span.done + span::after, .ks-era span.on::after { background: var(--brand, #247B7D); }
+.ks-era span.on { background: var(--brand, #247B7D); color: #fff; border-color: #14161C; box-shadow: 0 2px 0 #14161C; }
+.ks-era span.on::before { background: #fff; color: var(--brand-strong, #1F7274); }
+@media (prefers-reduced-motion: reduce) { .ks-era span, .ks-era span::before { transition: none; } }
+/* ===== Teknik dan contoh ===== */
+.lgrid .ilist { padding: 10px; border: 2px solid #14161C; border-radius: 20px; background: #fff; box-shadow: 0 3px 0 #14161C; }
+.ilist button { border: 2px solid transparent; border-radius: 14px; font-weight: 700; color: var(--ink, #14161C); transition: background .15s; }
+.ilist button:hover { background: rgba(43, 143, 145, .08); }
+.ilist button.is-active { border-color: #14161C; }
+.lgrid > .lc { padding: 22px 22px 20px; }
+.tk-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.tk-meta span { padding: 3px 11px; border: 1.5px solid #14161C; border-radius: 99px; background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); font-size: 11.5px; font-weight: 800; letter-spacing: .03em; }
+.tk-meta .alt { background: #fff; color: var(--ink-soft); }
+.lc .steps { gap: 8px; padding: 0; background: transparent; margin-top: 4px; }
+.lc .steps button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 6px 2px 2px; border: 0; border-radius: 12px; background: transparent; box-shadow: none; color: var(--ink-soft); font-size: 12.5px; font-weight: 700; }
+.steps .sn { position: relative; z-index: 1; display: grid; place-items: center; width: 32px; height: 32px; border: 2px solid #14161C; border-radius: 50%; background: #fff; font-size: 14px; font-weight: 800; color: var(--ink, #14161C); transition: background .2s, color .2s, transform .2s; }
+.lc .steps button + button::before { content: ""; position: absolute; top: 21px; left: calc(-50% + 20px); right: calc(50% + 20px); height: 3px; border-radius: 3px; background: rgba(20, 22, 28, .18); }
+.lc .steps button.done + button::before, .lc .steps button.done + button.is-active::before { background: var(--brand, #247B7D); }
+.lc .steps button.is-active { background: transparent; color: var(--brand-strong, #1F7274); box-shadow: none; }
+.steps button.is-active .sn { background: var(--brand, #247B7D); color: #fff; transform: scale(1.12); box-shadow: 0 2px 0 #14161C; }
+.steps button.done .sn { background: var(--brand-soft, #DDF0EF); border-color: var(--brand, #247B7D); font-size: 0; }
+.steps button.done .sn::before { content: "\2713"; font-size: 15px; color: var(--brand-strong, #1F7274); }
+.lc .steps button.done { color: var(--brand-strong, #1F7274); }
+.lc-body { margin: 18px 0; padding: 18px 20px; border-left: 7px solid var(--brand, #247B7D); background: linear-gradient(180deg, #FFFDF7, #FBF5EA); box-shadow: 0 3px 0 #14161C; font-size: 16.5px; line-height: 1.75; }
+.lc-body b { display: flex; width: fit-content; margin-bottom: 8px; padding: 3px 11px; border: 1.5px solid #14161C; border-radius: 99px; background: var(--brand-soft, #DDF0EF); font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--brand-strong, #1F7274); }
+.lc-act .btn { min-height: 46px; padding: 0 22px; border-radius: 99px; font-weight: 800; }
+#lNext::after { content: " \2192"; }
+.lc-act [data-m="paham"] { background: var(--brand, #247B7D); color: #fff; }
+.lc-act [data-m="paham"]::before { content: "\2713  "; }
+
+/* ===== Latihan soal ===== */
+.qz { padding: 20px 20px 18px; }
+.qhd { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.qz .qn { color: var(--brand-strong, #1F7274); font-weight: 800; letter-spacing: .03em; text-transform: uppercase; font-size: 12px; }
+.qsc { padding: 3px 11px; border: 1.5px solid #14161C; border-radius: 99px; background: var(--ok-soft, #DDF4E8); font-size: 12px; font-weight: 800; white-space: nowrap; }
+.qprog { height: 10px; margin: 10px 0 16px; border: 2px solid #14161C; border-radius: 99px; background: #fff; overflow: hidden; }
+.qprog i { display: block; height: 100%; border-radius: 99px; background: repeating-linear-gradient(135deg, var(--brand, #247B7D) 0 8px, var(--brand-strong, #1F7274) 8px 16px); transition: width .45s; }
+.qz .qt { font-size: 18px; line-height: 1.5; margin: 0 0 14px; }
+.qz .opt { display: flex; align-items: flex-start; gap: 12px; margin-top: 10px; padding: 12px 14px; border: 2px solid #14161C; border-radius: 16px; box-shadow: 0 3px 0 #14161C; font-weight: 600; line-height: 1.5; transition: transform .12s, box-shadow .12s, background .15s; }
+.qz .opt:not(:disabled):hover { background: var(--brand-soft, #DDF0EF); transform: translateY(-2px); box-shadow: 0 5px 0 #14161C; }
+.qz .opt:not(:disabled):active { transform: translateY(1px); box-shadow: 0 1px 0 #14161C; }
+.qz .opt .ol { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border: 2px solid #14161C; border-radius: 50%; background: #F1F2F6; font-size: 13px; font-weight: 800; }
+.qz .opt .ot { flex: 1; padding-top: 3px; }
+.qz .opt:disabled { cursor: default; opacity: .7; }
+.qz .opt.ok, .qz .opt.no { opacity: 1; }
+.qz .opt.ok { animation: qpop .35s ease; }
+.qz .opt.no { animation: qshake .4s ease; }
+.qz .opt.ok .ol { background: var(--ok, #1FA971); border-color: var(--ok, #1FA971); color: #fff; }
+.qz .opt.no .ol { background: var(--bad, #D9625A); border-color: var(--bad, #D9625A); color: #fff; }
+@keyframes qpop { 0% { transform: scale(.97); } 60% { transform: scale(1.02); } 100% { transform: none; } }
+@keyframes qshake { 0%, 100% { transform: none; } 20% { transform: translateX(-5px); } 40% { transform: translateX(5px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(3px); } }
+.qz .pk-detail { margin-top: 16px; padding: 14px 16px; border-left: 7px solid var(--brand, #247B7D); line-height: 1.65; }
+.qz .pk-detail.good { background: var(--ok-soft, #DDF4E8); border-left-color: var(--ok, #1FA971); }
+.qz .pk-detail.bad { background: var(--bad-soft, #FCE5E3); border-left-color: var(--bad, #D9625A); }
+.qz .pk-detail.good strong::before { content: "\2713  "; color: var(--ok, #1FA971); }
+.qz .pk-detail.bad strong::before { content: "\2715  "; color: var(--bad, #D9625A); }
+.qres { margin-top: 12px; padding: 10px 14px; border: 2px dashed rgba(20, 22, 28, .3); border-radius: 14px; background: #fff; font-weight: 700; font-size: 14px; text-align: center; }
+.qz .lc-act .btn { width: 100%; }
+@media (prefers-reduced-motion: reduce) { .qz .opt.ok, .qz .opt.no { animation: none; } .qprog i, .steps .sn { transition: none; } }
+/* ===== Perapihan umum: beranda, Arena, fokus keyboard, area sentuh ===== */
+.hello::before { background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); }
+.chips button { min-height: 44px; }
+.chips button.is-active { color: var(--brand-strong, #1F7274); }
+.chips button.is-active::after { background: rgba(43, 143, 145, .25); }
+.tg-lead { margin: 0 0 10px; font-weight: 700; }
+.tg-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 16px; }
+.tg { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 6px 10px; border: 2px solid #14161C; border-radius: 16px; background: var(--brand-soft, #DDF0EF); box-shadow: 0 3px 0 #14161C; text-align: center; }
+.tg:nth-child(2) { background: #FFF1CC; }
+.tg:nth-child(3) { background: #FCE3E0; }
+.tg b { font-size: 11.5px; letter-spacing: .1em; color: var(--ink, #14161C); }
+.tg strong { font-size: 30px; line-height: 1.1; font-weight: 800; font-variant-numeric: tabular-nums; }
+.tg small { font-size: 11px; line-height: 1.35; color: var(--ink-soft); }
+.arena { padding: 34px 22px 30px; border: 2px solid #14161C; border-radius: 24px; background: radial-gradient(circle at 100% 0, rgba(168, 216, 195, .5), transparent 45%), radial-gradient(circle at 0 100%, rgba(255, 233, 194, .8), transparent 45%), #fff; box-shadow: 0 4px 0 #14161C; color: var(--ink, #14161C); }
+.arena-ic { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 14px; border: 2px solid #14161C; border-radius: 50%; background: var(--brand-soft, #DDF0EF); color: var(--brand-strong, #1F7274); box-shadow: 0 3px 0 #14161C; }
+.arena h2 { margin: 0 0 6px; font-size: 22px; }
+.arena p { max-width: 38ch; margin: 0 auto 14px; color: var(--ink-soft); line-height: 1.65; }
+.arena-f { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.arena-f span { padding: 4px 12px; border: 1.5px solid #14161C; border-radius: 99px; background: #fff; font-size: 12.5px; font-weight: 800; }
+.arena .btn { min-height: 46px; padding: 0 24px; border-radius: 99px; font-weight: 800; }
+.hs-dots button { width: 36px; height: 36px; }
+::selection { background: rgba(43, 143, 145, .25); }
+body { overflow-x: clip; }
+* { scrollbar-width: thin; scrollbar-color: rgba(20, 22, 28, .3) transparent; }
+:where(button, a, summary, [tabindex="0"]):focus-visible { outline: 3px solid var(--brand, #247B7D); outline-offset: 2px; }
+@media (max-width: 380px) { .tg strong { font-size: 24px; } .tg small { font-size: 10.5px; } }
+/* ===== Kenyamanan font dan jarak (pemeriksaan menyeluruh) ===== */
+:root { --read: 78ch; }
+body { text-rendering: optimizeLegibility; }
+p, li, .ot, .goal, .subg, .hint { text-wrap: pretty; overflow-wrap: break-word; }
+h1, h2, h3, .subh, .hello { text-wrap: balance; }
+/* lebar baris nyaman dibaca di layar lebar */
+.mb > p, .mb > ul, .mb > ol, .anx, .lc-body, .ks-n p { max-width: var(--read); }
+.hint, .sim .hint { font-size: 14px; line-height: 1.6; }
+/* label kecil: minimal 12px */
+.subk, .ilh, .tx-chip, .mcq-t, .coret .tt, #lesson .analogi b, .anx b, .mc.key .anx b, .sx .hs-cap small, .tk-meta span, .lc-body b, .tg b, .ks-era span, .ks-era span::before, .tlc li.era span, .tlc .bx em, .hs-dots button, .sl-b u, .bd-tbl td::before, .tb.st td[data-l]::before, .sp button { font-size: 12px; }
+.me small, .tg small, .tile small { font-size: 12px; }
+.tile span, .sg-r small { font-size: 12.5px; }
+.nav-btn span { font-size: 12px; }
+/* kolom isian: 16px supaya iOS tidak memperbesar layar, tinggi 44px */
+.simrow input, input[type="number"], input[type="text"] { min-height: 44px; padding: 8px 12px; border: 2px solid #14161C; border-radius: 12px; background: #fff; font: 600 16px var(--font); color: var(--ink, #14161C); max-width: 100%; }
+.simrow input:focus-visible { outline: 3px solid var(--brand, #247B7D); outline-offset: 1px; }
+.simrow label { font-size: 13px; font-weight: 700; }
+/* area sentuh */
+.obtn { min-height: 38px; }
+#lesson > .back { min-height: 42px; }
+.tabs2 button { min-height: 44px; }
+/* HP kecil: kotak bersarang jangan memakan lebar teks */
+@media (max-width: 480px) {
+  .mb { padding: 0 14px 14px; font-size: 15.5px; }
+  .mc summary { padding: 13px 12px; gap: 10px; font-size: 16px; }
+  .mc[open] { border-left-width: 5px; }
+  .lc-body { padding: 14px; border-left-width: 5px; font-size: 16px; }
+  .anx { padding: 10px 12px; border-left-width: 5px; }
+  #lesson .analogi { padding: 14px 14px 14px 16px; border-left-width: 6px; }
+  .sx .hs-cap { padding: 14px 14px 12px; border-left-width: 5px; }
+  .sx .hs-cap strong { font-size: 18px; }
+  .lgrid > .lc, .qz { padding: 16px 14px; }
+  .qz .qt { font-size: 17px; }
+  .qz .opt { padding: 11px 12px; gap: 10px; }
+  .qz .pk-detail { padding: 12px 14px; }
+  .arena { padding: 26px 16px 22px; }
+  .kopi { padding: 14px; gap: 12px; }
+  .me { padding: 20px 16px; }
+}
+/* ===== Aksesibilitas: kontras warna (WCAG AA) ===== */
+:root { --brand: #247B7D; --brand-strong: #1B6466; --red: #C0433A; --ok: #147B54; --bad: #C9333A; --ink-faint: #5F6678; }
+.tx-chip { color: #A8362E; }
+.hint, .sim .hint { color: #4B5160; }
+/* pembaca layar: pesan hasil dibacakan otomatis */
+.qz .pk-detail, .mcq-v { scroll-margin-top: 80px; }
+/* ===== Sistem: tautan lompat, gerak berkurang, sentuhan ===== */
+.skip { position: fixed; left: 12px; top: -60px; z-index: 500; padding: 10px 16px; border: 2px solid #14161C; border-radius: 99px; background: #fff; color: #14161C; font-weight: 800; text-decoration: none; transition: top .15s; }
+.skip:focus { top: calc(10px + env(safe-area-inset-top, 0px)); }
+button, a, summary, [role="button"] { touch-action: manipulation; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+/* ===== Rapikan: label analogi, garis aksen rapi di sudut, tombol daftar isi ringkas ===== */
+#lesson .analogi b { display: flex; width: fit-content; margin-bottom: 8px; }
+/* Garis aksen digambar sebagai latar (mengikuti lengkung sudut), bukan border tebal yang meruncing */
+#lesson .analogi { overflow: hidden; border-left: 2px solid #14161C; padding: 16px 18px 16px 24px;
+  background: linear-gradient(var(--ora, #F8B461), var(--ora, #F8B461)) left / 8px 100% no-repeat, #FFF7E0; }
+.anx { overflow: hidden; border-left: 2px solid #14161C; padding: 12px 14px 12px 20px;
+  background: linear-gradient(var(--ora, #F8B461), var(--ora, #F8B461)) left / 7px 100% no-repeat, #FFF7E0; }
+.mc[open] { overflow: hidden; border-left: 2px solid #14161C;
+  background: linear-gradient(var(--brand, #247B7D), var(--brand, #247B7D)) left / 8px 100% no-repeat, #fff; }
+.mc.key[open] { border-left-color: #14161C; background: linear-gradient(var(--red, #C0433A), var(--red, #C0433A)) left / 8px 100% no-repeat, #fff; }
+.mc[open] > summary { padding-left: 24px; }
+.mc[open] .mb { padding-left: 26px; }
+.lc-body { overflow: hidden; border-left: 2px solid #14161C; padding: 18px 20px 18px 26px;
+  background: linear-gradient(var(--brand, #247B7D), var(--brand, #247B7D)) left / 8px 100% no-repeat, linear-gradient(180deg, #FFFDF7, #FBF5EA); }
+.sx .hs-cap { overflow: hidden; border-left: 2px solid #14161C; padding: 18px 20px 16px 26px;
+  background: linear-gradient(var(--brand, #247B7D), var(--brand, #247B7D)) left / 8px 100% no-repeat, linear-gradient(180deg, #FFFDF7, #FBF5EA); }
+.qz .pk-detail { --ac: var(--brand, #247B7D); --bgc: #fff; overflow: hidden; border-left: 2px solid #14161C; padding: 14px 16px 14px 24px;
+  background: linear-gradient(var(--ac), var(--ac)) left / 8px 100% no-repeat, var(--bgc); }
+.qz .pk-detail.good { --ac: var(--ok, #147B54); --bgc: var(--ok-soft, #E3F6EE); }
+.qz .pk-detail.bad { --ac: var(--bad, #C9333A); --bgc: var(--bad-soft, #FDE9EA); }
+@media (max-width: 480px) {
+  #lesson .analogi { padding: 14px 14px 14px 20px; }
+  .anx { padding: 10px 12px 10px 18px; }
+  .mc[open] > summary { padding-left: 20px; }
+  .mc[open] .mb { padding-left: 22px; }
+  .lc-body { padding: 14px 14px 14px 22px; }
+  .sx .hs-cap { padding: 14px 14px 12px 22px; }
+  .qz .pk-detail { padding: 12px 14px 12px 22px; }
+}
+/* tombol Daftar isi: bulat ringkas di HP supaya tidak menutupi teks */
+@media (max-width: 599px) {
+  .lf-toc { width: 46px; height: 46px; padding: 0; justify-content: center; border-radius: 50%; }
+  .lf-toc span { display: none; }
+}
+@media (max-width: 380px) { .nav-btn span { font-size: 11px; } }
 /* Cari dalam + glosarium */
 .sg-box { height: min(100%, 680px); }
 .sg-seg { display: flex; gap: 4px; margin: 10px 14px 0; padding: 4px; border: var(--out, 1px solid var(--line)); border-radius: 99px; background: var(--cream, #FBF5EA); }
@@ -5414,7 +5628,7 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
 .lf-toc { display: inline-flex; align-items: center; gap: 7px; padding: 10px 16px 10px 12px; border: 2px solid #14161C; border-radius: 99px; background: #fff; color: var(--ink, #14161C); font-weight: 800; font-size: 14px; box-shadow: 0 3px 0 #14161C; cursor: pointer; }
 .lf-toc:active { transform: translateY(2px); box-shadow: 0 1px 0 #14161C; }
 .lf svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
-.lf-top { position: relative; width: 48px; height: 48px; padding: 0; border: 2px solid #14161C; border-radius: 50%; background: conic-gradient(var(--brand, #2B8F91) calc(var(--p, 0) * 1%), #E4E7EC 0); color: var(--ink, #14161C); box-shadow: 0 3px 0 #14161C; cursor: pointer; display: grid; place-items: center; }
+.lf-top { position: relative; width: 48px; height: 48px; padding: 0; border: 2px solid #14161C; border-radius: 50%; background: conic-gradient(var(--brand, #247B7D) calc(var(--p, 0) * 1%), #E4E7EC 0); color: var(--ink, #14161C); box-shadow: 0 3px 0 #14161C; cursor: pointer; display: grid; place-items: center; }
 .lf-top::before { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: #fff; }
 .lf-top svg { position: relative; }
 .lf-top:active { transform: translateY(2px); box-shadow: 0 1px 0 #14161C; }
@@ -5430,7 +5644,7 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
 .lf-list { overflow: auto; padding: 0 12px 8px; }
 .lf-list button { display: block; width: 100%; margin: 3px 0; padding: 10px 12px; border: 2px solid transparent; border-radius: 14px; background: transparent; text-align: left; font: 700 14.5px/1.35 var(--font); color: var(--ink, #14161C); cursor: pointer; }
 .lf-list button.l2 { padding-left: 30px; font-weight: 600; font-size: 14px; color: var(--ink-soft); position: relative; }
-.lf-list button.l2::before { content: ""; position: absolute; left: 14px; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--brand, #2B8F91); opacity: .6; }
+.lf-list button.l2::before { content: ""; position: absolute; left: 14px; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--brand, #247B7D); opacity: .6; }
 .lf-list button:hover { background: rgba(43, 143, 145, .08); }
 .lf-list button.on { background: var(--brand-soft, #DDF0EF); border-color: #14161C; color: var(--brand-strong, #1F7274); }
 .lf-kopi { margin: 6px 14px 14px; padding: 11px 14px; border: 2px solid #14161C; border-radius: 99px; background: var(--ora, #F8B461); color: var(--ink, #14161C); font: 800 14px var(--font); box-shadow: 0 3px 0 #14161C; cursor: pointer; }
@@ -5547,6 +5761,72 @@ button.sg-r{cursor:pointer}button.sg-r:hover{background:var(--cream,#FBF5EA)}
   new MutationObserver(() => setTimeout(kartuAkhir, 0)).observe(lesson, { childList: true });
   new MutationObserver(() => setTimeout(kartuAkhir, 0)).observe(lesson, { attributes: true, attributeFilter: ['hidden'] });
   hitung();
+})();
+</script>
+<script>
+// Lini masa babak: tandai babak yang sudah dilewati dan geser ke babak aktif
+(function () {
+  const lesson = document.getElementById('lesson');
+  if (!lesson) return;
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function sinkron() {
+    lesson.querySelectorAll('.ks-era').forEach((era) => {
+      const sp = Array.from(era.children);
+      const on = sp.findIndex((x) => x.classList.contains('on'));
+      const sig = String(on);
+      if (era.dataset.sig === sig) return;
+      era.dataset.sig = sig;
+      sp.forEach((x, k) => x.classList.toggle('done', on > -1 && k < on));
+      if (on > -1) {
+        const t = sp[on];
+        era.scrollTo({ left: Math.max(0, t.offsetLeft - era.clientWidth / 2 + t.offsetWidth / 2), behavior: reduce ? 'auto' : 'smooth' });
+      }
+    });
+  }
+  let tunda = 0;
+  new MutationObserver((ms) => {
+    if (!ms.some((m) => m.type === 'childList' || (m.target.parentNode && m.target.parentNode.classList && m.target.parentNode.classList.contains('ks-era')))) return;
+    clearTimeout(tunda); tunda = setTimeout(sinkron, 30);
+  }).observe(lesson, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
+  sinkron();
+})();
+</script>
+<script>
+// Fokus keyboard tetap di dalam popup yang sedang terbuka
+(function () {
+  const SEL = '.kp-ov.is-open, .lf-ov.is-open, .sg-ov.is-open';
+  const FOK = 'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const d = document.querySelector(SEL);
+    if (!d) return;
+    const el = Array.from(d.querySelectorAll(FOK)).filter((x) => x.offsetParent !== null || x === document.activeElement);
+    if (!el.length) return;
+    const a = el[0], z = el[el.length - 1];
+    if (!d.contains(document.activeElement)) { e.preventDefault(); a.focus(); }
+    else if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+    else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+  });
+})();
+// Jika ada galat tak terduga berulang, tampilkan ajakan memuat ulang (sekali saja)
+(function () {
+  let n = 0, tampil = false;
+  function banner() {
+    if (tampil) return; tampil = true;
+    const b = document.createElement('div');
+    b.setAttribute('role', 'alert');
+    b.style.cssText = 'position:fixed;left:12px;right:12px;bottom:calc(var(--bottombar-h,64px) + 14px);z-index:400;max-width:420px;margin:0 auto;padding:12px 14px;border:2px solid #14161C;border-radius:16px;background:#FFF7E0;box-shadow:0 4px 0 #14161C;font:600 14px/1.5 var(--font,sans-serif);display:flex;gap:12px;align-items:center;justify-content:space-between';
+    b.innerHTML = '<span>Ada kendala di halaman ini. Muat ulang kalau tampilannya tidak normal.</span><button type="button" style="flex:none;padding:8px 14px;border:2px solid #14161C;border-radius:99px;background:#fff;font:800 13px var(--font,sans-serif);cursor:pointer">Muat ulang</button>';
+    b.querySelector('button').onclick = () => location.reload();
+    document.body.appendChild(b);
+    setTimeout(() => { if (b.parentNode) b.remove(); }, 12000);
+  }
+  window.addEventListener('error', (e) => {
+    const m = String(e.message || '');
+    if (!m || /ResizeObserver|Script error/i.test(m)) return;
+    if (++n >= 2) banner();
+  });
+  window.addEventListener('unhandledrejection', () => { if (++n >= 2) banner(); });
 })();
 </script>
 </body>
