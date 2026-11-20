@@ -456,13 +456,13 @@
     .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.15; margin: 0 2px; font-size: .9em; font-weight: 700; }
     .fr > i { font-style: normal; padding: 0 4px; }
     .fr > i:first-child { border-bottom: 1.6px solid currentColor; }
-    .qz .qtb { border-collapse: collapse; margin: 10px 0 12px; width: min(100%, 340px); font-size: 14.5px; font-weight: 600; font-variant-numeric: tabular-nums; border: var(--out); border-radius: 10px; overflow: hidden; }
-    .qz .qtb th { background: #14161C; color: #fff; font-size: 12px; letter-spacing: .06em; padding: 8px 10px; }
-    .qz .qtb td { text-align: center; padding: 8px 10px; border-top: 1px solid var(--line); }
-    .qz .qtb tbody tr:nth-child(even) { background: var(--cream); }
-    .qz .qgr { border-collapse: collapse; margin: 10px 0 12px; width: min(100%, 300px); table-layout: fixed; background: #fff; font-size: 19px; font-weight: 800; font-variant-numeric: tabular-nums; }
-    .qz .qgr td { text-align: center; padding: 12px 6px; border: 2px solid #14161C; }
-    .qz .qgr td.q { background: var(--warn-soft); color: var(--brand); }
+    .qz .qtb, #ar .qtb { border-collapse: collapse; margin: 10px 0 12px; width: min(100%, 340px); font-size: 14.5px; font-weight: 600; font-variant-numeric: tabular-nums; border: var(--out); border-radius: 10px; overflow: hidden; }
+    .qz .qtb th, #ar .qtb th { background: #14161C; color: #fff; font-size: 12px; letter-spacing: .06em; padding: 8px 10px; }
+    .qz .qtb td, #ar .qtb td { text-align: center; padding: 8px 10px; border-top: 1px solid var(--line); }
+    .qz .qtb tbody tr:nth-child(even), #ar .qtb tbody tr:nth-child(even) { background: var(--cream); }
+    .qz .qgr, #ar .qgr { border-collapse: collapse; margin: 10px 0 12px; width: min(100%, 300px); table-layout: fixed; background: #fff; font-size: 19px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .qz .qgr td, #ar .qgr td { text-align: center; padding: 12px 6px; border: 2px solid #14161C; }
+    .qz .qgr td.q, #ar .qgr td.q { background: var(--warn-soft); color: var(--brand); }
     .qz .opt { background: #fff; } .qz .opt.ok { background: var(--ok-soft); border-color: var(--ok); } .qz .opt.no { background: var(--bad-soft); border-color: var(--bad); }
   
     .back { font-size: 14.5px; transition: transform .12s, box-shadow .12s; }
@@ -565,6 +565,7 @@
     .kopi-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #14161C; }
     .kopi-ic { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: #fff; border: var(--out, 1px solid var(--line)); }
     .kopi-ic svg { width: 40px; height: 40px; }
+    .ar-new { display: inline-block; margin-left: 6px; padding: 2px 9px; border: 1.5px solid #14161C; border-radius: 99px; background: #F9D56E; font: 800 11px var(--font, inherit); letter-spacing: .08em; vertical-align: middle; }
     /* ===== Kisah panjang menuju kemerdekaan ===== */
     .ks-sv { width: 100%; display: block; }
     .ks-sv text { font-weight: 800; fill: #14161C; pointer-events: none; font-family: inherit; }
@@ -2141,6 +2142,26 @@ img,svg{max-width:100%}
 }
 @media(min-width:900px){#ar .ar-top{margin-inline:0;padding-inline:0;background:transparent;backdrop-filter:none}#ar .card{padding:24px}}
 </style>
+<style id="nm-card">
+/* Kartu nama (ranking + sertifikat) dan kartu traktir di hasil tryout: spasi 4/8/12/16, tombol rata, input nyaman di HP */
+#ar .ar-nm .nm-t{display:block;margin:0 0 6px;font-size:17px;line-height:1.3;color:var(--ink,#14161C)}
+#ar .ar-nm .nm-d{margin:0 0 14px;font-size:14px;line-height:1.55;color:var(--ink-soft,#5B6070)}
+#ar .ar-nm .nm-l{display:block;margin:0 0 6px;font-size:13px;font-weight:700;color:var(--ink,#14161C)}
+#ar .ar-nm .nm-in{display:block;width:100%;box-sizing:border-box;min-height:48px;margin:0;padding:10px 14px;border:2px solid #14161C;border-radius:14px;background:#fff;color:#14161C;font:inherit;font-size:16px;line-height:1.3}
+#ar .ar-nm .nm-in:focus{outline:3px solid #6C5CE7;outline-offset:2px}
+#ar .nm-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 0;padding:0;border:0;background:none;box-shadow:none}
+#ar .nm-g.one{grid-template-columns:1fr}
+#ar .nm-g .btn{width:100%;min-height:46px;margin:0;padding:10px 12px;font-size:14px;line-height:1.2;border-radius:99px;box-shadow:0 2px 0 #14161C;text-decoration:none;white-space:normal}
+@media(max-width:340px){#ar .nm-g{grid-template-columns:1fr}}
+#ar .ar-nm .nm-m{margin:10px 0 0;font-size:14px;line-height:1.5;color:var(--ink-soft,#5B6070)}
+#ar .ar-nm .nm-m:empty,#ar .ar-nm .nm-o:empty{display:none}
+#ar .ar-nm .nm-sep{margin:20px 0 0;padding-top:16px;border-top:2px dashed var(--line,#CBD0DC)}
+#ar .ar-nm .nm-sep .nm-d{margin-bottom:0}
+#ar .ar-nm .nm-o{margin:12px 0 0}
+#ar .ar-nm .nm-img{display:block;width:100%;height:auto;border:2px solid #14161C;border-radius:12px;background:#fff}
+#ar .ar-kopi .nm-d{margin:0}
+#ar .ar-kopi.ar-nm .nm-t{margin-bottom:4px}
+</style>
 <style id="coret-v2">
 /* Coret-coretan v2: kertas buku bergaris + lubang jilid + nomor langkah + stempel jawaban */
 .coret{position:relative;margin:16px 0;padding:0 16px 12px 50px;border:2px solid #14161C;border-radius:16px;background:repeating-linear-gradient(transparent 0 27px,#D5E3E8 27px 28px),#FFFDF6;box-shadow:0 3px 0 #14161C;counter-reset:st;overflow:hidden;font-size:15.5px;line-height:28px}
@@ -2159,7 +2180,7 @@ img,svg{max-width:100%}
 .fq-x{border-left:6px solid var(--brand,#247B7D);line-height:1.7}
 @media(max-width:420px){.coret{padding-left:46px;font-size:15px}.coret .tt{margin-left:-46px;padding-left:46px}.coret::before{left:34px}}
 </style>
-<style id="feat-css">#ar .ar-res,#ar .ar-bk{border-left:6px solid var(--brand,#247B7D)}#ar .ar-res h3,#ar .ar-bk h3{margin-bottom:6px}</style>
+<style id="feat-css">#ar .ar-best{display:inline-flex;align-items:baseline;gap:6px;margin:12px 0 0;padding:6px 14px;border:1.5px solid #14161C;border-radius:99px;background:#FFF1D6;font-size:13px;line-height:1.4}#ar .ar-best span{font-weight:800}#ar .ar-best b{font-size:17px;font-weight:800}#ar .ar-best small{font-size:12.5px;color:var(--ink-soft,#5B6070)}#ar .ar-run-note{margin:10px 0 0;padding:9px 12px;border-radius:12px;background:#DDF0EF;font-size:13.5px;line-height:1.5;color:#1F4745}#ar.ar-home .ar-amb{margin:0 0 20px;padding:10px 14px;border:1.5px dashed #9AA3B5;border-radius:12px;font-size:13px;line-height:1.6}#ar.ar-home .ar-amb b{color:#14161C}#ar.ar-home .ar-chips{margin-bottom:12px}#ar.ar-home .ar-lead{margin:0 0 12px}#ar .ar-res,#ar .ar-bk{border-left:6px solid var(--brand,#247B7D)}#ar .ar-res h3,#ar .ar-bk h3{margin-bottom:6px}</style>
 <style id="ux-baca">
 /* Tombol Kembali dan tab Materi/Latihan ikut scroll: tidak lagi menempel di atas layar saat membaca */
 #lesson > .back, #lesson .back { position: static; top: auto; z-index: auto; background: none; padding-top: 8px; padding-bottom: 8px; margin-bottom: 8px; }
@@ -2284,6 +2305,47 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
 .hint{font-size:13.5px;line-height:1.5}
 :focus-visible{outline:3px solid var(--brand,#247B7D);outline-offset:3px}
 @media (max-width:899px){#main{padding-left:16px;padding-right:16px}.tb td,.tb th{padding:9px 10px}}
+</style>
+<style id="nav-arena-css">
+  .nav-btn[data-view="tryout"] { background: #FFE9C2; color: #B4530A; border: 2px solid #F8B461; }
+  .nav-btn[data-view="tryout"] svg { stroke: currentColor; }
+  .nav-btn[data-view="tryout"]:not(.is-active) { animation: arenaBlink 1.3s ease-in-out infinite; }
+  .nav-btn[data-view="tryout"].is-active { background: #F8B461; color: #14161C; border-color: #14161C; }
+  .nav-btn[data-view="tryout"].is-active::after { background: #14161C; }
+  @keyframes arenaBlink {
+    0%, 100% { background: #FFE9C2; box-shadow: 0 0 0 0 rgba(248, 180, 97, .85); }
+    50% { background: #FFC46B; box-shadow: 0 0 0 7px rgba(248, 180, 97, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) { .nav-btn[data-view="tryout"]:not(.is-active) { animation: none; } }
+
+  #ar.ar-home { max-width: 720px; }
+  .ar-kick { display: inline-block; margin-bottom: 8px; padding: 4px 12px; border: 2px solid #14161C; border-radius: 99px; background: #F9D56E; font: 800 11px var(--font, inherit); letter-spacing: .1em; }
+  #ar.ar-home > h1 { margin: 0 0 8px; font-size: clamp(30px, 8vw, 42px); line-height: 1.1; }
+  .ar-lead { margin: 0 0 14px; font-size: 16px; line-height: 1.55; color: var(--ink-soft, #5B6070); }
+  .ar-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .ar-chips span { padding: 5px 13px; border: 1.5px solid #14161C; border-radius: 99px; background: #fff; font-size: 13px; font-weight: 800; }
+  .ar-amb { margin: 0 0 18px; font-size: 13px; line-height: 1.5; color: var(--ink-soft, #5B6070); }
+  .ar-bf { padding: 12px 14px; border: 2px solid #14161C; background: linear-gradient(135deg, #FFF1D6, #FFE0D4); box-shadow: 0 3px 0 #14161C; }
+  .ar-bf-top { display: flex; gap: 10px; align-items: center; }
+  .ar-bf-top h3 { margin: 0; font-size: 17px; line-height: 1.2; }
+  .ar-bf-top p { margin: 0; font-size: 12.5px; line-height: 1.4; color: var(--ink-soft, #5B6070); }
+  .ar-bf-ic { display: grid; place-items: center; flex: 0 0 auto; width: 36px; height: 36px; border: 2px solid #14161C; border-radius: 50%; background: #fff; font-size: 17px; }
+  .ar-bf-pk { display: flex; gap: 6px; margin: 10px -14px 8px; padding: 0 14px 2px; overflow-x: auto; scrollbar-width: none; }
+  .ar-bf-pk::-webkit-scrollbar { display: none; }
+  .ar-bf-pk button { flex: 0 0 auto; min-width: 40px; padding: 4px 11px; border: 1.5px solid #14161C; border-radius: 99px; background: #fff; font: 800 12.5px inherit; cursor: pointer; }
+  .ar-bf-pk button.on { background: #14161C; color: #fff; }
+  .ar-bf-board { min-height: 0; margin-bottom: 8px; padding: 7px 10px; border-radius: 12px; background: rgba(255, 255, 255, .75); font-size: 12.5px; line-height: 1.45; }
+  .ar-bf-board ol { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0 0 3px; padding: 0; list-style: none; }
+  .ar-bf-board li { display: inline-flex; gap: 4px; align-items: center; font-weight: 700; }
+  .ar-bf-board li b { padding: 0 7px; border-radius: 99px; background: #14161C; color: #fff; font-size: 11.5px; }
+  .ar-bf-board p { margin: 0; }
+  .ar-bf #bfGo, .ar-bf #bfRank { padding: 7px 14px !important; font-size: 13px !important; }
+  .ar-kopi .ar-row, .ar-rk .ar-row, .ar-bf-res .ar-row { position: static !important; display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0 !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: none !important; box-shadow: none !important; }
+  .ar-kopi .ar-row .btn, .ar-rk .ar-row .btn { flex: 0 1 auto; width: auto; min-height: 0; padding: 9px 18px; font-size: 14px; border-radius: 99px; }
+  .ar-kopi { border: 2px solid #14161C; background: linear-gradient(135deg, #FFF1D6, #E6F3E8); box-shadow: 0 3px 0 #14161C; }
+  .ar-kopi p { margin: 4px 0 0; font-size: 14px; line-height: 1.55; }
+  .ar-bf-res { border: 2px solid #14161C; background: #FFE9C2; }
+  .ar-bf-res p { margin: 6px 0 0; }
 </style>
 </head>
 
@@ -9145,6 +9207,100 @@ tkp:[]};
 ["hitung","Tentukan operasi bilangan yang memiliki hasil sama dengan 48 × 225 = ....",["60 × 175", "40 × 280", "54 × 200", "72 × 160", "45 × 250"],2,"<div class=\"coret\"><span class=\"tt\">Coretan cepat<\/span><div class=\"ln\">Target: 48 × 225 = 10.800<\/div><div class=\"ln\">Rumus cepat (faktor geser): satu angka mengecil k kali, pasangannya harus membesar k kali.<\/div><div class=\"ln\">A. 60 × 175 = 10.500 <span class=\"x\">beda (lebih kecil 300)<\/span><\/div><div class=\"ln\">B. 40 × 280 = 11.200 <span class=\"x\">beda (lebih besar 400)<\/span><\/div><div class=\"ln\">C. 54 × 200 = 10.800 → <span class=\"ok\">sama<\/span><\/div><div class=\"ln\">D. 72 × 160 = 11.520 <span class=\"x\">beda (lebih besar 720)<\/span><\/div><div class=\"ln\">E. 45 × 250 = 11.250 <span class=\"x\">beda (lebih besar 450)<\/span><\/div><div class=\"ln\">Cara kilat tanpa hitung: rasio silang 48 : 54 = 8 : 9 dan 200 : 225 = 8 : 9. Sama, berarti opsi C benar.<\/div><div class=\"nt rd\">Jebakan: opsi lain sengaja dibuat selisih kecil (hasil dekat target). Satu angka cocok belum cukup, cek hasil kali atau rasio dua-duanya.<\/div><\/div>",1],
 ["hitung","Tentukan operasi bilangan yang memiliki hasil sama dengan 64 × 150 = ....",["75 × 130", "96 × 110", "60 × 170", "80 × 120", "50 × 190"],3,"<div class=\"coret\"><span class=\"tt\">Coretan cepat<\/span><div class=\"ln\">Target: 64 × 150 = 9.600<\/div><div class=\"ln\">Rumus cepat (faktor geser): satu angka mengecil k kali, pasangannya harus membesar k kali.<\/div><div class=\"ln\">A. 75 × 130 = 9.750 <span class=\"x\">beda (lebih besar 150)<\/span><\/div><div class=\"ln\">B. 96 × 110 = 10.560 <span class=\"x\">beda (lebih besar 960)<\/span><\/div><div class=\"ln\">C. 60 × 170 = 10.200 <span class=\"x\">beda (lebih besar 600)<\/span><\/div><div class=\"ln\">D. 80 × 120 = 9.600 → <span class=\"ok\">sama<\/span><\/div><div class=\"ln\">E. 50 × 190 = 9.500 <span class=\"x\">beda (lebih kecil 100)<\/span><\/div><div class=\"ln\">Cara kilat tanpa hitung: rasio silang 64 : 80 = 4 : 5 dan 120 : 150 = 4 : 5. Sama, berarti opsi D benar.<\/div><div class=\"nt rd\">Jebakan: opsi lain sengaja dibuat selisih kecil (hasil dekat target). Satu angka cocok belum cukup, cek hasil kali atau rasio dua-duanya.<\/div><\/div>",1],
 ["hitung","Tentukan operasi bilangan yang memiliki hasil sama dengan 84 × 125 = ....",["60 × 180", "90 × 120", "70 × 150", "75 × 145", "105 × 95"],2,"<div class=\"coret\"><span class=\"tt\">Coretan cepat<\/span><div class=\"ln\">Target: 84 × 125 = 10.500<\/div><div class=\"ln\">Rumus cepat (faktor geser): satu angka mengecil k kali, pasangannya harus membesar k kali.<\/div><div class=\"ln\">A. 60 × 180 = 10.800 <span class=\"x\">beda (lebih besar 300)<\/span><\/div><div class=\"ln\">B. 90 × 120 = 10.800 <span class=\"x\">beda (lebih besar 300)<\/span><\/div><div class=\"ln\">C. 70 × 150 = 10.500 → <span class=\"ok\">sama<\/span><\/div><div class=\"ln\">D. 75 × 145 = 10.875 <span class=\"x\">beda (lebih besar 375)<\/span><\/div><div class=\"ln\">E. 105 × 95 = 9.975 <span class=\"x\">beda (lebih kecil 525)<\/span><\/div><div class=\"ln\">Cara kilat tanpa hitung: rasio silang 84 : 70 = 6 : 5 dan 150 : 125 = 6 : 5. Sama, berarti opsi C benar.<\/div><div class=\"nt rd\">Jebakan: opsi lain sengaja dibuat selisih kecil (hasil dekat target). Satu angka cocok belum cukup, cek hasil kali atau rasio dua-duanya.<\/div><\/div>",1]);
+  // ===== BATCH 15: EDISI NOVEMBER 2026, super HOTS Paket 8 (pk=8) dan Paket 9 (pk=9): opsi nyaris sama, penalaran berlapis =====
+  NEW.twk.push(
+["uud", "Rancangan undang-undang telah disetujui bersama oleh DPR dan Presiden, tetapi Presiden tidak mengesahkannya dalam waktu tiga puluh hari sejak persetujuan itu. Akibat hukum yang paling tepat adalah ....", ["rancangan itu gugur dan harus diajukan ulang pada masa sidang DPR yang sama setelah dibahas kembali", "rancangan itu sah menjadi undang-undang dan wajib diundangkan sebagaimana mestinya", "rancangan itu dikembalikan kepada DPR untuk dibahas ulang mulai dari awal", "rancangan itu baru berlaku setelah mendapat persetujuan dari Mahkamah Konstitusi", "rancangan itu ditangguhkan sampai Presiden bersedia untuk mengesahkannya"], 1, "Pasal 20 ayat (5) UUD NRI 1945: RUU yang telah disetujui bersama tetapi tidak disahkan Presiden dalam 30 hari sah menjadi UU dan wajib diundangkan. Jebakan: larangan diajukan lagi pada masa sidang yang sama (Pasal 20 ayat 3) berlaku bagi RUU yang TIDAK mendapat persetujuan bersama.", 8],
+["uud", "Urutan proses pemberhentian Presiden dalam masa jabatannya karena dugaan pelanggaran hukum yang paling tepat menurut UUD NRI 1945 adalah ....", ["DPR langsung mengusulkan kepada MPR, lalu MK memeriksa pendapat DPR dan MPR memutus", "DPR menyatakan pendapat, MK memutus pendapat itu, DPR mengusulkan ke MPR, lalu MPR memutus", "DPR menyatakan pendapat, MPR memutus, lalu MK mengesahkan putusan MPR sebagai putusan akhir", "MK memeriksa dugaan pelanggaran atas inisiatif sendiri, lalu MPR memutus tanpa melalui DPR", "DPR menyatakan pendapat, MA memutus pendapat itu, DPR mengusulkan ke MPR, lalu MPR memutus"], 1, "Pasal 7B: DPR menyatakan pendapat, MK memeriksa dan memutus pendapat itu, DPR mengusulkan kepada MPR, lalu MPR memutus dalam rapat paripurna. MK memutus pendapat DPR, bukan MA, dan MPR memutus paling akhir.", 8],
+["uud", "Seorang kepala dinas menerbitkan pungutan baru yang dinilai bermanfaat bagi masyarakat, disetujui tokoh masyarakat, dan sejalan dengan visi kepala daerah, tetapi belum ada dasar peraturannya. Menurut prinsip negara hukum, pungutan tersebut ....", ["sah, karena persetujuan tokoh masyarakat sudah mencerminkan kehendak rakyat di daerah itu dan tidak perlu dasar lain", "belum sah, karena tindakan pemerintahan harus bersandar pada kewenangan yang diatur peraturan", "sah, karena manfaat bagi masyarakat merupakan dasar kewenangan yang sudah mencukupi", "sah untuk sementara waktu, sampai ada keberatan resmi yang diajukan oleh masyarakat", "sah, karena sejalan dengan visi kepala daerah sebagai pemegang kekuasaan pemerintahan"], 1, "Pasal 1 ayat (3): Indonesia negara hukum. Asas legalitas menuntut setiap tindakan pemerintah berdasarkan peraturan perundang-undangan. Manfaat, dukungan, dan visi pimpinan bukan sumber kewenangan.", 8],
+["pancasila", "Dalam susunan sila-sila Pancasila yang bersifat hierarkis piramidal, sila kedua ....", ["dijiwai sila pertama serta meliputi dan menjiwai sila ketiga, keempat, dan kelima", "menjiwai sila pertama serta dijiwai sila ketiga, keempat, dan kelima", "dijiwai sila kelima serta meliputi dan menjiwai sila pertama, ketiga, dan keempat", "sejajar dengan sila pertama dan tidak saling meliputi dengan sila yang lain", "dijiwai sila ketiga serta meliputi dan menjiwai sila keempat dan kelima"], 0, "Dalam hierarki piramidal, sila di atas meliputi dan menjiwai sila di bawahnya: sila 1 menjiwai sila 2, sila 2 menjiwai sila 3, 4, dan 5, dan seterusnya.", 8],
+["pancasila", "Dalam rapat warga, usulan relokasi pasar diputuskan lewat pemungutan suara setelah perdebatan singkat, padahal sebagian peserta belum sempat menyampaikan pendapat. Menurut nilai sila keempat, proses itu ....", ["tepat, karena suara terbanyak merupakan prinsip utama dari sila keempat", "kurang tepat, karena pemungutan suara ditempuh sebelum upaya mufakat melalui musyawarah maksimal", "tepat, karena waktu rapat terbatas dan hasil hitungannya sah secara administratif", "kurang tepat, karena keputusan harus diambil oleh pemimpin rapat setelah mendengar seluruh usulan peserta", "kurang tepat, karena sila keempat tidak membolehkan pemungutan suara dalam bentuk apa pun"], 1, "Sila ke-4 mengutamakan musyawarah untuk mufakat. Pemungutan suara adalah jalan terakhir setelah upaya mufakat ditempuh dengan sungguh-sungguh dan semua pihak diberi kesempatan bicara.", 8],
+["nkri", "Urusan pemerintahan konkuren yang termasuk urusan wajib berkaitan dengan pelayanan dasar menurut UU Pemerintahan Daerah adalah ....", ["administrasi kependudukan dan pencatatan sipil di daerah", "ketenteraman, ketertiban umum, dan pelindungan masyarakat", "koperasi, usaha kecil, dan menengah serta penanaman modal daerah", "pemberdayaan perempuan dan pelindungan anak di daerah", "komunikasi dan informatika serta persandian di daerah"], 1, "Urusan wajib pelayanan dasar: pendidikan, kesehatan, pekerjaan umum dan penataan ruang, perumahan rakyat dan kawasan permukiman, ketenteraman-ketertiban umum-pelindungan masyarakat, dan sosial. Opsi lain termasuk urusan wajib nonpelayanan dasar.", 8],
+["bti", "Semboyan \"Bhinneka Tunggal Ika tan hana dharma mangrwa\" dalam Kakawin Sutasoma karya Mpu Tantular, bagian \"tan hana dharma mangrwa\", bermakna ....", ["tidak ada kebenaran yang mendua", "tidak ada perbedaan di antara pemeluk dharma", "tidak ada kebenaran selain dharma penguasa", "tidak ada dharma yang boleh berbeda satu sama lain", "tidak ada perpecahan di dalam sebuah kerajaan"], 0, "\"Tan hana dharma mangrwa\" berarti tidak ada kebenaran yang mendua: kebenaran itu satu meski jalan dan wujudnya beragam.", 8],
+["int", "Perilaku \"memegang teguh ideologi Pancasila, UUD 1945, dan setia pada NKRI serta pemerintahan yang sah; menjaga nama baik sesama ASN, pimpinan, instansi, dan negara; menjaga rahasia jabatan dan negara\" termasuk nilai BerAKHLAK ....", ["Akuntabel", "Harmonis", "Loyal", "Adaptif", "Kolaboratif"], 2, "Rumusan tersebut adalah panduan perilaku nilai Loyal. Jebakan: \"menjaga rahasia jabatan\" terdengar seperti Akuntabel, padahal berada pada panduan Loyal.", 8],
+["int", "Seorang ASN membagikan ulang (share) video kampanye salah satu calon kepala daerah di akun media sosial pribadinya tanpa tambahan komentar apa pun. Menurut prinsip netralitas ASN, tindakan itu ....", ["tidak melanggar, karena akun pribadi berada di luar urusan kedinasan dan tidak membawa nama instansi", "melanggar netralitas, karena membagikan konten kampanye menunjukkan keberpihakan walau tanpa komentar", "tidak melanggar, karena ia tidak menambahkan ajakan memilih maupun komentar pribadi apa pun", "melanggar apabila ia mencantumkan jabatan dan nama instansi pada profil akun media sosial tersebut", "melanggar apabila unggahan dilakukan pada jam kerja dan memakai perangkat milik instansi"], 1, "ASN dilarang menunjukkan keberpihakan, termasuk menyukai, mengomentari, atau membagikan konten kampanye di media sosial, baik di jam kerja maupun akun pribadi.", 8],
+["bela", "Warga negara yang telah dilatih dan disiapkan untuk dikerahkan melalui mobilisasi guna memperbesar kekuatan dan kemampuan komponen utama disebut ....", ["komponen utama", "komponen cadangan", "komponen pendukung", "komponen nirmiliter", "komponen dasar"], 1, "Menurut UU Pengelolaan Sumber Daya Nasional untuk Pertahanan Negara, komponen cadangan disiapkan untuk dikerahkan melalui mobilisasi memperbesar kekuatan komponen utama (TNI). Komponen pendukung meningkatkan kekuatan komponen utama dan cadangan.", 8],
+["nas", "Rumusan ikrar ketiga Sumpah Pemuda 28 Oktober 1928 yang benar adalah ....", ["berbahasa satu, yaitu bahasa Indonesia", "menjunjung bahasa persatuan, bahasa Indonesia", "menjunjung bahasa kesatuan, yaitu bahasa Indonesia", "menjunjung bahasa persatuan, bahasa Melayu", "menjunjung bahasa ibu, bahasa Indonesia"], 1, "Teks aslinya: \"mendjoendjoeng bahasa persatoean, bahasa Indonesia\". Ikrar pertama \"bertumpah darah satu\" dan kedua \"berbangsa satu\"; hanya ikrar ketiga yang memakai kata menjunjung.", 8],
+["nas", "Konsep naskah Proklamasi Kemerdekaan Indonesia ditulis tangan oleh ... dan diketik oleh ....", ["Mohammad Hatta; Soekarni", "Soekarno; Sayuti Melik", "Ahmad Soebardjo; Sayuti Melik", "Soekarno; B.M. Diah", "Mohammad Hatta; Sayuti Melik"], 1, "Konsep ditulis tangan Soekarno di rumah Laksamana Maeda (Hatta dan Soebardjo ikut menyusun gagasan), lalu diketik Sayuti Melik dengan perubahan seperlunya.", 8],
+["bhs", "Rangkaian kata berikut yang seluruhnya baku adalah ....", ["analisa, apotik, resiko", "analisis, apotek, risiko", "analisis, apotik, risiko", "analisa, apotek, risiko", "analisis, apotek, resiko"], 1, "Bentuk baku: analisis, apotek, risiko. Setiap pengecoh hanya salah pada satu atau dua kata.", 8],
+["int", "Anda anggota tim penilai seleksi jabatan, dan salah satu peserta adalah sahabat dekat Anda. Seluruh penilaian memakai rubrik yang objektif. Tindakan paling tepat adalah ....", ["tetap menilai karena rubrik objektif sudah menghilangkan peluang keberpihakan", "menyatakan hubungan itu kepada ketua tim dan tidak menilai peserta tersebut", "tetap menilai tetapi memberi nilai paling rendah agar tidak dituduh memihak", "menilai bersama anggota lain agar tindakan Anda saling diawasi", "meminta peserta itu mengundurkan diri agar tidak menimbulkan masalah"], 1, "Benturan kepentingan diselesaikan dengan deklarasi dan tidak ikut memutuskan. Memberi nilai rendah sengaja pun bentuk bias.", 8],
+["uud", "DPR menggunakan hak untuk menyelidiki pelaksanaan suatu undang-undang dan/atau kebijakan pemerintah yang diduga bertentangan dengan peraturan perundang-undangan. Hak yang digunakan adalah hak ....", ["interpelasi", "angket", "menyatakan pendapat", "anggaran", "imunitas"], 1, "Angket = penyelidikan. Interpelasi = meminta keterangan tentang kebijakan penting. Menyatakan pendapat = sikap DPR atas kebijakan atau dugaan pelanggaran.", 8],
+["uud", "Menurut Pasal 6A ayat (3) UUD NRI 1945, pasangan calon Presiden dan Wakil Presiden terpilih apabila memperoleh ....", ["lebih dari 50% suara dengan sedikitnya 20% suara di setiap provinsi yang tersebar di lebih dari separuh jumlah provinsi", "lebih dari 50% suara dengan sedikitnya 25% suara di setiap provinsi yang tersebar di lebih dari separuh jumlah provinsi", "lebih dari 50% suara dengan sedikitnya 20% suara di setiap provinsi yang tersebar di lebih dari dua pertiga jumlah provinsi", "lebih dari 40% suara dengan sedikitnya 20% suara di setiap provinsi yang tersebar di lebih dari separuh jumlah provinsi", "lebih dari 50% suara dengan sedikitnya 20% suara di setiap provinsi yang tersebar di sekurang-kurangnya sepertiga provinsi"], 0, "Pasal 6A ayat (3): lebih dari 50% suara dengan sedikitnya 20% di setiap provinsi, tersebar di lebih dari separuh jumlah provinsi.", 9],
+["uud", "Presiden menandatangani perjanjian internasional yang menimbulkan akibat luas dan mendasar bagi kehidupan rakyat serta mengharuskan perubahan sebuah undang-undang. Menurut Pasal 11 UUD NRI 1945, perjanjian itu ....", ["cukup dengan pertimbangan Mahkamah Agung karena menyangkut hukum nasional", "harus dengan persetujuan DPR karena berakibat luas dan mengubah undang-undang", "cukup dengan persetujuan MPR karena menyangkut dasar negara", "cukup ditetapkan dengan Peraturan Presiden karena Presiden memegang kekuasaan pemerintahan", "wajib mendapat pertimbangan DPD terlebih dahulu sebelum diberlakukan"], 1, "Pasal 11 ayat (2): perjanjian internasional yang berakibat luas dan mendasar, membebani keuangan negara, dan/atau mengharuskan perubahan atau pembentukan UU memerlukan persetujuan DPR.", 9],
+["nas", "Organisasi yang dikenal sebagai partai politik pertama di Hindia Belanda dengan semboyan \"Hindia untuk orang Hindia\" adalah ....", ["Budi Utomo", "Sarekat Islam", "Indische Partij", "Perhimpunan Indonesia", "Partai Nasional Indonesia"], 2, "Indische Partij (1912) didirikan Tiga Serangkai: E.F.E. Douwes Dekker, Cipto Mangunkusumo, dan Suwardi Suryaningrat (Ki Hajar Dewantara).", 9],
+["bela", "Gatra alamiah (trigatra) dalam konsep Ketahanan Nasional terdiri atas ....", ["ideologi, politik, dan ekonomi", "geografi, demografi, dan sumber kekayaan alam", "ekonomi, sosial budaya, dan pertahanan keamanan", "geografi, politik, dan sumber kekayaan alam", "demografi, ideologi, dan sosial budaya"], 1, "Trigatra: geografi, demografi, sumber kekayaan alam. Pancagatra: ideologi, politik, ekonomi, sosial budaya, pertahanan keamanan.", 9],
+["pancasila", "Perubahan rumusan sila pertama dari \"Ketuhanan dengan kewajiban menjalankan syariat Islam bagi pemeluk-pemeluknya\" menjadi \"Ketuhanan Yang Maha Esa\" ditetapkan pada ....", ["sidang BPUPKI tanggal 1 Juni 1945", "penandatanganan Piagam Jakarta tanggal 22 Juni 1945", "sidang PPKI tanggal 18 Agustus 1945", "pembacaan Proklamasi tanggal 17 Agustus 1945", "Dekrit Presiden tanggal 5 Juli 1959"], 2, "Rumusan Piagam Jakarta (22 Juni 1945) diubah menjadi \"Ketuhanan Yang Maha Esa\" pada sidang PPKI 18 Agustus 1945 saat UUD 1945 disahkan.", 9],
+["pancasila", "Atasan menjadwalkan rapat penting pada hari Jumat pukul 11.30 sampai 13.00. Beberapa pegawai beragama Islam keberatan karena bersamaan dengan salat Jumat. Sikap yang paling sesuai dengan sila pertama adalah ....", ["tetap menjalankan rapat karena urusan kedinasan lebih penting dari kegiatan keagamaan", "menggeser jadwal ke waktu yang tidak bersinggungan dengan ibadah wajib para pegawai", "menjalankan rapat tetapi mengizinkan pegawai yang keberatan hadir terlambat tanpa catatan", "menjadwalkan rapat terpisah bagi pegawai yang keberatan pada hari lain", "meminta pegawai yang keberatan mengirim wakil untuk menghadiri rapat tersebut"], 1, "Sila ke-1 menuntut penghormatan kebebasan beribadah. Solusi terbaik menghindari benturan jadwal bagi semua pegawai, bukan memisahkan atau menomorduakan yang beribadah.", 9],
+["nkri", "Dampak utama Deklarasi Djuanda 13 Desember 1957 bagi wilayah Indonesia adalah ....", ["laut teritorial ditetapkan sejauh 3 mil dari garis pantai tiap pulau, sehingga laut antarpulau tetap menjadi laut bebas", "laut antarpulau menjadi perairan nasional dengan laut teritorial 12 mil dari garis pangkal kepulauan", "zona ekonomi eksklusif ditetapkan sejauh 200 mil dari garis pangkal kepulauan di seluruh perairan nasional", "laut antarpulau menjadi laut bebas yang dapat dilalui semua kapal asing tanpa izin dan tanpa pengawasan", "laut teritorial ditetapkan sejauh 12 mil dari garis pantai masing-masing pulau, bukan dari garis pangkal kepulauan"], 1, "Ordonansi 1939 memberi laut teritorial 3 mil dari garis pantai tiap pulau, sehingga laut antarpulau terbuka. Deklarasi Djuanda menarik garis pangkal lurus kepulauan dan laut teritorial 12 mil dari garis itu.", 9],
+["int", "Seorang ASN menerima bingkisan dari warga yang pernah dilayaninya, tanpa diminta dan tanpa perjanjian apa pun. Menurut ketentuan gratifikasi dalam UU Tipikor, tindakan yang tepat adalah ....", ["melaporkan kepada KPK paling lambat 14 hari kerja sejak diterima", "melaporkan kepada KPK paling lambat 30 hari kerja sejak diterima", "melaporkan kepada KPK paling lambat 30 hari kalender sejak diterima", "melaporkan kepada KPK paling lambat 60 hari kerja sejak diterima", "melaporkan setelah ada pihak yang mempersoalkan penerimaan tersebut"], 1, "Gratifikasi yang berhubungan dengan jabatan wajib dilaporkan kepada KPK paling lambat 30 hari kerja sejak diterima (Pasal 12C UU 20/2001).", 9],
+["int", "Seorang pegawai yang ikut terlibat pengaturan tender mengakui perbuatannya, bukan pelaku utama, dan bersedia membuka peran pihak lain. Status yang paling tepat untuknya adalah ....", ["whistleblower (saksi pelapor)", "justice collaborator", "saksi mahkota (crown witness)", "saksi ahli yang meringankan terdakwa", "saksi korban yang dirugikan"], 1, "Justice collaborator adalah pelaku yang mengakui perbuatan, bukan pelaku utama, dan bekerja sama membuka pelaku lain. Whistleblower bukan pelaku dalam kejahatan yang dilaporkannya.", 9],
+["bela", "Pasal 27 ayat (3) dan Pasal 30 ayat (1) UUD NRI 1945 sama-sama menegaskan bahwa pembelaan dan pertahanan negara merupakan ....", ["kewajiban TNI dan Polri, sedangkan warga sipil bersifat sukarela", "hak sekaligus kewajiban setiap warga negara", "kewajiban warga negara yang memenuhi syarat usia militer", "hak warga negara yang dapat dilepaskan secara tertulis", "kewajiban yang baru timbul ketika negara dinyatakan dalam keadaan perang"], 1, "Kedua pasal memakai rumusan \"berhak dan wajib\": setiap warga negara memiliki hak sekaligus kewajiban ikut serta, dalam keadaan damai maupun perang.", 9],
+["nas", "Gagasan politik luar negeri \"mendayung di antara dua karang\" disampaikan oleh ... pada tahun ....", ["Mohammad Hatta; 1948", "Soekarno; 1955", "Sutan Sjahrir; 1946", "Mohammad Hatta; 1955", "Soekarno; 1948"], 0, "Hatta menyampaikannya pada 1948 di hadapan BP KNIP sebagai dasar politik luar negeri bebas aktif.", 9],
+["bti", "Jumlah bulu pada sayap, ekor, pangkal ekor, dan leher Garuda Pancasila secara berurutan adalah ....", ["17, 8, 19, 45", "17, 8, 45, 19", "8, 17, 19, 45", "17, 19, 8, 45", "45, 8, 19, 17"], 0, "Sayap 17, ekor 8, pangkal ekor 19, leher 45, melambangkan 17-8-1945.", 9],
+["bhs", "Kalimat dengan penulisan awalan di- dan kata depan di yang tepat adalah ....", ["Surat itu di tandatangani oleh Kepala Dinas di ruang rapat.", "Surat itu ditandatangani oleh Kepala Dinas diruang rapat.", "Surat itu ditandatangani oleh Kepala Dinas di ruang rapat.", "Surat itu di tanda tangani oleh Kepala Dinas di ruang rapat.", "Surat itu ditandatangani oleh Kepala Dinas di ruangrapat."], 2, "\"Ditandatangani\" ditulis serangkai karena di- adalah awalan pada kata kerja, sedangkan \"di ruang rapat\" memakai kata depan yang dipisah.", 9],
+["int", "Pelaku korupsi berkata, \"Ini hanya pinjaman sementara, nanti saya kembalikan.\" Dalam teori segitiga kecurangan (fraud triangle), pernyataan itu merupakan unsur ....", ["tekanan atau kebutuhan", "kesempatan atau peluang", "rasionalisasi", "kapabilitas pelaku", "arogansi pelaku"], 2, "Fraud triangle: tekanan, kesempatan, rasionalisasi. Membenarkan perbuatan dengan alasan pinjaman adalah rasionalisasi.", 9],
+["uud", "Sembilan hakim konstitusi diajukan masing-masing tiga orang oleh ....", ["Mahkamah Agung, DPR, dan Presiden", "Mahkamah Agung, DPR, dan DPD", "Mahkamah Agung, Komisi Yudisial, dan Presiden", "DPR, DPD, dan Presiden", "Mahkamah Agung, MPR, dan Presiden"], 0, "Pasal 24C ayat (3): tiga hakim konstitusi diajukan MA, tiga oleh DPR, dan tiga oleh Presiden, lalu ditetapkan Presiden.", 9]);
+  NEW.tiu.push(
+["hitung", "Sebuah toko membeli barang seharga Rp800.000, memasang label harga 30% di atas modal, lalu memberi diskon 20% saat promo. Persentase keuntungan terhadap modal adalah ....", ["10%", "6%", "4%", "5%", "8%"], 2, "Label 800.000 x 1,3 = 1.040.000; diskon 20% menjadi 832.000; untung 32.000 = 4% dari modal. Jebakan: 30% - 20% = 10% karena diskon dihitung dari harga label.", 8],
+["hitung", "Rata-rata nilai 30 siswa kelas B adalah 68. Setelah 5 siswa dengan nilai rata-rata 80 dipindahkan ke kelas lain, rata-rata nilai siswa yang tersisa di kelas B adalah ....", ["65,6", "66,0", "66,4", "67,2", "64,8"], 0, "Jumlah awal 30 x 68 = 2.040; jumlah yang pindah 5 x 80 = 400; sisa 1.640 untuk 25 siswa = 65,6.", 8],
+["cerita", "Lima tahun lalu umur ayah tiga kali umur anaknya. Lima tahun lagi umur ayah dua kali umur anaknya. Umur anak sekarang adalah ....", ["10 tahun", "12 tahun", "15 tahun", "18 tahun", "20 tahun"], 2, "Ayah a, anak k: a - 5 = 3(k - 5) maka a = 3k - 10; a + 5 = 2(k + 5) maka a = 2k + 5. Jadi k = 15 dan a = 35.", 8],
+["cerita", "Keran A mengisi bak penuh dalam 6 jam, keran B dalam 9 jam, sedangkan saluran pembuangan C mengosongkan bak penuh dalam 18 jam. Bila bak kosong dan ketiganya dibuka bersama, bak penuh dalam ....", ["4 jam", "4,5 jam", "5 jam", "3,6 jam", "6 jam"], 1, "Laju: 1/6 + 1/9 - 1/18 = 3/18 + 2/18 - 1/18 = 4/18 = 2/9 per jam, jadi 4,5 jam.", 8],
+["cerita", "Sebanyak 40 liter larutan gula berkadar 15%. Air murni yang harus ditambahkan agar kadarnya menjadi 10% adalah ....", ["15 liter", "18 liter", "20 liter", "24 liter", "25 liter"], 2, "Gula tetap 6 liter. Agar 10%, total larutan 60 liter, jadi tambahan air 60 - 40 = 20 liter.", 8],
+["deret", "Perhatikan deret berikut: 5, 3, 10, 6, 20, 12, 40, ... Suku kedelapan deret tersebut adalah ....", ["20", "24", "36", "48", "30"], 1, "Suku ganjil: 5, 10, 20, 40 (dikali 2). Suku genap: 3, 6, 12, lalu 24.", 8],
+["banding", "Diketahui a > b > 0. P = (a + 1)/(b + 1) dan Q = a/b. Hubungan P dan Q adalah ....", ["P > Q", "P < Q", "P = Q", "Hubungan tidak dapat ditentukan", "P = Q + 1"], 1, "Kali silang: b(a + 1) = ab + b dan a(b + 1) = ab + a. Karena b < a, maka P < Q.", 8],
+["banding", "Diketahui n bilangan asli. P = n pangkat 2 + n dan Q = 2n. Hubungan P dan Q adalah ....", ["P > Q", "P < Q", "P = Q", "Hubungan tidak dapat ditentukan", "P = 2Q"], 3, "Untuk n = 1, P = 2 dan Q = 2 (sama). Untuk n = 2, P = 6 dan Q = 4 (P lebih besar). Hasil berbeda, sehingga tidak dapat ditentukan.", 8],
+["silo", "Jika harga naik maka permintaan turun. Jika permintaan turun maka produksi dikurangi. Produksi tidak dikurangi. Kesimpulan yang pasti benar adalah ....", ["Harga tidak naik", "Harga naik dan permintaan turun", "Permintaan turun tetapi harga tidak naik", "Produksi berkurang karena harga turun", "Tidak dapat disimpulkan"], 0, "Kontraposisi berantai: produksi tidak dikurangi, maka permintaan tidak turun, maka harga tidak naik.", 8],
+["silo", "Sebagian dosen adalah peneliti. Tidak ada peneliti yang malas. Semua orang yang tidak malas mendapat penghargaan. Kesimpulan yang pasti benar adalah ....", ["Semua dosen mendapat penghargaan", "Sebagian dosen mendapat penghargaan", "Sebagian dosen malas", "Semua peneliti adalah dosen", "Tidak ada dosen yang mendapat penghargaan"], 1, "Dosen yang peneliti tidak malas, sehingga mendapat penghargaan. Yang pasti hanya sebagian dosen.", 8],
+["analitis", "Lima petugas (A, B, C, D, E) masing-masing piket satu hari berbeda, Senin sampai Jumat. (1) A piket sebelum B dengan selang paling sedikit satu hari. (2) C piket tepat sehari setelah D. (3) E tidak piket pada hari Senin maupun Jumat. (4) B tidak piket pada hari Jumat. Petugas yang piket pada hari Kamis adalah ....", ["A", "B", "C", "D", "E"], 3, "Bila C tepat setelah D dan B bukan Jumat, uji tiap kemungkinan: A Senin, E Selasa, B Rabu, D Kamis, C Jumat. Hanya susunan ini yang memenuhi semua syarat.", 8],
+["kecdata", "Berapa nilai x - y? (1) x + y = 10. (2) x pangkat 2 - y pangkat 2 = 40.", ["Pernyataan (1) SAJA cukup, pernyataan (2) SAJA tidak cukup", "Pernyataan (2) SAJA cukup, pernyataan (1) SAJA tidak cukup", "DUA pernyataan BERSAMA-SAMA cukup, tetapi SATU pernyataan SAJA tidak cukup", "Pernyataan (1) SAJA cukup dan pernyataan (2) SAJA cukup", "Pernyataan (1) dan (2) tidak cukup"], 2, "Bersama: (x - y)(x + y) = 40 dan x + y = 10, sehingga x - y = 4. Sendiri-sendiri tidak cukup.", 8],
+["kecdata", "Berapa luas sebuah lingkaran? (1) Kelilingnya 31,4 cm (dengan pi = 3,14). (2) Diameternya 10 cm.", ["Pernyataan (1) SAJA cukup, pernyataan (2) SAJA tidak cukup", "Pernyataan (2) SAJA cukup, pernyataan (1) SAJA tidak cukup", "DUA pernyataan BERSAMA-SAMA cukup, tetapi SATU pernyataan SAJA tidak cukup", "Pernyataan (1) SAJA cukup dan pernyataan (2) SAJA cukup", "Pernyataan (1) dan (2) tidak cukup"], 3, "Dari (1): d = 10 sehingga r = 5. Dari (2): r = 5 juga. Masing-masing cukup untuk menghitung luas.", 8],
+["argumen", "\"Sejak aplikasi X dipakai, antrean di loket turun 30%. Karena itu, aplikasi X adalah penyebab turunnya antrean.\" Pernyataan yang paling memperlemah kesimpulan tersebut adalah ....", ["Pada periode yang sama, jam layanan loket dipersingkat sehingga jumlah pemohon yang dilayani menurun", "Pengguna aplikasi X berasal dari berbagai kelompok umur dan tingkat pendidikan", "Aplikasi X dinilai mudah digunakan oleh sebagian besar pemohon yang mencobanya", "Biaya pengembangan aplikasi X lebih rendah dari anggaran yang telah disediakan", "Aplikasi sejenis juga telah dipakai oleh beberapa instansi pelayanan di daerah lain"], 0, "Penyebab alternatif (jam layanan dipersingkat) menjelaskan turunnya antrean tanpa aplikasi, sehingga melemahkan klaim sebab-akibat.", 8],
+["hitung", "Tabungan Rp10.000.000 berbunga majemuk 10% per tahun. Saldo setelah 2 tahun adalah ....", ["Rp12.000.000", "Rp12.100.000", "Rp12.200.000", "Rp11.000.000", "Rp12.210.000"], 1, "Tahun 1: 11.000.000. Tahun 2: 11.000.000 x 1,1 = 12.100.000. Bunga tunggal akan memberi 12.000.000.", 9],
+["hitung", "Hasil dari (987 pangkat 2 - 13 pangkat 2) : (987 + 13) adalah ....", ["974", "986", "1.000", "961", "1.013"], 0, "a pangkat 2 - b pangkat 2 = (a - b)(a + b), maka hasilnya a - b = 987 - 13 = 974.", 9],
+["cerita", "Kota A dan B berjarak 360 km. Kereta pertama berangkat dari A pukul 06.00 dengan kecepatan 70 km/jam. Kereta kedua berangkat dari B pukul 07.00 menuju A dengan kecepatan 50 km/jam. Kedua kereta bertemu pada pukul ....", ["09.15", "09.20", "09.25", "09.30", "09.40"], 2, "Pukul 07.00 kereta pertama sudah menempuh 70 km, sisa 290 km. Kecepatan dekat 120 km/jam sehingga 290/120 = 2 jam 25 menit. Bertemu 09.25.", 9],
+["cerita", "Andi dapat menyelesaikan pekerjaan dalam 12 hari dan Budi dalam 15 hari. Mereka bekerja bergantian, masing-masing satu hari, dimulai dari Andi. Pekerjaan selesai pada hari ke- ....", ["13", "13,5", "14", "15", "16"], 2, "Tiap dua hari: 1/12 + 1/15 = 3/20. Setelah 12 hari: 18/20. Hari ke-13 (Andi): 59/60. Hari ke-14 (Budi) menyelesaikan sisanya.", 9],
+["cerita", "Uang Ani : Budi = 3 : 5 dan uang Budi : Citra = 2 : 3. Jika jumlah uang ketiganya Rp3.100.000, selisih uang Citra dan Ani adalah ....", ["Rp800.000", "Rp850.000", "Rp900.000", "Rp950.000", "Rp1.000.000"], 2, "Samakan Budi: Ani : Budi : Citra = 6 : 10 : 15 (jumlah 31 bagian). Satu bagian Rp100.000, selisih Citra dan Ani = 9 bagian = Rp900.000.", 9],
+["deret", "Perhatikan deret berikut: 1, 2, 5, 14, 41, ... Suku berikutnya adalah ....", ["122", "123", "121", "125", "124"], 0, "Pola: dikali 3 lalu dikurangi 1. 41 x 3 - 1 = 122.", 9],
+["banding", "x = (akar 2 + akar 3) pangkat 2 dan y = 5 + 2 akar 6. Hubungan x dan y adalah ....", ["x > y", "x < y", "x = y", "Hubungan tidak dapat ditentukan", "x = y + 1"], 2, "(akar 2 + akar 3) pangkat 2 = 2 + 3 + 2 akar 6 = 5 + 2 akar 6, jadi x = y.", 9],
+["banding", "Diketahui 0 < a < 1. P = a pangkat 2 dan Q = akar a. Hubungan P dan Q adalah ....", ["P > Q", "P < Q", "P = Q", "Hubungan tidak dapat ditentukan", "P = 2Q"], 1, "Untuk 0 < a < 1 berlaku a pangkat 2 < a < akar a. Contoh a = 0,25: P = 0,0625 dan Q = 0,5.", 9],
+["silo", "Semua pejabat yang mengikuti seleksi lulus verifikasi. Sebagian peserta seleksi bukan pejabat. Tidak ada orang yang lulus verifikasi mendapat teguran. Pak Dedi adalah pejabat yang mengikuti seleksi. Kesimpulan yang pasti benar adalah ....", ["Pak Dedi tidak mendapat teguran", "Pak Dedi mendapat teguran", "Semua peserta seleksi tidak mendapat teguran", "Sebagian pejabat tidak lulus verifikasi", "Tidak dapat disimpulkan"], 0, "Pak Dedi pejabat peserta seleksi, maka lulus verifikasi, maka tidak mendapat teguran. Semua peserta belum pasti karena status peserta nonpejabat tidak diketahui.", 9],
+["silo", "Tidak semua pegawai honorer berstatus PPPK. Semua PPPK memperoleh tunjangan. Kesimpulan yang pasti benar adalah ....", ["Sebagian pegawai honorer tidak memperoleh tunjangan", "Sebagian pegawai honorer bukan PPPK", "Semua pegawai honorer tidak memperoleh tunjangan", "Semua PPPK adalah pegawai honorer", "Tidak ada pegawai honorer yang berstatus PPPK"], 1, "\"Tidak semua\" berarti sebagian honorer bukan PPPK. Kita tidak tahu apakah yang bukan PPPK memperoleh tunjangan atau tidak.", 9],
+["analitis", "Enam berkas (P, Q, R, S, T, U) diproses satu per satu secara berurutan. (1) Q diproses sebelum R dengan tepat satu berkas di antara keduanya. (2) R diproses sebelum S. (3) S langsung diikuti oleh T. (4) U diproses sebelum Q. (5) P tidak diproses pertama maupun terakhir. Berkas yang diproses ketiga adalah ....", ["P", "Q", "R", "S", "U"], 0, "U sebelum Q, Q-?-R, R sebelum S-T. Susunannya U, Q, P, R, S, T. Berkas ketiga adalah P.", 9],
+["kecdata", "Berapa nilai y? (1) y pangkat 2 = 9. (2) y pangkat 3 = 27.", ["Pernyataan (1) SAJA cukup, pernyataan (2) SAJA tidak cukup", "Pernyataan (2) SAJA cukup, pernyataan (1) SAJA tidak cukup", "DUA pernyataan BERSAMA-SAMA cukup, tetapi SATU pernyataan SAJA tidak cukup", "Pernyataan (1) SAJA cukup dan pernyataan (2) SAJA cukup", "Pernyataan (1) dan (2) tidak cukup"], 1, "(1) memberi y = 3 atau -3 (belum pasti). (2) memberi y = 3 saja.", 9],
+["kecdata", "Berapa luas segitiga ABC? (1) Alas AB = 8 cm. (2) Sisi AC = 10 cm.", ["Pernyataan (1) SAJA cukup, pernyataan (2) SAJA tidak cukup", "Pernyataan (2) SAJA cukup, pernyataan (1) SAJA tidak cukup", "DUA pernyataan BERSAMA-SAMA cukup, tetapi SATU pernyataan SAJA tidak cukup", "Pernyataan (1) SAJA cukup dan pernyataan (2) SAJA cukup", "Pernyataan (1) dan (2) tidak cukup"], 4, "Dua sisi tanpa informasi sudut atau tinggi tidak menentukan luas. Bersama pun belum cukup.", 9],
+["argumen", "\"Setelah pelatihan literasi digital diadakan, laporan penipuan daring di daerah kita turun. Maka pelatihan itu menurunkan penipuan daring.\" Pernyataan yang paling memperkuat kesimpulan tersebut adalah ....", ["Di daerah serupa yang tidak mengadakan pelatihan, laporan penipuan daring tidak turun pada periode yang sama", "Peserta pelatihan menyatakan puas terhadap materi dan narasumber yang dihadirkan", "Jumlah peserta pelatihan melebihi target yang telah ditetapkan oleh panitia", "Anggaran pelatihan terserap seluruhnya sesuai rencana kegiatan yang disusun", "Pelatihan serupa juga pernah diadakan di beberapa daerah lain oleh instansi berbeda"], 0, "Pembanding tanpa pelatihan yang tidak mengalami penurunan mengisolasi pengaruh pelatihan, sehingga paling kuat mendukung sebab-akibat.", 9]);
+  NEW.tkp.push(
+["pel", "Warga datang ke loket dengan berkas lengkap, tetapi kuota antrean daring hari ini sudah penuh. Aturan hanya melayani pendaftar daring. Warga itu datang dari jauh dengan membawa anak kecil. Sikap Anda ....", ["Menerima berkas warga di luar antrean daring karena merasa kasihan, tanpa memberi tahu koordinator layanan", "Menjelaskan aturan kuota dengan ramah, lalu menyarankan warga mendaftar daring dari rumah untuk jadwal berikutnya", "Menjelaskan aturan kuota dengan ramah, lalu menanyakan kepada koordinator apakah tersedia slot tambahan sesuai ketentuan loket, lalu menunggu arahan atasan", "Menjelaskan aturan kuota dengan ramah, mendaftarkan warga untuk jadwal terdekat, dan memberi tahu berkas yang perlu dibawa kembali", "Menjelaskan aturan kuota dengan singkat, lalu mempersilakan warga menunggu siapa tahu ada pendaftar yang membatalkan jadwalnya"], [1, 3, 4, 5, 2], "Nilai 5: patuh aturan, empatik, dan memberi solusi konkret saat itu juga. Menerima di luar antrean tanpa izin melanggar aturan.", 8],
+["pel", "Seorang pemohon izin usaha marah karena berkasnya dikembalikan dua kali dengan catatan perbaikan yang berbeda dari dua petugas verifikasi. Anda petugas yang menerima keluhannya. Sikap Anda ....", ["Meminta maaf, mencatat keluhan pemohon, lalu menjanjikan kabar dari atasan dalam beberapa hari ke depan, lalu menyerahkan kelanjutannya kepada pihak lain", "Menjelaskan bahwa perbedaan catatan lazim terjadi dan meminta pemohon mengikuti catatan yang paling baru", "Mengatakan di hadapan pemohon bahwa salah satu petugas verifikasi kurang teliti dalam memeriksa berkas", "Meminta maaf, memeriksa kedua catatan bersama pemohon, lalu menyampaikan perbedaannya kepada atasan untuk dicarikan keputusan", "Meminta maaf, memeriksa kedua catatan bersama pemohon, lalu mengoordinasikan kedua petugas agar ada satu daftar perbaikan final"], [3, 2, 1, 4, 5], "Nilai 5: empati, solusi, dan koordinasi yang menyelesaikan akar masalah. Menyalahkan petugas lain di depan pemohon merusak kepercayaan.", 8],
+["pel", "Anda petugas informasi. Seorang warga lansia bertanya tentang prosedur yang sudah dijelaskan dua kali dan belum paham, sementara beberapa warga lain menunggu. Sikap Anda ....", ["Menjelaskan lagi dengan bahasa sederhana dan menuliskan langkah-langkahnya agar dapat dibawa pulang oleh warga lansia tersebut", "Menjelaskan lagi dengan bahasa sederhana, lalu mempersilakan warga duduk sementara Anda melayani warga lain yang menunggu", "Menjelaskan lagi dengan bahasa lebih sederhana disertai catatan langkah, lalu meminta rekan melayani antrean lain hingga warga lansia paham", "Menyerahkan brosur prosedur dan menyarankan warga membacanya bersama keluarga di rumah pada kesempatan berikutnya, sambil berharap masalahnya mereda sendiri", "Mengulangi penjelasan yang sama dengan lebih cepat agar warga lain tidak menunggu terlalu lama di loket, agar tidak menambah beban kerja"], [4, 3, 5, 2, 1], "Nilai 5: menyesuaikan cara menjelaskan dan menjaga layanan warga lain lewat bantuan rekan.", 8],
+["jej", "Anda menyusun laporan bersama dengan unit lain, tetapi data dari unit itu terlambat dua hari dari kesepakatan dan tenggat laporan tinggal tiga hari. Sikap Anda ....", ["Memakai data tahun lalu sebagai pengganti sementara tanpa memberi tahu siapa pun agar laporan tetap tepat waktu, agar tidak menambah beban kerja Anda dan rekan satu unit", "Menghubungi pejabat penghubung unit itu untuk menanyakan kendala, lalu melaporkan kemungkinan keterlambatan laporan kepada atasan Anda", "Menghubungi pejabat penghubung unit itu untuk menanyakan kendala dan menyepakati tanggal baru, sambil menyusun bagian lain agar tenggat terkejar", "Mengirim pengingat tertulis kepada unit itu dan menunggu sampai data diterima sesuai tanggal yang dijanjikan ulang", "Melaporkan kepada atasan bahwa keterlambatan unit itu menjadi penyebab bila laporan akhir tidak selesai tepat waktu"], [1, 4, 5, 3, 2], "Nilai 5: komunikasi langsung, kesepakatan baru, dan antisipasi tenggat. Data lama tanpa pemberitahuan menyesatkan.", 8],
+["jej", "Dalam rapat koordinasi lintas instansi, dua perwakilan berdebat keras tentang pembagian tugas dan rapat nyaris buntu. Anda peserta dari instansi ketiga. Sikap Anda ....", ["Mengusulkan jeda singkat, lalu meminta pimpinan rapat merangkum titik temu yang sudah disepakati kedua belah pihak, lalu menunggu arahan atasan", "Mendukung perwakilan yang usulannya paling menguntungkan instansi Anda dalam pembagian tugas tersebut", "Meminta pimpinan rapat mengambil keputusan sepihak agar rapat segera dapat dilanjutkan ke agenda berikutnya", "Mengusulkan jeda singkat, lalu merangkum titik temu kedua pihak dan mengusulkan pembagian tugas sesuai kewenangan tiap instansi", "Mencatat jalannya perdebatan untuk dilaporkan kepada pimpinan instansi Anda setelah rapat koordinasi selesai"], [4, 1, 3, 5, 2], "Nilai 5: menjembatani dengan dasar kewenangan, bukan memihak.", 8],
+["jej", "Rekan dari instansi mitra meminta Anda membagikan data internal yang belum dipublikasikan untuk kajian bersama. Belum ada perjanjian kerja sama resmi. Sikap Anda ....", ["Menjelaskan bahwa data internal memerlukan izin atasan, mengajukan permintaan resmi, dan menawarkan data publik yang dapat dibagikan lebih dahulu", "Menjelaskan bahwa data internal memerlukan izin atasan, lalu mengajukan permintaan resmi tersebut kepada atasan Anda, lalu menunggu arahan atasan", "Menjelaskan bahwa data belum dapat dibagikan dan menyarankan instansi mitra mengirim surat resmi terlebih dahulu, lalu menyerahkan kelanjutannya kepada pihak lain", "Membagikan seluruh data secara pribadi agar hubungan kerja sama dengan instansi mitra tetap terjaga baik, agar tidak menambah beban kerja", "Membagikan sebagian data yang dianggap tidak sensitif tanpa menunggu izin dari atasan Anda, sambil berharap masalahnya mereda sendiri"], [5, 4, 3, 1, 2], "Nilai 5: menjaga data sesuai prosedur sambil tetap membantu kerja sama.", 8],
+["sos", "Seorang pegawai baru di unit Anda berlogat daerah yang kental, dan sering ditirukan sambil bercanda oleh beberapa rekan. Pegawai baru itu tampak menarik diri. Sikap Anda ....", ["Ikut bercanda secara ringan agar suasana di antara rekan kerja tidak menjadi canggung, agar tidak menambah beban kerja", "Mengajak pegawai baru ikut kegiatan kerja dan makan siang bersama tanpa menegur siapa pun yang menirukan logatnya", "Menyarankan pegawai baru memakai logat yang lebih umum agar lebih mudah diterima oleh rekan-rekan kerja, sambil berharap masalahnya mereda sendiri", "Menegur dengan santun rekan yang menirukan logat tersebut dan mengajak pegawai baru ikut kegiatan kerja dan makan siang bersama", "Menegur dengan santun rekan yang menirukan logat tersebut tanpa mendekati pegawai baru yang tampak menarik diri"], [1, 4, 2, 5, 3], "Nilai 5: menghentikan perilaku yang merendahkan dan merangkul yang dirugikan.", 8],
+["sos", "Sebagian warga desa binaan menolak sosialisasi program kesehatan pada hari pasaran tertentu karena dianggap hari pantangan adat, dan jadwal sosialisasi bertepatan dengan hari itu. Sikap Anda ....", ["Menyampaikan keberatan warga kepada atasan dan menunggu keputusan apakah jadwal perlu diubah atau tidak", "Menyampaikan bahwa pantangan itu tidak berdasar ilmiah sehingga tidak perlu dipertimbangkan dalam penjadwalan, agar tidak menambah beban kerja", "Tetap melaksanakan sosialisasi sesuai jadwal sambil menjelaskan manfaat program kesehatan kepada warga", "Berdiskusi dengan tokoh adat, lalu menawarkan sosialisasi pada hari itu dengan pembatasan kegiatan tertentu sesuai kebiasaan setempat", "Berdiskusi dengan tokoh adat untuk memahami pantangan itu, lalu menggeser jadwal ke hari lain tanpa mengubah tujuan dan materi program"], [3, 1, 2, 4, 5], "Nilai 5: menghormati adat sambil menjaga tujuan program.", 8],
+["sos", "Dua kelompok pemuda di lingkungan Anda berselisih karena panitia perayaan hari besar daerah dianggap hanya melibatkan satu kelompok. Ketegangan mulai terlihat di media sosial. Sikap Anda ....", ["Meminta ketua RT menengahi dan menunggu sampai kedua kelompok menjadi lebih tenang dengan sendirinya", "Mengajak perwakilan kedua kelompok berdialog bersama tokoh lingkungan, lalu mengusulkan pelibatan kedua kelompok dalam kepanitiaan", "Mengajak perwakilan kedua kelompok berdialog bersama tokoh lingkungan tanpa mengusulkan perubahan susunan kepanitiaan, lalu menunggu arahan atasan", "Mengunggah imbauan umum di media sosial agar semua pihak menahan diri dalam menanggapi persoalan itu", "Membela kelompok yang sebagian anggotanya adalah kerabat dekat Anda dalam perselisihan tersebut, agar tidak menambah beban kerja"], [3, 5, 4, 2, 1], "Nilai 5: dialog dan solusi inklusif.", 8],
+["tik", "Anda menerima surel yang tampak dari bagian keuangan, meminta Anda mengklik tautan untuk memperbarui kata sandi sistem penggajian hari ini juga. Alamat pengirimnya sedikit berbeda dari biasanya. Sikap Anda ....", ["Tidak mengklik tautan, lalu menghapus surel tersebut dari kotak masuk dan folder surel yang tersimpan, lalu menyerahkan kelanjutannya kepada pihak lain", "Mengklik tautan hanya untuk melihat tampilannya, tetapi tidak memasukkan kata sandi apa pun", "Meneruskan surel itu kepada rekan satu tim agar mereka juga memperbarui kata sandi masing-masing", "Tidak mengklik tautan, memverifikasi lewat kanal resmi bagian keuangan, dan melaporkan surel itu kepada tim keamanan informasi", "Tidak mengklik tautan, lalu memverifikasi lewat kanal resmi bagian keuangan tanpa memberi tahu pihak lain"], [3, 2, 1, 5, 4], "Nilai 5: tidak mengklik, memverifikasi, dan melapor agar pihak lain terlindungi.", 8],
+["tik", "Unit Anda mulai memakai aplikasi pengarsipan digital. Sebagian pegawai senior masih menyimpan dokumen di map fisik dan menolak memindahkannya karena takut hilang. Sikap Anda ....", ["Membiarkan pegawai senior tetap memakai map fisik sampai mereka siap beralih dengan sendirinya, sambil berharap masalahnya mereda sendiri", "Menunjukkan fitur pencadangan aplikasi, mendampingi pemindahan beberapa dokumen, dan menyepakati masa transisi bersama atasan", "Mengusulkan kepada atasan agar pelatihan aplikasi diadakan kembali bagi seluruh pegawai senior di unit", "Menunjukkan fitur pencadangan aplikasi kepada pegawai senior dan mendampingi pemindahan beberapa dokumen mereka", "Memindahkan dokumen pegawai senior ke aplikasi tanpa memberi tahu mereka agar proses cepat selesai"], [2, 5, 3, 4, 1], "Nilai 5: menjawab kekhawatiran, mendampingi, dan menyusun transisi.", 8],
+["tik", "Anda mengelola data warga dalam berkas spreadsheet bersama. Seorang rekan meminta tautannya dibagikan ke pihak ketiga dengan akses sunting terbuka bagi siapa saja yang memegang tautan. Sikap Anda ....", ["Meminta rekan menanyakan kepada pihak ketiga apakah akses seluas itu memang benar-benar dibutuhkan", "Menolak akses terbuka dan menjelaskan kepada rekan tentang risiko kebocoran data pribadi warga, lalu menunggu arahan atasan", "Menolak akses terbuka, menjelaskan risiko data pribadi, dan menawarkan berbagi data yang sudah dianonimkan dengan izin akses terbatas", "Membuka akses seperti diminta dengan alasan data akan dipakai untuk kepentingan bersama, agar tidak menambah beban kerja Anda dan rekan satu unit", "Membuka akses tetapi hanya untuk melihat saja tanpa hak sunting bagi pihak ketiga, lalu menyerahkan kelanjutannya kepada pihak lain"], [2, 4, 5, 1, 3], "Nilai 5: melindungi data pribadi dan tetap menawarkan solusi aman.", 8],
+["prof", "Anda menemukan satu angka keliru pada laporan yang Anda serahkan minggu lalu. Angka itu belum dipakai untuk keputusan apa pun dan atasan belum menyadarinya. Sikap Anda ....", ["Mengganti berkas laporan lama dengan versi yang benar tanpa memberi tahu siapa pun, agar tidak menambah beban kerja", "Menunggu sampai ada pihak yang mempertanyakan angka tersebut baru kemudian memperbaikinya", "Segera menyampaikan kekeliruan kepada atasan, menyerahkan laporan perbaikan, dan menyusun langkah pengecekan agar tidak terulang", "Segera menyampaikan kekeliruan kepada atasan dan menyerahkan laporan perbaikan kepada beliau, lalu menunggu arahan atasan sebelum bertindak lebih jauh", "Memperbaiki angka itu pada laporan berikutnya karena belum berdampak pada keputusan apa pun"], [1, 2, 5, 4, 3], "Nilai 5: jujur, bertanggung jawab, dan mencegah pengulangan.", 8],
+["prof", "Atasan memberi dua tugas mendesak dengan tenggat sama, sementara Anda menilai keduanya tidak mungkin selesai berkualitas bila dikerjakan bersamaan. Sikap Anda ....", ["Menyampaikan estimasi waktu tiap tugas kepada atasan dan memohon penentuan prioritas di antara keduanya, lalu menunggu arahan atasan", "Menyampaikan estimasi waktu tiap tugas, memohon penentuan prioritas, dan mengusulkan pembagian tugas atau perpanjangan tenggat salah satunya", "Menyerahkan salah satu tugas kepada rekan tanpa memberi tahu atasan yang memberi tugas, agar tidak menambah beban kerja", "Mengerjakan tugas yang lebih mudah lebih dahulu, lalu melapor bila tugas lainnya tidak sempat selesai, lalu menyerahkan kelanjutannya kepada pihak lain", "Mengerjakan keduanya sekaligus dengan menurunkan ketelitian agar semuanya selesai tepat waktu, sambil berharap masalahnya mereda sendiri"], [4, 5, 1, 3, 2], "Nilai 5: komunikasi terbuka disertai usulan solusi.", 8],
+["anti", "Di grup pesan kantor, seorang rekan membagikan video ceramah berisi ajakan menolak dasar negara dan menyebut pegawai yang berbeda pandangan sebagai musuh. Beberapa anggota mulai menanggapi. Sikap Anda ....", ["Menyampaikan keberatan di grup dengan bahasa tegas agar anggota lain tidak ikut terpengaruh, lalu menyerahkan kelanjutannya kepada pihak lain", "Mengingatkan rekan secara pribadi tentang kewajiban ASN dan memantau apakah ia masih mengulangi perbuatannya, lalu menunggu arahan atasan", "Keluar dari grup pesan agar tidak terpapar konten semacam itu di kemudian hari, sambil berharap masalahnya mereda dengan sendirinya dalam waktu dekat", "Tidak menanggapi isi ceramah, mengingatkan rekan secara pribadi tentang kewajiban ASN, dan melapor ke atasan atau unit terkait bila berlanjut", "Membalas dengan video ceramah lain yang berpandangan sebaliknya agar terjadi keseimbangan, agar tidak menambah beban kerja"], [3, 4, 2, 5, 1], "Nilai 5: tidak memperpanjang polemik, mengingatkan, dan melapor lewat jalur resmi bila berlanjut.", 8],
+["anti", "Seorang pegawai magang yang Anda bimbing mulai sering membahas gagasan bahwa hanya kelompoknya yang layak memimpin, dan sikapnya kepada teman beda keyakinan menjadi dingin. Sikap Anda ....", ["Menegur keras di depan rekan lain agar menjadi pelajaran bagi pegawai magang yang lain, agar tidak menambah beban kerja Anda dan rekan satu unit", "Memberi tugas yang tidak melibatkan teman beda keyakinan agar tidak muncul gesekan di tempat kerja, sambil berharap masalahnya mereda sendiri", "Mengajak berdialog terbuka tentang nilai Pancasila dan kerja sama di tempat kerja bersama pegawai magang itu, lalu menunggu arahan atasan", "Menyampaikan pengamatan Anda kepada atasan dan menyerahkan sepenuhnya penanganannya kepada beliau", "Mengajak berdialog terbuka tentang nilai Pancasila dan kerja sama di tempat kerja, serta berkonsultasi dengan atasan tentang pembinaan lanjutan"], [1, 2, 4, 3, 5], "Nilai 5: pembinaan persuasif dengan dukungan atasan.", 8],
+["pel", "Seorang warga mengeluh lewat kanal pengaduan daring bahwa lampu jalan di depan rumahnya padam tiga minggu. Anda petugas penerima pengaduan, tetapi urusan lampu jalan berada di dinas lain. Sikap Anda ....", ["Meneruskan pengaduan ke dinas berwenang dengan data lengkap, memberi tahu warga tindak lanjutnya, dan memantau sampai ada tanggapan", "Meneruskan pengaduan ke dinas berwenang dengan data lengkap, lalu memberi tahu warga tentang tindak lanjutnya, lalu menunggu arahan atasan", "Menutup pengaduan karena berada di luar kewenangan unit Anda dan tidak termasuk tugas pokok Anda, agar tidak menambah beban kerja", "Membalas bahwa urusan lampu jalan bukan kewenangan unit Anda dan menyarankan warga menghubungi dinas terkait", "Meneruskan pengaduan ke dinas berwenang dengan data lengkap tanpa memberi kabar apa pun kepada warga"], [5, 4, 1, 2, 3], "Nilai 5: menuntaskan, bukan sekadar melempar.", 9],
+["pel", "Pasien rujukan datang ke fasilitas Anda tanpa surat rujukan lengkap karena fasilitas asal belum mengirimkannya, dan kondisi pasien tampak lemah. Sikap Anda ....", ["Memastikan pasien mendapat pemeriksaan awal sesuai kondisinya, lalu meminta keluarga mengurus kelengkapan surat rujukan", "Meminta pasien menunggu sambil menghubungi fasilitas asal untuk melengkapi surat rujukan yang belum dikirim, lalu menyerahkan kelanjutannya kepada pihak lain", "Memastikan pasien mendapat pemeriksaan awal sesuai kondisinya, lalu menghubungi fasilitas asal untuk melengkapi surat rujukan", "Menolak pelayanan sampai surat rujukan lengkap diterima oleh fasilitas Anda, agar tidak menambah beban kerja", "Meminta pasien kembali ke fasilitas asal untuk mengambil surat rujukan yang sudah lengkap"], [4, 3, 5, 1, 2], "Nilai 5: mengutamakan keselamatan pasien, lalu mengurus administrasi sendiri.", 9],
+["pel", "Sistem pembayaran retribusi daring gagal memproses transaksi warga: saldo warga terpotong tetapi status tagihan belum lunas. Sikap Anda ....", ["Meminta warga menyimpan bukti transaksi, mencatat data lengkapnya, dan melaporkannya kepada tim teknis", "Meminta warga menyimpan bukti transaksi, mencatat data lengkapnya, melapor ke tim teknis, dan menghubungi warga setelah selesai", "Meminta warga menghubungi bank penerbit karena saldo warga sudah terpotong dari rekeningnya", "Mencatat tagihan sebagai lunas secara manual tanpa menunggu verifikasi tim teknis, agar tidak menambah beban kerja", "Meminta warga menunggu satu sampai dua hari karena sistem biasanya memperbarui status sendiri, sambil berharap masalahnya mereda sendiri"], [4, 5, 3, 1, 2], "Nilai 5: tertib bukti, eskalasi, dan tindak lanjut ke warga.", 9],
+["jej", "Anda baru bergabung di tim lintas bidang. Anda tahu seorang anggota memiliki keahlian yang Anda perlukan, tetapi ia tampak sibuk dan jarang membalas pesan. Sikap Anda ....", ["Menghubungi anggota itu untuk meminta waktu singkat sesuai jadwalnya dengan pertanyaan yang sudah disiapkan", "Mencari jawaban sendiri dari internet tanpa menghubungi anggota tim yang memiliki keahlian itu", "Mendatangi anggota itu berulang kali sampai ia bersedia meluangkan waktu untuk membantu Anda, agar tidak menambah beban kerja Anda dan rekan satu unit", "Meminta atasan memperkenalkan Anda kepada anggota itu agar komunikasi menjadi lebih mudah", "Menghubungi anggota itu untuk meminta waktu singkat sesuai jadwalnya, menyiapkan pertanyaan ringkas, dan menawarkan bantuan balik"], [4, 2, 1, 3, 5], "Nilai 5: menghargai waktu rekan dan membangun hubungan timbal balik.", 9],
+["jej", "Dua anggota tim Anda tidak saling berbicara setelah berselisih soal pembagian kredit atas sebuah proyek, sehingga koordinasi tersendat. Anda bukan atasan mereka. Sikap Anda ....", ["Menjadi perantara pesan di antara keduanya agar koordinasi tetap berjalan seperti biasa, sambil berharap masalahnya mereda sendiri", "Melaporkan kondisi itu kepada atasan dan menawarkan diri membantu bila diminta oleh beliau", "Berbicara dengan masing-masing secara terpisah dan mengusulkan pertemuan bersama untuk membahas perselisihan itu, lalu menunggu arahan atasan", "Menunggu sampai keduanya berdamai sendiri karena perselisihan itu urusan pribadi mereka berdua, agar tidak menambah beban kerja", "Berbicara dengan masing-masing secara terpisah, lalu memfasilitasi pertemuan bersama untuk menyepakati cara pencantuman peran tiap orang"], [2, 3, 4, 1, 5], "Nilai 5: memfasilitasi penyelesaian yang konkret.", 9],
+["jej", "Instansi Anda hendak bermitra dengan lembaga swadaya masyarakat untuk program literasi. Anda diminta menyiapkan pertemuan awal. Sikap Anda ....", ["Meminta lembaga itu mengirim proposal terlebih dahulu tanpa menyiapkan agenda dari pihak Anda, sambil berharap masalahnya mereda sendiri", "Mempelajari profil dan rekam jejak lembaga itu, menyiapkan agenda dan tujuan bersama, lalu mengonfirmasi kewenangan kerja sama kepada atasan", "Mengirim undangan pertemuan dan menyiapkan ruang serta konsumsi untuk para peserta pertemuan awal, lalu menyerahkan kelanjutannya kepada pihak lain", "Mempelajari profil dan rekam jejak lembaga itu serta menyiapkan agenda dan tujuan bersama untuk pertemuan, lalu menunggu arahan atasan", "Menyepakati rencana kerja sama secara lisan dengan lembaga itu agar prosesnya lebih cepat, agar tidak menambah beban kerja"], [2, 5, 3, 4, 1], "Nilai 5: persiapan matang dan kejelasan kewenangan.", 9],
+["sos", "Rekan Anda yang beragama berbeda sedang berpuasa dan tampak lemas, sementara tim harus menyelesaikan pekerjaan fisik di lapangan siang ini. Sikap Anda ....", ["Menawarkan pembagian tugas fisik agar rekan itu mendapat bagian lebih ringan, serta mengatur jeda sesuai waktu ibadahnya", "Meminta rekan itu tetap bekerja seperti biasa karena ibadah adalah urusan pribadinya sendiri", "Menanyakan kondisi rekan itu dan membiarkannya menentukan sendiri bagian yang akan ia kerjakan", "Menyarankan rekan itu beristirahat di kantor sementara pekerjaan lapangan dikerjakan anggota lain, sambil berharap masalahnya mereda sendiri", "Menawarkan pembagian tugas fisik agar rekan itu mendapat bagian yang lebih ringan dari anggota tim lain"], [5, 1, 3, 2, 4], "Nilai 5: toleran dan menyesuaikan kerja tim secara adil.", 9],
+["sos", "Dalam kerja bakti, seorang warga penyandang disabilitas ingin ikut serta, tetapi sebagian panitia ragu karena khawatir mengganggu kelancaran kegiatan. Sikap Anda ....", ["Mempersilakan warga itu ikut tanpa tugas khusus agar ia tidak merasa terbebani selama kegiatan", "Menanyakan bantuan yang dibutuhkan warga itu, lalu menyesuaikan pembagian tugas agar ia dapat berkontribusi sesuai kemampuannya", "Menanyakan bantuan yang dibutuhkan warga itu, lalu menugaskannya pada pekerjaan yang sudah tersedia", "Menyampaikan kepada warga itu bahwa kegiatan kali ini lebih cocok bagi warga yang bugar, agar tidak menambah beban kerja Anda dan rekan satu unit", "Menyarankan warga itu menyumbang dana saja sebagai pengganti kehadirannya dalam kegiatan"], [3, 5, 4, 1, 2], "Nilai 5: inklusif, bertanya dulu, lalu menyesuaikan peran.", 9],
+["sos", "Anda ditugaskan di daerah baru dan diundang ke acara adat setempat yang memiliki aturan berpakaian dan tata cara tertentu yang belum Anda ketahui. Sikap Anda ....", ["Menghadiri acara dengan pakaian dan tata cara yang biasa Anda pakai di daerah asal, agar tidak menambah beban kerja", "Menghadiri acara dengan mengamati dan menyesuaikan diri dengan yang dilakukan orang lain di sana", "Menanyakan kepada rekan lokal tentang aturan berpakaian, lalu menghadiri acara tersebut dengan sopan, lalu menunggu arahan atasan", "Menolak undangan dengan sopan karena belum memahami tata cara adat di daerah tersebut", "Menanyakan kepada tokoh setempat atau rekan lokal tentang tata cara dan aturan berpakaian, lalu hadir dengan sikap menghormati"], [1, 3, 4, 2, 5], "Nilai 5: proaktif belajar budaya setempat.", 9],
+["tik", "Saat menguji menu profil pada aplikasi layanan yang Anda kelola, tiba-tiba tampil data warga lain. Gejala ini belum dilaporkan siapa pun. Sikap Anda ....", ["Mengabaikan gejala itu karena pengujian dilakukan di lingkungan percobaan, bukan data sebenarnya", "Melanjutkan pengujian untuk memastikan gejala itu muncul berulang sebelum melaporkannya, lalu menyerahkan kelanjutannya kepada pihak lain", "Mencatat gejala itu untuk dilaporkan pada rapat evaluasi mingguan yang dijadwalkan unit Anda", "Menghentikan pengujian, mendokumentasikan langkah yang memunculkan gejala, dan segera melapor kepada tim pengembang dan pimpinan", "Menghentikan pengujian dan segera melaporkan gejala itu kepada tim pengembang aplikasi layanan, lalu menunggu arahan atasan"], [1, 3, 2, 5, 4], "Nilai 5: kebocoran data pribadi harus segera dilaporkan beserta bukti.", 9],
+["tik", "Anda membuat presentasi dengan bantuan alat kecerdasan buatan generatif, dan hasilnya memuat beberapa angka statistik tanpa sumber. Sikap Anda ....", ["Mengubah beberapa angka agar tampak berbeda dari hasil yang diberikan alat bantu, agar tidak menambah beban kerja", "Menyisipkan catatan bahwa angka dihasilkan alat bantu dan perlu diverifikasi oleh pembaca", "Memeriksa angka-angka penting pada sumber resmi dan mencantumkan sumbernya pada slide terkait, lalu menunggu arahan atasan", "Memakai angka tersebut karena alat itu dilatih dari data yang sangat luas dan beragam, sambil berharap masalahnya mereda sendiri", "Memeriksa setiap angka pada sumber resmi, mengganti atau menghapus yang tidak dapat diverifikasi, dan mencantumkan sumbernya"], [1, 3, 4, 2, 5], "Nilai 5: verifikasi menyeluruh dan transparansi sumber.", 9],
+["tik", "Layanan penyimpanan kantor sedang gangguan, sementara Anda harus mengirim dokumen besar berisi data internal yang dibutuhkan hari ini. Sikap Anda ....", ["Meminta persetujuan atasan terlebih dahulu sebelum memakai layanan penyimpanan pribadi untuk sementara", "Melaporkan gangguan kepada tim TI dan meminta jalur alternatif resmi untuk mengirim dokumen tersebut, lalu menunggu arahan atasan", "Mengunggah dokumen ke layanan pribadi dengan kata sandi, lalu menghapusnya setelah dipakai oleh penerima", "Mengunggah dokumen ke layanan pribadi dan membagikan tautannya kepada seluruh pihak terkait, agar tidak menambah beban kerja Anda dan rekan satu unit", "Melaporkan gangguan kepada tim TI, meminta jalur alternatif resmi, dan menyiapkan dokumen agar siap diunggah begitu layanan pulih"], [3, 4, 2, 1, 5], "Nilai 5: patuh pada jalur resmi dan tetap menjaga tenggat.", 9],
+["prof", "Anda mendapati prosedur kerja lama di unit Anda tidak sesuai peraturan terbaru, tetapi atasan dan rekan senior sudah terbiasa memakainya. Sikap Anda ....", ["Mempelajari peraturan terbaru, menyampaikan temuan beserta rujukan aturannya kepada atasan, dan mengusulkan penyesuaian prosedur", "Menyampaikan temuan kepada atasan beserta rujukan aturan terbarunya agar dapat dipertimbangkan, lalu menunggu arahan atasan sebelum bertindak lebih jauh", "Tetap mengikuti prosedur lama tetapi menjalankannya dengan lebih hati-hati dan lebih teliti", "Menjalankan prosedur sesuai peraturan terbaru sendiri tanpa memberi tahu siapa pun, agar tidak menambah beban kerja", "Menanyakan kepada rekan senior apakah prosedur lama masih boleh dipakai di unit tersebut"], [5, 4, 3, 1, 2], "Nilai 5: dasar aturan, komunikasi ke atasan, dan usulan perbaikan.", 9],
+["prof", "Atasan dari unit lain meminta Anda menyelesaikan tugasnya karena Anda dianggap lebih menguasai bidang itu, padahal tugas Anda sendiri belum selesai dan atasan langsung belum mengetahuinya. Sikap Anda ....", ["Menyampaikan permintaan itu kepada atasan langsung dan menunggu arahan beliau sebelum menjawab, lalu menunggu arahan atasan", "Menyampaikan kondisi pekerjaan kepada atasan langsung, meminta arahan prioritas, lalu memberi tahu atasan unit lain hasil keputusannya", "Menolak dengan alasan tugas Anda belum selesai tanpa menjelaskan lebih lanjut kepada atasan itu", "Menyanggupi bila ada waktu luang setelah tugas Anda sendiri selesai dikerjakan semuanya, lalu menyerahkan kelanjutannya kepada pihak lain", "Mengerjakan tugas itu diam-diam di luar tugas Anda agar tidak merepotkan siapa pun, agar tidak menambah beban kerja"], [4, 5, 2, 3, 1], "Nilai 5: transparan, mengikuti rantai atasan, dan menutup komunikasi.", 9],
+["anti", "Poster berisi ujaran kebencian terhadap kelompok tertentu ditempel di lingkungan kantor Anda pagi ini, tanpa diketahui pelakunya. Sikap Anda ....", ["Mengamankan dan mendokumentasikan poster, lalu melaporkannya kepada pimpinan atau petugas keamanan kantor", "Memotret poster itu dan menyebarkannya di media sosial agar pelakunya cepat terungkap, agar tidak menambah beban kerja", "Melepas poster itu lalu membuangnya agar tidak terlihat oleh orang lain di lingkungan kantor", "Membiarkan poster itu karena pelakunya tidak diketahui dan tidak ada yang memintanya dilepas, sambil berharap masalahnya mereda sendiri", "Mengamankan dan mendokumentasikan poster, melaporkannya kepada pimpinan atau petugas keamanan, serta menenangkan rekan yang terdampak"], [4, 1, 3, 2, 5], "Nilai 5: bukti, pelaporan, dan pemulihan suasana. Menyebarkan poster justru memperluas ujaran kebencian.", 9],
+["anti", "Seorang tetangga mengajak Anda ke kelompok kajian yang menolak hormat bendera dan menyebut pemerintah sebagai penguasa yang tidak sah. Sikap Anda ....", ["Menolak dengan santun lalu menghindar setiap kali bertemu dengan tetangga tersebut di lingkungan", "Menolak dengan santun dan menjelaskan alasan Anda menjaga persatuan bangsa kepada tetangga tersebut, lalu menunggu arahan atasan", "Menghadiri satu pertemuan untuk mengetahui isi kajiannya sebelum memutuskan sikap Anda, sambil berharap masalahnya mereda sendiri", "Menolak dengan santun, menjelaskan alasan Anda menjaga persatuan bangsa, dan melapor ke ketua RT atau pihak berwenang bila ajakan berlanjut", "Menerima ajakan itu agar hubungan bertetangga tetap terjaga baik, dengan alasan situasinya sedang sibuk dan tidak ingin menambah beban kerja Anda maupun rekan"], [3, 4, 2, 5, 1], "Nilai 5: menolak tegas, edukatif, dan melapor bila berlanjut.", 9]);
   const QUOTA={twk:30,tiu:35,tkp:45},NAME={twk:'TWK',tiu:'TIU',tkp:'TKP'};
   // Profil ambang batas: satu sumber data (window.SKD_PROF, didefinisikan di skrip utama) dipakai kartu Ruang Belajar dan Arena.
   const AR_PROF=window.SKD_PROF;
@@ -9182,28 +9338,80 @@ tkp:[]};
   const svLoad=()=>{try{const o=JSON.parse(localStorage.getItem(SVK)||'null');return o&&o.v===1&&o.items&&o.items.length&&o.left>0&&!(window.twkStale&&window.twkStale(o))?o:null}catch(e){return null}};
   document.addEventListener('visibilitychange',()=>{if(document.hidden)sv()});window.addEventListener('pagehide',sv);
   function runTick(){clearInterval(tick);tick=setInterval(()=>{S.left--;if(S.left%10===0)sv();const t=document.getElementById('arT');if(t){t.textContent=fmt(S.left);t.classList.toggle('low',S.left<300)}if(S.left===600||S.left===300)arWarn('Sisa waktu '+(S.left/60)+' menit');if(S.left<=0){arWarn('Waktu habis. Tryout diakhiri otomatis.');finish()}},1000);}
+  // ===== Battlefield: adu skor dengan peserta lain per paket =====
+  const BF={pk:'9',top:null};
+  const bfNama=k=>k==='acak'?'Acak':String(k);
+  function bfHtml(){
+    const ks=[9,8,7,6,5,4,3,2,1,'acak'];
+    return '<div class="card ar-bf"><div class="ar-bf-top"><span class="ar-bf-ic" aria-hidden="true">\u2694\uFE0F</span><div><h3>Battlefield</h3><p>Adu skor dengan peserta lain, kalahkan juara.</p></div></div>'+
+      '<div class="ar-bf-pk" role="group" aria-label="Pilih paket">'+ks.map(k=>'<button type="button" data-bp="'+k+'" aria-pressed="'+(String(k)===BF.pk)+'" class="'+(String(k)===BF.pk?'on':'')+'">'+(k==='acak'?'Acak':'P'+k)+'</button>').join('')+'</div>'+
+      '<div class="ar-bf-board" id="bfBoard" aria-live="polite">Memuat papan juara...</div>'+
+      '<div class="ar-row"><button type="button" class="btn" id="bfGo">Masuk Battlefield</button><button type="button" class="btn ghost" id="bfRank">Ranking</button></div></div>';
+  }
+  async function bfLoad(){
+    const box=document.getElementById('bfBoard');if(!box)return;
+    const pk=BF.pk;BF.top=null;box.textContent='Memuat papan juara...';
+    try{
+      const j=await rkFetch(RK_URL+'?a=rank&p='+encodeURIComponent(pk)+'&dev='+encodeURIComponent(rkDev()));
+      if(!j||!j.ok)throw new Error('gagal');
+      if(BF.pk!==pk||!document.getElementById('bfBoard'))return;
+      const top=(j.list||[]).slice(0,3),medal=['🥇','🥈','🥉'];
+      if(top.length)BF.top={pk:pk,t:top[0].t,n:top[0].n};
+      box.innerHTML=(top.length?'<ol>'+top.map((x,i)=>'<li>'+medal[i]+' <span>'+rkEsc(x.n)+'</span> <b>'+x.t+'</b></li>').join('')+'</ol><p>'+(j.me?'Posisimu: <b>#'+j.me.r+'</b> dari '+j.jumlah+' peserta (skor '+j.me.t+').':j.jumlah+' peserta. Kamu belum masuk papan ini.')+'</p>':'<p>Belum ada peserta di paket ini. Jadilah juara pertama!</p>');
+    }catch(e){if(BF.pk===pk&&document.getElementById('bfBoard'))box.textContent='Papan juara belum bisa dimuat. Kamu tetap bisa masuk Battlefield, skor dikirim setelah selesai.'}
+  }
+  function bfInit(P,n,mins){
+    root.querySelectorAll('[data-bp]').forEach(b=>b.onclick=()=>{
+      BF.pk=b.dataset.bp;
+      root.querySelectorAll('[data-bp]').forEach(x=>{const on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on)});
+      bfLoad();
+    });
+    const go=document.getElementById('bfGo'),rk=document.getElementById('bfRank');
+    if(go)go.onclick=()=>start(P,n,mins,BF.pk==='acak'?'acak':+BF.pk);
+    if(rk)rk.onclick=()=>rkLihat(BF.pk==='acak'?'acak':+BF.pk);
+    bfLoad();
+  }
+  function bfHasil(total,pk){
+    const t=BF.top;if(!t||String(t.pk)!==String(pk))return '';
+    const sel=total-t.t;
+    return '<div class="card ar-bf-res"><strong>⚔️ Battlefield</strong><p>Skormu <b>'+total+'</b> melawan juara <b>'+rkEsc(t.n)+'</b> (<b>'+t.t+'</b>). '+(sel>0?'Kamu mengalahkan juara dengan selisih '+sel+' poin! Kirim skormu ke ranking.':sel===0?'Skor kalian imbang. Kirim skormu ke ranking.':'Kurang '+(-sel)+' poin lagi untuk menyalip juara. Coba lagi!')+'</p></div>';
+  }
   function home(){
     clearInterval(tick);S=null;const P=pool(),n={};let tot=0;
     for(const g in QUOTA){n[g]=Math.min(QUOTA[g],P[g].length);tot+=n[g]}
     const full=tot===110,mins=Math.max(5,Math.round(100*tot/110));
     let B={};try{B=JSON.parse(localStorage.getItem('arena-best')||'{}')}catch(e){}
-    const card=(k,t,d)=>'<div class="card"><h3>'+t+'</h3><p>'+d+(B[k]?' <b>Skor terbaik: '+B[k].t+' dari '+B[k].m+'</b>':'')+'</p><div class="ar-row"><button class="btn" data-pk="'+k+'">Mulai '+t+'</button><button class="btn ghost" data-rk="'+k+'">Ranking</button></div></div>';
-    root.innerHTML='<div id="ar" class="ar-home"><h1 id="judul-tryout">Arena Tryout</h1><p>'+(full?'Setiap paket: 110 soal, 100 menit.':'Tryout mini '+tot+' soal ('+mins+' menit).')+' TWK '+n.twk+', TIU '+n.tiu+', TKP '+n.tkp+'. TWK dan TIU 5 poin per soal benar, TKP 1 sampai 5. Ambang batas: TWK '+THR.twk+', TIU '+THR.tiu+', TKP '+THR.tkp+' ('+AR_PROF[arProf].n+').</p><div class="card"><h3>Profil ambang batas</h3><div class="ar-row"><button class="btn'+(arProf==='ked'?'':' ghost')+'" data-prof="ked">Kepmen 406/2026</button><button class="btn'+(arProf==='cpns'?'':' ghost')+'" data-prof="cpns">CPNS Umum</button></div><p>Acuan: '+AR_PROF[arProf].r+'.</p></div>'+card(1,'Paket 1','Soal penalaran dan penerapan dasar.')+card(2,'Paket 2','Berisi soal HOTS baru dengan opsi penuh jebakan.')+card(3,'Paket 3','Berisi soal HOTS baru lain, berbeda dari Paket 2.')+card(4,'Paket 4','Soal HOTS tingkat tinggi: opsi nyaris sama benar, ada dilema nilai.')+card(5,'Paket 5','Soal HOTS tingkat tinggi lain, berbeda dari Paket 4.')+card(6,'Paket 6','TIU HOTS: tabel pola, kecukupan data, dan figural.')+card(7,'Paket 7','TIU HOTS lain: tabel pola, kecukupan data, dan figural.')+card('acak','Paket Acak','Soal diacak dari seluruh bank.')+'</div>';
+    const card=(k,t,d,nw)=>'<div class="card"><h3>'+t+(nw?' <span class="ar-new">'+nw+'</span>':'')+'</h3>'+(d?'<p>'+d+'</p>':'')+(B[k]?'<div class="ar-best"><span>🏆 Skor terbaik</span><b>'+B[k].t+'</b><small>dari '+B[k].m+'</small></div>':'')+'<div class="ar-row"><button class="btn" data-pk="'+k+'">Mulai '+t+'</button><button class="btn ghost" data-rk="'+k+'">Ranking</button></div></div>';
+    root.innerHTML='<div id="ar" class="ar-home"><span class="ar-kick">EDISI NOVEMBER 2026</span><h1 id="judul-tryout">Arena Tryout</h1><p class="ar-lead">Simulasi SKD lengkap dengan skor langsung dan ranking. Soal diperbarui setiap hari.</p><div class="ar-chips"><span>'+(full?'110 soal':tot+' soal')+'</span><span>'+mins+' menit</span><span>TWK '+n.twk+'</span><span>TIU '+n.tiu+'</span><span>TKP '+n.tkp+'</span></div><p class="ar-amb"><b>Ambang batas</b> ('+AR_PROF[arProf].n+'): TWK '+THR.twk+' · TIU '+THR.tiu+' · TKP '+THR.tkp+'<br>Skor: TWK dan TIU 5 poin per soal benar, TKP 1 sampai 5.</p>'+bfHtml()+card(1,'Paket 1','Coba paket ini, fight, dan rebut Rank 1 dari semua peserta!')+card(2,'Paket 2','Tancap gas di paket ini, kalahkan semua peserta dan duduki puncak ranking!')+card(3,'Paket 3','Masuk arena, kerahkan semua kemampuanmu, dan rebut posisi Rank 1!')+card(4,'Paket 4','Buktikan kamu yang terbaik, salip semua peserta menuju Rank 1!')+card(5,'Paket 5','Tantang semua peserta, kejar skor tertinggi, dan rebut mahkota Rank 1!')+card(6,'Paket 6','Waktunya adu skor: lewati semua peserta dan tempati Rank 1!')+card(7,'Paket 7','Gempur paket ini habis-habisan, jadilah peserta nomor satu di ranking!')+card(8,'Paket 8','Ayo bertarung, taklukkan semua lawan, dan rebut singgasana Rank 1!','BARU')+card(9,'Paket 9','Jangan mau kalah, kejar skor sempurna dan puncaki ranking semua peserta!','BARU')+card('acak','Paket Acak','Siap menghadapi apa pun? Rebut Rank 1 dari semua peserta lewat paket acak ini!')+'</div>';
     root.querySelectorAll('[data-pk]').forEach(b=>b.onclick=()=>start(P,n,mins,b.dataset.pk==='acak'?'acak':+b.dataset.pk));
     root.querySelectorAll('[data-prof]').forEach(b=>b.onclick=()=>{setProf(b.dataset.prof)});
     root.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>rkLihat(b.dataset.rk==='acak'?'acak':+b.dataset.rk));
-    resumeCard();bookCard();
+    bfInit(P,n,mins);resumeCard();bookCard();
   }
   function resumeCard(){
-    const o=svLoad(),h=root.querySelector('#ar>h1');if(!o||!h)return;
-    h.insertAdjacentHTML('afterend','<div class="card ar-res"><h3>Tryout belum selesai</h3><p>'+Object.keys(o.ans).length+' dari '+o.items.length+' soal terjawab, sisa waktu <b>'+fmt(o.left)+'</b>. Waktu berhenti selama kamu pergi dan jalan lagi saat dilanjutkan.</p><div class="ar-row"><button class="btn" id="arRes">Lanjutkan</button><button class="btn ghost" id="arResX">Buang progres</button></div></div>');
-    root.querySelector('#arRes').onclick=()=>{S={items:o.items,ans:o.ans,flag:o.flag,prof:o.prof,i:o.i,left:o.left,n:o.n,max:{},pk:o.pk,tot:o.tot};draw();runTick()};
+    const o=svLoad();if(!o)return;
+    const go=()=>{S={items:o.items,ans:o.ans,flag:o.flag,prof:o.prof,i:o.i,left:o.left,n:o.n,max:{},pk:o.pk,tot:o.tot};draw();runTick()};
+    const note='<div class="ar-run-note"><b>Belum selesai</b>: '+Object.keys(o.ans).length+' dari '+o.items.length+' soal terjawab, sisa waktu <b>'+fmt(o.left)+'</b>. Waktu berhenti saat kamu pergi.</div>';
+    const startBtn=root.querySelector('[data-pk="'+o.pk+'"]');
+    if(startBtn){
+      const card=startBtn.closest('.card'),row=startBtn.parentNode;
+      card.classList.add('ar-res');
+      row.insertAdjacentHTML('beforebegin',note);
+      startBtn.textContent='Lanjutkan';startBtn.onclick=go;
+      const x=document.createElement('button');x.type='button';x.className='btn ghost';x.textContent='Buang progres';
+      x.onclick=()=>{svClear();home()};
+      startBtn.insertAdjacentElement('afterend',x);
+      return;
+    }
+    const bf=root.querySelector('.ar-bf');if(!bf)return;
+    bf.insertAdjacentHTML('beforebegin','<div class="card ar-res"><h3>Tryout belum selesai</h3>'+note+'<div class="ar-row"><button class="btn" id="arRes">Lanjutkan</button><button class="btn ghost" id="arResX">Buang progres</button></div></div>');
+    root.querySelector('#arRes').onclick=go;
     root.querySelector('#arResX').onclick=()=>{svClear();home()};
   }
   // ===== Buku Salah: ulang soal yang pernah salah sampai benar 2 kali berturut-turut =====
   function bookCard(){
     const W=window.WB,h=root.querySelector('#ar>h1');if(!W||!h)return;const n=W.all().length;if(!n)return;
-    (root.querySelector('.ar-res')||h).insertAdjacentHTML('afterend','<div class="card ar-bk"><h3>Buku Salah ('+n+' soal)</h3><p>Soal yang pernah salah dikumpulkan di sini. Jawab benar 2 kali berturut-turut, soal itu keluar dari buku.</p><div class="ar-row"><button class="btn" id="arBk">Latihan ulang</button></div></div>');
+    (root.querySelector('.ar-bf')||h).insertAdjacentHTML(root.querySelector('.ar-bf')?'beforebegin':'afterend','<div class="card ar-bk"><h3>Buku Salah ('+n+' soal)</h3><p>Soal yang pernah salah dikumpulkan di sini. Jawab benar 2 kali berturut-turut, soal itu keluar dari buku.</p><div class="ar-row"><button class="btn" id="arBk">Latihan ulang</button></div></div>');
     root.querySelector('#arBk').onclick=bookRun;
   }
   function bookRun(){
@@ -9248,7 +9456,8 @@ tkp:[]};
         else{const b=a.filter(x=>x.id==='bhs'),o=a.filter(x=>x.id!=='bhs');let bh=b.slice(0,Math.min(5,need));const rs=o.slice(0,need-bh.length);if(bh.length+rs.length<need)bh=b.slice(0,need-rs.length);list=shuf(rs.concat(bh))}
       }else{
         const mine=P[g].filter(x=>x.pk===pk),m=mine.length;
-        const base=sh(P[g].filter(x=>!x.pk).sort((a,b)=>kk(a)<kk(b)?-1:1),11+gi),off=(pk-1)*(need-m);
+        const hard=pk>=8,srt=(a,b)=>kk(a)<kk(b)?-1:1;
+        const base=hard?sh(P[g].filter(x=>x.pk&&x.pk<8).sort(srt),11+gi).concat(sh(P[g].filter(x=>!x.pk).sort(srt),17+gi)):sh(P[g].filter(x=>!x.pk).sort(srt),11+gi),off=(hard?pk-8:pk-1)*(need-m);
         if(g==='twk'){const bs=base.filter(x=>x.id==='bhs'),os=rot(base.filter(x=>x.id!=='bhs'),off),bn=Math.min(5,bs.length,need-m),rest=os.slice(0,need-m-bn);list=mine.concat(rest,bs.slice(0,need-m-rest.length))}
         else list=mine.concat(rot(base,off).slice(0,need-m));
         list=sh(list.slice(0,need),100*pk+gi);
@@ -9305,10 +9514,16 @@ tkp:[]};
   }
   function rkKartu(pk){
     let last='';try{last=localStorage.getItem('rk-nama')||''}catch(e){}
-    return '<div class="card ar-rk"><strong>Masuk ranking '+rkNama(pk)+'?</strong><p>Opsional. Isi nama panggilan, lalu skor ini tampil di ranking. Nama bisa dilihat semua orang, jadi jangan pakai nama lengkap, nomor HP, atau data pribadi.</p>'+
-      '<input id="rkIn" maxlength="20" autocomplete="off" placeholder="Nama panggilan (2 sampai 20 huruf)" value="'+rkEsc(last)+'" style="width:100%;box-sizing:border-box;padding:10px 12px;border:2px solid #14161C;border-radius:12px;font:inherit">'+
+    return '<div class="card ar-rk ar-nm"><strong class="nm-t">Ranking &amp; sertifikat · '+rkNama(pk)+'</strong>'+
+      '<p class="nm-d">Opsional. Isi nama panggilan sekali, dipakai untuk ranking dan sertifikat. Nama di ranking bisa dilihat semua orang, jadi jangan pakai nama lengkap, nomor HP, atau data pribadi.</p>'+
+      '<label class="nm-l" for="rkIn">Nama panggilan</label>'+
+      '<input id="rkIn" class="nm-in" maxlength="20" autocomplete="off" placeholder="2 sampai 20 huruf" value="'+rkEsc(last)+'">'+
       '<input id="rkHp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">'+
-      '<div class="ar-row"><button type="button" class="btn" id="rkGo">Kirim ke ranking</button><button type="button" class="btn ghost" id="rkSee">Lihat ranking</button></div><p id="rkMsg" role="status" style="margin:8px 0 0;font-size:14px"></p></div>';
+      '<div class="nm-g"><button type="button" class="btn" id="rkGo">Kirim ke ranking</button><button type="button" class="btn ghost" id="rkSee">Lihat ranking</button></div>'+
+      '<p id="rkMsg" class="nm-m" role="status"></p>'+
+      '<div class="nm-sep"><strong class="nm-t">Sertifikat lucu-lucuan 🎓</strong><p class="nm-d">Dibuat di HP lo sendiri dan nggak dikirim ke mana-mana. Bukan sertifikat resmi, buat seru-seruan aja.</p>'+
+      '<div class="nm-g one"><button type="button" class="btn ghost" id="csGo">Buat sertifikat</button></div>'+
+      '<p id="csMsg" class="nm-m" role="status"></p><div id="csOut" class="nm-o"></div></div></div>';
   }
   function rkPasang(sc,pk){
     const go=document.getElementById('rkGo'),see=document.getElementById('rkSee');if(!go)return;
@@ -9325,6 +9540,124 @@ tkp:[]};
         msg.textContent=j.hasil==='diperbarui'?'Skor terbaikmu di paket ini diperbarui.':j.hasil==='tidak-lebih-baik'?'Skor lamamu di paket ini lebih tinggi, jadi tetap dipakai.':'Berhasil masuk ranking!';
         go.textContent='Terkirim';
       }catch(e){msg.textContent=(e&&e.name==='AbortError'?'Server terlalu lama merespons':(e&&e.message)||'Gagal mengirim')+'. Coba lagi ya.';go.disabled=false}
+    };
+  }
+  // ===== Sertifikat lucu-lucuan: digambar di canvas, 100% di perangkat sendiri (tidak dikirim ke server) =====
+  function csKartu(){
+    let last='';try{last=localStorage.getItem('rk-nama')||''}catch(e){}
+    return '<div class="card ar-rk ar-nm"><strong class="nm-t">Sertifikat lucu-lucuan 🎓</strong>'+
+      '<p class="nm-d">Isi nama, lalu bikin sertifikat hasil tryout lo. Dibuat di HP lo sendiri dan nggak dikirim ke mana-mana. Bukan sertifikat resmi, buat seru-seruan aja.</p>'+
+      '<label class="nm-l" for="rkIn">Nama di sertifikat</label>'+
+      '<input id="rkIn" class="nm-in" maxlength="20" autocomplete="off" placeholder="2 sampai 20 huruf" value="'+rkEsc(last)+'">'+
+      '<div class="nm-g one"><button type="button" class="btn" id="csGo">Buat sertifikat</button></div>'+
+      '<p id="csMsg" class="nm-m" role="status"></p><div id="csOut" class="nm-o"></div></div>';
+  }
+  // Maskot Pejuang NIP dari beranda, dibuat versi statis: wajah senang + toga wisuda, lalu digambar ke sertifikat
+  function csMaskot(){
+    return new Promise(ok=>{
+      try{
+        const src=document.querySelector('.home-mascot .mk-svg');if(!src)return ok(null);
+        const sv=src.cloneNode(true);
+        ['.mk-zz','.mk-stars','.mk-shadow','.mk-e-n','.mk-e-w','.mk-e-z','.mk-e-d','.mk-m-o','.mk-m-w','.mk-m-f','.mk-m-d'].forEach(q=>sv.querySelectorAll(q).forEach(n=>n.remove()));
+        sv.setAttribute('viewBox','58 -4 264 356');sv.setAttribute('width','528');sv.setAttribute('height','712');
+        sv.removeAttribute('class');sv.removeAttribute('aria-hidden');
+        sv.insertAdjacentHTML('beforeend','<g stroke="#14161C" stroke-linejoin="round" stroke-linecap="round"><path d="M148 40 V58 Q187 74 226 58 V40 Z" fill="#2B2F3A" stroke-width="4"/><polygon points="116,34 187,6 258,34 187,62" fill="#14161C" stroke-width="4"/><line x1="187" y1="34" x2="252" y2="38" stroke="#E3B04B" stroke-width="3"/><line x1="252" y1="38" x2="257" y2="72" stroke="#E3B04B" stroke-width="4"/><circle cx="257" cy="76" r="6" fill="#E3B04B" stroke-width="3"/></g>');
+        const xml=new XMLSerializer().serializeToString(sv);
+        const url=URL.createObjectURL(new Blob([xml],{type:'image/svg+xml;charset=utf-8'}));
+        const im=new Image();
+        im.onload=()=>{URL.revokeObjectURL(url);ok(im)};
+        im.onerror=()=>{URL.revokeObjectURL(url);ok(null)};
+        im.src=url;
+      }catch(e){ok(null)}
+    });
+  }
+  function arSertif(d){
+    return new Promise(res=>{
+      const W=1600,H=1150,SER='Georgia, "Times New Roman", serif',c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+      const gold=(y0,y1)=>{const g=x.createLinearGradient(0,y0,0,y1);g.addColorStop(0,'#B8862B');g.addColorStop(.5,'#F3D98A');g.addColorStop(1,'#B8862B');return g};
+      const ls=v=>{try{x.letterSpacing=v}catch(e){}};
+      const tgl=new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+      const code=new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+Math.floor(1000+Math.random()*9000);
+      // latar + pola halus
+      x.fillStyle='#F3F4F9';x.fillRect(0,0,W,H);
+      x.strokeStyle='rgba(110,120,165,.12)';x.lineWidth=2;
+      for(let yy=0;yy<=H+40;yy+=40)for(let xx=(yy/40%2)*40;xx<=W+40;xx+=80){x.beginPath();x.arc(xx,yy,40,0,6.2832);x.stroke()}
+      x.strokeStyle='#C9A24B';x.lineWidth=4;x.strokeRect(18,18,W-36,H-36);
+      // sudut navy + berlian emas
+      x.fillStyle='#16294A';x.beginPath();x.moveTo(0,0);x.lineTo(360,0);x.lineTo(0,360);x.closePath();x.fill();
+      x.strokeStyle=gold(100,320);x.lineWidth=6;
+      [[205,205],[150,260],[260,150]].forEach(p=>{x.beginPath();x.moveTo(p[0],p[1]-52);x.lineTo(p[0]+52,p[1]);x.lineTo(p[0],p[1]+52);x.lineTo(p[0]-52,p[1]);x.closePath();x.stroke()});
+      x.textAlign='center';x.textBaseline='alphabetic';
+      // judul
+      ls('14px');x.font='bold 104px '+SER;x.fillStyle=gold(70,160);x.fillText('SERTIFIKAT',W/2+7,155);
+      ls('0px');x.fillStyle='#111';x.font='58px '+SER;x.fillText('TRYOUT KOMPETENSI DASAR',W/2,228);
+      x.font='24px '+SER;x.fillStyle='#555';ls('2px');x.fillText('NO PNIP-'+code+'  ·  '+d.pk,W/2,275);ls('0px');
+      x.font='32px '+SER;x.fillStyle='#222';x.fillText('Diberikan kepada :',W/2,345);
+      // nama
+      let fs=84;x.font='italic bold '+fs+'px '+SER;
+      while(x.measureText(d.nama).width>1100&&fs>34){fs-=4;x.font='italic bold '+fs+'px '+SER}
+      x.fillStyle='#14161C';x.fillText(d.nama,W/2,440);
+      x.strokeStyle=gold(450,460);x.lineWidth=6;x.lineCap='round';x.beginPath();x.moveTo(330,468);x.lineTo(1270,468);x.stroke();
+      x.font='30px '+SER;x.fillStyle='#222';x.fillText('Tanggal Ujian   '+tgl,W/2,525);
+      // nilai
+      const rows=[['Tes Wawasan Kebangsaan','twk'],['Tes Intelejensia Umum','tiu'],['Tes Karakteristik Pribadi','tkp']];
+      x.textAlign='left';x.font='36px '+SER;
+      rows.forEach((r,i)=>{const y=610+i*52,ok=d.sc[r[1]]>=d.thr[r[1]];
+        x.fillStyle='#14161C';x.font='36px '+SER;x.fillText(r[0],440,y);x.fillText(':',900,y);x.font='bold 36px '+SER;x.fillText(d.sc[r[1]]+' / '+d.mx[r[1]],930,y);
+        x.font='italic 26px '+SER;x.fillStyle=ok?'#1E8A4C':'#B3261E';x.fillText(ok?'lolos':'belum lolos',1120,y)});
+      x.strokeStyle=gold(740,750);x.lineWidth=3;x.beginPath();x.moveTo(440,750);x.lineTo(1100,750);x.stroke();
+      x.fillStyle='#14161C';x.font='bold 40px '+SER;x.fillText('Total',440,805);x.fillText(':',900,805);x.fillText(d.total+' / '+d.tmax,930,805);
+      // gelar
+      const r=d.tmax?d.total/d.tmax:0;
+      const gelar=r>=.85?'Dewa Passing Grade':r>=.7?'Calon NIP Sejati':r>=.55?'Pejuang NIP Tangguh':r>=.4?'Pendekar Pantang Menyerah':'Pejuang Tangguh Dalam Proses';
+      x.textAlign='center';x.font='italic 38px '+SER;x.fillStyle='#7A5A12';x.fillText('Gelar kehormatan: '+gelar,W/2,880);
+      x.font='26px '+SER;x.fillStyle='#444';ls('2px');x.fillText('Berlaku sampai tryout berikutnya. Jangan lupa latihan lagi ya!',W/2,935);ls('0px');
+      x.font='italic 26px '+SER;x.fillStyle='#333';x.fillText('Jakarta, '+tgl,W/2,985);
+      x.fillText('Kepala Badan Kepejuangan Negara (becanda)',W/2,1022);
+      x.font='20px '+SER;x.fillStyle='#777';x.fillText('Tidak resmi · hanya untuk lucu-lucuan · bukan sertifikat BKN',W/2,1066);
+      x.font='bold 30px '+SER;x.fillStyle='#7A5A12';x.fillText('Latihan lagi di yudhapratama14.github.io/CPNS',W/2,1112);
+      // segel kiri bawah
+      const sg=x.createRadialGradient(170,930,10,170,930,95);sg.addColorStop(0,'#F7E3A1');sg.addColorStop(1,'#B8862B');
+      x.fillStyle=sg;x.beginPath();x.arc(170,930,92,0,6.2832);x.fill();
+      x.strokeStyle='#16294A';x.lineWidth=4;x.beginPath();x.arc(170,930,74,0,6.2832);x.stroke();
+      x.fillStyle='#16294A';x.font='bold 24px '+SER;x.fillText('PEJUANG',170,926);x.font='bold 34px '+SER;x.fillText('NIP',170,962);
+      // cap lolos
+      if(d.allOk){x.save();x.translate(1385,690);x.rotate(-.22);x.strokeStyle='#1E8A4C';x.fillStyle='#1E8A4C';x.lineWidth=7;x.strokeRect(-150,-62,300,124);
+        x.font='bold 64px '+SER;x.fillText('LOLOS',0,10);x.font='bold 22px '+SER;x.fillText('PASSING GRADE',0,44);x.restore()}
+      // maskot + confeti kecil di kanan bawah
+      csMaskot().then(im=>{
+        try{
+          [[1290,880,'#EF4B4B'],[1556,868,'#6C5CE7'],[1272,1000,'#E3B04B'],[1548,1012,'#F8A53A'],[1500,806,'#1E8A4C'],[1330,812,'#6C5CE7']].forEach(q=>{x.fillStyle=q[2];x.beginPath();x.arc(q[0],q[1],7,0,6.2832);x.fill()});
+          x.fillStyle='#E3B04B';x.font='bold 40px '+SER;x.textAlign='center';x.fillText('✦',1545,930);x.fillText('✦',1290,940);
+          if(im)x.drawImage(im,1318,812,222,300);
+        }catch(e){}
+        c.toBlob(b=>res(b),'image/png');
+      });
+    });
+  }
+  function csPasang(info){
+    const go=document.getElementById('csGo'),inp=document.getElementById('rkIn'),msg=document.getElementById('csMsg'),out=document.getElementById('csOut');if(!go)return;
+    let url=null;
+    go.onclick=async()=>{
+      const nama=inp.value.replace(/[\u0000-\u001f<>]/g,'').trim();
+      if(nama.length<2){msg.textContent='Isi nama minimal 2 huruf.';return}
+      try{localStorage.setItem('rk-nama',nama)}catch(e){}
+      go.disabled=true;msg.textContent='Membuat sertifikat...';
+      try{
+        const b=await arSertif(Object.assign({nama:nama},info));if(!b)throw new Error('gagal');
+        if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(b);
+        const fn='sertifikat-tryout-'+(nama.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'peserta')+'.png';
+        out.textContent='';
+        const im=document.createElement('img');im.src=url;im.alt='Sertifikat tryout atas nama '+nama;im.className='nm-img';out.appendChild(im);
+        const row=document.createElement('div');row.className='nm-g';
+        const a=document.createElement('a');a.className='btn';a.href=url;a.download=fn;a.textContent='Unduh PNG';row.appendChild(a);
+        try{const f=new File([b],fn,{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]})){const s=document.createElement('button');s.type='button';s.className='btn ghost';s.textContent='Bagikan';s.onclick=()=>navigator.share({files:[f],title:'Sertifikat tryout'}).catch(()=>{});row.appendChild(s)}}catch(e){}
+        if(row.children.length===1)row.className='nm-g one';
+        out.appendChild(row);
+        msg.textContent='Kalau nggak ke-download, tahan gambarnya lalu pilih Simpan gambar.';
+        try{out.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
+      }catch(e){msg.textContent='Gagal membuat sertifikat. Coba lagi ya.'}
+      go.disabled=false;go.textContent='Buat ulang';
     };
   }
   function finish(){
@@ -9347,19 +9680,22 @@ tkp:[]};
       setTimeout(()=>{try{openLesson(id)}catch(e){}},80)});
     try{const h1=root.querySelector('#ar>h1');const nb=rev.filter(r=>r.a!==undefined).length;if(h1&&nb)h1.insertAdjacentHTML('afterend','<p>'+nb+' soal yang dijawab belum tepat disimpan ke Buku Salah. Ulangi dari halaman Arena.</p>')}catch(e){}
     window.scrollTo(0,0);
-    // Ajakan traktir lembut: kartu biasa di halaman hasil (tanpa popup), opsional, bisa ditutup, dilewati bila sudah traktir
+    // Ajakan traktir: kartu di halaman hasil + kotak traktir otomatis terbuka sekali per sesi (1,5 detik setelah hasil muncul), dilewati bila sudah traktir atau sudah klik "Nanti aja"
     try{if(!(window.kopiSudah&&window.kopiSudah())&&!sessionStorage.getItem('arena-kopi-x')){
       const up=prevT!==null&&total>prevT;
       const msg=up?'Skor lo naik '+(total-prevT)+' poin dari hasil terbaik sebelumnya. Mantap! Kalau latihan di sini kepake, lo bisa traktir kopi biar gue terus nambah soal dan materi. Sepenuhnya opsional.':'Satu tryout kelar, kerja bagus. Kalau materi dan soal di sini kepake, lo bisa traktir kopi buat bantu gue terus update isinya. Sepenuhnya opsional.';
       const c=root.querySelector('#ar>.card');
-      if(c)c.insertAdjacentHTML('afterend','<div class="card ar-kopi"><strong>'+(up?'Skor naik!':'Terbantu latihan ini?')+'</strong><p>'+msg+'</p><div class="ar-row"><a class="btn" href="#traktir" data-kopi data-src="tryout">Traktir kopi</a><button type="button" class="btn ghost" id="arKopiX">Nanti aja</button></div></div>');
-      const x=document.getElementById('arKopiX');if(x)x.onclick=()=>{sessionStorage.setItem('arena-kopi-x','1');const k=x.closest('.ar-kopi');if(k)k.remove()}}}catch(e){}
+      if(c)c.insertAdjacentHTML('afterend','<div class="card ar-kopi ar-nm"><strong class="nm-t">'+(up?'Skor naik!':'Terbantu latihan ini?')+'</strong><p class="nm-d">'+msg+'</p><div class="nm-g"><a class="btn" href="#traktir" data-kopi data-src="tryout">☕ Traktir kopi</a><button type="button" class="btn ghost" id="arKopiX">Nanti aja</button></div></div>');
+      const x=document.getElementById('arKopiX');if(x)x.onclick=()=>{sessionStorage.setItem('arena-kopi-x','1');const k=x.closest('.ar-kopi');if(k)k.remove()};if(!sessionStorage.getItem('arena-kopi-pop')){sessionStorage.setItem('arena-kopi-pop','1');if(window.kopiLog)window.kopiLog('tampil','tryout-popup');setTimeout(()=>{if(document.querySelector('.kp-ov.is-open')||!document.getElementById('arKopiX'))return;const a=document.createElement('a');a.href='#traktir';a.setAttribute('data-kopi','');a.dataset.src='tryout';a.hidden=true;document.body.appendChild(a);a.click();a.remove()},1500)}}}catch(e){}
     // Kartu ranking: hanya untuk tryout penuh 110 soal
-    try{if(S.items.length===110){const c2=root.querySelector('#ar>.card');if(c2){c2.insertAdjacentHTML('afterend',rkKartu(S.pk));rkPasang(sc,S.pk)}}}catch(e){}
+    try{if(S.items.length===110){const c2=root.querySelector('#ar>.card');if(c2){c2.insertAdjacentHTML('afterend',rkKartu(S.pk));rkPasang(sc,S.pk);c2.insertAdjacentHTML('afterend',bfHasil(total,S.pk))}}}catch(e){}
+    // Sertifikat lucu-lucuan (lokal, untuk semua tryout yang selesai)
+    try{const cd=root.querySelector('#ar>.card');if(cd){if(S.items.length!==110)cd.insertAdjacentHTML('afterend',csKartu());csPasang({sc:sc,mx:mx,thr:thr,total:total,tmax:tmax,allOk:allOk,pk:rkNama(S.pk)})}}catch(e){}
   }
   home();
 })();
 </script>
+
 
 
 <script id="mkm-dodge-js">
@@ -9487,21 +9823,25 @@ tkp:[]};
   ['Info dasar dulu nih, Pejuang! Materi dan soal di sini mengacu ke Kepmen PANRB Nomor 406 Tahun 2026. SKD-nya: TWK 30 soal, TIU 35, TKP 45. Ambang batasnya 65, 80, dan 156.','wow'],
   ['Lima materi TWK-nya: nasionalisme, integritas, bela negara, pilar negara, dan bahasa negara. Semuanya udah gue susun di peta belajar.','happy'],
   ['Tapi inget ya, Kepmen 406/2026 itu acuan SKD 2026. Kalau lo ngejar formasi CPNS tertentu, ikutin pengumuman resmi BKN dan KemenPANRB. Cek dulu sebelum daftar!','wow'],
-  ['Soal pembaruan: materi ini ditinjau berkala, dan admin berkomitmen ngecek minimal seminggu sekali. Terakhir ditinjau 17 November 2026. Kalau ada yang beda sama pengumuman resmi, pegangan lo tetap pengumuman resmi.','happy']
+  ['Soal pembaruan: materi ini ditinjau berkala, dan admin berkomitmen ngecek minimal seminggu sekali. Terakhir ditinjau 17 November 2026. Kalau ada yang beda sama pengumuman resmi, pegangan lo tetap pengumuman resmi.','happy'],
+  ['Oh iya, aplikasi ini gue update tiap hari, jadi selalu ada yang baru. Yuk duel skor sama peserta lain di Arena Tryout. Bukan bot, tenang!','wow']
  ];
  var run=0, tm;
  bubble.style.flexWrap='wrap'; var p=txt.closest('p')||txt; p.style.flex='1 1 100%';
  var b=document.createElement('button'); b.type='button'; b.className='btn ghost'; b.style.cssText='margin:8px 0 0 auto;flex:none;font-size:13px;padding:6px 14px';
- bubble.appendChild(b);
- function stop(){ run++; clearTimeout(tm); window.__mkHold=false; b.textContent='Ulangi info dasar'; }
+ var d=document.createElement('button'); d.type='button'; d.className='btn'; d.textContent='Duel di Arena'; d.style.cssText='margin:8px auto 0 0;flex:none;font-size:13px;padding:6px 14px;display:none';
+ d.onclick=function(e){ e.stopPropagation(); var n=document.querySelector('.nav-btn[data-view="tryout"]'); if(n){ n.click(); try{window.scrollTo(0,0)}catch(x){} } };
+ bubble.appendChild(d); bubble.appendChild(b);
+ function stop(){ run++; clearTimeout(tm); window.__mkHold=false; b.textContent='Ulangi info dasar'; d.style.display='none'; }
+ function hideDuel(){ d.style.display='none'; }
  function play(k,id){
   if(id!==run) return;
   if(k>=L.length){ stop(); return; }
-  window.__mkHold=true; b.textContent='Lewati info ('+(k+1)+'/'+L.length+')';
+  window.__mkHold=true; b.textContent='Lewati info ('+(k+1)+'/'+L.length+')'; d.style.display=(k===L.length-1)?'':'none';
   window.__mkSay(L[k][0],L[k][1],3000);
   tm=setTimeout(function(){ play(k+1,id); }, L[k][0].length*60+1800);
  }
- function start(){ run++; clearTimeout(tm); play(0,run); }
+ function start(){ run++; clearTimeout(tm); hideDuel(); play(0,run); }
  b.onclick=function(e){ e.stopPropagation(); if(window.__mkHold) stop(); else start(); };
  b.textContent='Ulangi info dasar';
  setTimeout(start,4500);
@@ -9642,19 +9982,123 @@ tkp:[]};
   let order=[],i=0,ok=0,done=false,pick=-1;
   const shuf=a=>{a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a};
   const bs='border:2px solid #14161C;border-radius:14px;padding:10px 14px;background:#fff;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px;color:#14161C';
+  // ---------- Animasi stikman: gambaran tiap hak Presiden ----------
+  const G='#14161C';
+  (function(){
+    if(document.getElementById('grasi-anim'))return;
+    const st=document.createElement('style');st.id='grasi-anim';
+    st.textContent=
+`.gs{display:block;width:100%;height:auto;background:#F6F8FC;border:2px solid #14161C;border-radius:14px}
+.gs *{transform-box:fill-box;transform-origin:center}
+.gs text{font-family:inherit;font-weight:700;fill:#14161C}
+.gs .gsA{animation:gsA 8s infinite}
+.gs .gsB{opacity:0;animation:gsB 8s infinite}
+.gs .gsT1{opacity:0;animation:gsT1 8s infinite}
+.gs .gsT2{opacity:0;animation:gsT2 8s infinite}
+.gs .gsT3{opacity:0;animation:gsT3 8s infinite}
+.gs .gsStamp{opacity:0;animation:gsStamp 8s infinite}
+.gs .gsDoc{animation:gsDoc 8s infinite}
+@keyframes gsA{0%,46%{opacity:1}52%,100%{opacity:0}}
+@keyframes gsB{0%,48%{opacity:0}56%,90%{opacity:1}100%{opacity:0}}
+@keyframes gsT1{0%,4%{opacity:0;transform:translateY(8px)}12%,90%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes gsT2{0%,18%{opacity:0;transform:translateY(8px)}26%,90%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes gsT3{0%,58%{opacity:0;transform:translateY(8px)}66%,90%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes gsStamp{0%,30%{opacity:0;transform:translateY(-34px) rotate(-8deg)}38%{opacity:1;transform:translateY(3px) rotate(-8deg)}42%,90%{opacity:1;transform:rotate(-8deg)}100%{opacity:0;transform:rotate(-8deg)}}
+@keyframes gsDoc{0%{opacity:1;transform:translateX(0)}30%,44%{opacity:1;transform:translateX(36px)}52%,100%{opacity:0;transform:translateX(36px)}}
+.gs-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+.gs-tabs button{border:2px solid #14161C;border-radius:999px;padding:7px 14px;min-height:40px;background:#fff;font:inherit;font-size:13px;font-weight:800;color:#14161C;cursor:pointer}
+.gs-tabs button.on{background:#F8B461}
+.gs-cap{margin:10px 0 0;font-size:14px;line-height:1.55}
+@media (prefers-reduced-motion:reduce){.gs .gsA{display:none}.gs .gsB,.gs .gsT1,.gs .gsT2,.gs .gsT3,.gs .gsStamp{animation:none;opacity:1}.gs .gsDoc{animation:none;opacity:0}}`;
+    document.head.appendChild(st);
+  })();
+  const mS=(x,y)=>'<path d="M'+(x-3.5)+' '+(y-52)+'q3.5 -3.5 7 0" stroke="'+G+'" stroke-width="2" fill="none" stroke-linecap="round"/>';
+  const mH=(x,y)=>'<path d="M'+(x-4)+' '+(y-55)+'q4 4 8 0" stroke="'+G+'" stroke-width="2" fill="none" stroke-linecap="round"/>';
+  // stikman: x tengah, y tanah. o: c warna badan, h topi, m mulut, up2 dua tangan naik, reach tangan terjulur, sash selempang, l label
+  const man=(x,y,o)=>{o=o||{};const c=o.c||G,hy=y-58,sh=y-42;
+    const L=o.up2?[x-15,y-60]:o.reach?[x-21,y-38]:[x-13,y-28],R=o.up2?[x+15,y-60]:[x+13,y-28];
+    let s='<g fill="none" stroke-linecap="round" stroke-linejoin="round">';
+    s+='<path stroke="'+c+'" stroke-width="3.2" d="M'+x+' '+(hy+8)+'V'+(y-24)+'M'+x+' '+(y-24)+'L'+(x-9)+' '+y+'M'+x+' '+(y-24)+'L'+(x+9)+' '+y+'M'+x+' '+sh+'L'+L[0]+' '+L[1]+'M'+x+' '+sh+'L'+R[0]+' '+R[1]+'"/>';
+    if(o.sash)s+='<path stroke="#D9625A" stroke-width="3" d="M'+(x-6)+' '+(y-46)+'L'+(x+7)+' '+(y-28)+'"/>';
+    s+='<circle cx="'+x+'" cy="'+hy+'" r="8" fill="#fff" stroke="'+G+'" stroke-width="3"/>';
+    if(o.h==='peci')s+='<path d="M'+(x-7.5)+' '+(hy-5)+'h15v-7h-15z" fill="'+G+'" stroke="'+G+'" stroke-width="1.5"/>';
+    s+='<circle cx="'+(x-3)+'" cy="'+(hy-1)+'" r="1.4" fill="'+G+'" stroke="none"/><circle cx="'+(x+3)+'" cy="'+(hy-1)+'" r="1.4" fill="'+G+'" stroke="none"/>';
+    if(o.m==='h')s+=mH(x,y);
+    if(o.m==='s')s+=mS(x,y);
+    s+='</g>';
+    if(o.l)s+='<text x="'+x+'" y="'+(y+14)+'" text-anchor="middle" font-size="10" style="fill:#4B5160">'+o.l+'</text>';
+    return s};
+  const tx=(x,y,t,cls,sz)=>'<text class="'+cls+'" x="'+x+'" y="'+y+'" text-anchor="middle" font-size="'+(sz||10)+'">'+t+'</text>';
+  const tag=(x,y,w,t,fill,cls)=>'<g class="'+cls+'"><rect x="'+(x-w/2)+'" y="'+(y-14)+'" width="'+w+'" height="24" rx="8" fill="'+fill+'" stroke="'+G+'" stroke-width="2.5"/><text x="'+x+'" y="'+(y+3)+'" text-anchor="middle" font-size="11">'+t+'</text></g>';
+  // Presiden + dokumen + cap + chip pertimbangan (kanan)
+  const pres=(stamp,who)=>{const w=stamp.length*5.6+14;
+    return man(288,140,{h:'peci',sash:1,reach:1,m:'h',l:'Presiden'})+
+      '<rect x="214" y="86" width="44" height="48" rx="4" fill="#fff" stroke="'+G+'" stroke-width="2.5"/><path d="M221 98h30M221 106h30M221 114h18" stroke="#C9CEDA" stroke-width="2.5" stroke-linecap="round"/>'+
+      '<g class="gsStamp"><rect x="'+(236-w/2)+'" y="112" width="'+w+'" height="20" rx="4" fill="#fff" fill-opacity=".92" stroke="#D9625A" stroke-width="2.5"/><text x="236" y="126" text-anchor="middle" font-size="9" style="fill:#D9625A;font-weight:800">'+stamp+'</text></g>'+
+      tag(246,34,130,'pertimbangan '+who,'#FFF4D6','gsT1')};
+  const SCN=[
+    // 0 Grasi: pidana mati diubah jadi seumur hidup, putusan tetap ada
+    ()=>'<path d="M8 140H312" stroke="#C9CEDA" stroke-width="3" stroke-linecap="round"/>'+
+      man(85,140,{c:'#E58A00'})+mS(85,140).replace('<path','<path class="gsA"')+mH(85,140).replace('<path','<path class="gsB"')+
+      '<g stroke="#5B6070" stroke-width="3.2" stroke-linecap="round" fill="none"><path d="M40 140V72H130V140M52 72V140M66 72V140M104 72V140M118 72V140"/></g>'+
+      tag(85,40,104,'Pidana mati','#F9D2D2','gsA')+tag(85,40,104,'Seumur hidup','#CDEFD8','gsB')+
+      tx(85,156,'putusan tetap ada','gsT3',9.5)+pres('GRASI','MA'),
+    // 1 Rehabilitasi: nama tercemar jadi pulih
+    ()=>'<path d="M8 140H312" stroke="#C9CEDA" stroke-width="3" stroke-linecap="round"/>'+
+      man(95,140,{c:'#1F3A6E'})+mS(95,140).replace('<path','<path class="gsA"')+mH(95,140).replace('<path','<path class="gsB"')+
+      tag(95,40,112,'nama tercemar','#E1E4EC','gsA')+tag(95,40,126,'nama baik pulih ✓','#CDEFD8','gsB')+
+      '<g class="gsA" fill="#9AA0AE"><circle cx="48" cy="46" r="5"/><circle cx="142" cy="48" r="4"/></g>'+
+      tx(95,156,'harkat dan martabat dipulihkan','gsT3',9.5)+pres('REHABILITASI','MA'),
+    // 2 Amnesti: kelompok bebas dari akibat hukum pidana
+    ()=>{let s='<path d="M8 140H312" stroke="#C9CEDA" stroke-width="3" stroke-linecap="round"/>';
+      [45,90,135].forEach(x=>{
+        s+='<g class="gsA">'+man(x,140,{c:'#1F3A6E'})+mS(x,140)+'<path d="M'+(x+8)+' 139q8 -2 11 -2" stroke="#5B6070" stroke-width="2" fill="none"/><circle cx="'+(x+21)+'" cy="134" r="6" fill="'+G+'"/></g>'+
+          '<g class="gsB">'+man(x,140,{c:'#1F3A6E',up2:1})+mH(x,140)+'</g>'});
+      return s+tag(90,34,164,'kelompok pelaku tertentu','#FFF4D6','gsT1')+
+        tx(90,156,'akibat hukum pidananya dihapus','gsT3',9.5)+pres('AMNESTI','DPR')},
+    // 3 Abolisi: penuntutan dihentikan sebelum sidang
+    ()=>'<path d="M8 140H312" stroke="#C9CEDA" stroke-width="3" stroke-linecap="round"/>'+
+      man(36,140,{c:'#1F3A6E'})+mS(36,140).replace('<path','<path class="gsA"')+mH(36,140).replace('<path','<path class="gsB"')+
+      '<path d="M64 120H112" stroke="#6C5CE7" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 7"/><path d="M108 114l8 6-8 6" stroke="#6C5CE7" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'+
+      '<g class="gsDoc"><rect x="68" y="104" width="14" height="17" rx="2" fill="#fff" stroke="'+G+'" stroke-width="2"/><path d="M71 110h8M71 114h8" stroke="#9AA0AE" stroke-width="1.8"/></g>'+
+      tx(80,98,'penuntutan','gsT1',9.5)+
+      '<path d="M153 140V98L172 82L191 98V140Z" fill="#fff" stroke="'+G+'" stroke-width="2.5" stroke-linejoin="round"/><path d="M162 140V114H182V140" fill="#E1E4EC" stroke="'+G+'" stroke-width="2"/>'+tx(172,156,'sidang','gsT1',9.5)+
+      '<g class="gsT3"><path d="M134 140V112" stroke="#5B6070" stroke-width="3"/><polygon points="127,92 141,92 149,100 149,114 141,122 127,122 119,114 119,100" transform="translate(0 -6)" fill="#D9625A" stroke="'+G+'" stroke-width="2.5"/><text x="134" y="111" text-anchor="middle" font-size="9" style="fill:#fff;font-weight:800">STOP</text></g>'+
+      pres('ABOLISI','DPR')
+  ];
+  const HAK=['Grasi','Rehabilitasi','Amnesti','Abolisi'];
+  const ALT=['Grasi: pidana mati diubah menjadi seumur hidup setelah ada putusan tetap','Rehabilitasi: nama baik yang tercemar dipulihkan','Amnesti: akibat hukum pidana sekelompok orang dihapus','Abolisi: penuntutan dihentikan sebelum ada putusan'];
+  const CAP=[
+    '<b>Grasi:</b> sudah ada putusan berkekuatan hukum tetap, lalu pidananya diubah, diringankan, atau dikurangi (misalnya pidana mati menjadi seumur hidup). Putusan dan status bersalah tetap ada. Pertimbangan <b>MA</b>.',
+    '<b>Rehabilitasi:</b> memulihkan nama baik, harkat, dan martabat ke kedudukan semula, misalnya setelah dinyatakan tidak bersalah. Pertimbangan <b>MA</b>.',
+    '<b>Amnesti:</b> menghapus akibat hukum pidana bagi seseorang atau sekelompok pelaku tindak pidana tertentu. Pertimbangan <b>DPR</b>.',
+    '<b>Abolisi:</b> menghentikan penuntutan saat perkara masih berjalan dan belum ada putusan. Pertimbangan <b>DPR</b>.'];
+  const scene=k=>'<svg class="gs" viewBox="0 0 320 164" role="img" aria-label="'+ALT[k]+'">'+SCN[k]()+'</svg>';
+  box.innerHTML='<h4>Simulasi pengampunan Presiden</h4>'+
+    '<details class="gs-gb" open style="margin:0 0 14px"><summary style="cursor:pointer;font-weight:800;font-size:14px;padding:6px 0">🎬 Gambaran 4 hak Presiden (animasi stikman)</summary>'+
+    '<div class="gs-tabs" role="tablist" style="margin-top:8px">'+HAK.map((h,k)=>'<button type="button" role="tab" data-g="'+k+'">'+h+'</button>').join('')+'</div>'+
+    '<div class="gs-st"></div><p class="gs-cap"></p></details><div id="gsQz"></div>';
+  const qz=box.querySelector('#gsQz'),gst=box.querySelector('.gs-st'),gcap=box.querySelector('.gs-cap');
+  function showGb(k){
+    box.querySelectorAll('.gs-tabs button').forEach(b=>{const on=+b.dataset.g===k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false')});
+    gst.innerHTML=scene(k);gcap.innerHTML=CAP[k];
+  }
+  box.querySelectorAll('.gs-tabs button').forEach(b=>b.onclick=()=>showGb(+b.dataset.g));
+  showGb(0);
   function start(){order=shuf(SC.map((_,k)=>k));i=0;ok=0;done=false;pick=-1;draw()}
   function draw(){
-    if(i>=order.length){box.innerHTML='<h4>Simulasi pengampunan Presiden</h4><p><b>Skor: '+ok+' dari '+order.length+'</b></p><p class="hint">'+(ok===order.length?'Sempurna. Pegang pola: tahap perkara menentukan haknya, lalu pasangkan MA atau DPR.':'Ulangi dan perhatikan tahap perkaranya dulu, baru pilih haknya.')+'</p><button class="btn" id="grR">Ulangi</button>';box.querySelector('#grR').onclick=start;return}
+    if(i>=order.length){qz.innerHTML='<p><b>Skor: '+ok+' dari '+order.length+'</b></p><p class="hint">'+(ok===order.length?'Sempurna. Pegang pola: tahap perkara menentukan haknya, lalu pasangkan MA atau DPR.':'Ulangi dan perhatikan tahap perkaranya dulu, baru pilih haknya.')+'</p><button class="btn" id="grR">Ulangi</button>';qz.querySelector('#grR').onclick=start;return}
     const s=SC[order[i]];
     const tl=ST.map((t,k)=>'<span style="display:inline-block;margin:2px;padding:3px 9px;border:2px solid #14161C;border-radius:999px;font-size:12px;font-weight:700;background:'+(pick>=0&&k===s[2]?'#F8B461':'#fff')+'">'+t+'</span>').join('');
-    let h='<h4>Simulasi pengampunan Presiden</h4><p class="hint">Soal '+(i+1)+' dari '+order.length+'. Baca kasusnya, lalu pilih hak yang dipakai Presiden.</p><div>'+tl+'</div><p style="margin:12px 0;font-weight:600">'+s[0]+'</p><div style="display:flex;flex-wrap:wrap;gap:8px">'+OPT.map((o,k)=>'<button data-k="'+k+'" style="'+bs+(pick>=0?';cursor:default;background:'+(k===s[1]?'#CDEFD8':(k===pick?'#F9D2D2':'#fff')):'')+'">'+o[0]+'</button>').join('')+'</div>';
-    if(pick>=0){h+='<div class="pk-detail"><strong>'+(pick===s[1]?'Tepat.':'Belum tepat.')+' Jawabannya: '+OPT[s[1]][0]+' (pertimbangan '+OPT[s[1]][1]+').</strong>'+s[3]+'</div><button class="btn" id="grN" style="margin-top:10px">'+(i===order.length-1?'Lihat skor':'Lanjut')+'</button>'}
-    box.innerHTML=h;
-    if(pick<0)box.querySelectorAll('button[data-k]').forEach(b=>b.onclick=()=>{pick=+b.dataset.k;if(pick===s[1])ok++;draw()});
-    else box.querySelector('#grN').onclick=()=>{i++;pick=-1;draw()};
+    let h='<p class="hint">Soal '+(i+1)+' dari '+order.length+'. Baca kasusnya, lalu pilih hak yang dipakai Presiden.</p><div>'+tl+'</div><p style="margin:12px 0;font-weight:600">'+s[0]+'</p><div style="display:flex;flex-wrap:wrap;gap:8px">'+OPT.map((o,k)=>'<button data-k="'+k+'" style="'+bs+(pick>=0?';cursor:default;background:'+(k===s[1]?'#CDEFD8':(k===pick?'#F9D2D2':'#fff')):'')+'">'+o[0]+'</button>').join('')+'</div>';
+    if(pick>=0){h+='<div class="gs-rv" style="margin-top:14px">'+scene(s[1])+'</div><div class="pk-detail" style="margin-top:12px"><strong>'+(pick===s[1]?'Tepat.':'Belum tepat.')+' Jawabannya: '+OPT[s[1]][0]+' (pertimbangan '+OPT[s[1]][1]+').</strong>'+s[3]+'</div><button class="btn" id="grN" style="margin-top:12px">'+(i===order.length-1?'Lihat skor':'Lanjut')+'</button>'}
+    qz.innerHTML=h;
+    if(pick<0)qz.querySelectorAll('button[data-k]').forEach(b=>b.onclick=()=>{pick=+b.dataset.k;if(pick===s[1])ok++;draw();try{qz.querySelector('.gs-rv').scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}});
+    else qz.querySelector('#grN').onclick=()=>{i++;pick=-1;draw()};
   }
   start();
 })();
+
 </script>
 <script>
 /* Auto-hide navigasi bawah saat membaca */
