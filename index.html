@@ -2357,6 +2357,73 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
 .simhold > .sim{margin:0}
 .simhold + .mc,.simhold + .simhold{margin-top:16px}
 </style>
+<style id="search-v2">
+/* ===== Pencarian v2: terang, lembut, konsisten dengan tema ===== */
+.sg-bar { display: flex; align-items: center; gap: 12px; width: 100%; margin: 14px 0 8px; padding: 10px 14px 10px 10px; border: 1.5px solid #E1E6EE; border-radius: 20px; background: #fff; color: #5F6678; font: 600 14.5px var(--font); text-align: left; cursor: pointer; box-shadow: 0 12px 28px -16px rgba(36, 123, 125, .5); transition: border-color .15s, box-shadow .15s, transform .12s; }
+.sg-bar:hover { border-color: #247B7D; box-shadow: 0 14px 30px -14px rgba(36, 123, 125, .65); }
+.sg-bar:active { transform: scale(.985); box-shadow: 0 6px 16px -10px rgba(36, 123, 125, .6); }
+.sg-bar:focus-visible { outline: 2px solid #247B7D; outline-offset: 2px; }
+.sg-bar .sg-bar-ic { flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 13px; background: #247B7D; color: #fff; }
+.sg-bar .sg-bar-ic svg { width: 19px; height: 19px; }
+.sg-bar .sg-bar-tx { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sg-bar kbd { padding: 2px 9px; border: 1.5px solid #D9DFE8; border-bottom-width: 3px; border-radius: 8px; background: #F4F7FA; color: #5F6678; font: 700 12px var(--font); }
+@media (hover: none) { .sg-bar kbd { display: none; } }
+.sg-quick { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 6px; }
+.sg-quick i { margin-right: 2px; font-style: normal; font-size: 12.5px; font-weight: 700; color: #5F6678; }
+.sg-quick button { padding: 6px 12px; border: 1.5px solid #D5E8E8; border-radius: 99px; background: #F0F8F8; color: #1B6466; font: 700 12.5px var(--font); cursor: pointer; transition: background .15s, border-color .15s; }
+.sg-quick button:hover { background: #E5F0F0; border-color: #247B7D; }
+
+/* Tombol cari di header materi */
+.lrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
+.lrow .back { margin-bottom: 0; }
+.l-search { display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border: var(--out, 2px solid #14161C); border-radius: 14px; background: #fff; color: #1B6466; font: 800 14.5px var(--font); box-shadow: 0 3px 0 #14161C; cursor: pointer; transition: transform .12s, box-shadow .12s; }
+.l-search svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.l-search:active { transform: translateY(3px); box-shadow: 0 0 0 #14161C; }
+
+/* Panel pencarian */
+.sg-ov { background: rgba(236, 244, 244, .78); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.sg-box { border: 1.5px solid #E1E6EE; border-radius: 26px; background: #fff; box-shadow: 0 30px 70px -24px rgba(27, 100, 102, .5); animation: sgIn .22s cubic-bezier(.2, .9, .3, 1); }
+@keyframes sgIn { from { opacity: 0; transform: translateY(-10px) scale(.98); } to { opacity: 1; transform: none; } }
+.sg-top { height: 52px; margin: 14px 14px 0; padding: 0 8px 0 14px; border: 1.5px solid transparent; border-radius: 18px; background: #F2F6F7; transition: background .15s, border-color .15s, box-shadow .15s; }
+.sg-top:focus-within { background: #fff; border-color: #247B7D; box-shadow: 0 0 0 4px rgba(36, 123, 125, .14); }
+.sg-top svg { color: #247B7D; }
+.sg-top input::placeholder { color: #8A91A1; font-weight: 600; }
+.sg-top input::-webkit-search-cancel-button { display: none; }
+.sg-x { width: 34px; height: 34px; border: 0; background: #E3E9EE; color: #3B4252; font-size: 13px; transition: background .15s; }
+.sg-x:hover { background: #D5DDE5; }
+.sg-seg { margin: 12px 14px 0; padding: 4px; border: 0; border-radius: 16px; background: #EAEEF4; }
+.sg-seg button { padding: 9px 0; border-radius: 12px; color: #5F6678; transition: background .2s, color .2s, box-shadow .2s; }
+.sg-seg button.on { background: #fff; color: #1B6466; box-shadow: 0 3px 10px rgba(20, 22, 28, .14); }
+.sg-chips { gap: 6px; padding: 12px 14px 6px; }
+.sg-chips button, .sg-sug button { padding: 6px 13px; border: 1.5px solid #E1E6EE; color: #3B4252; transition: background .15s, border-color .15s; }
+.sg-chips button:hover, .sg-sug button:hover { border-color: #247B7D; background: #F0F8F8; }
+.sg-chips button.on { background: #247B7D; border-color: #247B7D; color: #fff; }
+.sg-res { padding: 4px 14px 18px; }
+.sg-h { margin: 18px 0 0; font: 800 11.5px var(--font); letter-spacing: .05em; text-transform: uppercase; color: #5F6678; }
+
+/* Warna kategori (semuanya terang) */
+.k-materi, .k-bab { --bg-k: #E5F0F0; --fg-k: #1B6466; }
+.k-trik { --bg-k: #FFF1D6; --fg-k: #8A4F00; }
+.k-soal { --bg-k: #EDE9FE; --fg-k: #5B3FD1; }
+.k-analogi { --bg-k: #FFE8EF; --fg-k: #B4235A; }
+.k-istilah { --bg-k: #DDF4E8; --fg-k: #147B54; }
+.sg-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 10px; }
+@media (max-width: 460px) { .sg-stats { grid-template-columns: repeat(3, 1fr); } }
+.sg-st { padding: 10px 4px; border-radius: 16px; background: var(--bg-k); color: var(--fg-k); text-align: center; }
+.sg-st b { display: block; font-size: 20px; line-height: 1.15; }
+.sg-st span { font-size: 11.5px; font-weight: 800; }
+
+/* Kartu hasil */
+.sg-r { margin-top: 8px; padding: 12px 14px; border: 1.5px solid #E1E6EE; border-radius: 16px; transition: background .15s, border-color .15s, transform .12s; }
+button.sg-r:hover { background: #F0F8F8; border-color: #247B7D; transform: translateY(-1px); }
+.sg-r small { display: inline-block; padding: 2px 10px; border-radius: 99px; background: var(--bg-k, #E5F0F0); color: var(--fg-k, #1B6466); font-size: 11.5px; font-weight: 800; }
+.sg-r b { margin-top: 6px; }
+.sg-r .go { border: 1.5px solid #D5E8E8; background: #F0F8F8; color: #1B6466; }
+.sg-r .go.on { background: #DDF4E8; border-color: #BFE7D1; color: #147B54; }
+.sg-r mark, .sg-hl { background: #FFE9A8; }
+.sg-fc { border: 1.5px solid #E1E6EE; background: #F0F8F8; box-shadow: 0 14px 34px -18px rgba(36, 123, 125, .35); }
+@media (prefers-reduced-motion: reduce) { .sg-box { animation: none; } .sg-bar, .sg-r { transition: none; } }
+</style>
 </head>
 
 <body>
@@ -4777,7 +4844,7 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
              ${endCard}`
           : `<div class="lc materi">${analogiBox}${lessonSections(l, 2)}</div>${endCard}`);
       $('#lesson').innerHTML = `
-        <button class="back" id="lBack" aria-label="Kembali ke peta belajar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span>Kembali</span></button>
+        <div class="lrow"><button class="back" id="lBack" aria-label="Kembali ke peta belajar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span>Kembali</span></button><button type="button" class="l-search" data-sg="cari" aria-label="Cari materi, trik, soal, atau istilah"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Cari</span></button></div>
         <h2>${l.t}</h2><p class="goal">${l.goal}</p>
         <div class="bar" style="--c:var(--brand)"><i style="width:${n ? d / n * 100 : 0}%"></i></div>
         ${tabs}${main}`;
@@ -6505,7 +6572,7 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
     const NAMA = 'Muhammad Yudha Pratama';
     // Opsional: isi dengan URL web app Apps Script (doPost) untuk mengumpulkan angka dari semua pengunjung.
     // Kosong = angka hanya tersimpan di perangkat ini (lihat lewat ?kopi=stat atau #kopi-stat).
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbztApjvkuYN50WVkQyNY09SSk2N_8XDkGWTjHOZIzyuTyYchuSw6I1TyFvTCKW8TheLfg/exec';
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbx8VvLFXTgYFNjsb0DypgmYAr_my33ovwY0G7XYMtQvPxlZSa71L9DGWPMnBf6HLR1ZPg/exec';
     const KEY_STAT = 'kopi-stat', KEY_DONE = 'kopi-done';
 
     const ls = {
@@ -7221,7 +7288,7 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
   const IC_S = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>', IC_B = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 8h6M9 12h6"/></svg>';
   const ov = document.createElement('div');
   ov.className = 'sg-ov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Cari dan glosarium');
-  ov.innerHTML = '<div class="sg-box"><div class="sg-top">' + IC_S + '<input id="sg-q" type="search" autocomplete="off" enterkeyhint="search"><button type="button" class="sg-x" aria-label="Tutup">\u2715</button></div><div class="sg-seg"><button type="button" data-m="cari">Cari dalam</button><button type="button" data-m="glo">Glosarium</button></div><div class="sg-chips"></div><div class="sg-res" id="sg-res"></div></div>';
+  ov.innerHTML = '<div class="sg-box"><div class="sg-top">' + IC_S + '<input id="sg-q" type="search" autocomplete="off" enterkeyhint="search"><button type="button" class="sg-clr" aria-label="Hapus kata kunci">\u2715</button><button type="button" class="sg-x" aria-label="Tutup">\u2715</button></div><div class="sg-seg"><button type="button" data-m="cari">Cari dalam</button><button type="button" data-m="glo">Glosarium</button></div><div class="sg-chips"></div><div class="sg-res" id="sg-res"></div></div>';
   document.body.appendChild(ov);
   const inp = $('#sg-q', ov), res = $('#sg-res', ov), chips = $('.sg-chips', ov);
   let M = 'cari', K = 'all', GK = 'all', FC = null, GL = [], FL = [], cur = [], last = null;
@@ -7236,8 +7303,9 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
     if (!tk.length) {
       cur = []; chips.innerHTML = chipsHTML(CH, K);
       const C = {}; build().forEach(r => { C[r.k] = (C[r.k] || 0) + 1; });
-      res.innerHTML = '<p class="sg-sum">Cari sampai ke dalam: ' + ((C.materi || 0) + (C.bab || 0)) + ' bagian materi, ' + (C.trik || 0) + ' trik, ' + (C.soal || 0) + ' soal dan pembahasan, ' + (C.analogi || 0) + ' analogi, dan ' + GLO.length + ' istilah. Salah ketik pun tetap ketemu.</p>'
-        + (REC.length ? '<p class="sg-sum">Terakhir dicari</p>' + sugs(REC) : '') + '<p class="sg-sum">Coba:</p>' + sugs(['gratifikasi', 'amandemen', 'silogisme', 'otonomi daerah', 'Djuanda', 'kalimat efektif', 'phishing', 'BerAKHLAK']);
+      const nm = (C.materi || 0) + (C.bab || 0);
+      res.innerHTML = '<div class="sg-stats">' + [['materi', 'Materi', nm], ['trik', 'Trik', C.trik || 0], ['soal', 'Soal', C.soal || 0], ['analogi', 'Analogi', C.analogi || 0], ['istilah', 'Istilah', GLO.length]].map(x => '<div class="sg-st k-' + x[0] + '"><b>' + x[2] + '</b><span>' + x[1] + '</span></div>').join('') + '</div><p class="sg-sum">Cari sampai ke dalam materi, pembahasan soal, dan glosarium. Salah ketik pun tetap ketemu.</p>'
+        + (REC.length ? '<p class="sg-h">Terakhir dicari<button type="button" class="sg-rc" data-rc>Hapus</button></p>' + sugs(REC) : '') + '<p class="sg-h">Coba cari</p>' + sugs(['gratifikasi', 'amandemen', 'silogisme', 'otonomi daerah', 'Djuanda', 'kalimat efektif', 'phishing', 'BerAKHLAK']);
       return;
     }
     let G = tk.map(w => [w]), any = false, fz = false, all = score(G, ph, false);
@@ -7247,9 +7315,9 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
     const C = { all: all.length, materi: 0, trik: 0, soal: 0, analogi: 0, istilah: 0 }; all.forEach(r => { C[r.k === 'bab' ? 'materi' : r.k]++; });
     chips.innerHTML = chipsHTML(CH, K, C);
     cur = all.filter(r => kin(r, K)).slice(0, 60);
-    if (!cur.length) { res.innerHTML = '<p class="sg-sum">Tidak ketemu untuk "' + esc(qs) + '"' + (K !== 'all' ? ' di kategori ini. Coba "Semua".' : '. Coba kata kunci yang lebih pendek.') + '</p>'; return; }
+    if (!cur.length) { res.innerHTML = '<p class="sg-sum">Tidak ketemu untuk "' + esc(qs) + '"' + (K !== 'all' ? ' di kategori ini. Coba "Semua".' : '. Coba kata kunci yang lebih pendek.') + '</p><p class="sg-h">Coba cari</p>' + sugs(['gratifikasi', 'silogisme', 'BerAKHLAK', 'otonomi daerah']); return; }
     res.innerHTML = '<p class="sg-sum">' + all.filter(r => kin(r, K)).length + ' hasil' + (any ? ' (cocok sebagian kata)' : '') + (fz ? ' \u00b7 maksud lo: ' + esc(FL.join(', ')) : '') + '</p>' + cur.map((r, i) => {
-      const lab = '<small>' + KL[r.k] + ' \u00b7 ' + esc(r.from || '') + '</small>';
+      const lab = '<small class="k-' + r.k + '">' + KL[r.k] + ' \u00b7 ' + esc(r.from || '') + '</small>';
       if (r.k === 'istilah') return '<div class="sg-r">' + lab + '<b>' + hi(r.t, FL) + '</b><p>' + hi(r.x, FL) + '</p><button type="button" class="go" data-q="' + esc(r.t) + '">Cari di materi</button></div>';
       if (r.k === 'soal') { const q = r.a, ok = (q.o || [])[q.a]; return '<div class="sg-r">' + lab + '<b>' + hi(r.t, FL) + '</b><div class="ans">Jawaban: ' + 'ABCDE'[q.a] + '. ' + esc(strip(String(ok == null ? '' : ok))) + '</div>' + (q.e ? '<p>' + hi(strip(q.e), FL) + '</p>' : '') + (r.lid ? '<button type="button" class="go" data-i="' + i + '">Buka bab</button>' : '') + '</div>'; }
       return '<button type="button" class="sg-r" data-i="' + i + '">' + lab + '<b>' + hi(r.t, FL) + '</b><p>' + hi(snip(r, FL), FL) + '</p></button>';
@@ -7275,7 +7343,7 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
   };
   const draw = () => {
     $$('.sg-seg button', ov).forEach(b => b.classList.toggle('on', b.dataset.m === M));
-    inp.placeholder = M === 'glo' ? 'Cari istilah di glosarium' : 'Cari materi, trik, soal, atau istilah';
+    inp.placeholder = M === 'glo' ? 'Cari istilah di glosarium' : 'Cari materi, trik, soal, istilah';
     M === 'glo' ? drawG() : drawS();
   };
 
@@ -7322,10 +7390,13 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
   const nextF = () => { FC.i++; FC.show = false; if (FC.i >= FC.q.length) FC = null; draw(); };
 
   let tm = null; inp.addEventListener('input', () => { clearTimeout(tm); tm = setTimeout(() => { FC = null; draw(); }, 120); });
-  inp.addEventListener('keydown', e => { if (e.key === 'Enter' && M === 'cari' && cur[0] && cur[0].lid) { e.preventDefault(); go(cur[0]); } });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter' && M === 'cari' && cur[0] && cur[0].lid) { e.preventDefault(); const sc = $('.sg-sel', res), t = sc && (sc.matches('[data-i]') ? sc : sc.querySelector('[data-i]')); go(cur[t ? +t.dataset.i : 0]); } });
+  inp.addEventListener('keydown', e => { if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return; const L = $$('.sg-r', res); if (!L.length) return; e.preventDefault(); let k = L.findIndex(x => x.classList.contains('sg-sel')); if (k >= 0) L[k].classList.remove('sg-sel'); k = e.key === 'ArrowDown' ? Math.min(k + 1, L.length - 1) : Math.max(k - 1, 0); L[k].classList.add('sg-sel'); L[k].scrollIntoView({ block: 'nearest' }); });
   ov.addEventListener('click', e => {
     const t = e.target; if (t === ov || t.closest('.sg-x')) return close();
     let b;
+    if (t.closest('.sg-clr')) { inp.value = ''; FC = null; draw(); return inp.focus(); }
+    if (t.closest('[data-rc]')) { REC = []; LSset('skd-cari', REC); return draw(); }
     if ((b = t.closest('[data-m]'))) { M = b.dataset.m; FC = null; inp.value = ''; draw(); return inp.focus(); }
     if ((b = t.closest('[data-c]'))) { if (M === 'glo') GK = b.dataset.c; else K = b.dataset.c; FC = null; return draw(); }
     if ((b = t.closest('[data-s]'))) { M = 'cari'; inp.value = b.dataset.s; return draw(); }
@@ -7342,7 +7413,7 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
     }
     if ((b = t.closest('[data-i]'))) go(cur[+b.dataset.i]);
   });
-  document.addEventListener('click', e => { const b = e.target.closest('[data-sg]'); if (b) { e.preventDefault(); open(b.dataset.sg === 'glo' ? 'glo' : 'cari'); } });
+  document.addEventListener('click', e => { const b = e.target.closest('[data-sg]'); if (b) { e.preventDefault(); open(b.dataset.sg === 'glo' ? 'glo' : 'cari'); if (b.dataset.sq) { inp.value = b.dataset.sq; draw(); } } });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && ov.classList.contains('is-open')) return close();
     const typing = /^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement || {}).tagName || '');
@@ -7350,9 +7421,9 @@ header.home::before { content: ""; position: absolute; z-index: -1; top: -8px; r
   });
   // titik masuk: nav bawah dan beranda
   const nl = $('.nav-list');
-  if (nl) [['cari', 'Cari', IC_S], ['glo', 'Glosarium', IC_B]].forEach(([d, n, ic]) => { const li = document.createElement('li'); li.innerHTML = '<button type="button" class="nav-btn" data-sg="' + d + '">' + ic + '<span>' + n + '</span></button>'; nl.appendChild(li); });
+  if (nl) [['glo', 'Glosarium', IC_B]].forEach(([d, n, ic]) => { const li = document.createElement('li'); li.innerHTML = '<button type="button" class="nav-btn" data-sg="' + d + '">' + ic + '<span>' + n + '</span></button>'; nl.appendChild(li); });
   const sh = $('.home .subhello');
-  if (sh) sh.insertAdjacentHTML('afterend', '<button type="button" class="sg-bar" data-sg="cari">' + IC_S + '<span>Cari materi, trik, soal, atau istilah</span><kbd>/</kbd></button>');
+  if (sh) sh.insertAdjacentHTML('afterend', '<button type="button" class="sg-bar" data-sg="cari" aria-label="Cari materi, trik, soal, atau istilah"><span class="sg-bar-ic">' + IC_S + '</span><span class="sg-bar-tx">Cari materi, trik, soal, atau istilah</span><kbd>/</kbd></button><div class="sg-quick"><i>Coba:</i>' + ['gratifikasi', 'silogisme', 'BerAKHLAK', 'otonomi daerah'].map(q => '<button type="button" data-sg="cari" data-sq="' + q + '">' + q + '</button>').join('') + '</div>');
 })();
 </script>
 
@@ -9526,7 +9597,7 @@ tkp:[]};
     else if(k==='r'){S.flag[S.i]=!S.flag[S.i];draw()}
   });
   // ===== Ranking tryout per paket (Google Apps Script) =====
-  const RK_URL='https://script.google.com/macros/s/AKfycbztApjvkuYN50WVkQyNY09SSk2N_8XDkGWTjHOZIzyuTyYchuSw6I1TyFvTCKW8TheLfg/exec';
+  const RK_URL='https://script.google.com/macros/s/AKfycbx8VvLFXTgYFNjsb0DypgmYAr_my33ovwY0G7XYMtQvPxlZSa71L9DGWPMnBf6HLR1ZPg/exec';
   const rkEsc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const rkNama=k=>k==='acak'?'Paket Acak':'Paket '+k;
   const rkDev=()=>{try{let d=localStorage.getItem('rk-dev');if(!d||!/^[a-z0-9]{8,40}$/i.test(d)){d=Array.from({length:20},()=>'abcdefghijklmnopqrstuvwxyz0123456789'[Math.floor(Math.random()*36)]).join('');localStorage.setItem('rk-dev',d)}return d}catch(e){return 'anon'+Math.random().toString(36).slice(2,12)}};
@@ -10207,5 +10278,23 @@ function placeSims() {
   $$('#lesson .simhold[data-sim]').forEach(h => { const n = document.getElementById(h.dataset.sim); if (n) h.appendChild(n); else h.remove(); });
 }
 </script>
+<style id="ux-max">
+/* ===== UX maksimal: pencarian & nav ===== */
+.sg-clr { flex: none; width: 28px; height: 28px; border: 0; border-radius: 50%; background: #D5DDE5; color: #3B4252; font-size: 11px; cursor: pointer; }
+.sg-top input:placeholder-shown ~ .sg-clr { display: none; }
+.sg-res > * { animation: sgUp .22s ease both; }
+@keyframes sgUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.sg-r.sg-sel { border-color: #247B7D; background: #F0F8F8; box-shadow: 0 0 0 3px rgba(36, 123, 125, .16); }
+.sg-h { display: flex; align-items: center; justify-content: space-between; }
+.sg-rc { padding: 2px 10px; border: 0; border-radius: 99px; background: transparent; color: #C0433A; font: 800 12px var(--font); text-transform: none; letter-spacing: 0; cursor: pointer; }
+.sg-rc:hover { background: #FDEEEE; }
+.sg-st { transition: transform .15s; } .sg-st:hover { transform: translateY(-2px); }
+.sg-res { scroll-behavior: smooth; overscroll-behavior: contain; }
+.sg-box { overscroll-behavior: contain; }
+.nav-btn:focus-visible, .sg-bar:focus-visible, .l-search:focus-visible, .sg-r:focus-visible { outline: 2px solid #247B7D; outline-offset: 2px; }
+@media (max-width: 899px) { .nav-btn { min-height: 52px; } .nav-btn span { font-weight: 800; } .nav-btn.is-active svg { transform: translateY(-1px); } }
+@media (max-width: 480px) { .sg-ov { padding: calc(8px + env(safe-area-inset-top, 0px)) 8px 8px; } .sg-box { border-radius: 22px; } .sg-r { padding: 13px 14px; } .sg-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; } .sg-chips::-webkit-scrollbar { display: none; } .sg-chips button { flex: none; } }
+</style>
+<script>document.addEventListener('click', function (e) { if (e.target.closest('.nav-btn,.sg-bar,.l-search,.sg-quick button')) { try { navigator.vibrate && navigator.vibrate(8); } catch (x) { } } });</script>
 </body>
 </html>
