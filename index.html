@@ -4617,9 +4617,20 @@ button.sg-r:hover { background: #F0F8F8; border-color: #16874C; transform: trans
       const ans = qs.map((_, j) => T[kk(j)]).filter(v => v !== undefined), okN = ans.filter(Boolean).length;
       const last = i === qs.length - 1, pct = ans.length ? Math.round(okN / ans.length * 100) : 0;
       const dots = `<div class="lt-dots" aria-label="Navigasi soal">${qs.map((_, j) => `<button type="button" class="${T[kk(j)] === undefined ? '' : (T[kk(j)] ? 'ok' : 'no')} ${j === i ? 'now' : ''}" data-qi="${j}" aria-label="Soal ${j + 1}"></button>`).join('')}</div>`;
-      return seg + chips + `<div class="lc qz lt"><div class="qhd"><small class="qn">Soal ${i + 1} dari ${qs.length}${x.tag ? ' · ' + x.tag : ''}</small>${ans.length ? `<span class="qsc">Benar ${okN}/${ans.length}</span>` : ''}</div>${dots}<div class="qt">${x.q}</div>
+      return seg + chips + `<div class="lc qz lt${p == null ? '' : ' answered'}"><div class="qhd"><small class="qn">Soal ${i + 1} dari ${qs.length}${x.tag ? ' · ' + x.tag : ''}</small>${ans.length ? `<span class="qsc">Benar ${okN}/${ans.length}</span>` : ''}</div>${dots}<div class="qt">${x.q}</div>
         ${x.o.map((o, j) => `<button class="opt ${p == null ? '' : (j === x.a ? 'ok' : (j === p ? 'no' : ''))}" data-j="${j}" ${p == null ? '' : 'disabled'}><span class="ol">${'ABCDE'[j]}</span><span class="ot">${o}</span></button>`).join('')}
-        ${p == null ? '' : `<div class="pk-detail ${p === x.a ? 'good' : 'bad'}" role="status" aria-live="polite"><strong>${p === x.a ? 'Yoi, bener!' : 'Belum pas, jawabannya ' + 'ABCDE'[x.a]}</strong>${pbh(x, x.sid, p)}</div>${last ? `<div class="lt-res"><div class="lt-ring" style="--p:${pct}"><b>${pct}%</b></div><p>Satu putaran selesai: benar ${okN} dari ${ans.length} soal.</p></div>` : ''}<div class="lc-act" style="margin-top:12px"><button class="btn" id="qNext">${last ? 'Ulangi dari awal' : 'Soal berikutnya'}</button></div>`}</div>`;
+        ${p == null ? '' : `<div class="pk-detail ${p === x.a ? 'good' : 'bad'}" role="status" aria-live="polite"><strong>${p === x.a ? 'Yoi, bener!' : 'Belum pas, jawabannya ' + 'ABCDE'[x.a]}</strong>${pbh(x, x.sid, p)}</div>${last ? `<div class="lt-res"><div class="lt-ring" style="--p:${pct}"><b>${pct}%</b></div><p>Satu putaran selesai: benar ${okN} dari ${ans.length} soal.</p></div>` : ''}<div class="qfb ${p === x.a ? 'good' : 'bad'}"><div class="qfb-in"><div class="qfb-t"><span class="qfb-ic">${p === x.a ? '✓' : '✕'}</span><b>${p === x.a ? 'Yoi, bener!' : 'Belum pas, jawabannya ' + 'ABCDE'[x.a]}</b></div><button class="btn" id="qNext">${last ? 'Ulangi dari awal' : 'Lanjut'}</button></div></div>`}</div>`;
+    }
+    function burstConfetti() {
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const box = document.createElement('div'); box.className = 'cf-box'; box.setAttribute('aria-hidden', 'true');
+      const cols = ['#16874C', '#F8B461', '#6C5CE7', '#E85D75', '#3BA7D6', '#FFD84D'];
+      for (let i = 0; i < 46; i++) {
+        const c = document.createElement('i');
+        c.style.cssText = 'left:' + (10 + Math.random() * 80) + '%;background:' + cols[i % cols.length] + ';--dx:' + (Math.random() * 160 - 80) + 'px;--r:' + (Math.random() * 720 - 360) + 'deg;animation-delay:' + (Math.random() * 0.25) + 's;animation-duration:' + (1.2 + Math.random() * 0.9) + 's';
+        box.appendChild(c);
+      }
+      document.body.appendChild(box); setTimeout(() => box.remove(), 2600);
     }
     function bindLatihan() {
       if (cur.t !== 'latihan') return;
@@ -4632,6 +4643,7 @@ button.sg-r:hover { background: #F0F8F8; border-color: #16874C; transform: trans
       $$('.qz .opt').forEach(b => b.onclick = () => {
         const qs = qzOf(cur.l, cur.qf), qi = (cur.q || 0) % qs.length, q = qs[qi], ok = (+b.dataset.j === q.a);
         (cur.tally = cur.tally || {})[cur.l.id + ':' + (cur.qf || '') + ':' + qi] = ok;
+        try { if (navigator.vibrate) navigator.vibrate(ok ? 12 : [30, 50, 30]); } catch (e) {}
         try { if (window.WB) { if (ok) window.WB.ok(q.sid + '|' + q.q); else window.WB.add(Object.assign({}, q, { g: (lessonById(q.sid) || {}).g || '' }), q.sid); } } catch (e) {}
         if (ok) { PR['qz|' + q.sid + '|' + q.si] = 'paham'; savePR(); }
         cur.pick = +b.dataset.j; renderLesson();
@@ -4642,6 +4654,7 @@ button.sg-r:hover { background: #F0F8F8; border-color: #16874C; transform: trans
         if (nq === 0) clr();
         cur.q = nq; cur.pick = null; renderLesson();
       };
+      try { const rg = $('.lt-res .lt-ring'); if (rg && cur.pick != null && parseFloat(rg.style.getPropertyValue('--p')) >= 80) burstConfetti(); } catch (e) {}
       if (cur.pick != null) { const d = $('.qz .pk-detail'); if (d && d.scrollIntoView) setTimeout(() => d.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 80); }
     }
 
@@ -9569,17 +9582,27 @@ tkp:[]};
     const sel=total-t.t;
     return '<div class="card ar-bf-res"><strong>⚔️ Battlefield</strong><p>Skormu <b>'+total+'</b> melawan juara <b>'+rkEsc(t.n)+'</b> (<b>'+t.t+'</b>). Dia bukan bot, kalahkan dia! '+(sel>0?'Kamu mengalahkan juara dengan selisih '+sel+' poin! Kirim skormu ke ranking.':sel===0?'Skor kalian imbang. Kirim skormu ke ranking.':'Kurang '+(-sel)+' poin lagi untuk menyalip juara. Coba lagi!')+'</p></div>';
   }
+  // Juara (rank 1) tiap paket, ditampilkan di kartu paket
+  const CH={};
+  function champShow(k,top){const el=root.querySelector('[data-ch="'+k+'"]');if(!el)return;el.innerHTML=top?'👑 Juara: <b>'+rkEsc(top.n)+'</b> · '+top.t:'👑 Belum ada juara, jadilah yang pertama!'}
+  function champLoad(){
+    [1,2,3,4,5,6,7,8,9,'acak'].forEach(async k=>{
+      if(k in CH){champShow(k,CH[k]);return}
+      try{const j=await rkFetch(RK_URL+'?a=rank&p='+encodeURIComponent(k)+'&dev='+encodeURIComponent(rkDev()));
+        if(!j||!j.ok)return;CH[k]=(j.list||[])[0]||null;champShow(k,CH[k])}catch(e){}
+    });
+  }
   function home(){
     clearInterval(tick);S=null;const P=pool(),n={};let tot=0;
     for(const g in QUOTA){n[g]=Math.min(QUOTA[g],P[g].length);tot+=n[g]}
     const full=tot===110,mins=Math.max(5,Math.round(100*tot/110));
     let B={};try{B=JSON.parse(localStorage.getItem('arena-best')||'{}')}catch(e){}
-    const card=(k,t,d,nw)=>'<div class="card"><h3>'+t+(nw?' <span class="ar-new">'+nw+'</span>':'')+'</h3>'+(d?'<p>'+d+'</p>':'')+(B[k]?'<div class="ar-best"><span>🏆 Skor terbaik</span><b>'+B[k].t+'</b><small>dari '+B[k].m+'</small></div>':'')+'<div class="ar-row"><button class="btn" data-pk="'+k+'">Mulai '+t+'</button><button class="btn ghost" data-rk="'+k+'">Ranking</button></div></div>';
+    const card=(k,t,d,nw)=>'<div class="card"><h3>'+t+(nw?' <span class="ar-new">'+nw+'</span>':'')+'</h3>'+(d?'<p>'+d+'</p>':'')+'<p class="ar-champ" data-ch="'+k+'"></p>'+(B[k]?'<div class="ar-best"><span>🏆 Skor terbaik</span><b>'+B[k].t+'</b><small>dari '+B[k].m+'</small></div>':'')+'<div class="ar-row"><button class="btn" data-pk="'+k+'">Mulai '+t+'</button><button class="btn ghost" data-rk="'+k+'">Ranking</button></div></div>';
     root.innerHTML='<div id="ar" class="ar-home"><span class="ar-kick">EDISI NOVEMBER 2026</span><h1 id="judul-tryout">Arena Tryout</h1><p class="ar-lead">Simulasi SKD lengkap dengan skor langsung dan ranking. Soal diperbarui setiap hari.</p><div class="ar-chips"><span>'+(full?'110 soal':tot+' soal')+'</span><span>'+mins+' menit</span><span>TWK '+n.twk+'</span><span>TIU '+n.tiu+'</span><span>TKP '+n.tkp+'</span></div><p class="ar-amb"><b>Ambang batas</b> ('+AR_PROF[arProf].n+'): TWK '+THR.twk+' · TIU '+THR.tiu+' · TKP '+THR.tkp+'<br>Skor: TWK dan TIU 5 poin per soal benar, TKP 1 sampai 5.</p>'+bfHtml()+card(1,'Paket 1','Coba paket ini, fight, dan rebut Rank 1 dari semua peserta!')+card(2,'Paket 2','Tancap gas di paket ini, kalahkan semua peserta dan duduki puncak ranking!')+card(3,'Paket 3','Masuk arena, kerahkan semua kemampuanmu, dan rebut posisi Rank 1!')+card(4,'Paket 4','Buktikan kamu yang terbaik, salip semua peserta menuju Rank 1!')+card(5,'Paket 5','Tantang semua peserta, kejar skor tertinggi, dan rebut mahkota Rank 1!')+card(6,'Paket 6','Waktunya adu skor: lewati semua peserta dan tempati Rank 1!')+card(7,'Paket 7','Gempur paket ini habis-habisan, jadilah peserta nomor satu di ranking!')+card(8,'Paket 8','Ayo bertarung, taklukkan semua lawan, dan rebut singgasana Rank 1!','BARU')+card(9,'Paket 9','Jangan mau kalah, kejar skor sempurna dan puncaki ranking semua peserta!','BARU')+card('acak','Paket Acak','Siap menghadapi apa pun? Rebut Rank 1 dari semua peserta lewat paket acak ini!')+'</div>';
     root.querySelectorAll('[data-pk]').forEach(b=>b.onclick=()=>start(P,n,mins,b.dataset.pk==='acak'?'acak':+b.dataset.pk));
     root.querySelectorAll('[data-prof]').forEach(b=>b.onclick=()=>{setProf(b.dataset.prof)});
     root.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>rkLihat(b.dataset.rk==='acak'?'acak':+b.dataset.rk));
-    bfInit(P,n,mins);resumeCard();bookCard();
+    bfInit(P,n,mins);resumeCard();bookCard();champLoad();
   }
   function resumeCard(){
     const o=svLoad();if(!o)return;
@@ -9663,9 +9686,10 @@ tkp:[]};
   function draw(){
     sv();
     const x=S.items[S.i],last=S.i===S.items.length-1,nr=Object.keys(S.flag).filter(k=>S.flag[k]).length;
-    root.innerHTML='<div id="ar"><div class="ar-top"><span class="ar-timer'+(S.left<300?' low':'')+'" id="arT" role="timer" aria-label="Sisa waktu">'+fmt(S.left)+'</span><span>'+Object.keys(S.ans).length+'/'+S.items.length+' terjawab'+(nr?' · '+nr+' ragu-ragu':'')+'</span><div class="ar-prog" role="progressbar" aria-label="Progres jawaban" aria-valuemin="0" aria-valuemax="'+S.items.length+'" aria-valuenow="'+Object.keys(S.ans).length+'"><i style="width:'+Math.round(Object.keys(S.ans).length/S.items.length*100)+'%"></i></div></div><div class="card"><span class="ar-sec">'+NAME[x.g]+' · No. '+(S.i+1)+'</span>'+(resmi(x.id)?'<span class="ar-sec ar-ok" title="'+resmi(x.id)+'">✅ Resmi</span>':'')+'<div class="ar-q">'+x.q+'</div>'+x.o.map((o,j)=>'<button type="button" class="ar-o'+(S.ans[S.i]===j?' on':'')+'" aria-pressed="'+(S.ans[S.i]===j)+'" data-j="'+j+'">'+'<span class="ar-l">'+String.fromCharCode(65+j)+'</span><span class="ar-t">'+o+'</span></button>').join('')+'<div class="ar-row"><button type="button" class="btn ghost'+(S.flag[S.i]?' on':'')+'" id="arR" aria-pressed="'+(!!S.flag[S.i])+'">'+(S.flag[S.i]?'Batal ragu-ragu':'Tandai ragu-ragu')+'</button><button class="btn ghost" id="arP"'+(S.i?'':' disabled')+'>Sebelumnya</button>'+(last?'<button class="btn" id="arF">Selesai</button>':'<button class="btn" id="arN">Berikutnya</button>')+'</div></div><div class="ar-nav" role="group" aria-label="Navigasi nomor soal">'+S.items.map((_,k)=>'<button type="button" aria-label="Soal '+(k+1)+', '+(S.ans[k]!==undefined?'terjawab':'belum dijawab')+(S.flag[k]?', ragu-ragu':'')+'"'+(k===S.i?' aria-current="true"':'')+' class="'+(S.flag[k]?'flag ':(S.ans[k]!==undefined?'done ':''))+(k===S.i?'now':'')+'" data-k="'+k+'">'+(k+1)+'</button>').join('')+'</div><div class="ar-leg"><span><i class="d done"></i>Terjawab</span><span><i class="d flag"></i>Ragu-ragu</span><span><i class="d"></i>Kosong</span><span class="ar-keys">Pintasan: A-E jawab, panah kiri/kanan pindah, R ragu</span></div><button class="btn ghost" id="arE">Akhiri sekarang</button></div>';
+    root.innerHTML='<div id="ar" class="ar-cat"><div class="ar-top"><span class="ar-timer'+(S.left<300?' low':'')+'" id="arT" role="timer" aria-label="Sisa waktu">'+fmt(S.left)+'</span><span>'+Object.keys(S.ans).length+'/'+S.items.length+' terjawab'+(nr?' · '+nr+' ragu-ragu':'')+'</span><div class="ar-prog" role="progressbar" aria-label="Progres jawaban" aria-valuemin="0" aria-valuemax="'+S.items.length+'" aria-valuenow="'+Object.keys(S.ans).length+'"><i style="width:'+Math.round(Object.keys(S.ans).length/S.items.length*100)+'%"></i></div></div><div class="card"><div class="ar-chs"><span class="ar-sec">'+NAME[x.g]+' · No. '+(S.i+1)+'</span>'+(resmi(x.id)?'<span class="ar-sec ar-ok" title="'+resmi(x.id)+'">✅ Resmi</span>':'')+'</div><div class="ar-q">'+x.q+'</div>'+x.o.map((o,j)=>'<button type="button" class="ar-o'+(S.ans[S.i]===j?' on':'')+'" aria-pressed="'+(S.ans[S.i]===j)+'" data-j="'+j+'">'+'<span class="ar-l">'+String.fromCharCode(65+j)+'</span><span class="ar-t">'+o+'</span></button>').join('')+'<div class="ar-row"><button type="button" class="btn ghost'+(S.flag[S.i]?' on':'')+'" id="arR" aria-pressed="'+(!!S.flag[S.i])+'">'+(S.flag[S.i]?'Batal ragu-ragu':'Tandai ragu-ragu')+'</button><button class="btn ghost" id="arP"'+(S.i?'':' disabled')+'>Sebelumnya</button>'+(last?'<button class="btn" id="arF">Selesai</button>':'<button class="btn" id="arN">Berikutnya</button>')+'</div></div><aside class="ar-side"><h3 class="ar-side-h">Daftar Soal</h3><div class="ar-nav" role="group" aria-label="Navigasi nomor soal">'+S.items.map((_,k)=>(!k||S.items[k].g!==S.items[k-1].g?'<span class="ar-ng">'+NAME[S.items[k].g]+'</span>':'')+'<button type="button" aria-label="Soal '+(k+1)+', '+(S.ans[k]!==undefined?'terjawab':'belum dijawab')+(S.flag[k]?', ragu-ragu':'')+'"'+(k===S.i?' aria-current="true"':'')+' class="'+(S.flag[k]?'flag ':(S.ans[k]!==undefined?'done ':''))+(k===S.i?'now':'')+'" data-k="'+k+'">'+(k+1)+'</button>').join('')+'</div><div class="ar-leg"><span><i class="d done"></i>Terjawab</span><span><i class="d flag"></i>Ragu-ragu</span><span><i class="d"></i>Kosong</span><span class="ar-keys">Pintasan: A-E jawab, panah kiri/kanan pindah, R ragu</span></div><button class="btn ghost" id="arE">Akhiri sekarang</button></aside></div>';
     root.querySelectorAll('.ar-o').forEach(b=>b.onclick=()=>{S.ans[S.i]=+b.dataset.j;draw()});
     root.querySelectorAll('.ar-nav button').forEach(b=>b.onclick=()=>{S.i=+b.dataset.k;draw()});
+    try{const nv=root.querySelector('.ar-nav'),nw=nv&&nv.querySelector('.now');if(nv&&nw&&nv.scrollHeight>nv.clientHeight)nv.scrollTop=nw.offsetTop-nv.clientHeight/2}catch(e){}
     if(S._li!==S.i){S._li=S.i;const c0=root.querySelector('.card');if(c0)c0.scrollIntoView({block:'start'})}
     const rg=document.getElementById('arR');if(rg)rg.onclick=()=>{S.flag[S.i]=!S.flag[S.i];draw()};
     const p=document.getElementById('arP'),nx=document.getElementById('arN'),f=document.getElementById('arF'),e=document.getElementById('arE');
@@ -10651,6 +10675,105 @@ html body .kwm-cta:hover { background:var(--brand-strong); }
 @media (max-width:640px){ html body .kw-sum b { white-space:nowrap; font-size:13px; } html body .kw-stack i:nth-child(n+4) { display:none; } html body .kw-stack i { width:28px; height:28px; } html body .kopi-wall { padding:10px 12px; gap:10px; } html body .kw-go { font-size:12.5px; } }
 @media (max-width:640px){ html body .kw-go { font-size:0; } html body .kw-go::after { font-size:24px; line-height:1; } }
 </style>
+<style id="desktop-cat">
+/* --- Latihan soal gaya Brilliant: panel feedback dari bawah + confetti --- */
+html body .view.is-active{animation-fill-mode:backwards}
+.qz.lt.answered{margin-bottom:132px}
+.qz.lt .pk-detail>strong:first-child{display:none}
+.qfb{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:14px 18px calc(14px + env(safe-area-inset-bottom,0px));border-radius:22px 22px 0 0;box-shadow:0 -10px 30px rgba(20,22,28,.12);animation:qfbUp .28s cubic-bezier(.2,.9,.3,1)}
+.qfb.good{background:#DDF4E8;border-top:2px solid #9ADDB9}
+.qfb.bad{background:#FDE3E1;border-top:2px solid #F1A9A4}
+.qfb-in{display:flex;align-items:center;gap:14px;max-width:760px;margin:0 auto}
+.qfb-t{flex:1;display:flex;align-items:center;gap:10px;font-size:17px;line-height:1.3}
+.qfb-ic{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;color:#fff;font-weight:800;font-size:16px}
+.qfb.good .qfb-ic{background:var(--ok,#1FA971)}.qfb.bad .qfb-ic{background:var(--bad,#D9625A)}
+.qfb.good .qfb-t{color:#0E6B45}.qfb.bad .qfb-t{color:#A12A24}
+.qfb .btn{min-width:150px;width:auto}
+.qfb.bad .btn{background:var(--bad,#D9625A) !important;border-color:var(--bad,#D9625A) !important;color:#fff !important}
+@keyframes qfbUp{from{transform:translateY(100%)}to{transform:none}}
+@media (min-width:900px){.qfb{left:var(--sidebar-w,248px)}}
+@media (max-width:560px){.qfb-in{flex-direction:column;align-items:stretch;gap:10px}.qfb .btn{width:100%}}
+.cf-box{position:fixed;inset:0;z-index:9990;pointer-events:none;overflow:hidden}
+.cf-box i{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px;opacity:0;animation:cfFall 1.6s ease-out forwards}
+@keyframes cfFall{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--dx),105vh) rotate(var(--r))}}
+@media (prefers-reduced-motion:reduce){.qfb{animation:none}}
+/* --- Bar bawah HP: pil melayang, penanda aktif berupa pil lembut --- */
+@media (max-width:899px){
+  html body #nav{left:16px;right:16px;bottom:calc(10px + env(safe-area-inset-bottom,0px));height:calc(var(--bottombar-h) + 4px);padding:6px;border:0;border-radius:999px;background:rgba(255,255,255,.97);box-shadow:0 10px 28px rgba(20,22,28,.16),0 0 0 1px rgba(20,22,28,.06)}
+  html body #nav .nav-list{height:100%;gap:4px}
+  html body #nav .nav-btn{height:100%;min-height:0;border:0;border-radius:999px;gap:2px;font-size:12px;transition:background .2s,color .2s}
+  html body #nav .nav-btn span{font-size:12px;font-weight:700}
+  html body #nav .nav-btn svg{width:22px;height:22px}
+  html body #nav .nav-btn::after{display:none}
+  html body #nav .nav-btn.is-active,html body #nav .nav-btn[data-view="tryout"].is-active{background:var(--brand-soft,#E4F5EB) !important;box-shadow:none}
+}
+.ar-champ{margin:0 0 10px;font-size:13.5px;font-weight:600;color:var(--ink,#14161C)}
+.ar-champ:empty{display:none}
+/* ===== Desktop (laptop/PC): tampilan CAT SKD asli. HP tidak berubah. ===== */
+.ar-side{display:contents}
+.ar-side-h,.ar-ng{display:none}
+@media (min-width:900px){
+  #view-tryout .view-inner{max-width:1180px}
+
+  /* --- Halaman Arena: paket jadi grid 3 kolom --- */
+  html body #ar.ar-home{max-width:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px;align-items:stretch}
+  html body #ar.ar-home>:is(.ar-kick,h1,.ar-lead,.ar-chips,.ar-amb,.ar-bf,.ar-bk),
+  html body #ar.ar-home>.ar-res:not(:has([data-pk])){grid-column:1/-1}
+  html body #ar.ar-home>.ar-kick{justify-self:start}
+  html body #ar.ar-home>.ar-amb{max-width:none}
+  html body #ar.ar-home .card:not(.ar-bf){display:flex;flex-direction:column}
+  html body #ar.ar-home .card:not(.ar-bf)>.ar-row{margin:auto 0 0;padding-top:14px}
+  html body #ar.ar-home .card:not(.ar-bf)>.ar-row+p{margin-top:10px}
+
+  /* --- Hasil & Buku Salah tetap enak dibaca (tidak melebar) --- */
+  html body #ar:not(.ar-home):not(.ar-cat){max-width:880px;margin-inline:auto}
+
+  /* --- Layar soal: bar atas + soal + panel nomor (2 kolom mulai 1200px) --- */
+  html body #ar.ar-cat{padding-bottom:32px}
+  html body #ar.ar-cat>.ar-top{position:sticky;top:12px;z-index:20;margin:0 0 16px;padding:10px 20px 12px;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:2px solid #E3E6EB;border-radius:20px;box-shadow:0 1px 2px rgba(16,24,40,.05);gap:8px 16px}
+  html body #ar.ar-cat .ar-timer{padding:4px 16px;font-size:20px;display:inline-flex;align-items:baseline;gap:10px}
+  html body #ar.ar-cat .ar-timer::before{content:"Sisa waktu";font-size:13px;font-weight:600;color:var(--ink-soft,#5B6070)}
+  html body #ar.ar-cat .ar-top>span:nth-child(2){font-size:14px}
+  html body #ar.ar-cat>.card{min-height:min(560px,calc(100vh - 190px));display:flex;flex-direction:column;padding:28px 32px;scroll-margin-top:110px}
+  html body #ar.ar-cat .ar-q{font-size:18px;line-height:1.75;max-width:none;margin:6px 0 20px}
+  html body #ar.ar-cat .ar-o{padding:14px 18px;margin-bottom:10px;cursor:pointer}
+  html body #ar.ar-cat .ar-o:hover:not(.on){border-color:var(--brand,#16874C);background:#F4FAF6}
+  html body #ar.ar-cat .card>.ar-row{margin-top:auto;padding-top:20px;border-top:2px dashed #E3E6EB;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:nowrap}
+  html body #ar.ar-cat .card>.ar-row .btn{min-width:150px}
+  html body #ar.ar-cat #arP{order:1}
+  html body #ar.ar-cat #arR{order:2;background:#FFF4D1;border-color:#E9C46A;color:#14161C}
+  html body #ar.ar-cat #arR.on{background:#FFE9A8}
+  html body #ar.ar-cat #arN,html body #ar.ar-cat #arF{order:3}
+  html body #ar.ar-cat>.card>.ar-row{margin-bottom:0;position:sticky;bottom:0;z-index:5;background:#fff;padding-bottom:8px}
+
+  /* Panel daftar soal (kartu) */
+  html body #ar.ar-cat>.ar-side{display:flex;flex-direction:column;margin-top:16px;padding:18px;background:#fff;border:2px solid #E3E6EB;border-radius:24px;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+  html body #ar.ar-cat .ar-side-h{display:block;margin:0 0 10px;font-size:16px}
+  html body #ar.ar-cat .ar-nav{display:grid;grid-template-columns:repeat(15,1fr);gap:6px;margin:0 0 12px;padding:2px 4px 4px 2px;overflow-y:auto;min-height:96px;scrollbar-width:thin}
+  html body #ar.ar-cat .ar-ng{display:block;grid-column:1/-1;margin:6px 0 0;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--ink-soft,#5B6070)}
+  html body #ar.ar-cat .ar-ng:first-child{margin-top:0}
+  html body #ar.ar-cat .ar-nav button{width:100%;height:auto;aspect-ratio:1;min-width:0;font-size:13px;border-radius:10px;padding:0}
+  html body #ar.ar-cat .ar-nav button:hover{border-color:var(--brand,#16874C)}
+  html body #ar.ar-cat .ar-leg{margin:0 0 12px;padding-top:12px;border-top:2px dashed #E3E6EB;gap:6px 14px;font-size:12.5px}
+  html body #ar.ar-cat .ar-keys{display:block;flex:1 0 100%;margin:4px 0 0;font-size:12px;line-height:1.5}
+  html body #ar.ar-cat #arE{width:100%;margin:0;color:#9B1C1C;border-color:#E8B9B9}
+  html body #ar.ar-cat #arE:hover{background:#FFE1E1}
+  html body #ar.ar-cat .ar-side .card{margin:0 0 12px;padding:14px;border-radius:16px}
+  html body #ar.ar-cat .ar-side .card>.ar-row{padding-top:10px;margin-top:10px;border-top:0;flex-wrap:wrap}
+  html body #ar.ar-cat .ar-side .card>.ar-row .btn{min-width:0;flex:1 1 auto}
+}
+@media (min-width:1200px){
+  html body #ar.ar-cat{display:grid;grid-template-columns:minmax(0,1fr) 320px;grid-template-areas:"top top" "main side";gap:0 20px;align-items:start}
+  html body #ar.ar-cat>.ar-top{grid-area:top}
+  html body #ar.ar-cat>.card{grid-area:main}
+  html body #ar.ar-cat>.ar-side{grid-area:side;margin-top:0;position:sticky;top:104px;max-height:calc(100vh - 124px)}
+  html body #ar.ar-cat .ar-nav{grid-template-columns:repeat(8,1fr)}
+}
+@media (min-width:900px) and (max-width:1099px){
+  html body #ar.ar-home{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
+
 <script>document.addEventListener('click', function (e) { if (e.target.closest('.nav-btn,.sg-bar,.l-search,.sg-quick button')) { try { navigator.vibrate && navigator.vibrate(8); } catch (x) { } } });</script>
 <script id="materi-shuf-js">
 (function(){
