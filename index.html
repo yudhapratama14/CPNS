@@ -9547,34 +9547,144 @@ tkp:[]};
   // ===== Battlefield: adu skor dengan peserta lain per paket =====
   const BF={pk:'9',top:null};
   const bfNama=k=>k==='acak'?'Acak':String(k);
+  // Maskot berkuda mini + bubble chat yang gonta-ganti
+  const BF_SAY=[['Shinzou wo sasageyo! \u2694\uFE0F','Persembahkan hatimu!'],['Subete no gisei wa ima, kono toki no tame ni.','Semua pengorbanan ini sekarang adalah demi saat ini.'],['Tatakawanakereba, katenai.','Kalau tidak bertarung, kita tidak akan menang'],['Susume!','Maju!'],['Tatakae!','Bertarunglah!']];
+  const BF_RIDER='<svg viewBox="0 0 120 84" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">'+
+    '<g class="bfh-sl" stroke="#14161C" stroke-width="2" stroke-linecap="round" opacity=".28"><line x1="4" y1="40" x2="14" y2="40"/><line x1="1" y1="50" x2="9" y2="50"/><line x1="6" y1="30" x2="12" y2="30"/></g>'+
+    '<g class="bfh-dust" fill="#14161C"><circle class="d1" cx="26" cy="79" r="3"/><circle class="d2" cx="17" cy="77" r="2.2"/></g>'+
+    '<g class="bfh-bob">'+
+      '<path class="bfh-tail" d="M31 44 Q16 38 10 54 Q19 49 23 57 Q27 50 34 53 Z" fill="#EF4B4B" stroke="#14161C" stroke-width="3" stroke-linejoin="round"/>'+
+      '<g stroke="#14161C" stroke-width="5" stroke-linecap="round">'+
+        '<g class="bfh-leg bfh-r1"><line x1="40" y1="60" x2="40" y2="77"/><ellipse cx="40" cy="77.5" rx="3.4" ry="2" fill="#14161C" stroke="none"/></g>'+
+        '<g class="bfh-leg bfh-r2"><line x1="47" y1="61" x2="47" y2="77"/><ellipse cx="47" cy="77.5" rx="3.4" ry="2" fill="#14161C" stroke="none"/></g>'+
+        '<g class="bfh-leg bfh-f2"><line x1="62" y1="61" x2="62" y2="77"/><ellipse cx="62" cy="77.5" rx="3.4" ry="2" fill="#14161C" stroke="none"/></g>'+
+        '<g class="bfh-leg bfh-f1"><line x1="68" y1="60" x2="68" y2="77"/><ellipse cx="68" cy="77.5" rx="3.4" ry="2" fill="#14161C" stroke="none"/></g>'+
+      '</g>'+
+      '<path d="M72 46 L82 27 L95 33 L84 55 Z" fill="#C98A4B" stroke="#14161C" stroke-width="3" stroke-linejoin="round"/>'+
+      '<path d="M87 29 L89 19 L94 28 Z" fill="#C98A4B" stroke="#14161C" stroke-width="2.6" stroke-linejoin="round"/>'+
+      '<ellipse cx="98" cy="37" rx="12" ry="7" transform="rotate(28 98 37)" fill="#C98A4B" stroke="#14161C" stroke-width="3"/>'+
+      '<circle cx="96" cy="33.5" r="1.8" fill="#14161C"/><circle cx="106.5" cy="42" r="1.1" fill="#14161C"/>'+
+      '<path d="M86 27 Q73 28 69 46 Q77 42 80 41 Q79 36 85 35 Q82 31 88 31 Z" fill="#6C5CE7" stroke="#14161C" stroke-width="2.6" stroke-linejoin="round"/>'+
+      '<ellipse cx="55" cy="52" rx="26" ry="13" fill="#C98A4B" stroke="#14161C" stroke-width="3.2"/>'+
+      '<path d="M103 41 Q85 41 67 34" fill="none" stroke="#14161C" stroke-width="1.6" stroke-linecap="round"/>'+
+      '<path d="M44 40 Q55 36 66 40 L65 47 Q55 50 45 47 Z" fill="#EF4B4B" stroke="#14161C" stroke-width="2.4" stroke-linejoin="round"/>'+
+      '<g transform="rotate(6 55 40)">'+
+        '<line x1="54" y1="40" x2="59" y2="53" stroke="#14161C" stroke-width="4" stroke-linecap="round"/><ellipse cx="60.5" cy="54.5" rx="4.2" ry="2.5" fill="#EF4B4B" stroke="#14161C" stroke-width="1.8"/>'+
+        '<g class="bfh-hb" fill="#EF4B4B" stroke="#14161C" stroke-width="1.8" stroke-linejoin="round"><path d="M43 21 L33 17 L36 25 Z"/><path d="M43 23 L32 27 L38 31 Z"/></g>'+
+        '<rect x="43" y="11" width="24" height="30" rx="6" fill="#fff"/>'+
+        '<path d="M49 12 H61 a5 5 0 0 1 5 5 V21 H44 V17 a5 5 0 0 1 5 -5z" fill="#6C5CE7"/>'+
+        '<rect x="42" y="20" width="26" height="4.5" rx="1.6" fill="#EF4B4B" stroke="#14161C" stroke-width="2"/>'+
+        '<circle cx="50" cy="28.5" r="1.9" fill="#14161C"/><circle cx="60" cy="28.5" r="1.9" fill="#14161C"/>'+
+        '<circle cx="46.2" cy="32" r="1.8" fill="#F9B4B4"/><circle cx="63.8" cy="32" r="1.8" fill="#F9B4B4"/>'+
+        '<path d="M51.5 32.5 Q55 38 58.5 32.5 Z" fill="#14161C" stroke="#14161C" stroke-width="1" stroke-linejoin="round"/>'+
+        '<path d="M44 35.5 H66 V37 a4 4 0 0 1 -4 4 H48 a4 4 0 0 1 -4 -4 Z" fill="#1F3A6E"/><circle cx="55" cy="38.2" r="1.2" fill="#E3B04B"/>'+
+        '<rect x="43" y="11" width="24" height="30" rx="6" fill="none" stroke="#14161C" stroke-width="2.6"/>'+
+        '<line x1="66" y1="33" x2="74" y2="23" stroke="#14161C" stroke-width="4" stroke-linecap="round"/>'+
+        '<g class="bfh-sw"><line x1="74" y1="23" x2="88" y2="5" stroke="#14161C" stroke-width="4.6" stroke-linecap="round"/><line x1="74" y1="23" x2="88" y2="5" stroke="#DDE3EC" stroke-width="2.2" stroke-linecap="round"/><line x1="72.7" y1="19" x2="78.3" y2="23.4" stroke="#14161C" stroke-width="4.6" stroke-linecap="round"/><line x1="72.7" y1="19" x2="78.3" y2="23.4" stroke="#E3B04B" stroke-width="2.4" stroke-linecap="round"/><path class="bfh-sp" d="M91 1 l1 3 3 1 -3 1 -1 3 -1 -3 -3 -1 3 -1z" fill="#F9D56E" stroke="#14161C" stroke-width=".8" stroke-linejoin="round"/></g>'+
+      '</g>'+
+    '</g></svg>';
+  const BF_TITAN='<svg viewBox="0 0 64 76" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">'+
+    '<g stroke="#14161C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">'+
+      '<rect x="19" y="56" width="10" height="16" rx="3" fill="#F0B9A0"/><rect x="35" y="56" width="10" height="16" rx="3" fill="#F0B9A0"/>'+
+      '<line x1="14" y1="38" x2="5" y2="21" stroke-width="9"/><line x1="14" y1="38" x2="5" y2="21" stroke="#F0B9A0" stroke-width="4.2"/><circle cx="5" cy="19" r="5" fill="#F0B9A0"/>'+
+      '<line x1="50" y1="38" x2="59" y2="21" stroke-width="9"/><line x1="50" y1="38" x2="59" y2="21" stroke="#F0B9A0" stroke-width="4.2"/><circle cx="59" cy="19" r="5" fill="#F0B9A0"/>'+
+      '<rect x="14" y="32" width="36" height="28" rx="9" fill="#F0B9A0"/>'+
+      '<path d="M18 52 H46 L44 62 H20 Z" fill="#8B5E3C"/>'+
+      '<path d="M26 38 Q32 43 38 38 M32 43 V50" fill="none" stroke-width="2" opacity=".55"/>'+
+      '<circle cx="32" cy="20" r="15" fill="#F0B9A0"/>'+
+    '</g>'+
+    '<ellipse cx="26" cy="19" rx="4.4" ry="3.6" fill="#fff" stroke="#14161C" stroke-width="1.6"/><ellipse cx="38" cy="19" rx="4.4" ry="3.6" fill="#fff" stroke="#14161C" stroke-width="1.6"/>'+
+    '<circle cx="27" cy="19.5" r="1.7" fill="#14161C"/><circle cx="37" cy="19.5" r="1.7" fill="#14161C"/>'+
+    '<path d="M20.5 13 L30 16.5 M43.5 13 L34 16.5" stroke="#14161C" stroke-width="2.6" stroke-linecap="round"/>'+
+    '<path d="M22 27 Q32 37 42 27 Z" fill="#fff" stroke="#14161C" stroke-width="2.4" stroke-linejoin="round"/><path d="M27 29.6 V32.4 M32 30.6 V34 M37 29.6 V32.4" stroke="#14161C" stroke-width="1.5"/>'+
+    '<g class="bti-st" fill="#fff" stroke="#14161C" stroke-width="1.2" opacity=".85"><circle cx="20" cy="3" r="2.6"/><circle cx="45" cy="2" r="2"/></g>'+
+    '</svg>';
   function bfHtml(){
     const ks=[9,8,7,6,5,4,3,2,1,'acak'];
     return '<div class="card ar-bf"><div class="ar-bf-top"><span class="ar-bf-ic" aria-hidden="true">\u2694\uFE0F</span><div><h3>Battlefield</h3><p>Adu skor dengan peserta lain, kalahkan juara.</p></div></div>'+
-      '<div class="ar-bf-pk" role="group" aria-label="Pilih paket">'+ks.map(k=>'<button type="button" data-bp="'+k+'" aria-pressed="'+(String(k)===BF.pk)+'" class="'+(String(k)===BF.pk?'on':'')+'">'+(k==='acak'?'Acak':'P'+k)+'</button>').join('')+'</div>'+
+      '<div class="ar-bf-say" id="bfSay" aria-hidden="true"><span id="bfSayT">'+BF_SAY[0][0]+'</span><small id="bfSayS">'+BF_SAY[0][1]+'</small></div><div class="ar-bf-run" id="bfRun" aria-hidden="true"><div class="ar-bf-rider" id="bfRd">'+BF_RIDER+'</div><div class="ar-bf-ti" id="bfTi"><div class="ar-bf-lab" id="bfLab">SKD</div>'+BF_TITAN+'</div><div class="ar-bf-fin" id="bfFin">Berhasil meraih NIP \uD83C\uDF89</div><div class="ar-bf-conf"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="ar-bf-steps" id="bfSteps" aria-hidden="true"><span>SKD</span><span>SKB</span><span>Test Tambahan</span><span>NIP</span></div>'+
+      '<div class="ar-bf-l" id="bfPkL">Pilih paket</div>'+
+      '<div class="ar-bf-pk" role="group" aria-labelledby="bfPkL">'+ks.map(k=>'<button type="button" data-bp="'+k+'" aria-pressed="'+(String(k)===BF.pk)+'" class="'+(String(k)===BF.pk?'on':'')+'">'+(k==='acak'?'Acak':'P'+k)+'</button>').join('')+'</div>'+
       '<div class="ar-bf-board" id="bfBoard" aria-live="polite">Memuat papan juara...</div>'+
       '<div class="ar-row"><button type="button" class="btn" id="bfGo">Masuk Battlefield</button><button type="button" class="btn ghost" id="bfRank">Ranking</button></div></div>';
   }
   async function bfLoad(){
     const box=document.getElementById('bfBoard');if(!box)return;
-    const pk=BF.pk;BF.top=null;box.textContent='Memuat papan juara...';
+    const pk=BF.pk;BF.top=null;box.className='ar-bf-board is-load';box.textContent='Memuat papan juara...';
     try{
       const j=await rkFetch(RK_URL+'?a=rank&p='+encodeURIComponent(pk)+'&dev='+encodeURIComponent(rkDev()));
       if(!j||!j.ok)throw new Error('gagal');
       if(BF.pk!==pk||!document.getElementById('bfBoard'))return;
       const top=(j.list||[]).slice(0,3),medal=['🥇','🥈','🥉'];
       if(top.length)BF.top={pk:pk,t:top[0].t,n:top[0].n};
-      box.innerHTML=(top.length?'<ol>'+top.map((x,i)=>'<li>'+medal[i]+' <span>'+rkEsc(x.n)+'</span> <b>'+x.t+'</b></li>').join('')+'</ol><p class="ar-bf-note">👑 Rank 1: <b>'+rkEsc(top[0].n)+'</b>. Kalahkan dia, dia bukan bot!</p><p>'+(j.me?'Posisimu: <b>#'+j.me.r+'</b> dari '+j.jumlah+' peserta (skor '+j.me.t+').':j.jumlah+' peserta. Kamu belum masuk papan ini.')+'</p>':'<p>Belum ada peserta di paket ini. Jadilah juara pertama!</p>');
-    }catch(e){if(BF.pk===pk&&document.getElementById('bfBoard'))box.textContent='Papan juara belum bisa dimuat. Kamu tetap bisa masuk Battlefield, skor dikirim setelah selesai.'}
+      box.className='ar-bf-board';
+      box.innerHTML=(top.length?'<ol>'+top.map((x,i)=>'<li><span class="m">'+medal[i]+'</span><span class="n">'+rkEsc(x.n)+'</span><b>'+x.t+'</b></li>').join('')+'</ol><p class="ar-bf-note">👑 Rank 1: <b>'+rkEsc(top[0].n)+'</b>. Kalahkan dia, dia bukan bot!</p><p class="ar-bf-me">'+(j.me?'Posisimu: <b>#'+j.me.r+'</b> dari '+j.jumlah+' peserta (skor '+j.me.t+').':j.jumlah+' peserta. Kamu belum masuk papan ini.')+'</p>':'<p>Belum ada peserta di paket ini. Jadilah juara pertama!</p>');
+    }catch(e){
+      if(BF.pk===pk&&document.getElementById('bfBoard')){
+        box.className='ar-bf-board is-off';
+        box.innerHTML='<p>Papan juara belum bisa dimuat. Kamu tetap bisa masuk Battlefield, skor dikirim setelah selesai.</p><button type="button" class="ar-bf-retry" id="bfRetry">Coba lagi</button>';
+        const r=document.getElementById('bfRetry');if(r)r.onclick=bfLoad;
+      }
+    }
+  }
+  // Adegan: maskot ngomong dulu (bubble tampil penuh sampai sempat dibaca), baru berkuda menebas titan SKD, SKB, Test Tambahan, lalu "Berhasil meraih NIP".
+  // Adegan baru mulai saat jalurnya terlihat di layar, jadi tidak ada serangan yang lewat sebelum kamu sempat membaca.
+  const BF_STG=['SKD','SKB','Test Tambahan'];
+  function bfRider(){
+    (BF.tms||[]).forEach(clearTimeout);BF.tms=[];BF.next=null;
+    if(BF.io){BF.io.disconnect();BF.io=null}
+    const run=document.getElementById('bfRun'),bub=document.getElementById('bfSay'),el=document.getElementById('bfSayT'),sb=document.getElementById('bfSayS'),lab=document.getElementById('bfLab'),rd=document.getElementById('bfRd');
+    if(!run||!bub||!el||!sb||!lab||!rd)return;
+    const steps=[].slice.call(document.querySelectorAll('#bfSteps span'));
+    const calm=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+    let st=0,vis=false;
+    const clr=()=>{(BF.tms||[]).forEach(clearTimeout);BF.tms=[]};
+    const T=(f,ms)=>BF.tms.push(setTimeout(()=>{if(document.getElementById('bfRun')===run&&vis&&!document.hidden)f()},ms));
+    // tinggi bubble dikunci ke kalimat terpanjang supaya isi di bawahnya tidak loncat
+    const fit=()=>{const w=bub.clientWidth;if(!w||BF.fitW===w)return;BF.fitW=w;const a=el.textContent,c=sb.textContent;bub.style.minHeight='0';let m=0;BF_SAY.forEach(x=>{el.textContent=x[0];sb.textContent=x[1];m=Math.max(m,bub.offsetHeight)});el.textContent=a;sb.textContent=c;bub.style.minHeight=m+'px'};
+    BF.fit=fit;
+    if(!BF.rs){BF.rs=1;window.addEventListener('resize',()=>{if(BF.fit)BF.fit()})}
+    const say=()=>{const k=BF.sayN||0,x=BF_SAY[k%BF_SAY.length];BF.sayN=k+1;el.textContent=x[0];sb.textContent=x[1];bub.classList.remove('bf-pop');void bub.offsetWidth;bub.classList.add('bf-pop');return x[0].length+x[1].length};
+    const mark=()=>steps.forEach((x,k)=>{x.classList.toggle('bf-done',k<st||st===3);x.classList.toggle('bf-now',k===st&&st<3)});
+    function stage(n){
+      clr();st=n%4;run.className='ar-bf-run';mark();fit();
+      const len=say();
+      if(st<3){
+        lab.textContent=BF_STG[st];
+        if(calm){run.classList.add('bf-in');return}
+        const read=Math.min(7500,Math.max(3200,1600+len*45));   // waktu baca sebelum menyerang
+        T(()=>run.classList.add('bf-hop'),120);
+        T(()=>run.classList.add('bf-in'),700);
+        T(()=>{run.style.setProperty('--chg',Math.max(40,run.clientWidth-rd.offsetWidth-76)+'px');run.classList.add('bf-charge')},read);
+        T(()=>{run.classList.add('bf-hit');lab.textContent=BF_STG[st]+' \u2713';if(steps[st]){steps[st].classList.add('bf-done');steps[st].classList.remove('bf-now')}},read+950);
+        T(()=>stage(st+1),read+3300);
+      }else{
+        run.classList.add('bf-fin');
+        if(!calm)T(()=>stage(0),Math.max(9000,2500+len*70));
+      }
+    }
+    BF.next=()=>{run.classList.remove('bf-hop');void run.offsetWidth;run.classList.add('bf-hop')};
+    run.onclick=()=>{if(vis)stage(st+1)};
+    bub.onclick=run.onclick;
+    const go=v=>{if(v===vis)return;vis=v;if(v){stage(st<3?st:0)}else{clr();run.className='ar-bf-run'}};
+    if('IntersectionObserver' in window){
+      BF.io=new IntersectionObserver(es=>go(es[es.length-1].isIntersecting),{threshold:.5});
+      BF.io.observe(run);
+    }else go(true);
+    if(!BF.vc){BF.vc=1;document.addEventListener('visibilitychange',()=>{if(BF.again)BF.again()})}
+    BF.again=()=>{if(document.hidden){clr()}else if(vis&&document.getElementById('bfRun')===run){stage(st<3?st:0)}};
   }
   function bfInit(P,n,mins){
     root.querySelectorAll('[data-bp]').forEach(b=>b.onclick=()=>{
       BF.pk=b.dataset.bp;
       root.querySelectorAll('[data-bp]').forEach(x=>{const on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on)});
+      if(BF.next)BF.next();
       bfLoad();
     });
     const go=document.getElementById('bfGo'),rk=document.getElementById('bfRank');
     if(go)go.onclick=()=>start(P,n,mins,BF.pk==='acak'?'acak':+BF.pk);
     if(rk)rk.onclick=()=>rkLihat(BF.pk==='acak'?'acak':+BF.pk);
+    bfRider();
     bfLoad();
   }
   function bfHasil(total,pk){
@@ -9598,7 +9708,7 @@ tkp:[]};
     const full=tot===110,mins=Math.max(5,Math.round(100*tot/110));
     let B={};try{B=JSON.parse(localStorage.getItem('arena-best')||'{}')}catch(e){}
     const card=(k,t,d,nw)=>'<div class="card"><h3>'+t+(nw?' <span class="ar-new">'+nw+'</span>':'')+'</h3>'+(d?'<p>'+d+'</p>':'')+'<p class="ar-champ" data-ch="'+k+'"></p>'+(B[k]?'<div class="ar-best"><span>🏆 Skor terbaik</span><b>'+B[k].t+'</b><small>dari '+B[k].m+'</small></div>':'')+'<div class="ar-row"><button class="btn" data-pk="'+k+'">Mulai '+t+'</button><button class="btn ghost" data-rk="'+k+'">Ranking</button></div></div>';
-    root.innerHTML='<div id="ar" class="ar-home"><span class="ar-kick">EDISI NOVEMBER 2026</span><h1 id="judul-tryout">Arena Tryout</h1><p class="ar-lead">Simulasi SKD lengkap dengan skor langsung dan ranking. Soal diperbarui setiap hari.</p><div class="ar-chips"><span>'+(full?'110 soal':tot+' soal')+'</span><span>'+mins+' menit</span><span>TWK '+n.twk+'</span><span>TIU '+n.tiu+'</span><span>TKP '+n.tkp+'</span></div><p class="ar-amb"><b>Ambang batas</b> ('+AR_PROF[arProf].n+'): TWK '+THR.twk+' · TIU '+THR.tiu+' · TKP '+THR.tkp+'<br>Skor: TWK dan TIU 5 poin per soal benar, TKP 1 sampai 5.</p>'+bfHtml()+card(1,'Paket 1','Coba paket ini, fight, dan rebut Rank 1 dari semua peserta!')+card(2,'Paket 2','Tancap gas di paket ini, kalahkan semua peserta dan duduki puncak ranking!')+card(3,'Paket 3','Masuk arena, kerahkan semua kemampuanmu, dan rebut posisi Rank 1!')+card(4,'Paket 4','Buktikan kamu yang terbaik, salip semua peserta menuju Rank 1!')+card(5,'Paket 5','Tantang semua peserta, kejar skor tertinggi, dan rebut mahkota Rank 1!')+card(6,'Paket 6','Waktunya adu skor: lewati semua peserta dan tempati Rank 1!')+card(7,'Paket 7','Gempur paket ini habis-habisan, jadilah peserta nomor satu di ranking!')+card(8,'Paket 8','Ayo bertarung, taklukkan semua lawan, dan rebut singgasana Rank 1!','BARU')+card(9,'Paket 9','Jangan mau kalah, kejar skor sempurna dan puncaki ranking semua peserta!','BARU')+card('acak','Paket Acak','Siap menghadapi apa pun? Rebut Rank 1 dari semua peserta lewat paket acak ini!')+'</div>';
+    root.innerHTML='<div id="ar" class="ar-home"><span class="ar-kick">EDISI NOVEMBER 2026</span><h1 id="judul-tryout">Arena Tryout</h1><p class="ar-lead">Simulasi SKD lengkap dengan skor langsung dan ranking. Soal diperbarui setiap hari.</p><div class="ar-chips"><span>'+(full?'110 soal':tot+' soal')+'</span><span>'+mins+' menit</span><span>TWK '+n.twk+'</span><span>TIU '+n.tiu+'</span><span>TKP '+n.tkp+'</span></div><div class="ar-amb"><div class="ar-amb-h"><b>Ambang batas</b><span>'+AR_PROF[arProf].n+'</span></div><div class="ar-amb-g"><span>TWK<b>'+THR.twk+'</b></span><span>TIU<b>'+THR.tiu+'</b></span><span>TKP<b>'+THR.tkp+'</b></span></div><p>Skor: TWK dan TIU 5 poin per soal benar, TKP 1 sampai 5.</p></div>'+bfHtml()+'<h2 class="ar-h2">Pilih paket tryout</h2>'+card(1,'Paket 1','Coba paket ini, fight, dan rebut Rank 1 dari semua peserta!')+card(2,'Paket 2','Tancap gas di paket ini, kalahkan semua peserta dan duduki puncak ranking!')+card(3,'Paket 3','Masuk arena, kerahkan semua kemampuanmu, dan rebut posisi Rank 1!')+card(4,'Paket 4','Buktikan kamu yang terbaik, salip semua peserta menuju Rank 1!')+card(5,'Paket 5','Tantang semua peserta, kejar skor tertinggi, dan rebut mahkota Rank 1!')+card(6,'Paket 6','Waktunya adu skor: lewati semua peserta dan tempati Rank 1!')+card(7,'Paket 7','Gempur paket ini habis-habisan, jadilah peserta nomor satu di ranking!')+card(8,'Paket 8','Ayo bertarung, taklukkan semua lawan, dan rebut singgasana Rank 1!','BARU')+card(9,'Paket 9','Jangan mau kalah, kejar skor sempurna dan puncaki ranking semua peserta!','BARU')+card('acak','Paket Acak','Siap menghadapi apa pun? Rebut Rank 1 dari semua peserta lewat paket acak ini!')+'</div>';
     root.querySelectorAll('[data-pk]').forEach(b=>b.onclick=()=>start(P,n,mins,b.dataset.pk==='acak'?'acak':+b.dataset.pk));
     root.querySelectorAll('[data-prof]').forEach(b=>b.onclick=()=>{setProf(b.dataset.prof)});
     root.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>rkLihat(b.dataset.rk==='acak'?'acak':+b.dataset.rk));
@@ -10774,6 +10884,132 @@ html body .view.is-active{animation-fill-mode:backwards}
 }
 </style>
 
+<style id="bf-rider-css">
+/* Battlefield: maskot berkuda mini + bubble, chip paket rapi, papan juara jelas. Rapikan beranda Arena. */
+html body #ar.ar-home .ar-bf{padding:16px;border:2px solid #E3E6EB;border-radius:20px;background:linear-gradient(160deg,#FFF6E3 0%,#FFFFFF 60%);box-shadow:0 1px 2px rgba(16,24,40,.05);overflow:hidden}
+html body #ar.ar-home .ar-bf-top{display:flex;align-items:center;gap:12px}
+html body #ar.ar-home .ar-bf-ic{width:42px;height:42px;font-size:20px;border:2px solid #E3E6EB;background:#fff}
+html body #ar.ar-home .ar-bf-top h3{margin:0;font-size:18px;line-height:1.2}
+html body #ar.ar-home .ar-bf-top p{margin:2px 0 0;font-size:13px;line-height:1.45;color:var(--ink-soft,#4A5058)}
+
+/* jalur lari: maskot kecil + bubble */
+.ar-bf-rider svg{display:block;width:100%;height:auto;overflow:visible}
+.ar-bf-say.bf-pop{animation:bfPop .35s cubic-bezier(.2,.9,.3,1.4)}
+.bfh-bob{animation:bfBob .46s ease-in-out infinite}
+.bfh-leg{animation:bfLeg .46s ease-in-out infinite alternate}
+.bfh-f1{transform-origin:68px 60px}.bfh-f2{transform-origin:62px 61px;animation-delay:-.08s}
+.bfh-r1{transform-origin:40px 60px;animation-delay:-.23s}.bfh-r2{transform-origin:47px 61px;animation-delay:-.31s}
+.bfh-tail{transform-origin:31px 46px;animation:bfTail .46s ease-in-out infinite alternate}
+.bfh-hb{transform-origin:43px 22px;animation:bfTail .3s ease-in-out infinite alternate}
+.bfh-sw{transform-origin:74px 23px;animation:bfSw 1.4s ease-in-out infinite}
+.bfh-sp{transform-box:fill-box;transform-origin:center;animation:bfSpark 1.4s ease-in-out infinite}
+.bfh-dust .d1{animation:bfDust .46s linear infinite}.bfh-dust .d2{animation:bfDust .46s linear infinite -.23s}
+.bfh-sl{animation:bfSpeed .46s linear infinite}
+.ar-bf-run{position:relative;height:100px;margin:0 0 6px;border-radius:14px;background:#FFF1D6;overflow:hidden;cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;--chg:150px}
+.ar-bf-run::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:repeating-linear-gradient(90deg,rgba(20,22,28,.28) 0 8px,transparent 8px 18px);animation:bfGround .5s linear infinite}
+.ar-bf-rider{position:absolute;left:6px;bottom:10px;width:72px;line-height:0;transition:transform .9s cubic-bezier(.5,0,.8,.4)}
+.ar-bf-run.bf-charge .ar-bf-rider{transform:translateX(var(--chg))}
+.ar-bf-run:not(.bf-charge) .ar-bf-rider{transition-duration:.7s;transition-timing-function:ease-out}
+.ar-bf-say{position:relative;display:flex;flex-direction:column;justify-content:center;margin:14px 0 10px;min-width:0;padding:8px 14px;border:2px solid #14161C;border-radius:14px;background:#fff;font:800 14px/1.35 var(--font,inherit);color:#14161C;transform-origin:left bottom;cursor:pointer;overflow-wrap:break-word}
+.ar-bf-say small{display:block;margin-top:3px;font:600 12px/1.4 var(--font,inherit);color:var(--ink-soft,#4A5058)}
+.ar-bf-say::before{content:"";position:absolute;left:34px;bottom:-7px;width:10px;height:10px;background:#fff;border-right:2px solid #14161C;border-bottom:2px solid #14161C;transform:rotate(45deg)}
+.ar-bf-ti{position:absolute;right:10px;bottom:10px;width:46px;line-height:0;opacity:0;transform:translateX(110px);transition:transform .9s ease-out,opacity .4s}
+.ar-bf-ti svg{display:block;width:100%;height:auto;overflow:visible;transform-origin:50% 100%}
+.ar-bf-run.bf-in .ar-bf-ti{opacity:1;transform:none}
+.ar-bf-run.bf-in .ar-bf-ti svg{animation:bfStomp .9s ease-in-out infinite}
+.ar-bf-lab{position:absolute;right:-4px;bottom:calc(100% + 4px);white-space:nowrap;padding:3px 10px;border:2px solid #14161C;border-radius:99px;background:#fff;font:800 12px/1.25 var(--font,inherit);color:#14161C}
+.ar-bf-run.bf-hit .ar-bf-ti svg{animation:bfFall .9s ease-in forwards}
+.ar-bf-run.bf-hit .ar-bf-lab{background:#DDF5E4}
+.ar-bf-run.bf-hit .ar-bf-ti::after{content:"\1F4A5";position:absolute;left:-6px;top:6px;font-size:24px;line-height:1;animation:bfBoom .7s ease-out forwards}
+.ar-bf-run.bf-charge .bfh-sw{animation:bfSlash .45s ease-in-out infinite}
+.ar-bf-run.bf-hop .ar-bf-rider svg,.ar-bf-run.bf-fin .ar-bf-rider svg{animation:bfHop .6s ease-out}
+.ar-bf-run.bf-fin .ar-bf-rider svg{animation-iteration-count:infinite;animation-duration:.8s}
+.ar-bf-fin{position:absolute;right:10px;bottom:16px;max-width:calc(100% - 104px);padding:6px 12px;border:2px solid #14161C;border-radius:14px;background:#F9D56E;font:800 13.5px/1.3 var(--font,inherit);text-align:center;color:#14161C;opacity:0;transform:scale(.7);transform-origin:right bottom;transition:opacity .3s,transform .4s cubic-bezier(.2,.9,.3,1.4)}
+.ar-bf-run.bf-fin .ar-bf-fin{opacity:1;transform:none}
+.ar-bf-conf{position:absolute;right:10px;bottom:30px;width:150px;height:0;pointer-events:none}
+.ar-bf-conf i{position:absolute;bottom:0;width:6px;height:9px;border-radius:2px;opacity:0}
+.ar-bf-conf i:nth-child(1){left:6%;background:#EF4B4B}.ar-bf-conf i:nth-child(2){left:20%;background:#6C5CE7;animation-delay:.2s!important}.ar-bf-conf i:nth-child(3){left:34%;background:#F9D56E;animation-delay:.5s!important}.ar-bf-conf i:nth-child(4){left:50%;background:#16874C;animation-delay:.1s!important}.ar-bf-conf i:nth-child(5){left:64%;background:#EF4B4B;animation-delay:.4s!important}.ar-bf-conf i:nth-child(6){left:78%;background:#6C5CE7;animation-delay:.25s!important}.ar-bf-conf i:nth-child(7){left:92%;background:#F9D56E;animation-delay:.6s!important}
+.ar-bf-run.bf-fin .ar-bf-conf i{animation:bfConf 1.5s ease-out infinite}
+.ar-bf-steps{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px}
+.ar-bf-steps span{padding:3px 10px;border:1.5px solid #E3E6EB;border-radius:99px;background:#fff;font:800 11.5px/1.3 var(--font,inherit);color:var(--ink-soft,#4A5058)}
+.ar-bf-steps span.bf-now{background:#14161C;border-color:#14161C;color:#fff}
+.ar-bf-steps span.bf-done{background:#DDF5E4;border-color:#9CD7B1;color:#14532D}
+.ar-bf-steps span.bf-done::before{content:"\2713 "}
+@keyframes bfStomp{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-2px) rotate(2deg)}}
+@keyframes bfFall{0%{transform:none;filter:none;opacity:1}15%{filter:brightness(2.2)}100%{transform:rotate(78deg) translateY(10px);opacity:0}}
+@keyframes bfBoom{0%{transform:scale(.3);opacity:1}100%{transform:scale(1.5);opacity:0}}
+@keyframes bfSlash{0%,100%{transform:rotate(-40deg)}50%{transform:rotate(55deg)}}
+@keyframes bfConf{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:1}100%{transform:translateY(-52px) rotate(220deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .ar-bf-ti,.ar-bf-rider,.ar-bf-fin{transition:none!important}
+  .ar-bf-run.bf-in .ar-bf-ti svg,.ar-bf-run.bf-hit .ar-bf-ti svg,.ar-bf-run.bf-charge .bfh-sw,.ar-bf-run.bf-fin .ar-bf-rider svg,.ar-bf-run.bf-fin .ar-bf-conf i,.bti-st{animation:none!important}
+  .ar-bf-conf{display:none}
+}
+@keyframes bfGround{to{background-position:-18px 0}}
+@keyframes bfBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.2px)}}
+@keyframes bfLeg{from{transform:rotate(-30deg)}to{transform:rotate(30deg)}}
+@keyframes bfTail{from{transform:rotate(-7deg)}to{transform:rotate(9deg)}}
+@keyframes bfSw{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(10deg)}}
+@keyframes bfSpark{0%,100%{transform:scale(.6);opacity:.5}50%{transform:scale(1.15);opacity:1}}
+@keyframes bfDust{from{transform:translateX(0);opacity:.28}to{transform:translateX(-12px);opacity:0}}
+@keyframes bfSpeed{from{transform:translateX(0);opacity:.28}to{transform:translateX(-8px);opacity:.05}}
+@keyframes bfPop{0%{transform:scale(.8);opacity:.2}100%{transform:scale(1);opacity:1}}
+@keyframes bfHop{0%,100%{transform:translateY(0)}40%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){
+  .ar-bf-run::after,.bfh-bob,.bfh-leg,.bfh-tail,.bfh-hb,.bfh-sw,.bfh-sp,.bfh-dust .d1,.bfh-dust .d2,.bfh-sl,.ar-bf-say.bf-pop,.ar-bf-run.bf-hop .ar-bf-rider{animation:none!important}
+  .bfh-dust,.bfh-sl{display:none}
+}
+@media (max-width:360px){.ar-bf-rider{width:62px}.ar-bf-say{font-size:12.5px}}
+
+/* pilih paket: chip rapi, membungkus (tanpa geser samping) */
+.ar-bf-l{margin:14px 0 8px;font:800 11px/1 var(--font,inherit);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft,#4A5058)}
+html body #ar.ar-home .ar-bf-pk{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:0;overflow:visible}
+html body #ar.ar-home .ar-bf-pk button{flex:0 0 auto;min-width:46px;min-height:38px;padding:0 13px;border:2px solid #E3E6EB;border-radius:99px;background:#fff;font:800 14px/1 var(--font,inherit);color:var(--ink,#14161C);cursor:pointer;transition:background .12s,border-color .12s,color .12s,transform .12s}
+html body #ar.ar-home .ar-bf-pk button:hover:not(.on){border-color:var(--brand,#16874C);background:#F4FAF6}
+html body #ar.ar-home .ar-bf-pk button:active{transform:translateY(1px)}
+html body #ar.ar-home .ar-bf-pk button.on{background:#14161C;border-color:#14161C;color:#fff}
+
+/* papan juara */
+html body #ar.ar-home .ar-bf-board{margin:0 0 14px;padding:10px 12px;border:1.5px solid #E3E6EB;border-radius:14px;background:#fff;font-size:13.5px;line-height:1.5;color:var(--ink-soft,#4A5058)}
+html body #ar.ar-home .ar-bf-board p{margin:0}
+html body #ar.ar-home .ar-bf-board ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;margin:0 0 8px;padding:0;list-style:none}
+html body #ar.ar-home .ar-bf-board li{display:flex;align-items:center;gap:8px;min-width:0;padding:6px 10px;border-radius:12px;background:#F6F7F9;font-weight:700;color:#14161C}
+html body #ar.ar-home .ar-bf-board li .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html body #ar.ar-home .ar-bf-board li b{padding:1px 9px;border-radius:99px;background:#14161C;color:#fff;font-size:12px}
+html body #ar.ar-home .ar-bf-board .ar-bf-note{margin:0 0 4px;color:#14161C}
+html body #ar.ar-home .ar-bf-board .ar-bf-me{font-size:12.5px}
+html body #ar.ar-home .ar-bf-board.is-load{color:var(--ink-soft,#4A5058);background:linear-gradient(90deg,#F6F7F9 25%,#fff 50%,#F6F7F9 75%) 0 0/200% 100%;animation:bfShim 1.2s linear infinite}
+html body #ar.ar-home .ar-bf-board.is-off{background:#F6F7F9;border-style:dashed}
+html body #ar.ar-home .ar-bf-retry{margin-top:8px;min-height:36px;padding:0 16px;border:2px solid #E3E6EB;border-radius:99px;background:#fff;font:800 13px/1 var(--font,inherit);color:#14161C;cursor:pointer}
+html body #ar.ar-home .ar-bf-retry:hover{border-color:var(--brand,#16874C)}
+@keyframes bfShim{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){html body #ar.ar-home .ar-bf-board.is-load{animation:none}}
+
+/* tombol Battlefield */
+html body #ar.ar-home .ar-bf .ar-row{display:grid;grid-template-columns:1.5fr 1fr;gap:8px;margin:0}
+html body #ar.ar-home .ar-bf .ar-row .btn{width:100%;min-height:46px;padding:10px 14px;font-size:15px;border-radius:99px}
+@media (min-width:600px){
+  html body #ar.ar-home .ar-bf .ar-row{display:flex;flex-wrap:wrap}
+  html body #ar.ar-home .ar-bf .ar-row .btn{width:auto;padding:10px 24px}
+}
+
+/* beranda Arena: ambang batas, judul seksi, kartu paket */
+html body #ar.ar-home>.ar-amb{margin:0 0 20px;padding:12px 14px;border:1.5px solid #E3E6EB;border-radius:16px;background:#fff;line-height:1.5}
+html body #ar.ar-home .ar-amb-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin-bottom:8px;font-size:14px;color:#14161C}
+html body #ar.ar-home .ar-amb-h span{font-size:12.5px;color:var(--ink-soft,#4A5058)}
+html body #ar.ar-home .ar-amb-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+html body #ar.ar-home .ar-amb-g span{padding:8px 6px;border-radius:12px;background:#F6F7F9;text-align:center;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--ink-soft,#4A5058)}
+html body #ar.ar-home .ar-amb-g b{display:block;font-size:20px;line-height:1.25;letter-spacing:0;color:#14161C}
+html body #ar.ar-home .ar-amb p{margin:8px 0 0;font-size:12.5px;line-height:1.5}
+html body #ar.ar-home>.ar-h2{margin:4px 0 12px;font-size:12px;font-weight:800;line-height:1.2;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft,#4A5058);grid-column:1/-1}
+html body #ar.ar-home .card:not(.ar-bf) h3{display:flex;align-items:center;gap:8px;margin:0 0 6px;font-size:18px;line-height:1.25}
+html body #ar.ar-home .card:not(.ar-bf) h3 .ar-new{margin-left:0}
+html body #ar.ar-home .card:not(.ar-bf)>p:not(.ar-champ){margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--ink-soft,#4A5058)}
+html body #ar.ar-home .ar-champ{display:flex;width:fit-content;max-width:100%;margin:0 0 10px;padding:5px 12px;border:1.5px solid #F3DFB0;border-radius:99px;background:#FFF6E3;font-size:13px;font-weight:700;line-height:1.4}
+html body #ar.ar-home .ar-champ:empty{display:none}
+html body #ar.ar-home .card:not(.ar-bf)>.ar-row .btn{min-height:44px}
+html body #ar.ar-home .card:not(.ar-bf)>.ar-row .btn:not(.ghost){flex:1 1 auto}
+</style>
 <script>document.addEventListener('click', function (e) { if (e.target.closest('.nav-btn,.sg-bar,.l-search,.sg-quick button')) { try { navigator.vibrate && navigator.vibrate(8); } catch (x) { } } });</script>
 <script id="materi-shuf-js">
 (function(){
