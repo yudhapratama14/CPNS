@@ -3666,6 +3666,44 @@ button.sg-r:hover { background: #F0F8F8; border-color: #16874C; transform: trans
     });
     MATERI.analitis += `<h4>Trik per bentuk soal</h4><div class="tbw"><table class="tb "><thead><tr><th>Bentuk soal</th><th>Trik cepat</th></tr></thead><tbody><tr><td>Urutan dan jadwal</td><td>Buat garis lurus, isi dari posisi yang sudah pasti</td></tr><tr><td>Dua baris berhadapan</td><td>Gambar dua baris sejajar, pasangan seberang terkunci</td></tr><tr><td>Meja bundar 8 orang</td><td>Nomori kursi 1 sampai 8, yang berhadapan berjarak 4 kursi</td></tr><tr><td>Pencocokan peserta, kota, moda</td><td>Tabel centang dan silang, isi yang pasti dulu</td></tr><tr><td>Pengelompokan tim</td><td>Uji dengan pengandaian, buang yang melanggar aturan</td></tr><tr><td>Pertanyaan TIDAK MUNGKIN</td><td>Daftar semua susunan sah, cari yang tak pernah muncul</td></tr><tr><td>Kombinasi I, II, III</td><td>Periksa satu per satu, satu salah menggugurkan opsi</td></tr></tbody></table></div><h4>Tiga kata yang sering menjebak</h4><ul><li><b>Pasti benar</b>: benar di semua susunan yang sah.</li><li><b>Mungkin benar</b>: benar di sebagian susunan saja. Ini jebakan nomor satu karena terlihat meyakinkan.</li><li><b>Tidak mungkin benar</b>: salah di semua susunan, jadi cari yang tidak pernah muncul.</li></ul><h4>Meja bundar</h4><ul><li>Kunci satu orang di kursi 1, lalu nomori searah jarum jam.</li><li>Berhadapan = selisih 4 kursi. Bersebelahan = selisih 1 (bisa kiri atau kanan, kecuali soal menyebut arah).</li><li>Waspadai arah: setelah searah jarum jam berbeda dengan sebelum.</li></ul><h4>Pencocokan tiga atribut</h4><ul><li>Buat tabel orang × kota dan orang × moda. Centang yang pasti, silang yang gugur.</li><li>Petunjuk seperti Peserta dari Solo naik kereta menghubungkan kota dan moda, jadi simpan sebagai pasangan sambil menunggu orangnya.</li><li>Opsi jebakan biasanya benar di satu atribut tetapi salah di atribut lain. Cek ketiganya.</li></ul><h4>Dua baris berhadapan</h4><ul><li>Gambar dua baris sejajar dan tulis arah hadap tiap baris (mis. Baris 1 menghadap selatan, Baris 2 menghadap utara).</li><li>Kanan dan kiri mengikuti arah hadap orangnya. Baris yang menghadap selatan punya kanan di barat, baris yang menghadap utara punya kanan di timur.</li><li>Berhadapan = nomor kursi sama di baris seberang. Tarik garis putus-putus untuk tiap pasangan.</li></ul><h4>Pengelompokan tim</h4><ul><li>Ubah tiap aturan jadi simbol: satu tim, tidak satu tim, jika-maka.</li><li>Uji tiap opsi terhadap tiap aturan. Satu aturan yang dilanggar langsung menggugurkan opsi.</li><li>Soal bersyarat (jika X di Tim 1): tempatkan X dulu, isi yang terpaksa, lalu cari yang benar di semua susunan yang tersisa.</li></ul>`;
 
+    // ---------- Tambahan materi TWK: kilas cepat, hafalan, contoh soal ----------
+    (function () {
+      const kilas = a => '<h4>Kilas cepat</h4><div class="kilas">' + a.map(x => '<div><i>' + x[0] + '</i><b>' + x[1] + '</b><span>' + x[2] + '</span></div>').join('') + '</div>';
+      const tabel = (hd, rows) => '<div class="tbw"><table class="tb "><thead><tr>' + hd.map(x => '<th>' + x + '</th>').join('') + '</tr></thead><tbody>' + rows.map(r => '<tr>' + r.map(x => '<td>' + x + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
+      const cs = (q, opt, ans, why) => '<div class="cs"><p><b>' + q + '</b></p><ol>' + opt.map(o => '<li>' + o + '</li>').join('') + '</ol><details><summary>Lihat jawaban dan pembahasan</summary><div class="jw"><b>Jawaban: ' + ans + '.</b> ' + why + '</div></details></div>';
+      const T = {
+        nas: [
+          kilas([['🕰️', 'Tiga tonggak', '1908 Budi Utomo, 1928 Sumpah Pemuda, 1945 Proklamasi.'], ['❤️', 'Inti', 'Kepentingan bangsa di atas pribadi dan golongan.'], ['⚠️', 'Lawan', 'Chauvinisme, separatisme, primordialisme sempit.']]),
+          '<h4>Hafalan: tanggal penting</h4>' + tabel(['Peristiwa', 'Tanggal', 'Makna'], [['Kebangkitan Nasional', '20 Mei 1908', 'Berdirinya Budi Utomo'], ['Sumpah Pemuda', '28 Oktober 1928', 'Satu tanah air, bangsa, bahasa'], ['Hari Lahir Pancasila', '1 Juni 1945', 'Pidato Soekarno di sidang BPUPKI'], ['Proklamasi', '17 Agustus 1945', 'Kemerdekaan Indonesia'], ['UUD 1945 disahkan', '18 Agustus 1945', 'Sidang PPKI']]) +
+          '<h4>Contoh soal</h4>' + cs('Ada kelompok warga yang menolak bekerja sama dengan suku lain karena merasa sukunya paling unggul. Sikap ini paling tepat disebut ...', ['Nasionalisme', 'Patriotisme', 'Primordialisme sempit', 'Bela negara'], 'C', 'Merasa kelompok sendiri paling unggul dan menutup diri dari yang lain adalah primordialisme sempit, lawan dari persatuan.')
+        ],
+        int: [
+          kilas([['🧭', 'Satu kata', 'Pikiran, ucapan, dan tindakan selaras.'], ['🎁', 'Gratifikasi', 'Lapor KPK paling lambat 30 hari kerja.'], ['🧩', 'BerAKHLAK', 'Nilai dasar ASN, hafal tiap hurufnya.']]),
+          '<h4>Contoh soal</h4>' + cs('Seorang ASN menerima parsel dari penyedia jasa yang sedang ikut tender di kantornya. Tindakan terbaik adalah ...', ['Menerima karena hanya parsel', 'Menolak dengan sopan, atau melaporkannya bila sudah terlanjur diterima', 'Membagikannya ke rekan kantor', 'Menyimpannya diam-diam'], 'B', 'Ada konflik kepentingan dan berkaitan dengan jabatan. Tolak, atau laporkan ke unit pengendali gratifikasi atau KPK dalam 30 hari kerja.')
+        ],
+        bela: [
+          kilas([['🛡️', 'Dasar hukum', 'Pasal 27 ayat 3 dan Pasal 30 UUD 1945.'], ['🖐️', 'Lima nilai dasar', 'Cinta tanah air, sadar bernegara, yakin Pancasila, rela berkorban, kemampuan awal.'], ['👷', 'Bagi ASN', 'Bekerja jujur, disiplin, dan melayani.']]),
+          '<h4>Contoh soal</h4>' + cs('Contoh bela negara nonfisik yang paling tepat bagi seorang pegawai adalah ...', ['Ikut latihan senjata tiap bulan', 'Bekerja jujur dan profesional serta taat hukum', 'Menolak semua kerja sama dengan pihak asing', 'Mengunggah foto bendera saja'], 'B', 'Bela negara tidak selalu militer. Kerja jujur, profesional, dan taat hukum adalah wujud nonfisik yang nyata.')
+        ],
+        uud: [
+          kilas([['📜', 'Amandemen', 'Empat kali: 1999, 2000, 2001, 2002.'], ['⚖️', 'Pasal 1 ayat 3', 'Indonesia adalah negara hukum.'], ['🧑‍🤝‍🧑', 'Pasal 28A-28J', 'Hak asasi manusia.']]),
+          '<h4>Hafalan: pasal yang sering keluar</h4>' + tabel(['Pasal', 'Isi singkat'], [['1 ayat 2', 'Kedaulatan di tangan rakyat, dilaksanakan menurut UUD'], ['1 ayat 3', 'Negara hukum'], ['27 ayat 3', 'Hak dan kewajiban bela negara'], ['31', 'Pendidikan'], ['33', 'Perekonomian dan sumber daya alam'], ['34', 'Kesejahteraan sosial']])
+        ],
+        nkri: [
+          kilas([['🏝️', 'Deklarasi Djuanda', '13 Desember 1957: laut di antara pulau menjadi bagian wilayah.'], ['🌊', 'UNCLOS 1982', 'Laut teritorial 12 mil, ZEE 200 mil laut.'], ['🧱', 'Astagatra', '3 gatra alam dan 5 gatra sosial.']]),
+          '<h4>Ketahanan nasional: Astagatra</h4>' + tabel(['Kelompok', 'Isi'], [['Trigatra (alam)', 'Geografi, kekayaan alam, kependudukan'], ['Pancagatra (sosial)', 'Ideologi, politik, ekonomi, sosial budaya, pertahanan dan keamanan']])
+        ],
+        bti: [
+          kilas([['📖', 'Asal', 'Kitab Sutasoma karya Mpu Tantular, era Majapahit.'], ['🦅', 'Garuda', 'Sayap 17, ekor 8, pangkal ekor 19, leher 45.'], ['📌', 'Dasar hukum', 'Pasal 36A UUD 1945.']]),
+          '<h4>Hafalan: lambang pada perisai</h4>' + tabel(['Sila', 'Lambang'], [['1', 'Bintang'], ['2', 'Rantai'], ['3', 'Pohon beringin'], ['4', 'Kepala banteng'], ['5', 'Padi dan kapas']])
+        ]
+      };
+      Object.keys(T).forEach(k => {
+        if (typeof MATERI[k] !== 'string') return;
+        MATERI[k] = T[k][0] + MATERI[k] + T[k][1];
+      });
+    })();
+
     // ---------- Bank soal latihan (satu soal jelas per materi) ----------
     const Q = (q, o, a, e) => ({ q, o, a, e });
     const QZ = {
@@ -3719,6 +3757,55 @@ button.sg-r:hover { background: #F0F8F8; border-color: #16874C; transform: trans
       prof: [Q('Atasan menyuruh Anda mengubah angka laporan agar tampak baik, padahal tidak sesuai data. Sikap Anda...', ['Mengubah karena itu perintah atasan', 'Mengubah lalu mengeluh ke rekan', 'Menolak dengan sopan, menjelaskan data sebenarnya, dan menawarkan cara penyajian yang akurat', 'Diam dan membiarkan orang lain mengurus', 'Menyebarkan masalah ini di grup kantor'], 2, 'Nilai 5: menolak perintah yang melanggar aturan dengan sopan sambil menawarkan solusi sesuai aturan.')],
       anti: [Q('Rekan Anda membagikan pesan ujaran kebencian yang mengajak menolak Pancasila di grup kantor. Sikap tepat Anda adalah...', ['Ikut membagikan agar rekan lain tahu', 'Membiarkannya karena itu urusan pribadi', 'Mengejek rekan di grup tersebut', 'Memblokir rekan tanpa berbuat apa pun', 'Menasihati dengan santun memakai nilai Pancasila, dan melapor lewat jalur resmi bila diulangi'], 4, 'Nilai 5: dialog santun dan penguatan nilai Pancasila, disertai pelaporan resmi kalau berulang.')]
     };
+
+    // ---------- Tambahan soal latihan TKP (5 per bab; opsi benar = skor 5) ----------
+    (function () {
+      const T = {
+        pel: [
+          Q('Warga menanyakan layanan yang bukan wewenang unit Anda. Sikap Anda...', ['Menyuruhnya mencari sendiri', 'Menjawab sebisanya dari dugaan', 'Menjelaskan bahwa itu bukan wewenang unit ini, lalu mengarahkan ke unit yang tepat beserta syarat dan lokasinya', 'Mengoper tanpa penjelasan', 'Diam saja'], 2, 'Nilai 5: ramah, jelas, dan memberi arahan konkret. Menebak jawaban berisiko menyesatkan warga.'),
+          Q('Jam istirahat tiba, tetapi antrean warga masih panjang. Tindakan Anda...', ['Menutup loket tepat waktu', 'Tetap melayani antrean yang ada dan bergantian istirahat dengan rekan agar layanan tidak terhenti', 'Meminta warga datang lagi', 'Melayani tanpa istirahat sama sekali', 'Menyerahkan semuanya ke rekan'], 1, 'Nilai 5: layanan berkesinambungan, hak istirahat tetap terjaga lewat pembagian giliran.'),
+          Q('Seorang warga memasukkan kritik pedas ke kotak saran. Sikap Anda...', ['Mengabaikannya karena anonim', 'Membuangnya', 'Mencatat, membahasnya dengan atasan, dan menindaklanjuti perbaikan layanan', 'Membalas dengan menegur warga', 'Menyimpannya saja'], 2, 'Nilai 5: kritik dipakai untuk memperbaiki layanan. Mengabaikan atau membuang bernilai rendah.'),
+          Q('Seorang penyandang disabilitas datang, padahal loket berada di lantai dua tanpa lift. Tindakan Anda...', ['Meminta datang lagi nanti', 'Membantu menaiki tangga seadanya', 'Memindahkan layanan ke lantai satu atau menjemput berkasnya, lalu mengusulkan perbaikan akses', 'Menyuruh membawa pendamping', 'Melayani sambil mengeluh'], 2, 'Nilai 5: layanan setara dan inklusif, ditambah usulan perbaikan jangka panjang.'),
+          Q('Seorang warga menyodorkan uang terima kasih setelah urusannya selesai. Sikap Anda...', ['Menerima karena sudah diberikan', 'Menolak dengan sopan dan menjelaskan layanan ini sesuai tarif resmi tanpa tambahan', 'Menerima lalu membagikan ke rekan', 'Menolak dengan marah', 'Menerima asal tidak ada yang melihat'], 1, 'Nilai 5: menolak gratifikasi dengan santun. Menerima, walau dibagi, tetap salah.')
+        ],
+        jej: [
+          Q('Unit lain memerlukan data unit Anda untuk laporan gabungan. Sikap Anda...', ['Menunda sampai ditagih berkali-kali', 'Memberikan data sesuai prosedur, tepat waktu, dan mengonfirmasi bahwa data sudah diterima', 'Memberikan data tanpa memeriksa', 'Menolak karena bukan tugas unit Anda', 'Memberikan sebagian saja'], 1, 'Nilai 5: kooperatif, tepat prosedur, dan memastikan komunikasi tuntas.'),
+          Q('Rekan unit lain lambat membalas permintaan Anda padahal tenggat dekat. Tindakan Anda...', ['Mengerjakan sendiri tanpa memberi tahu', 'Mengeluh ke rekan lain', 'Menghubungi ulang dengan permintaan jelas dan tenggatnya, lalu melibatkan atasan bila tetap buntu', 'Menunggu saja', 'Melaporkan ke atasan tanpa menghubungi lebih dulu'], 2, 'Nilai 5: komunikasi langsung dulu, eskalasi belakangan bila perlu.'),
+          Q('Anda mewakili unit di rapat lintas instansi tetapi belum menguasai bahannya. Tindakan Anda...', ['Hadir dan diam saja', 'Menolak mewakili', 'Mempelajari bahan, berkonsultasi dengan atasan atau rekan yang paham, lalu hadir dengan catatan', 'Menjawab sembarang agar terlihat paham', 'Mencari pengganti tanpa izin'], 2, 'Nilai 5: persiapan matang demi kepentingan unit.'),
+          Q('Mitra eksternal meminta informasi internal yang bersifat rahasia. Sikap Anda...', ['Memberikan karena mitra dekat', 'Menolak dengan sopan, menjelaskan batasan, dan menawarkan informasi publik yang boleh dibagikan', 'Memberikan setengahnya', 'Menolak tanpa penjelasan', 'Memberikan lewat pesan pribadi'], 1, 'Nilai 5: menjaga rahasia jabatan tanpa memutus hubungan baik.'),
+          Q('Anda berbeda pendapat dengan rekan soal pembagian tugas. Tindakan Anda...', ['Mengikuti pendapat sendiri', 'Menyerah tanpa bicara', 'Berdiskusi mencari titik temu demi tujuan bersama, dan meminta arahan atasan bila buntu', 'Melapor ke atasan sebelum bicara dengan rekan', 'Mendiamkan rekan'], 2, 'Nilai 5: dialog dulu, atasan sebagai penengah bila perlu.')
+        ],
+        sos: [
+          Q('Rekan beragama lain mengundang Anda ke perayaan hari rayanya. Sikap Anda...', ['Menolak karena beda keyakinan', 'Hadir dengan sopan sebagai bentuk penghormatan tanpa mengabaikan keyakinan sendiri', 'Hadir sambil memberi komentar buruk', 'Pura-pura sakit', 'Menyuruh rekan lain mewakili'], 1, 'Nilai 5: menghargai perbedaan dan menjaga hubungan kerja.'),
+          Q('Warga setempat memakai bahasa daerah yang tidak Anda pahami saat berkonsultasi. Tindakan Anda...', ['Meminta mereka memakai bahasa Indonesia dengan nada tinggi', 'Meminta bantuan rekan setempat sebagai penerjemah sambil belajar bahasa daerah itu', 'Mengabaikan', 'Menjawab asal', 'Menyuruh datang bersama penerjemah'], 1, 'Nilai 5: solutif dan mau belajar budaya setempat.'),
+          Q('Rekan menyindir logat bicara rekan lain yang berasal dari daerah berbeda. Sikap Anda...', ['Ikut tertawa', 'Membiarkan', 'Menegur dengan santun bahwa itu tidak pantas dan menghargai keberagaman', 'Menjauhi mereka', 'Melaporkan tanpa menegur'], 2, 'Nilai 5: berani meluruskan dengan santun.'),
+          Q('Jadwal pelayanan bentrok dengan upacara adat besar di daerah tugas Anda. Tindakan Anda...', ['Tetap buka tanpa memedulikan warga', 'Menutup layanan sepihak', 'Berkoordinasi dengan atasan untuk menyesuaikan jadwal agar layanan tetap berjalan dan adat dihormati', 'Menyerahkan ke rekan', 'Mengikuti adat dan meninggalkan tugas'], 2, 'Nilai 5: menghormati adat sekaligus menjaga kewajiban pelayanan.'),
+          Q('Warga dari kelompok minoritas kesulitan mengakses layanan kantor. Tindakan Anda...', ['Menganggapnya masalah mereka', 'Memastikan layanan setara, mencari tahu hambatannya, dan melaporkan agar ada solusi', 'Memberi layanan istimewa', 'Menunggu keluhan resmi', 'Mengarahkan ke kantor lain'], 1, 'Nilai 5: setara dan proaktif tanpa diskriminasi.')
+        ],
+        tik: [
+          Q('Anda menerima email yang mengaku dari admin dan meminta kata sandi akun. Tindakan Anda...', ['Membalas dengan kata sandi', 'Mengklik tautannya untuk memastikan', 'Tidak menanggapi dan melaporkannya ke tim TI sebagai upaya phishing', 'Meneruskannya ke semua rekan', 'Menghapusnya tanpa memberi tahu'], 2, 'Nilai 5: menghindari risiko dan melaporkan agar rekan lain terlindungi.'),
+          Q('Kantor memakai aplikasi baru yang belum Anda kuasai. Sikap Anda...', ['Menolak memakainya', 'Mempelajari panduan, ikut pelatihan, lalu berbagi ilmu ke rekan', 'Menunggu rekan lain mengerjakan', 'Memakai cara lama diam-diam', 'Mengeluh ke atasan'], 1, 'Nilai 5: adaptif dan berbagi pengetahuan.'),
+          Q('Data penting kerja hanya tersimpan di komputer pribadi Anda. Tindakan Anda...', ['Membiarkan saja', 'Menyimpan di flashdisk pribadi', 'Mencadangkannya secara berkala ke penyimpanan resmi kantor', 'Mengirim ke surel pribadi', 'Menghapus yang lama'], 2, 'Nilai 5: aman, terkelola, dan sesuai kebijakan kantor.'),
+          Q('Rekan meminjam akun Anda untuk menyelesaikan pekerjaannya. Sikap Anda...', ['Memberikan karena sama-sama sekantor', 'Menolak dengan sopan dan membantu rekan mengurus hak akses lewat prosedur resmi', 'Memberikan lalu mengganti kata sandi', 'Menolak tanpa penjelasan', 'Memberikan asal diawasi'], 1, 'Nilai 5: menjaga keamanan akun dan tetap membantu lewat jalur benar.'),
+          Q('Anda menemukan cara mengotomatiskan laporan rutin yang menghemat waktu. Tindakan Anda...', ['Memakainya sendiri diam-diam', 'Mengusulkan ke atasan lengkap dengan uji coba dan panduan agar bisa dipakai tim', 'Menyimpannya untuk diri sendiri', 'Menerapkannya tanpa izin', 'Mengabaikannya'], 1, 'Nilai 5: inovatif, transparan, dan bermanfaat bagi tim.')
+        ],
+        prof: [
+          Q('Tenggat laporan besok, tetapi data dari unit lain belum lengkap. Tindakan Anda...', ['Mengarang data kosong', 'Menyerahkan laporan seadanya tanpa keterangan', 'Mengonfirmasi data ke unit terkait, menyelesaikan bagian yang bisa, dan melapor ke atasan soal kendalanya', 'Menunda sampai data lengkap tanpa memberi tahu', 'Menyalahkan unit lain'], 2, 'Nilai 5: bertanggung jawab dan transparan.'),
+          Q('Atasan memberi instruksi yang jelas melanggar aturan. Sikap Anda...', ['Menurut agar aman', 'Menolak dengan sopan, menjelaskan aturannya, dan mengusulkan alternatif yang sesuai aturan', 'Menolak dengan marah', 'Melaksanakan lalu melapor belakangan', 'Diam dan menunda'], 1, 'Nilai 5: menjaga integritas tanpa merusak hubungan kerja.'),
+          Q('Anda menyadari ada kesalahan pada laporan yang sudah terkirim. Tindakan Anda...', ['Membiarkan karena kecil', 'Berharap tidak ada yang tahu', 'Segera melapor ke atasan, memperbaiki, dan mengirim revisi', 'Menyalahkan sistem', 'Memperbaiki diam-diam'], 2, 'Nilai 5: jujur, cepat, dan akuntabel.'),
+          Q('Anda diberi tugas yang di luar keahlian Anda. Sikap Anda...', ['Menolak mentah-mentah', 'Mempelajarinya, bertanya ke senior, dan tetap bertanggung jawab atas hasilnya', 'Mengoper ke rekan', 'Mengerjakan asal jadi', 'Menunda tanpa kabar'], 1, 'Nilai 5: mau belajar dan bertanggung jawab.'),
+          Q('Rekan sering terlambat sehingga pekerjaan tim tertunda. Tindakan Anda...', ['Membiarkan', 'Menggantikan semuanya tanpa bicara', 'Menegur baik-baik dan, bila berulang, menyampaikannya ke atasan', 'Menyindir di grup', 'Melaporkan tanpa bicara lebih dulu'], 2, 'Nilai 5: komunikasi langsung dulu, eskalasi bila tidak berubah.')
+        ],
+        anti: [
+          Q('Grup WhatsApp kantor memuat ajakan menolak Pancasila. Tindakan Anda...', ['Ikut berkomentar setuju', 'Membiarkan', 'Mengingatkan dengan santun, lalu melapor ke atasan atau pihak berwenang bila berlanjut', 'Keluar dari grup', 'Membalas dengan kata kasar'], 2, 'Nilai 5: menegur santun dan menggunakan jalur resmi.'),
+          Q('Rekan menyebarkan hoaks bernuansa SARA. Sikap Anda...', ['Ikut menyebarkan', 'Mengklarifikasi dengan sumber resmi dan meminta pesan itu dihapus', 'Menertawakan', 'Menghindari rekan', 'Membalas dengan hoaks lain'], 1, 'Nilai 5: meluruskan dengan fakta dan mencegah penyebaran.'),
+          Q('Anda diundang diskusi yang penuh ujaran kebencian pada pemerintah. Tindakan Anda...', ['Hadir dan ikut menghujat', 'Menolak ikut ujaran kebencian dan menyalurkan kritik lewat jalur konstitusional', 'Hadir tanpa bicara', 'Merekam lalu menyebarkan', 'Mengundang lebih banyak orang'], 1, 'Nilai 5: kritik boleh, kebencian tidak.'),
+          Q('Anda menemukan brosur kelompok yang ingin mengganti dasar negara dengan cara kekerasan. Tindakan Anda...', ['Menyebarkannya sebagai peringatan', 'Membuangnya saja', 'Melaporkannya ke atasan atau aparat berwenang tanpa menyebarkannya', 'Mengabaikannya', 'Mengunggahnya ke media sosial'], 2, 'Nilai 5: melapor lewat jalur resmi. Menyebarkan justru ikut memperluas paham itu.'),
+          Q('Seorang remaja di lingkungan Anda mulai terpengaruh paham radikal. Sikap Anda...', ['Menjauhinya', 'Mengajaknya berdialog, menguatkan nilai Pancasila, dan melibatkan tokoh atau keluarga', 'Menghakiminya di depan umum', 'Mengabaikannya', 'Melaporkan tanpa pendekatan apa pun'], 1, 'Nilai 5: pendekatan persuasif, bukan menghukum.')
+        ]
+      };
+      Object.keys(T).forEach(k => { if (QZ[k]) QZ[k].push(...T[k]); });
+    })();
     // ---------- UPGRADE TWK: pendalaman materi + tambahan soal latihan ----------
     Object.entries({
       nas: `<h4>Pendalaman: tokoh dan organisasi pergerakan</h4><ul><li><b>Budi Utomo (1908):</b> dipelopori dr. Wahidin Soedirohoesodo dan dr. Soetomo. Hari Kebangkitan Nasional: 20 Mei.</li><li><b>Sarekat Dagang Islam (1905, H. Samanhudi)</b> menjadi Sarekat Islam (1912, H.O.S. Tjokroaminoto). <b>Indische Partij (1912)</b> digagas Tiga Serangkai: E.F.E. Douwes Dekker, Tjipto Mangoenkoesoemo, Soewardi Soerjaningrat (Ki Hajar Dewantara).</li><li><b>Muhammadiyah (1912)</b> oleh K.H. Ahmad Dahlan; <b>PNI (1927)</b> oleh Soekarno.</li></ul>
@@ -11010,6 +11097,152 @@ html body #ar.ar-home .ar-champ:empty{display:none}
 html body #ar.ar-home .card:not(.ar-bf)>.ar-row .btn{min-height:44px}
 html body #ar.ar-home .card:not(.ar-bf)>.ar-row .btn:not(.ghost){flex:1 1 auto}
 </style>
+<style id="materi-plus-css">
+/* Materi: kartu kilas cepat, tabel hafalan, dan contoh soal dengan pembahasan lipat */
+.kilas{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:8px 0 4px}
+.kilas>div{border-radius:14px;padding:12px 14px;background:linear-gradient(135deg,var(--brand-soft,#E5F0F0),#fff);border:1px solid var(--line,#E1E4EC);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.kilas>div:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(15,107,58,.12)}
+.kilas i{font-style:normal;font-size:22px;display:block;line-height:1;margin-bottom:6px}
+.kilas b{display:block;font-size:14px;color:var(--brand-strong,#0F6B3A)}
+.kilas span{display:block;font-size:13.5px;line-height:1.5;color:var(--ink-soft,#4A5062);margin-top:2px}
+.cs{border:1px solid var(--line,#E1E4EC);border-left:4px solid var(--brand-strong,#0F6B3A);border-radius:12px;padding:12px 14px;margin:10px 0;background:#fff}
+.cs p{margin:0 0 8px}
+.cs ol{margin:0 0 8px;padding-left:1.4em;list-style:upper-alpha}
+.cs summary{cursor:pointer;font-weight:700;color:var(--brand-strong,#0F6B3A);font-size:14.5px;padding:4px 0}
+.cs details[open] summary{margin-bottom:6px}
+.cs .jw{background:var(--brand-soft,#E5F0F0);border-radius:10px;padding:8px 12px;font-size:14.5px;line-height:1.6}
+</style>
+<style id="ux-polish-css">
+/* Polesan UI/UX: kedalaman, gerak halus, umpan balik sentuh, aksesibilitas */
+html{scroll-padding-top:72px}
+::selection{background:var(--brand-soft,#E5F0F0);color:var(--brand-strong,#0F6B3A)}
+body{text-rendering:optimizeLegibility;-webkit-tap-highlight-color:transparent}
+h1,h2,h3{letter-spacing:-.015em;text-wrap:balance}
+p,li{text-wrap:pretty}
+:focus-visible{outline:3px solid color-mix(in srgb,var(--brand,#14A05A) 55%,transparent);outline-offset:3px;border-radius:8px}
+/* kartu: bayangan berlapis + naik halus saat disentuh */
+.card,.tile,.lcard{box-shadow:0 1px 2px rgba(20,30,50,.05),0 6px 18px rgba(20,30,50,.06);transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s,border-color .22s}
+@media (hover:hover){.card:hover,.tile:hover,.lcard:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(20,30,50,.06),0 14px 30px rgba(20,30,50,.12);border-color:color-mix(in srgb,var(--brand,#14A05A) 35%,var(--line,#E1E4EC))}}
+.card:active,.tile:active,.lcard:active{transform:scale(.985)}
+/* tombol: gradasi tipis, tekan terasa, target sentuh minimal 44px */
+.btn{min-height:44px;position:relative;overflow:hidden;transition:transform .15s,box-shadow .2s,filter .2s;letter-spacing:.01em}
+.btn:hover{filter:brightness(1.05);box-shadow:0 6px 16px rgba(15,107,58,.2)}
+.btn:active{transform:translateY(1px) scale(.98);box-shadow:none}
+.tab{transition:background .2s,color .2s,transform .15s}
+.tab:active{transform:scale(.96)}
+/* akordeon / details lebih hidup */
+details>summary{transition:background .2s;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details[open]>*:not(summary){animation:uxFade .28s ease both}
+/* masuk halus: kartu muncul berurutan saat layar dibuka */
+.card,.tile,.lcard,.kilas>div,.cs{animation:uxRise .45s cubic-bezier(.2,.8,.2,1) both}
+.card:nth-child(2),.tile:nth-child(2),.kilas>div:nth-child(2){animation-delay:.05s}
+.card:nth-child(3),.tile:nth-child(3),.kilas>div:nth-child(3){animation-delay:.1s}
+.card:nth-child(n+4),.tile:nth-child(n+4){animation-delay:.14s}
+@keyframes uxRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes uxFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+/* bacaan materi: judul bagian punya penanda, tabel lebih rapi */
+.lc.materi h4{position:relative;padding-left:12px}
+.lc.materi h4::before{content:"";position:absolute;left:0;top:.2em;bottom:.2em;width:4px;border-radius:4px;background:linear-gradient(var(--brand,#14A05A),var(--brand-strong,#0F6B3A))}
+.tb thead th{background:var(--brand-soft,#E5F0F0);color:var(--brand-strong,#0F6B3A);font-weight:700}
+.tb tbody tr:nth-child(even){background:rgba(15,107,58,.035)}
+.tb tbody tr{transition:background .15s}
+.tb tbody tr:hover{background:var(--brand-soft,#E5F0F0)}
+/* bilah progres baca di atas layar */
+#uxProg{position:fixed;left:0;top:0;height:3px;width:0;z-index:9999;background:linear-gradient(90deg,var(--brand,#14A05A),#F5B301);border-radius:0 3px 3px 0;transition:width .1s linear;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.card,.tile,.lcard,.kilas>div,.cs,details[open]>*{animation:none!important}}
+</style>
+<style id="arena-polish-css">
+/* Arena/Tryout + Latihan soal: fokus ke keterbacaan soal, umpan balik jawaban, dan rasa "ujian sungguhan" (mode terang saja) */
+#ar .ar-top{position:sticky;top:0;z-index:5;padding:10px 12px;margin:0 -12px 14px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line,#E1E4EC)}
+#ar .ar-timer{border-color:var(--brand,#14A05A);color:var(--brand-strong,#0F6B3A);font-size:17px;box-shadow:0 2px 8px rgba(15,107,58,.12)}
+#ar .ar-timer.low{border-color:#E5484D;color:#B42318;animation:arPulse 1s ease-in-out infinite}
+@keyframes arPulse{50%{box-shadow:0 0 0 6px rgba(229,72,77,.18)}}
+#ar .ar-prog{height:8px;border-radius:99px;overflow:hidden;background:#E7EBF0}
+#ar .ar-prog>*{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--brand,#14A05A),#F5B301);transition:width .4s cubic-bezier(.2,.8,.2,1)}
+/* soal: kartu bacaan yang lega, muncul halus tiap pindah nomor */
+#ar .ar-q{font-size:17px;line-height:1.75;color:#1F2430;max-width:68ch;animation:arSlide .32s cubic-bezier(.2,.8,.2,1) both}
+@keyframes arSlide{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+/* pilihan jawaban: hover, tekan, terpilih dengan centang jelas */
+#ar .ar-o{position:relative;padding-right:46px;transition:transform .15s,border-color .18s,background .18s,box-shadow .18s;animation:arSlide .32s cubic-bezier(.2,.8,.2,1) both}
+#ar .ar-o:nth-of-type(2){animation-delay:.04s}#ar .ar-o:nth-of-type(3){animation-delay:.08s}#ar .ar-o:nth-of-type(4){animation-delay:.12s}#ar .ar-o:nth-of-type(5){animation-delay:.16s}
+@media (hover:hover){#ar .ar-o:hover{border-color:var(--brand,#14A05A);transform:translateX(3px);box-shadow:0 4px 12px rgba(15,107,58,.1)}}
+#ar .ar-o:active{transform:scale(.985)}
+#ar .ar-o::after{content:"";position:absolute;right:14px;top:50%;width:20px;height:20px;margin-top:-10px;border-radius:50%;border:2px solid #CBD2DC;background:#fff;transition:all .18s}
+#ar .ar-o.on{border-color:var(--brand,#14A05A);box-shadow:0 0 0 3px rgba(20,160,90,.15)}
+#ar .ar-o.on::after,#ar .ar-o.ok::after{background:var(--brand,#14A05A) url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3.2L15 7' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;border-color:var(--brand,#14A05A)}
+/* navigator nomor: status jelas (aktif, terjawab, belum) */
+#ar .ar-nav button{transition:transform .15s,background .18s,border-color .18s,box-shadow .18s}
+@media (hover:hover){#ar .ar-nav button:hover{transform:translateY(-2px);border-color:var(--brand,#14A05A)}}
+#ar .ar-nav button.done{background:var(--brand-soft,#E5F0F0);border-color:var(--brand,#14A05A);color:var(--brand-strong,#0F6B3A)}
+#ar .ar-nav button.now{background:var(--brand-strong,#0F6B3A);border-color:var(--brand-strong,#0F6B3A);color:#fff;box-shadow:0 4px 12px rgba(15,107,58,.35)}
+/* hasil: kartu skor berwarna, angka besar, muncul bertahap */
+#ar .ar-sc div{background:linear-gradient(160deg,#fff,var(--brand-soft,#E5F0F0));box-shadow:0 6px 18px rgba(20,30,50,.07);animation:uxRise .5s cubic-bezier(.2,.8,.2,1) both}
+#ar .ar-sc div:nth-child(2){animation-delay:.07s}#ar .ar-sc div:nth-child(3){animation-delay:.14s}#ar .ar-sc div:nth-child(4){animation-delay:.21s}
+#ar .ar-sc strong{font-size:30px;letter-spacing:-.02em;color:var(--brand-strong,#0F6B3A)}
+#ar .ar-rk{border-radius:16px;padding:14px 16px;background:#fff;box-shadow:0 4px 14px rgba(20,30,50,.06)}
+#ar .ar-row{transition:background .15s,transform .15s}
+@media (hover:hover){#ar .ar-row:hover{transform:translateX(2px)}}
+/* Latihan soal (materi): pilihan, skala TKP, dan contoh soal */
+.qz .qt{line-height:1.7;font-size:16.5px}
+.opt{border:2px solid transparent;border-radius:14px;transition:transform .15s,box-shadow .18s,border-color .18s,background .18s}
+@media (hover:hover){.opt:hover{border-color:var(--brand,#14A05A);box-shadow:0 4px 12px rgba(15,107,58,.1);transform:translateX(3px)}}
+.opt:active{transform:scale(.985)}
+.opt.picked{outline:0;border-color:var(--ink,#14161C);box-shadow:0 0 0 3px rgba(20,22,28,.1)}
+.ex-o li{transition:border-color .18s,background .18s,transform .15s}
+@media (hover:hover){.ex-o li:hover{border-color:var(--brand,#14A05A);background:var(--brand-soft,#E5F0F0);transform:translateX(3px)}}
+@media (prefers-reduced-motion:reduce){#ar .ar-q,#ar .ar-o,#ar .ar-sc div,#ar .ar-timer.low{animation:none!important}}
+</style>
+<style id="home-polish-css">
+/* Beranda: hero lebih berkarakter, pencarian menonjol, bubble maskot dan kartu kopi dirapikan (mode terang saja) */
+header.home{position:relative;isolation:isolate}
+header.home::before{content:"";position:absolute;z-index:-1;right:-8%;top:-40px;width:min(420px,70%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(20,160,90,.16),rgba(245,179,1,.08) 55%,transparent 70%);filter:blur(6px);pointer-events:none}
+.hello{font-size:clamp(34px,7.4vw,56px);line-height:1.04;letter-spacing:-.035em;font-weight:800;text-wrap:balance}
+.subhello{font-size:clamp(16px,2.4vw,19px);color:var(--ink-soft,#4A5062);margin-top:10px}
+.subhello b,.subhello strong{color:var(--brand-strong,#0F6B3A);background:linear-gradient(transparent 62%,rgba(245,179,1,.35) 62%);padding:0 2px}
+/* pencarian */
+.sg-bar{border-radius:20px;background:#fff;box-shadow:0 2px 4px rgba(20,30,50,.05),0 10px 28px rgba(20,30,50,.08);transition:box-shadow .2s,border-color .2s,transform .15s}
+.sg-bar:hover{box-shadow:0 2px 4px rgba(20,30,50,.06),0 14px 34px rgba(15,107,58,.16);border-color:var(--brand,#14A05A)}
+.sg-bar:active{transform:scale(.995)}
+.sg-bar-ic{transition:transform .25s}
+.sg-bar:hover .sg-bar-ic{transform:rotate(-8deg) scale(1.06)}
+.sg-bar kbd{box-shadow:0 2px 0 rgba(20,30,50,.12)}
+.sg-quick{gap:8px;margin-top:10px}
+.sg-quick i{font-style:normal;font-weight:700;color:var(--ink-soft,#4A5062)}
+.sg-quick button{border-radius:999px;transition:background .18s,color .18s,transform .15s,border-color .18s}
+@media (hover:hover){.sg-quick button:hover{background:var(--brand-soft,#E5F0F0);color:var(--brand-strong,#0F6B3A);border-color:var(--brand,#14A05A);transform:translateY(-2px)}}
+/* maskot + bubble */
+.mk-row{align-items:center;gap:6px;margin-top:22px}
+.mk-bubble{border-radius:22px;background:linear-gradient(160deg,#fff,#F3F6FA);box-shadow:0 8px 24px rgba(20,30,50,.08);line-height:1.5;animation:uxRise .5s cubic-bezier(.2,.8,.2,1) both}
+.home-mascot{filter:drop-shadow(0 8px 12px rgba(20,30,50,.14));transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+@media (hover:hover){.home-mascot:hover{transform:translateY(-4px) rotate(-2deg)}}
+/* kartu kopi */
+.kopi{align-items:center;border-radius:22px;background:linear-gradient(135deg,#FFF3D6,#FFE4B0);box-shadow:0 8px 22px rgba(217,154,11,.16);margin:26px 0 10px;transition:transform .2s,box-shadow .2s}
+@media (hover:hover){.kopi:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(217,154,11,.24)}}
+.kopi-ic{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#fff;box-shadow:0 3px 10px rgba(217,154,11,.25)}
+.kopi-tx strong{font-size:17px}
+.kopi-btn{min-height:44px;display:inline-flex;align-items:center;font-weight:800;box-shadow:0 4px 12px rgba(217,154,11,.3);transition:transform .15s,box-shadow .2s}
+.kopi-btn:hover{box-shadow:0 8px 18px rgba(217,154,11,.38);transform:translateY(-1px)}
+@media (max-width:560px){.kopi-btn{width:100%;justify-content:center}}
+/* judul bagian + grid subtes */
+h3.sec{display:flex;align-items:center;gap:12px;font-size:20px;letter-spacing:-.01em;margin:36px 0 16px}
+h3.sec::after{content:"";flex:1;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--line,#E1E4EC),transparent)}
+.tiles{gap:14px}
+</style>
+<style id="bf-bg-css">
+/* Battlefield: latar tembok raksasa + hutan pohon tinggi ala Attack on Titan */
+.ar-bf-run{background:linear-gradient(180deg,#BFD9EC 0%,#E6EFE9 55%,#F6E8CC 100%)}
+.ar-bf-run::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22100%22 viewBox=%220 0 200 100%22%3E%3Cg%3E%3Crect x=%2224%22 y=%2222%22 width=%229%22 height=%2278%22 fill=%22%235A4430%22/%3E%3Crect x=%2228%22 y=%2222%22 width=%223%22 height=%2278%22 fill=%22%2346341F%22/%3E%3Ccircle cx=%2228%22 cy=%2220%22 r=%2217%22 fill=%22%232F5A3A%22/%3E%3Ccircle cx=%2217%22 cy=%2228%22 r=%2212%22 fill=%22%233C6B45%22/%3E%3Ccircle cx=%2240%22 cy=%2226%22 r=%2213%22 fill=%22%233C6B45%22/%3E%3Ccircle cx=%2229%22 cy=%229%22 r=%2211%22 fill=%22%234A7C52%22/%3E%3C/g%3E%3Cg%3E%3Crect x=%2292%22 y=%226%22 width=%2211%22 height=%2294%22 fill=%22%235A4430%22/%3E%3Crect x=%2298%22 y=%226%22 width=%224%22 height=%2294%22 fill=%22%2346341F%22/%3E%3Ccircle cx=%2297%22 cy=%228%22 r=%2220%22 fill=%22%232B5035%22/%3E%3Ccircle cx=%2282%22 cy=%2218%22 r=%2214%22 fill=%22%233A6842%22/%3E%3Ccircle cx=%22113%22 cy=%2216%22 r=%2215%22 fill=%22%233A6842%22/%3E%3Ccircle cx=%2298%22 cy=%22-2%22 r=%2213%22 fill=%22%234A7C52%22/%3E%3C/g%3E%3Cg%3E%3Crect x=%22158%22 y=%2230%22 width=%228%22 height=%2270%22 fill=%22%235A4430%22/%3E%3Crect x=%22162%22 y=%2230%22 width=%223%22 height=%2270%22 fill=%22%2346341F%22/%3E%3Ccircle cx=%22162%22 cy=%2228%22 r=%2215%22 fill=%22%232F5A3A%22/%3E%3Ccircle cx=%22152%22 cy=%2235%22 r=%2210%22 fill=%22%233C6B45%22/%3E%3Ccircle cx=%22173%22 cy=%2234%22 r=%2211%22 fill=%22%233C6B45%22/%3E%3Ccircle cx=%22163%22 cy=%2218%22 r=%229%22 fill=%22%234A7C52%22/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22100%22 viewBox=%220 0 120 100%22%3E%3Crect x=%220%22 y=%2216%22 width=%22120%22 height=%2284%22 fill=%22%23B9B3A6%22/%3E%3Crect x=%220%22 y=%2216%22 width=%22120%22 height=%225%22 fill=%22%23D3CDBF%22/%3E%3Crect x=%220%22 y=%2221%22 width=%22120%22 height=%222%22 fill=%22%238F897C%22/%3E%3Cg stroke=%22%239A9486%22 stroke-width=%221.4%22 fill=%22none%22%3E%3Cpath d=%22M0 36H120M0 52H120M0 68H120M0 84H120%22/%3E%3Cpath d=%22M20 23V36M80 23V36M50 36V52M110 36V52M20 52V68M80 52V68M50 68V84M110 68V84M20 84V100M80 84V100%22/%3E%3C/g%3E%3Crect x=%220%22 y=%2223%22 width=%22120%22 height=%2277%22 fill=%22url(%23g)%22/%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23fff%22 stop-opacity=%220%22/%3E%3Cstop offset=%221%22 stop-color=%22%233a3a2e%22 stop-opacity=%22.28%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+  background-repeat:repeat-x,repeat-x;
+  background-size:200px 100px,120px 100px;
+  background-position:0 100%,0 100%;
+  animation:bfScenery 14s linear infinite}
+.ar-bf-run::after{z-index:1}
+@keyframes bfScenery{to{background-position:-200px 100%,-120px 100%}}
+@media (prefers-reduced-motion:reduce){.ar-bf-run::before{animation:none!important}}
+</style>
+
 <script>document.addEventListener('click', function (e) { if (e.target.closest('.nav-btn,.sg-bar,.l-search,.sg-quick button')) { try { navigator.vibrate && navigator.vibrate(8); } catch (x) { } } });</script>
 <script id="materi-shuf-js">
 (function(){
@@ -11024,6 +11257,11 @@ html body #ar.ar-home .card:not(.ar-bf)>.ar-row .btn:not(.ghost){flex:1 1 auto}
     for(var i=ix.length-1;i>0;i--){seed=Math.imul(seed^seed>>>15,2246822507)+1013904223>>>0;var j=seed%(i+1);var t=ix[i];ix[i]=ix[j];ix[j]=t}
     it.o=ix.map(function(i){return it.o[i]});it.a=ix.indexOf(a)})})
 })();
+</script>
+<script id="ux-prog">
+(function(){var b=document.createElement('div');b.id='uxProg';b.setAttribute('aria-hidden','true');document.body.appendChild(b);
+var t=0;function u(){t=0;var d=document.documentElement,m=d.scrollHeight-innerHeight;b.style.width=(m>0?Math.min(100,scrollY/m*100):0)+'%'}
+addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(u)},{passive:true});u()})();
 </script>
 </body>
 </html>
