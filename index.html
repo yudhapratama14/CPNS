@@ -11441,5 +11441,102 @@ addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(u)},{passive:
   window.addEventListener('scroll',function(){up.classList.toggle('on',!L.hidden&&window.scrollY>600);},{passive:true});
 })();
 </script>
+<script>
+/* Perluasan materi (tetap dalam kisi-kisi Kepmen PANRB 406/2026): TKP 6 aspek, Figural, Numerik tipis */
+(function(){
+  const li=a=>'<ul>'+a.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+  const tb=(h,r)=>'<div class="tbw"><table class="tb"><thead><tr>'+h.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+r.map(y=>'<tr>'+y.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
+  const S=(t,b)=>'<h4>'+t+'</h4>'+b;
+  const ADD={
+    pel:[
+      S('Perluasan: alur menghadapi warga yang kesal',li(['<b>Dengarkan dulu</b> sampai warga selesai bicara, jangan memotong atau membela diri.','<b>Akui perasaannya</b> ("saya paham Bapak menunggu lama"), tanpa menyalahkan siapa pun.','<b>Jelaskan aturan</b> dengan bahasa sederhana, lalu <b>tawarkan solusi</b> yang masih boleh ditempuh.','<b>Tindak lanjuti</b>: catat pengaduan, teruskan ke pihak berwenang, kabari hasilnya.'])),
+      S('Perluasan: godaan di meja pelayanan',tb(['Situasi','Sikap bernilai 5','Sikap bernilai rendah'],[['Warga menawarkan uang agar cepat','Tolak sopan, jelaskan layanan gratis atau sesuai tarif resmi','Menerima, atau menolak dengan marah'],['Kerabat minta didahulukan','Tetap sesuai antrean, bantu jelaskan prosedur','Menyerobotkan antrean'],['Berkas warga kurang','Sebutkan kekurangannya dan cara melengkapi','Menolak tanpa penjelasan']])),
+      S('Pengingat kata kunci',li(['Pelayanan bersifat <b>sama untuk semua</b>: tidak ada jalur khusus karena kenal atau membayar.','Jawaban 5 tidak pernah melanggar aturan, tapi juga tidak pernah dingin pada warga.']))],
+    jej:[
+      S('Perluasan: bentuk kerja sama dalam soal TKP',tb(['Bentuk soal','Arah jawaban 5'],[['Rekan tidak membagi informasi','Minta baik-baik, tawarkan format berbagi data yang disepakati'],['Rapat berbeda pendapat','Dengarkan semua pihak, cari titik temu, putuskan demi tujuan organisasi'],['Tugas lintas unit macet','Hubungi unit terkait langsung, jelaskan kebutuhan, lapor ke atasan hanya bila buntu'],['Rekan baru kesulitan','Bantu menjelaskan alur kerja tanpa mengambil alih tugasnya']])),
+      S('Perluasan: komunikasi yang sehat',li(['Gunakan kalimat "saya butuh..." bukan "kamu selalu...".','Bagikan informasi yang relevan supaya tim tidak bekerja dua kali.','Hargai kontribusi rekan, jangan mengklaim hasil kerja bersama.'])),
+      S('Jebakan',li(['Jawaban yang langsung mengadu ke atasan sebelum bicara dengan rekan bernilai lebih rendah.','Jawaban yang mengerjakan semuanya sendiri demi cepat juga rendah, karena tidak ada kolaborasi.']))],
+    sos:[
+      S('Perluasan: bentuk keragaman yang sering muncul',tb(['Aspek','Sikap ASN'],[['Agama','Menghormati ibadah dan hari raya semua pemeluk, tidak memaksakan keyakinan'],['Suku dan adat','Belajar adat setempat, tidak merendahkan logat atau kebiasaan'],['Bahasa daerah','Menghargai, sambil tetap melayani dalam bahasa Indonesia yang mudah dipahami'],['Kelompok rentan','Melayani penyandang disabilitas dan lansia sesuai kebutuhan, tanpa belas kasihan berlebihan']])),
+      S('Perluasan: bila terjadi gesekan',li(['Redakan dengan dialog dan libatkan tokoh masyarakat atau pihak berwenang.','Jangan ikut menyebarkan isu yang memecah belah di media sosial.','Utamakan persatuan (sila ketiga) tanpa melanggar hukum negara.'])),
+      S('Jebakan',li(['Menjawab "ikut kebiasaan setempat" bernilai rendah jika kebiasaan itu melanggar aturan negara.','Memihak kelompok sendiri, walau terasa wajar, selalu bernilai rendah.']))],
+    tik:[
+      S('Perluasan: sikap terhadap teknologi baru',li(['Pelajari dulu lewat pelatihan, panduan, atau rekan yang paham.','Ajak rekan yang gagap teknologi belajar bersama.','Laporkan kendala sistem lewat jalur resmi, jangan membuat jalan pintas yang membahayakan data.'])),
+      S('Perluasan: etika dan keamanan digital',tb(['Situasi','Sikap bernilai 5'],[['Menerima pesan berantai tanpa sumber','Cek sumber resmi dulu, jangan teruskan'],['Diminta bagikan OTP atau kata sandi','Tolak, laporkan bila mencurigakan'],['Data warga ada di laptop pribadi','Simpan di sistem yang disediakan kantor, patuhi aturan keamanan'],['Akun media sosial pribadi','Tidak membocorkan informasi kantor dan tetap sopan']])),
+      S('Jebakan',li(['Menolak teknologi baru karena "sudah nyaman cara lama" bernilai rendah.','Memakai aplikasi tak resmi demi cepat, padahal berisiko bagi data, juga rendah.']))],
+    prof:[
+      S('Perluasan: pilar profesionalisme',li(['<b>Kompeten</b>: terus belajar sesuai tuntutan jabatan.','<b>Akuntabel</b>: bertanggung jawab atas hasil dan berani mengakui kesalahan.','<b>Disiplin</b>: tepat waktu, taat aturan, menyelesaikan tugas tuntas.','<b>Netral</b>: tidak berpihak pada kepentingan golongan atau politik.'])),
+      S('Perluasan: pola soal yang sering keluar',tb(['Situasi','Sikap bernilai 5'],[['Tugas menumpuk mendekati tenggat','Susun prioritas, kerjakan, minta bantuan bila perlu agar hasil tetap baik'],['Salah input data','Akui, perbaiki segera, lapor pada atasan, cegah terulang'],['Ditawari proyek di luar tupoksi','Selesaikan tugas pokok dulu, bicarakan dengan atasan'],['Atasan memberi perintah menyalahi aturan','Tolak sopan, jelaskan dasar aturan, tawarkan alternatif']])),
+      S('Jebakan',li(['Menyalahkan keadaan atau rekan setelah membuat kesalahan bernilai rendah.','Patuh buta pada perintah yang melanggar aturan bernilai rendah.']))],
+    anti:[
+      S('Perluasan: ciri paham radikal yang perlu dikenali',li(['Merasa paling benar dan menolak perbedaan.','Menggunakan kekerasan atau ancaman demi tujuan kelompok.','Menolak dasar negara Pancasila dan NKRI.','Menyebar kebencian terhadap kelompok lain lewat ceramah atau media sosial.'])),
+      S('Perluasan: sikap bernilai 5',tb(['Situasi','Sikap bernilai 5'],[['Rekan menyebarkan konten kebencian','Tegur baik-baik, jelaskan bahayanya, laporkan bila berulang lewat jalur resmi'],['Menerima ajakan kelompok yang menolak Pancasila','Tolak dengan sopan, jangan terlibat, lapor bila ada indikasi pelanggaran hukum'],['Ada hoaks bernuansa SARA di grup','Klarifikasi dengan sumber resmi, ajak berhenti membagikan']])),
+      S('Jebakan',li(['Membiarkan saja karena "bukan urusan saya" bernilai rendah.','Main hakim sendiri atau menyebar identitas pelaku juga rendah, karena melanggar hukum.']))],
+    figbeda:[
+      S('Perluasan: daftar ciri yang dicek berurutan',li(['<b>Bentuk dasar</b> (segitiga, persegi, lingkaran).','<b>Jumlah</b> unsur (titik, garis, sisi).','<b>Arah dan posisi</b>: ingat, putaran tidak dihitung beda, pencerminan dihitung beda.','<b>Warna atau arsiran</b>.','<b>Ukuran relatif</b> antar unsur.'])),
+      S('Perluasan: cara kerja cepat',li(['Kelompokkan gambar yang sama ciri, cari yang sendirian.','Kalau dua gambar tampak beda, uji dengan memutarnya di kepala dulu.','Cek ciri yang paling mudah dihitung (jumlah) sebelum yang paling sulit (rotasi).']))],
+    figanalogi:[
+      S('Perluasan: jenis perubahan yang umum',tb(['Jenis','Ciri'],[['Rotasi','Gambar berputar 45°, 90°, atau 180°'],['Refleksi','Bayangan cermin horizontal atau vertikal'],['Penambahan atau pengurangan','Jumlah unsur naik atau turun'],['Perubahan warna','Isian hitam menjadi putih, atau sebaliknya'],['Perubahan ukuran','Unsur membesar atau mengecil']])),
+      S('Perluasan: langkah aman',li(['Tulis aturan pasangan pertama sebagai kata kerja.','Terapkan aturan itu persis pada gambar ketiga.','Cocokkan hasil dengan opsi, tolak opsi yang melanggar satu ciri saja.']))],
+    figserial:[
+      S('Perluasan: jenis pola serial',tb(['Jenis','Cara cek'],[['Satu unsur bergerak','Lacak posisi tiap langkah'],['Dua pola bergantian','Pisahkan urutan ganjil dan genap'],['Rotasi bertahap','Hitung derajat per langkah'],['Penambahan unsur','Hitung jumlah per langkah']])),
+      S('Perluasan: kerja dua aturan',li(['Pisahkan tiap ciri (posisi, warna, jumlah) dan tentukan aturannya sendiri-sendiri.','Gabungkan kembali, lalu cari opsi yang cocok.']))],
+    banding:[
+      S('Perluasan: cara membandingkan tanpa menghitung penuh',li(['Samakan bentuk bilangan dulu (pecahan, desimal, persen) sebelum membandingkan.','Gunakan perkiraan bila selisih jelas besar.','Ganti variabel dengan nilai uji, lalu pastikan hasilnya konsisten pada beberapa nilai.'])),
+      S('Perluasan: jebakan',li(['Jawaban "tidak dapat ditentukan" muncul bila hasil berbeda untuk nilai uji yang berbeda.','Bilangan negatif dan nol sering membalik arah perbandingan.']))],
+    ctabel:[
+      S('Perluasan: urutan kerja',li(['Tandai syarat yang paling membatasi (kapasitas, jumlah minimal, anggaran).','Coret opsi yang melanggar syarat.','Hitung total tiap opsi yang tersisa, bandingkan.'])),
+      S('Perluasan: kebiasaan baik',li(['Tulis ulang tabel singkat di coretan agar syarat tidak terlewat.','Periksa satuan (per orang, per paket, per hari) sebelum menghitung.']))],
+    kecdata:[
+      S('Perluasan: peta jawaban',tb(['Kondisi','Jawaban'],[['Pernyataan 1 saja cukup, 2 tidak','A'],['Pernyataan 2 saja cukup, 1 tidak','B'],['Keduanya harus digabung','C'],['Masing-masing cukup sendiri','D'],['Digabung pun tidak cukup','E']])),
+      S('Perluasan: cara cek',li(['Uji tiap pernyataan sendiri-sendiri sebelum digabung.','Jangan menghitung sampai hasil akhir, cukup pastikan jawabannya bisa ditentukan satu nilai.']))]
+  };
+  Object.keys(ADD).forEach(k=>{ if(typeof MATERI!=='undefined' && typeof MATERI[k]==='string') MATERI[k]+=ADD[k].join(''); });
+})();
+</script>
+<style id="no-maskot-tryout">
+/* Maskot disembunyikan di menu Try Out dan saat pengerjaan */
+body:has(#view-tryout.is-active) .mkm,
+#view-tryout .mkm,
+#view-tryout .home-mascot,
+#view-tryout .ar-bf-say,
+#view-tryout .ar-bf-run,
+#ar .mkm,#ar .ar-bf-say,#ar .ar-bf-run{display:none !important}
+</style>
+<style id="polish-ux">
+/* Polesan UI/UX tahap akhir: aman, hanya menambah, tidak mengubah isi */
+html{scroll-padding-top:72px}
+body{text-rendering:optimizeLegibility}
+.btn,.nav-btn,button.chip,.lc,.pk{-webkit-tap-highlight-color:transparent}
+.btn:focus-visible,.nav-btn:focus-visible,.lc:focus-visible,summary:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:12px}
+/* materi lebih nyaman dibaca */
+#lesson p,#lesson li{line-height:1.75}
+#lesson h4{margin-top:22px;margin-bottom:8px;letter-spacing:.005em}
+#lesson .tbw{border-radius:14px;box-shadow:inset 0 0 0 1px #E3E6EB;scrollbar-width:thin}
+#lesson table.tb tbody tr:nth-child(even){background:rgba(20,30,50,.025)}
+#lesson table.tb td,#lesson table.tb th{padding:10px 12px;vertical-align:top}
+details>summary{transition:background .2s}
+details[open]>summary{background:rgba(20,30,50,.04)}
+/* bar progres baca */
+#uxBar{position:fixed;left:0;top:0;height:3px;width:0;background:var(--brand);z-index:9999;transition:width .12s linear;pointer-events:none}
+/* tombol kembali ke atas */
+/* tombol melayang: tidak saling tindih dengan tombol oranye (FAB) */
+html body .lf{right:22px;bottom:calc(var(--bottombar-h,64px) + 34px + 68px + env(safe-area-inset-bottom,0px));transition:bottom .28s cubic-bezier(.3,.8,.3,1)}
+html body.nav-away .lf{bottom:calc(22px + 68px + env(safe-area-inset-bottom,0px))}
+@media (min-width:900px){html body .lf{right:32px;bottom:100px}}
+/* tombol ↑ oranye kembar dengan tombol ↑ putih bawaan: disembunyikan */
+html body button.sg-top{display:none !important}
+</style>
+<script id="polish-ux-js">
+(function(){
+  try{
+    var bar=document.createElement('div');bar.id='uxBar';document.body.appendChild(bar);
+    
+    var t=0;function f(){t=0;var d=document.documentElement,m=d.scrollHeight-innerHeight,y=scrollY||d.scrollTop;
+      bar.style.width=(m>0?Math.min(100,y/m*100):0)+'%'}
+    addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(f)},{passive:true});f();
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
