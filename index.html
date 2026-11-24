@@ -1053,6 +1053,9 @@
     .kp-tabs { display: flex; gap: 4px; border: var(--out, 1px solid var(--line)); border-radius: 999px; background: var(--cream, #FBF5EA); }
     .kp-tab { flex: 1; border: 0; border-radius: 999px; background: transparent; color: var(--ink-soft); font: 700 13.5px var(--font); cursor: pointer; transition: background .15s, color .15s; }
     .kp-tab.is-on { background: var(--ink, #14161C); color: #fff; }
+    .kp-tabs { flex-wrap: wrap; }
+    .kp-tab { flex: 1 1 auto; padding-left: 10px; padding-right: 10px; }
+    .kp-mask { font-size: 20px; letter-spacing: .06em; user-select: none; -webkit-user-select: none; }
     .kp-pane[hidden] { display: none; }
     .kp-pane .kp-rek { margin-top: 0; }
     .kp-app a.kp-big { border-radius: 999px; background: var(--ora, #F8B461); color: var(--ink, #14161C); font-size: 15.5px; font-weight: 800; box-shadow: 0 1px 2px rgba(16,24,40,.05); }
@@ -1790,7 +1793,7 @@ button, a, summary, [role="button"] { touch-action: manipulation; }
 .kp-tier .tp{grid-area:p;font-size:14px;line-height:1.2}
 .kp-pick{margin:6px 0 10px;font-size:12px;line-height:1.4}
 .kp-tabs{padding:4px}
-.kp-tab{padding:8px 4px;font-size:13px}
+.kp-tab{padding:8px 8px;font-size:13px}
 .kp-pane{margin-top:10px}
 .kp-pane .kp-rek{padding:12px 14px}
 .kp-saw{margin:2px 0 8px;font-size:13px;line-height:1.45}
@@ -7062,6 +7065,18 @@ button.sg-r:hover { background: #F0F8F8; border-color: #102C52; transform: trans
         ['Buka Livin\u2019', ios ? 'https://bmri.id/livin' : 'https://play.google.com/store/apps/details?id=id.bmri.livin']
       ] }
     ];
+    // E-wallet: nomor tidak ditulis polos di halaman. Di layar cuma tampil tersamar; nomor utuh baru dirakit saat tombol Salin ditekan.
+    const _K = [37, 91, 13, 72, 29, 66, 53], _D = [21, 99, 52, 125, 43, 113, 3, 20, 110, 61, 127, 47, 123];
+    const nomorEw = () => _D.map((c, i) => String.fromCharCode(c ^ _K[i % _K.length])).join('');
+    const maskEw = () => '\u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022\u2022 ' + nomorEw().slice(-3);
+    const EWALLET = [
+      { bank: 'ShopeePay', apps: [
+        ['Salin nomor & buka Shopee', ios ? 'https://apps.apple.com/id/app/shopee-id/id959841449' : 'https://play.google.com/store/apps/details?id=com.shopee.id']
+      ] },
+      { bank: 'GoPay', apps: [
+        ['Salin nomor & buka Gojek', ios ? 'https://apps.apple.com/id/app/gojek/id944875099' : 'https://play.google.com/store/apps/details?id=com.gojek.app']
+      ] }
+    ];
 
     const CUP = (document.querySelector('.kopi-ic svg') || { outerHTML: '' }).outerHTML;
     const TIER = [
@@ -7086,6 +7101,7 @@ button.sg-r:hover { background: #F0F8F8; border-color: #102C52; transform: trans
       '<div class="kp-tabs" role="tablist" aria-label="Cara bayar">' +
         '<button type="button" role="tab" class="kp-tab is-on" data-k="0" aria-selected="true">Saweria</button>' +
         REKENING.map((r, i) => '<button type="button" role="tab" class="kp-tab" data-k="' + (i + 1) + '" aria-selected="false">' + r.bank + '</button>').join('') +
+        EWALLET.map((w, j) => '<button type="button" role="tab" class="kp-tab" data-k="' + (REKENING.length + 1 + j) + '" aria-selected="false">' + w.bank + '</button>').join('') +
       '</div>' +
       '<div class="kp-pane" data-k="0" role="tabpanel">' +
         '<div class="kp-rek"><small>PALING GAMPANG</small>' +
@@ -7100,9 +7116,16 @@ button.sg-r:hover { background: #F0F8F8; border-color: #102C52; transform: trans
         '<div class="kp-app">' + r.apps.map(a => '<a href="' + a[1] + '" data-b="' + r.bank + '" target="_blank" rel="noopener noreferrer">' + a[0] + '</a>').join('') + '</div>' +
         '<p class="kp-cat">Buka aplikasinya, pilih Transfer ke rekening ' + r.bank + ', lalu tempel nomor yang sudah disalin.</p></div></div>'
       ).join('') +
+      EWALLET.map((w, j) =>
+        '<div class="kp-pane" data-k="' + (REKENING.length + 1 + j) + '" role="tabpanel" hidden>' +
+        '<div class="kp-rek"><small>TRANSFER ' + w.bank.toUpperCase() + '</small>' +
+        '<span class="kp-no kp-mask">' + maskEw() + '</span><span class="kp-an">a.n. ' + NAMA + '</span>' +
+        '<div class="kp-app kp-one" style="margin-top:12px">' + w.apps.map(a => '<a class="kp-big" href="' + a[1] + '" data-b="' + w.bank + '" data-w="' + j + '" data-t="' + a[0] + '" target="_blank" rel="noopener noreferrer">' + a[0] + '</a>').join('') + '</div>' +
+        '</div></div>'
+      ).join('') +
       '<div class="kp-trust">Tanpa paksaan. Kalau belum bisa traktir, belajar dengan rajin sudah cukup. 💙</div>' +
       '<button type="button" class="kp-done">Udah traktir \u2713</button>' +
-      '<div class="kp-hint"><ul class="kp-notes"><li class="n1"><span><b>Udah traktir?</b> Pencet tombol hijau di atas.</span></li><li class="n2"><span><b>Mau nama lo tampil di daftar traktir?</b> Isi nama dan unggah bukti transfer.</span></li><li class="n3"><span><b>Bukti transfer aman.</b> Cuma buat verifikasi, nggak pernah ditampilkan ke publik.</span></li></ul></div>';
+      '<div class="kp-hint"><ul class="kp-notes"><li class="n1"><span><b>Udah traktir?</b> Pencet tombol biru di atas.</span></li><li class="n2"><span><b>Mau nama lo tampil di daftar traktir?</b> Isi nama dan unggah bukti transfer.</span></li><li class="n3"><span><b>Bukti transfer aman.</b> Cuma buat verifikasi, nggak pernah ditampilkan ke publik.</span></li></ul></div>';
 
     const TERIMA =
       '<div class="kp-thx">' +
@@ -7395,8 +7418,10 @@ button.sg-r:hover { background: #F0F8F8; border-color: #102C52; transform: trans
     };
 
     const salin = async (btn) => {
-      const r = REKENING[+btn.dataset.i];
-      const angka = r.no.replace(/\D/g, '');
+      const ew = btn.dataset.w !== undefined ? EWALLET[+btn.dataset.w] : null;
+      const r = ew || REKENING[+btn.dataset.i];
+      const angka = ew ? nomorEw() : r.no.replace(/\D/g, '');
+      const teks0 = ew ? 'Salin nomor ' + ew.bank : 'Salin nomor rekening';
       window.kopiLog('salin', r.bank);
       try { await navigator.clipboard.writeText(angka); }
       catch (_) {
@@ -7407,7 +7432,26 @@ button.sg-r:hover { background: #F0F8F8; border-color: #102C52; transform: trans
         t.remove();
       }
       btn.textContent = 'Tersalin \u2713';
-      setTimeout(() => { btn.textContent = 'Salin nomor rekening'; }, 1800);
+      setTimeout(() => { btn.textContent = teks0; }, 1800);
+    };
+
+    // Satu ketukan: salin nomor e-wallet, lalu tautan aplikasi tetap terbuka seperti biasa.
+    const salinEw = (a) => {
+      const angka = nomorEw();
+      window.kopiLog('salin', a.dataset.b);
+      const cadangan = () => {
+        const t = document.createElement('textarea');
+        t.value = angka; t.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        t.remove();
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(angka).catch(cadangan);
+        else cadangan();
+      } catch (_) { cadangan(); }
+      a.textContent = 'Nomor tersalin \u2713 membuka aplikasi...';
+      setTimeout(() => { a.textContent = a.dataset.t; }, 2500);
     };
 
     const sudah = () => {
@@ -7454,7 +7498,10 @@ button.sg-r:hover { background: #F0F8F8; border-color: #102C52; transform: trans
       const b = e.target.closest('.kp-salin');
       if (b) return salin(b);
       const a = e.target.closest('.kp-app a');
-      if (a) return window.kopiLog('app', a.dataset.b);
+      if (a) {
+        if (a.dataset.w !== undefined) salinEw(a);
+        return window.kopiLog('app', a.dataset.b);
+      }
       if (e.target.closest('.kp-share')) return ajak(e.target.closest('.kp-share'));
       if (e.target.closest('.kp-ok')) return tutup();
       if (e.target.closest('.kp-send')) return kirimTraktir(e.target.closest('.kp-send'));
@@ -11927,6 +11974,40 @@ html body.nav-away .lf{bottom:calc(22px + 68px + env(safe-area-inset-bottom,0px)
 @media (min-width:900px){html body .lf{right:32px;bottom:100px}}
 /* tombol ↑ oranye kembar dengan tombol ↑ putih bawaan: disembunyikan */
 html body button.sg-top{display:none !important}
+
+/* ===== Dialog traktir: versi minimalis (garis tipis, kartu putih, kontrol segmented) ===== */
+html body .kp-ov .kp-box { border:0; border-radius:26px; background:#fff; box-shadow:0 24px 60px rgba(16,24,40,.22), 0 2px 6px rgba(16,24,40,.06); }
+html body .kp-ov .kp-hero { background:linear-gradient(180deg,#FFF3DC 0%,#FFF9EE 100%); border-bottom:0; }
+html body .kp-ov .kp-hero-ic { border:0; background:#fff; box-shadow:0 2px 8px rgba(176,120,30,.18); }
+html body .kp-ov .kp-x { border:0; background:rgba(17,20,24,.06); color:var(--ink); transition:background .15s; }
+html body .kp-ov .kp-x:hover { background:rgba(17,20,24,.1); }
+html body .kp-ov .kp-tier { border:1px solid #ECEEF2; border-radius:14px; background:#fff; }
+html body .kp-ov .kp-tier .tn { font-size:11.5px; color:#7A818B; }
+html body .kp-ov .kp-tier .tp { font-size:14px; font-weight:700; }
+html body .kp-ov .kp-pick { margin:8px 0 14px; font-size:12px; color:#8A919B; }
+html body .kp-ov .kp-tabs { display:flex; flex-wrap:nowrap; gap:2px; padding:4px; border:0; border-radius:14px; background:#F1F2F5; overflow-x:auto; scrollbar-width:none; }
+html body .kp-ov .kp-tabs::-webkit-scrollbar { display:none; }
+html body .kp-ov .kp-tab { flex:1 0 auto; padding:9px 10px; border-radius:10px; font-size:13px; font-weight:600; color:#6A717B; white-space:nowrap; }
+html body .kp-ov .kp-tab.is-on { background:#fff; color:var(--ink); box-shadow:0 1px 3px rgba(16,24,40,.14); }
+html body .kp-ov .kp-pane { margin-top:12px; }
+html body .kp-ov .kp-rek { padding:16px 18px; border:1px solid #ECEEF2; border-radius:18px; background:#fff; }
+html body .kp-ov .kp-rek small { font-size:11px; font-weight:700; letter-spacing:.09em; color:#8A919B; }
+html body .kp-ov .kp-no { margin:8px 0 2px; font-size:22px; font-weight:700; letter-spacing:.07em; }
+html body .kp-ov .kp-mask { font-size:20px; letter-spacing:.08em; color:#2A2F36; }
+html body .kp-ov .kp-an { font-size:13px; color:#7A818B; }
+html body .kp-ov .kp-salin { margin-top:14px; padding:13px 14px; border:0; border-radius:14px; background:#F1F2F5; color:var(--ink); font-weight:700; box-shadow:none; }
+html body .kp-ov .kp-app { margin-top:14px; gap:8px; }
+html body .kp-ov .kp-app a { border:0; border-radius:12px; padding:12px 8px; box-shadow:none; }
+html body .kp-ov .kp-app a.kp-big { padding:15px 12px; border-radius:14px; background:var(--ora,#F8B461); color:var(--ink); font-size:15px; font-weight:700; transition:transform .12s, filter .15s; }
+html body .kp-ov .kp-app a.kp-big:hover { filter:brightness(.97); }
+html body .kp-ov .kp-app a.kp-big:active { transform:scale(.98); }
+html body .kp-ov .kp-saw { font-size:13px; line-height:1.5; color:#6A717B; }
+html body .kp-ov .kp-trust { margin:14px 0 0; padding:0 8px; border-radius:0; background:none; font-size:12px; color:#8A919B; }
+html body .kp-ov .kp-box .kp-done, html body .kp-ov .kp-done { margin-top:14px; padding:14px; border:0; border-radius:14px; box-shadow:none; font-size:14.5px; font-weight:700; transition:transform .12s, filter .15s; }
+html body .kp-ov .kp-done:active { transform:scale(.985); }
+html body .kp-ov .kp-box .kp-hint { margin:16px 0 0; padding:14px 2px 0; background:none; border:0; border-top:1px solid #ECEEF2; border-radius:0; font-size:12.5px; }
+html body .kp-ov .kp-notes { gap:9px; }
+html body .kp-ov .kp-notes li::before { width:20px; height:20px; background-color:#F1F2F5; }
 </style>
 <script id="polish-ux-js">
 (function(){
