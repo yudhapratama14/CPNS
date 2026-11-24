@@ -2461,6 +2461,140 @@ button.sg-r:hover { background: #F0F8F8; border-color: #102C52; transform: trans
 .sg-fc { border: 1.5px solid #E1E6EE; background: #F0F8F8; box-shadow: 0 14px 34px -18px rgba(16, 44, 82, .35); }
 @media (prefers-reduced-motion: reduce) { .sg-box { animation: none; } .sg-bar, .sg-r { transition: none; } }
 </style>
+<style id="peta-v3">
+/* ===== Peta Pasal UUD 1945 dan 45 Butir Pancasila: tampilan v3 ===== */
+#sim-pasal, #sim-butir { padding: 20px; --pv-ink: var(--ink, #111418); --pv-soft: var(--ink-soft, #4A5058); --pv-line: var(--line, #E3E6EB); }
+#sim-pasal .sr, #sim-butir .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.pv-h { margin-bottom: 14px; }
+.pv-h h4 { font-size: 20px; letter-spacing: -.01em; margin-bottom: 4px; }
+.pv-h p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--pv-soft); max-width: 62ch; }
+.pv-h p b { color: var(--pv-ink); }
+
+/* Tab */
+.pv-tabs { display: flex; gap: 4px; padding: 4px; margin: 0 0 14px; background: var(--bg, #F6F7F9); border: 1px solid var(--pv-line); border-radius: 99px; }
+.pv-tabs button { flex: 1; padding: 10px 8px; border-radius: 99px; font-size: 14px; font-weight: 700; color: var(--pv-soft); transition: background .15s, color .15s; }
+.pv-tabs button.on { background: #fff; color: var(--pv-ink); box-shadow: 0 1px 3px rgba(16,24,40,.14); }
+.pv-tabs button:not(.on):hover { color: var(--pv-ink); }
+
+/* Pencarian */
+.pv-search { display: block; position: relative; margin-bottom: 12px; }
+.pv-search input { width: 100%; padding: 12px 16px 12px 42px; font: inherit; font-size: 15px; color: var(--pv-ink); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%234A5058' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 14px center; border: 2px solid var(--pv-line); border-radius: 14px; }
+.pv-search input:focus { outline: none; border-color: var(--brand, #102C52); }
+
+/* Chip filter / pilih pembeda: bisa digeser di HP */
+.pv-chips { display: flex; gap: 6px; overflow-x: auto; padding: 2px 2px 8px; margin-bottom: 8px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.pv-rel { display: flex; flex-wrap: wrap; gap: 6px; }
+.pv-chip { flex: none; padding: 7px 13px; border: 1.5px solid var(--pv-line); border-radius: 99px; background: #fff; font-size: 13px; font-weight: 700; color: var(--pv-ink); line-height: 1.3; transition: background .15s, color .15s, border-color .15s; }
+.pv-chip:hover { border-color: var(--c, #14161C); }
+.pv-chip.on { background: var(--c, #14161C); border-color: var(--c, #14161C); color: #fff; }
+.pv-rel .pv-chip { text-align: left; }
+
+/* Peta: kisi bab */
+.pv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 4px; }
+@media (min-width: 560px) { .pv-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .pv-grid { grid-template-columns: repeat(4, 1fr); } }
+.pv-tile { display: grid; gap: 2px; text-align: left; padding: 11px 12px; border: 1.5px solid var(--pv-line); border-left: 6px solid var(--c); border-radius: 14px; background: #fff; transition: transform .12s, box-shadow .12s, background .15s; }
+.pv-tile b { font-size: 14.5px; color: var(--c); }
+.pv-tile span { font-size: 13px; color: var(--pv-soft); line-height: 1.35; }
+.pv-tile:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(16,24,40,.08); }
+.pv-tile.on { background: var(--c); border-color: var(--c); }
+.pv-tile.on b, .pv-tile.on span { color: #fff; }
+.pv-empty { grid-column: 1 / -1; padding: 18px; text-align: center; font-size: 14.5px; color: var(--pv-soft); background: var(--bg, #F6F7F9); border-radius: 14px; }
+
+/* Panel detail */
+.pv-det { margin-top: 14px; padding: 20px; background: #fff; border: 2px solid var(--pv-line); border-top: 6px solid var(--c); border-radius: 18px; animation: pop .3s ease; }
+.pv-det-h { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 4px; }
+.pv-det-h h5 { font-size: 18px; line-height: 1.3; margin-bottom: 2px; }
+.pv-det-h small { font-size: 13px; color: var(--pv-soft); }
+.pv-badge { flex: none; padding: 6px 11px; border-radius: 10px; background: var(--c); color: #fff; font-size: 13.5px; font-weight: 800; white-space: nowrap; }
+.pv-sec { margin-top: 16px; }
+.pv-sec > b, .pv-ex b, .pv-trap b, .pv-kunci b, .pv-ci small, .pv-lab { display: block; margin-bottom: 6px; font-size: 11.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--pv-soft); }
+.pv-pts { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+.pv-pts li { position: relative; padding-left: 20px; font-size: 15px; line-height: 1.7; color: var(--pv-ink); }
+.pv-pts li::before { content: ""; position: absolute; left: 3px; top: .72em; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.pv-ex, .pv-trap { padding: 12px 14px; border-radius: 14px; font-size: 14.5px; line-height: 1.7; color: var(--pv-ink); }
+.pv-ex { background: var(--cream, #FBF5EA); }
+.pv-trap { background: #FFF4D6; border-left: 5px solid #D99A0B; }
+.pv-trap b { color: #8A5A00; }
+.pv-nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+mark { background: #FFE58A; color: inherit; padding: 0 2px; border-radius: 3px; }
+
+/* Pembeda */
+.pv-count { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--c); margin-bottom: 4px; }
+.pv-det > h5 { font-size: 19px; line-height: 1.3; margin-bottom: 6px; }
+.pv-why { margin: 0 0 12px; font-size: 15px; line-height: 1.7; color: var(--pv-soft); }
+.pv-kunci { padding: 12px 14px; border-radius: 14px; background: var(--c); color: #fff; margin-bottom: 14px; }
+.pv-kunci b { color: rgba(255,255,255,.82); }
+.pv-kunci span { display: block; font-size: 15px; font-weight: 700; line-height: 1.6; }
+.pv-cmp { display: grid; gap: 10px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .pv-cmp.n2 { grid-template-columns: repeat(2, 1fr); } .pv-cmp.n3 { grid-template-columns: repeat(3, 1fr); } .pv-cmp.n4 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .pv-cmp.n4 { grid-template-columns: repeat(4, 1fr); } }
+.pv-ci { padding: 14px; border: 1.5px solid var(--pv-line); border-top: 4px solid var(--c); border-radius: 14px; background: #fff; }
+.pv-ci-h { display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
+.pv-ci-h b { font-size: 15.5px; color: var(--pv-ink); }
+.pv-ci-h span { font-size: 12.5px; font-weight: 700; color: var(--c); }
+.pv-ci p { margin: 0 0 8px; font-size: 14px; line-height: 1.6; color: var(--pv-ink); }
+.pv-ci p:last-child { margin-bottom: 0; }
+.pv-ci small { margin-bottom: 2px; }
+
+/* Uji / latihan */
+.pv-q { margin-top: 18px; padding: 14px; border: 2px dashed var(--pv-line); border-radius: 16px; background: var(--bg, #F6F7F9); }
+.pv-qt { margin: 0 0 10px; font-size: 15.5px; font-weight: 700; line-height: 1.6; color: var(--pv-ink); }
+.pv-opts { display: grid; gap: 8px; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .pv-opts { grid-template-columns: repeat(2, 1fr); } }
+.pv-opt { padding: 12px 14px; text-align: left; font-size: 14.5px; font-weight: 700; color: var(--pv-ink); background: #fff; border: 2px solid var(--pv-line); border-radius: 12px; transition: border-color .15s, background .15s; }
+.pv-opt:hover:not(:disabled) { border-color: var(--brand, #102C52); }
+.pv-opt:disabled { cursor: default; }
+.pv-opt.ok { background: var(--ok-soft, #E3F6EE); border-color: #147B54; }
+.pv-opt.no { background: var(--bad-soft, #FDE9EA); border-color: #C9333A; }
+.pv-opts.five { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.pv-opts.five .pv-opt { display: grid; justify-items: center; gap: 2px; padding: 10px 2px; text-align: center; border-bottom: 4px solid var(--c); }
+.pv-opts.five .pv-opt b { font-size: 18px; color: var(--c); }
+.pv-opts.five .pv-opt span { font-size: 10.5px; font-weight: 700; line-height: 1.2; word-break: break-word; }
+@media (min-width: 560px) { .pv-opts.five { grid-template-columns: repeat(5, 1fr); } .pv-opts.five .pv-opt span { font-size: 12.5px; } }
+.pv-out { margin-top: 12px; }
+.pv-fb { padding: 14px 16px; border-radius: 14px; font-size: 14.5px; line-height: 1.7; color: var(--pv-ink); border-left: 5px solid; }
+.pv-fb strong { display: block; margin-bottom: 4px; font-size: 15.5px; }
+.pv-fb.good { background: var(--ok-soft, #E3F6EE); border-color: #147B54; }
+.pv-fb.bad { background: var(--bad-soft, #FDE9EA); border-color: #C9333A; }
+.pv-ans { display: block; margin-top: 6px; }
+.pv-lat-top { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14px; color: var(--pv-soft); }
+.pv-lat-top b { color: var(--pv-ink); font-size: 16px; }
+.pv-mode { display: flex; gap: 4px; padding: 3px; background: var(--bg, #F6F7F9); border: 1px solid var(--pv-line); border-radius: 99px; }
+.pv-mode button { padding: 6px 12px; border-radius: 99px; font-size: 12.5px; font-weight: 700; color: var(--pv-soft); }
+.pv-mode button.on { background: #fff; color: var(--pv-ink); box-shadow: 0 1px 2px rgba(16,24,40,.14); }
+.pv-clue { margin: 0 0 14px; padding: 14px 16px; font-size: 16px; line-height: 1.7; color: var(--pv-ink); background: var(--cream, #FBF5EA); border-left: 5px solid var(--c); border-radius: 12px; }
+
+/* 45 butir: pilih sila */
+.pv-silas { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 8px; margin-bottom: 4px; scroll-snap-type: x proximity; }
+@media (min-width: 700px) { .pv-silas { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; } }
+.pv-sl { flex: none; min-width: 108px; display: grid; justify-items: start; gap: 1px; padding: 10px 12px; text-align: left; border: 1.5px solid var(--pv-line); border-bottom: 5px solid var(--c); border-radius: 14px; background: #fff; scroll-snap-align: start; transition: transform .12s, background .15s; }
+.pv-sl b { font-size: 22px; line-height: 1.1; color: var(--c); }
+.pv-sl span { font-size: 13.5px; font-weight: 800; color: var(--pv-ink); }
+.pv-sl small { font-size: 12px; color: var(--pv-soft); }
+.pv-sl:hover { transform: translateY(-1px); }
+.pv-sl.on { background: var(--c); border-color: var(--c); }
+.pv-sl.on b, .pv-sl.on span, .pv-sl.on small { color: #fff; }
+.pv-kw { margin: 8px 0 14px; padding: 10px 14px; border-radius: 12px; background: var(--bg, #F6F7F9); font-size: 14.5px; line-height: 1.6; color: var(--pv-soft); }
+.pv-res { margin-bottom: 12px; font-size: 14.5px; color: var(--pv-soft); }
+.pv-blist { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.pv-bi { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border: 1.5px solid var(--pv-line); border-left: 5px solid var(--c); border-radius: 14px; background: #fff; }
+.pv-bn { flex: none; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--c); color: #fff; font-size: 14px; font-weight: 800; }
+.pv-bc { min-width: 0; flex: 1; }
+.pv-bk { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 10px; margin-bottom: 4px; }
+.pv-bk span { font-size: 14px; font-weight: 800; color: var(--c); }
+.pv-bk small { font-size: 12px; color: var(--pv-soft); }
+.pv-bc > p { margin: 0 0 8px; font-size: 15px; line-height: 1.65; color: var(--pv-ink); }
+.pv-bc .pv-ex { padding: 10px 12px; font-size: 14px; line-height: 1.6; }
+.pv-bc .pv-ex b { display: inline; margin: 0 6px 0 0; letter-spacing: .04em; color: var(--c); }
+
+@media (max-width: 520px) {
+  #sim-pasal, #sim-butir { padding: 16px; }
+  .pv-det { padding: 16px; }
+  .pv-badge { font-size: 12.5px; padding: 5px 9px; }
+}
+@media (prefers-reduced-motion: reduce) { .pv-tile, .pv-sl { transition: none; } }
+</style>
 </head>
 
 <body>
@@ -6906,27 +7040,285 @@ button.sg-r:hover { background: #F0F8F8; border-color: #102C52; transform: trans
       draw();
     })();
 
-    // ---------- Peta pasal UUD 1945 per bab + contoh nyata ----------
+    // ---------- Peta pasal UUD 1945 v3: peta + pembeda + uji ----------
+    // Helper bersama untuk Peta Pasal dan 45 Butir (dipakai lewat window.PV)
+    window.PV = (function () {
+      const rx = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const hl = (t, q) => (q ? String(t).replace(new RegExp('(' + rx(q) + ')', 'ig'), '<mark>$1</mark>') : t);
+      const norm = s => String(s).toLowerCase();
+
+      // Panel "Pembeda": daftar pasangan yang sering tertukar + kartu perbandingan + uji cepat
+      function pembeda(host, list, color, startAt) {
+        let cur = startAt || 0;
+        const draw = () => {
+          const d = list[cur];
+          host.innerHTML = `
+            <div class="pv-chips" role="tablist" aria-label="Pilih pasangan yang dibedakan">
+              ${list.map((x, i) => `<button class="pv-chip${i === cur ? ' on' : ''}" data-i="${i}" role="tab" aria-selected="${i === cur}" style="--c:${color}">${x.t}</button>`).join('')}
+            </div>
+            <div class="pv-det" style="--c:${color}">
+              <div class="pv-count">Pembeda ${cur + 1} dari ${list.length}</div>
+              <h5>${d.t}</h5>
+              <p class="pv-why">${d.why}</p>
+              <div class="pv-kunci"><b>Kunci ingat</b><span>${d.kunci}</span></div>
+              <div class="pv-cmp n${d.items.length}">
+                ${d.items.map(it => `<div class="pv-ci">
+                  <div class="pv-ci-h"><b>${it.n}</b><span>${it.ref}</span></div>
+                  ${it.rows.map(r => `<p><small>${r[0]}</small>${r[1]}</p>`).join('')}
+                </div>`).join('')}
+              </div>
+              <div class="pv-q">
+                <b class="pv-lab">Uji pembeda</b>
+                <p class="pv-qt">${d.q}</p>
+                <div class="pv-opts">${d.items.map((it, i) => `<button class="pv-opt" data-a="${i}">${it.n}</button>`).join('')}</div>
+                <div class="pv-out" aria-live="polite"></div>
+              </div>
+              <div class="pv-nav">
+                ${cur > 0 ? '<button class="btn ghost" data-go="-1">Sebelumnya</button>' : '<span></span>'}
+                ${cur < list.length - 1 ? '<button class="btn" data-go="1">Berikutnya</button>' : '<span></span>'}
+              </div>
+            </div>`;
+          host.querySelectorAll('.pv-chip').forEach(b => b.onclick = () => { cur = +b.dataset.i; draw(); });
+          host.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { cur += +b.dataset.go; draw(); const c = host.querySelector('.pv-chip.on'); if (c && c.scrollIntoView) c.scrollIntoView({ block: 'nearest', inline: 'center' }); });
+          host.querySelectorAll('.pv-opt').forEach(b => b.onclick = () => {
+            const a = +b.dataset.a, ok = a === d.a;
+            host.querySelectorAll('.pv-opt').forEach((e, j) => { e.disabled = true; if (j === d.a) e.classList.add('ok'); else if (j === a) e.classList.add('no'); });
+            host.querySelector('.pv-out').innerHTML = `<div class="pv-fb ${ok ? 'good' : 'bad'}"><strong>${ok ? 'Tepat!' : 'Belum pas. Jawabannya: ' + d.items[d.a].n}</strong>${d.why2}</div>`;
+          });
+        };
+        draw();
+        return { go: i => { cur = i; draw(); } };
+      }
+
+      // Tab sederhana: [{k, label}] -> panel dipilih lewat callback
+      function tabs(box, defs, onPick) {
+        const bar = box.querySelector('.pv-tabs');
+        bar.innerHTML = defs.map(d => `<button role="tab" data-k="${d.k}" aria-selected="false">${d.label}</button>`).join('');
+        const set = k => {
+          bar.querySelectorAll('button').forEach(b => { const on = b.dataset.k === k; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+          onPick(k);
+        };
+        bar.querySelectorAll('button').forEach(b => b.onclick = () => set(b.dataset.k));
+        return set;
+      }
+      return { hl, norm, pembeda, tabs };
+    })();
+
     (function () {
-      const P = (c, t, p, e) => [c, t, p + '<br><em>Contoh nyata: ' + e + '</em>'];
-      renderPicker('sim-pasal', 'Peta pasal UUD 1945 per bab', 'Tap bab untuk melihat isi pasal dan contoh nyatanya.', [
-        P('Pasal 1', 'Bab I: Bentuk dan kedaulatan', 'Indonesia negara kesatuan berbentuk republik; kedaulatan di tangan rakyat; negara hukum.', 'rakyat memilih langsung presiden dan wakil rakyat dalam Pemilu 14 Februari 2024; pejabat yang melanggar hukum tetap diproses di pengadilan.'),
-        P('MPR · 2-3', 'Bab II: MPR', 'MPR = DPR + DPD, bersidang minimal 5 tahun sekali. Berwenang mengubah UUD, melantik Presiden dan Wakil, dan dapat memberhentikan mereka.', 'MPR melantik Presiden dan Wakil Presiden pada 20 Oktober 2024.'),
-        P('Presiden · 4-16', 'Bab III: Kekuasaan pemerintahan', 'Presiden memegang kekuasaan pemerintahan, mengajukan RUU, menetapkan PP (ps 5); dipilih langsung (6A), 5 tahun maks. 2 periode (7), tidak dapat membubarkan DPR (7C). Dengan persetujuan DPR: menyatakan perang dan membuat perjanjian internasional (11). Memberi grasi dan rehabilitasi (pertimbangan MA), amnesti dan abolisi (pertimbangan DPR) (14); mengangkat duta (pertimbangan DPR) (13).', 'Perjanjian iklim Paris disahkan dengan UU 16/2016; PP 94/2021 tentang Disiplin PNS ditetapkan Presiden untuk menjalankan UU ASN; terpidana mengajukan grasi kepada Presiden.'),
-        P('Kementerian · 17', 'Bab V: Kementerian negara', 'Presiden dibantu menteri yang diangkat dan diberhentikan Presiden. Pembentukan dan pembubaran kementerian diatur UU.', 'Pembentukan atau penggabungan kementerian dilakukan sesuai UU Kementerian Negara.'),
-        P('Pemda · 18-18B', 'Bab VI: Pemerintah daerah', 'Provinsi dibagi atas kabupaten dan kota yang berotonomi seluas-luasnya, punya DPRD hasil pemilu, kepala daerah dipilih demokratis, berhak menetapkan Perda. Negara mengakui daerah khusus dan istimewa serta hukum adat.', 'Pilkada serentak 27 November 2024; Yogyakarta berstatus daerah istimewa dan Aceh berotonomi khusus.'),
-        P('DPR · 19-22B', 'Bab VII: DPR', 'DPR dipilih lewat pemilu, bersidang minimal 1x setahun, membentuk UU bersama Presiden. Fungsi: legislasi, anggaran, pengawasan. Hak: interpelasi, angket, menyatakan pendapat. RUU yang ditolak tidak boleh diajukan lagi pada masa sidang itu. Presiden dapat menetapkan Perppu dalam kegentingan, harus disetujui DPR (22).', 'Pansus Hak Angket KPK dibentuk DPR pada 2017; Perppu Cipta Kerja (2/2022) kemudian disetujui DPR menjadi UU 6/2023.'),
-        P('DPD · 22C-D', 'Bab VIIA: DPD', 'Dipilih lewat pemilu, jumlah wakil tiap provinsi sama dan tidak lebih dari 1/3 DPR. Mengajukan dan ikut membahas RUU otonomi daerah, serta mengawasi pelaksanaan UU tertentu.', 'DPD menyuarakan kepentingan daerah, misalnya RUU tentang hubungan pusat dan daerah.'),
-        P('Pemilu · 22E', 'Bab VIIB: Pemilu', 'Luber dan jurdil, tiap 5 tahun, untuk memilih DPR, DPD, Presiden dan Wakil, serta DPRD. Peserta pemilu DPR dan DPRD adalah partai politik, peserta DPD adalah perseorangan. Diselenggarakan KPU yang nasional, tetap, dan mandiri.', 'Pemilu serentak 14 Februari 2024 diselenggarakan KPU; surat suara dihitung terbuka di TPS.'),
-        P('Keuangan · 23-23G', 'Bab VIII dan VIIIA: Keuangan dan BPK', 'APBN ditetapkan dengan UU (RAPBN diajukan Presiden; bila ditolak dipakai APBN tahun lalu). Pajak dan pungutan bersifat memaksa diatur UU. Mata uang diatur UU, bank sentral independen. BPK bebas dan mandiri, hasil pemeriksaan diserahkan ke DPR, DPD, DPRD.', 'UU HPP 7/2021 menjadi dasar perubahan tarif PPN; Bank Indonesia sebagai bank sentral; BPK memberi opini WTP pada laporan keuangan kementerian.'),
-        P('Kehakiman · 24-25', 'Bab IX: Kekuasaan kehakiman', 'Dilaksanakan MA dan MK. MA: kasasi dan uji peraturan di bawah UU. KY: mengusulkan hakim agung dan menjaga perilaku hakim. MK: menguji UU terhadap UUD, sengketa lembaga negara, bubarkan parpol, sengketa hasil pemilu, putusan atas pendapat DPR soal pelanggaran Presiden. MK 9 hakim.', 'Warga yang menilai pasal UU melanggar UUD mengajukan uji materi ke MK; perda yang melanggar UU diuji ke MA; sengketa hasil pilkada diputus MK.'),
-        P('Wilayah · 25A, 26-28', 'Bab XIA dan X: Wilayah dan warga negara', 'Indonesia negara kepulauan dengan batas diatur UU (25A). Warga negara: bangsa Indonesia asli dan orang bangsa lain yang disahkan UU; penduduk: WNI dan WNA yang tinggal di Indonesia (26). Semua warga sama di hadapan hukum, berhak atas pekerjaan, dan ikut bela negara (27). Berserikat dan berpendapat (28).', 'Warga asing yang tinggal di Indonesia berstatus penduduk, bukan warga negara; buruh berserikat membentuk serikat pekerja.'),
-        P('HAM · 28A-J', 'Bab XA: Hak asasi manusia', 'Hak hidup (A), berkeluarga dan hak anak (B), mengembangkan diri (C), kesamaan di hadapan hukum dan bekerja (D), beragama dan berpendapat (E), informasi (F), rasa aman dan bebas penyiksaan (G), sejahtera dan milik pribadi (H), hak yang tidak dapat dikurangi (I), kewajiban hormati HAM orang lain dan tunduk pada pembatasan UU (J).', 'Keterbukaan informasi publik (UU 14/2008) menjamin hak memperoleh informasi; hak anak bersekolah dan tumbuh kembang.'),
-        P('Agama · 29, Hankam · 30', 'Bab XI dan XII: Agama dan pertahanan', 'Negara berdasar Ketuhanan Yang Maha Esa dan menjamin kebebasan beragama (29). Tiap warga ikut menjaga hankam; TNI (AD, AL, AU) dan Polri sebagai kekuatan utama, rakyat sebagai pendukung; Polri melindungi dan mengayomi (30).', 'Kegiatan siskamling, Komponen Cadangan, dan umat berbagai agama saling menjaga rumah ibadah saat hari raya.'),
-        P('Pendidikan · 31-32', 'Bab XIII: Pendidikan dan kebudayaan', 'Setiap warga berhak atas pendidikan dan wajib mengikuti pendidikan dasar yang dibiayai pemerintah; satu sistem pendidikan nasional; anggaran minimal 20% APBN dan APBD; pemerintah memajukan IPTEK (31). Negara memajukan kebudayaan nasional dan menghormati bahasa daerah (32).', 'Dana BOS membantu biaya sekolah; bahasa daerah diajarkan sebagai muatan lokal.'),
-        P('Ekonomi · 33-34', 'Bab XIV: Perekonomian dan kesejahteraan sosial', 'Perekonomian atas asas kekeluargaan; cabang produksi penting dikuasai negara; bumi, air, dan kekayaan alam dikuasai negara untuk kemakmuran rakyat (33). Prinsip ekonomi: kebersamaan, efisiensi berkeadilan, berkelanjutan, berwawasan lingkungan, kemandirian (33 ayat 4). Fakir miskin dan anak terlantar dipelihara negara; jaminan sosial dan fasilitas kesehatan (34).', 'Koperasi sebagai wujud asas kekeluargaan; PLN dan Pertamina sebagai BUMN; BPJS Kesehatan dan bantuan sosial untuk warga kurang mampu.'),
-        P('Simbol · 35-37', 'Bab XV dan XVI: Simbol negara dan perubahan UUD', 'Bendera Merah Putih (35), bahasa Indonesia (36), lambang Garuda Pancasila dengan Bhinneka Tunggal Ika (36A), lagu Indonesia Raya (36B). Usul ubah UUD minimal 1/3 anggota MPR, sidang dihadiri 2/3, disetujui 50% + 1; bentuk NKRI tidak dapat diubah (37).', 'Upacara bendera setiap Senin; surat dinas memakai bahasa Indonesia baku.')
-      ]);
+      const box = $('#sim-pasal');
+      const PV = window.PV;
+      const CAT = {
+        dasar: { n: 'Dasar negara', c: '#1F5FA8' },
+        lembaga: { n: 'Lembaga negara', c: '#6B46C1' },
+        pemilu: { n: 'Pemilu dan daerah', c: '#0F7B7D' },
+        hak: { n: 'Warga, hak, dan pertahanan', c: '#C2410C' },
+        sosek: { n: 'Keuangan, ekonomi, sosial', c: '#2F7D32' }
+      };
+
+      // Urutan pembeda: 0 Grasi dkk | 1 MA-MK-KY | 2 MPR-DPR-DPD | 3 UU-Perppu-PP | 4 Warga-penduduk
+      //                 5 Hak DPR | 6 Kuorum | 7 Pasal 27-28-30 | 8 Pasal 7-7C
+      const S = [
+        { ps: '1', bab: 'Bab I', s: 'Negara', t: 'Bentuk dan kedaulatan', g: 'dasar',
+          pts: ['Ayat 1: Indonesia ialah negara kesatuan yang berbentuk republik.', 'Ayat 2: kedaulatan berada di tangan rakyat dan dilaksanakan menurut UUD.', 'Ayat 3: Indonesia adalah negara hukum.'],
+          ex: 'Rakyat memilih langsung presiden dan wakil rakyat dalam Pemilu 14 Februari 2024; pejabat yang melanggar hukum tetap diproses di pengadilan.',
+          trap: 'Sebelum amandemen, kedaulatan dilaksanakan sepenuhnya oleh MPR. Sekarang rakyat melaksanakannya langsung, misalnya lewat pemilu. Ayat 3 (negara hukum) baru ditambahkan lewat Perubahan Ketiga.', rel: [] },
+        { ps: '2–3', bab: 'Bab II', s: 'MPR', t: 'Majelis Permusyawaratan Rakyat', g: 'lembaga',
+          pts: ['MPR terdiri atas anggota DPR dan anggota DPD yang dipilih melalui pemilu (pasal 2).', 'Bersidang sedikitnya sekali dalam lima tahun.', 'Berwenang mengubah dan menetapkan UUD, melantik Presiden dan Wakil Presiden, dan dapat memberhentikan mereka dalam masa jabatannya menurut UUD (pasal 3).'],
+          ex: 'MPR melantik Presiden dan Wakil Presiden pada 20 Oktober 2024.',
+          trap: 'MPR bukan lagi lembaga tertinggi negara dan tidak lagi memilih Presiden. Ia setara dengan lembaga negara lain; memilih pengganti hanya bila terjadi kekosongan jabatan (pasal 8).', rel: [2, 6] },
+        { ps: '4–16', bab: 'Bab III', s: 'Presiden', t: 'Kekuasaan pemerintahan negara', g: 'lembaga',
+          pts: ['Memegang kekuasaan pemerintahan menurut UUD dan dibantu Wakil Presiden (pasal 4).', 'Berhak mengajukan RUU ke DPR dan menetapkan PP untuk menjalankan UU (pasal 5).', 'Dipilih langsung satu paket dengan Wakil Presiden; menang bila memperoleh suara lebih dari 50% dengan sedikitnya 20% di setiap provinsi yang tersebar di lebih dari setengah jumlah provinsi (pasal 6A).', 'Masa jabatan 5 tahun, hanya boleh dipilih kembali satu kali (pasal 7). Tidak dapat membekukan atau membubarkan DPR (pasal 7C).', 'Dengan persetujuan DPR: menyatakan perang, membuat perdamaian dan perjanjian dengan negara lain (pasal 11).', 'Mengangkat duta dan menerima duta negara lain dengan memperhatikan pertimbangan DPR (pasal 13).', 'Memberi grasi dan rehabilitasi (memperhatikan pertimbangan MA), amnesti dan abolisi (memperhatikan pertimbangan DPR) (pasal 14).'],
+          ex: 'Perjanjian iklim Paris disahkan dengan UU 16/2016; PP 94/2021 tentang Disiplin PNS ditetapkan Presiden untuk menjalankan UU ASN; terpidana mengajukan grasi kepada Presiden.',
+          trap: 'Bila Wakil Presiden kosong, MPR memilih penggantinya paling lama 60 hari (pasal 8). Bila Presiden dan Wakil Presiden sama-sama berhalangan, Menlu, Mendagri, dan Menhan bersama-sama melaksanakan tugas kepresidenan, lalu MPR memilih paket baru paling lama 30 hari.', rel: [0, 3, 8] },
+        { ps: '17', bab: 'Bab V', s: 'Kementerian', t: 'Kementerian negara', g: 'lembaga',
+          pts: ['Presiden dibantu menteri-menteri negara yang diangkat dan diberhentikan oleh Presiden.', 'Setiap menteri membidangi urusan tertentu dalam pemerintahan.', 'Pembentukan, pengubahan, dan pembubaran kementerian diatur dalam UU.'],
+          ex: 'Pembentukan atau penggabungan kementerian dilakukan sesuai UU Kementerian Negara.',
+          trap: 'Menteri adalah pembantu Presiden: diangkat dan diberhentikan Presiden tanpa persetujuan DPR. (Bab IV tentang DPA sudah dihapus, jadi setelah Bab III langsung Bab V.)', rel: [] },
+        { ps: '18–18B', bab: 'Bab VI', s: 'Pemda', t: 'Pemerintahan daerah', g: 'pemilu',
+          pts: ['Provinsi dibagi atas kabupaten dan kota, masing-masing punya pemerintahan daerah (pasal 18).', 'Daerah menjalankan otonomi seluas-luasnya, kecuali urusan yang ditentukan UU sebagai urusan pemerintah pusat.', 'Punya DPRD yang anggotanya dipilih melalui pemilu; kepala daerah dipilih secara demokratis.', 'Berhak menetapkan Perda dan peraturan lain untuk melaksanakan otonomi dan tugas pembantuan.', 'Negara mengakui daerah khusus atau istimewa (18B ayat 1) dan kesatuan masyarakat hukum adat (18B ayat 2).'],
+          ex: 'Pilkada serentak 27 November 2024; Yogyakarta berstatus daerah istimewa dan Aceh berotonomi khusus.',
+          trap: 'Kepala daerah dipilih "secara demokratis" (tidak harus langsung), sedangkan Presiden dipilih langsung (pasal 6A). Jangan tertukar.', rel: [] },
+        { ps: '19–22B', bab: 'Bab VII', s: 'DPR', t: 'Dewan Perwakilan Rakyat', g: 'lembaga',
+          pts: ['Anggota dipilih lewat pemilu dan bersidang sedikitnya sekali setahun (pasal 19).', 'Memegang kekuasaan membentuk UU; RUU dibahas bersama Presiden untuk mendapat persetujuan bersama (pasal 20).', 'Fungsi: legislasi, anggaran, pengawasan (pasal 20A ayat 1).', 'Hak lembaga: interpelasi, angket, menyatakan pendapat (pasal 20A ayat 2).', 'RUU yang ditolak tidak boleh diajukan lagi pada masa sidang yang sama. RUU yang sudah disetujui tetapi tidak disahkan Presiden dalam 30 hari otomatis sah menjadi UU.', 'Perppu ditetapkan Presiden dalam kegentingan yang memaksa; harus disetujui DPR pada persidangan berikut atau dicabut (pasal 22).'],
+          ex: 'Pansus Hak Angket KPK dibentuk DPR pada 2017; Perppu Cipta Kerja (2/2022) kemudian disetujui DPR menjadi UU 6/2023.',
+          trap: 'Interpelasi, angket, dan pendapat adalah hak DPR sebagai lembaga. Hak anggota perorangan berbeda: mengajukan pertanyaan, menyampaikan usul dan pendapat, serta imunitas (pasal 20A ayat 3).', rel: [2, 3, 5] },
+        { ps: '22C–22D', bab: 'Bab VIIA', s: 'DPD', t: 'Dewan Perwakilan Daerah', g: 'lembaga',
+          pts: ['Anggota dipilih dari setiap provinsi melalui pemilu sebagai perseorangan.', 'Jumlah wakil tiap provinsi sama, dan seluruh anggota tidak lebih dari 1/3 anggota DPR.', 'Mengajukan dan ikut membahas RUU tertentu: otonomi daerah, hubungan pusat dan daerah, pemekaran daerah, pengelolaan sumber daya alam, perimbangan keuangan.', 'Memberi pertimbangan atas RUU APBN, pajak, pendidikan, dan agama, serta mengawasi pelaksanaan UU tertentu.'],
+          ex: 'DPD menyuarakan kepentingan daerah, misalnya lewat RUU tentang hubungan pusat dan daerah.',
+          trap: 'DPD ikut membahas, tetapi tidak ikut memutuskan RUU. Keputusan tetap di tangan DPR bersama Presiden.', rel: [2] },
+        { ps: '22E', bab: 'Bab VIIB', s: 'Pemilu', t: 'Pemilihan umum', g: 'pemilu',
+          pts: ['Asas: langsung, umum, bebas, rahasia (luber), jujur, dan adil (jurdil).', 'Dilaksanakan setiap 5 tahun untuk memilih anggota DPR, DPD, Presiden dan Wakil Presiden, serta DPRD.', 'Peserta pemilu DPR dan DPRD adalah partai politik; peserta pemilu DPD adalah perseorangan.', 'Diselenggarakan oleh KPU yang bersifat nasional, tetap, dan mandiri.'],
+          ex: 'Pemilu serentak 14 Februari 2024 diselenggarakan KPU; surat suara dihitung terbuka di TPS.',
+          trap: 'Pasangan calon Presiden dan Wakil Presiden diusulkan partai atau gabungan partai peserta pemilu (pasal 6A ayat 2). Peserta DPD perseorangan, bukan partai.', rel: [] },
+        { ps: '23–23G', bab: 'Bab VIII, VIIIA', s: 'Keuangan', t: 'Hal keuangan dan BPK', g: 'sosek',
+          pts: ['APBN ditetapkan tiap tahun dengan UU. RAPBN diajukan Presiden; bila DPR tidak menyetujui, dipakai APBN tahun sebelumnya (pasal 23).', 'Pajak dan pungutan lain yang bersifat memaksa diatur dengan UU (pasal 23A).', 'Macam dan harga mata uang diatur dengan UU (pasal 23B); bank sentral bersifat independen (pasal 23D).', 'BPK bebas dan mandiri; hasil pemeriksaan diserahkan kepada DPR, DPD, DPRD (pasal 23E).'],
+          ex: 'UU HPP 7/2021 menjadi dasar perubahan tarif PPN; Bank Indonesia sebagai bank sentral; BPK memberi opini WTP pada laporan keuangan kementerian.',
+          trap: 'Opini WTP dari BPK menilai kewajaran laporan keuangan, bukan jaminan bebas korupsi.', rel: [] },
+        { ps: '24–25', bab: 'Bab IX', s: 'Kehakiman', t: 'Kekuasaan kehakiman', g: 'lembaga',
+          pts: ['Kekuasaan kehakiman merdeka dan dilaksanakan oleh MA beserta badan peradilan di bawahnya, serta oleh MK (pasal 24).', 'MA: mengadili kasasi dan menguji peraturan di bawah UU terhadap UU. Hakim agung diusulkan KY, disetujui DPR, ditetapkan Presiden (pasal 24A).', 'KY: mengusulkan hakim agung dan menjaga kehormatan serta perilaku hakim (pasal 24B).', 'MK (9 hakim): menguji UU terhadap UUD, memutus sengketa kewenangan lembaga negara, membubarkan partai, memutus sengketa hasil pemilu, dan memutus pendapat DPR soal pelanggaran Presiden (pasal 24C).'],
+          ex: 'Warga yang menilai pasal UU melanggar UUD mengajukan uji materi ke MK; perda yang melanggar UU diuji ke MA; sengketa hasil pilkada diputus MK.',
+          trap: 'Putusan MK final dan mengikat. KY bukan pelaksana kekuasaan kehakiman; ia hanya mengusulkan hakim agung dan menjaga etik hakim.', rel: [1] },
+        { ps: '25A, 26–28', bab: 'Bab IXA, X', s: 'Wilayah, warga', t: 'Wilayah negara, warga negara, dan penduduk', g: 'hak',
+          pts: ['Indonesia adalah negara kepulauan; batas dan hak wilayahnya diatur dengan UU (pasal 25A).', 'Warga negara: orang bangsa Indonesia asli dan orang bangsa lain yang disahkan dengan UU. Penduduk: WNI dan orang asing yang bertempat tinggal di Indonesia (pasal 26).', 'Semua warga bersamaan kedudukannya di hadapan hukum dan pemerintahan, berhak atas pekerjaan dan penghidupan layak, serta berhak dan wajib ikut membela negara (pasal 27).', 'Kemerdekaan berserikat, berkumpul, dan mengeluarkan pikiran dijamin (pasal 28).'],
+          ex: 'Warga asing yang tinggal di Indonesia berstatus penduduk, bukan warga negara; buruh berserikat membentuk serikat pekerja.',
+          trap: 'Warga negara dan penduduk bukan hal yang sama. Orang asing yang menetap di Indonesia adalah penduduk, tetapi bukan warga negara.', rel: [4, 7] },
+        { ps: '28A–28J', bab: 'Bab XA', s: 'HAM', t: 'Hak asasi manusia', g: 'hak',
+          pts: ['28A: hak hidup. 28B: berkeluarga dan hak anak. 28C: mengembangkan diri.', '28D: kesamaan di hadapan hukum dan hak bekerja. 28E: beragama, meyakini kepercayaan, dan berpendapat.', '28F: memperoleh informasi. 28G: rasa aman dan bebas dari penyiksaan.', '28H: hidup sejahtera dan hak milik pribadi. 28I: hak yang tidak dapat dikurangi.', '28J: wajib menghormati HAM orang lain dan tunduk pada pembatasan yang ditetapkan UU.'],
+          ex: 'Keterbukaan Informasi Publik (UU 14/2008) menjamin hak memperoleh informasi; hak anak bersekolah dan tumbuh kembang.',
+          trap: 'Hak yang tidak dapat dikurangi dalam keadaan apa pun (28I ayat 1): hidup, tidak disiksa, kemerdekaan pikiran dan hati nurani, beragama, tidak diperbudak, diakui sebagai pribadi di hadapan hukum, dan tidak dituntut dengan hukum yang berlaku surut.', rel: [7] },
+        { ps: '29–30', bab: 'Bab XI, XII', s: 'Agama, hankam', t: 'Agama serta pertahanan dan keamanan', g: 'hak',
+          pts: ['Negara berdasar atas Ketuhanan Yang Maha Esa dan menjamin kemerdekaan tiap penduduk memeluk agama serta beribadat (pasal 29).', 'Tiap warga berhak dan wajib ikut serta dalam usaha pertahanan dan keamanan negara (pasal 30 ayat 1).', 'Sistem pertahanan dan keamanan rakyat semesta; TNI (AD, AL, AU) dan Polri sebagai kekuatan utama, rakyat sebagai kekuatan pendukung.', 'Polri melindungi, mengayomi, melayani masyarakat serta menegakkan hukum.'],
+          ex: 'Kegiatan siskamling, Komponen Cadangan, dan umat berbagai agama saling menjaga rumah ibadah saat hari raya.',
+          trap: 'TNI adalah alat negara di bidang pertahanan; Polri di bidang keamanan dan ketertiban masyarakat. Jangan tertukar tugasnya.', rel: [7] },
+        { ps: '31–32', bab: 'Bab XIII', s: 'Pendidikan', t: 'Pendidikan dan kebudayaan', g: 'sosek',
+          pts: ['Setiap warga berhak mendapat pendidikan dan wajib mengikuti pendidikan dasar yang dibiayai pemerintah (pasal 31 ayat 1–2).', 'Pemerintah mengusahakan satu sistem pendidikan nasional (ayat 3).', 'Anggaran pendidikan minimal 20% dari APBN dan APBD (ayat 4).', 'Pemerintah memajukan ilmu pengetahuan dan teknologi dengan menjunjung nilai agama dan persatuan bangsa (ayat 5).', 'Negara memajukan kebudayaan nasional dan menghormati serta memelihara bahasa daerah (pasal 32).'],
+          ex: 'Dana BOS membantu biaya sekolah; bahasa daerah diajarkan sebagai muatan lokal.',
+          trap: 'Angka 20% dihitung dari APBN dan APBD (keduanya). Yang wajib dibiayai pemerintah hanya pendidikan dasar.', rel: [] },
+        { ps: '33–34', bab: 'Bab XIV', s: 'Ekonomi', t: 'Perekonomian dan kesejahteraan sosial', g: 'sosek',
+          pts: ['Perekonomian disusun sebagai usaha bersama berdasar asas kekeluargaan (pasal 33 ayat 1).', 'Cabang produksi yang penting dan menguasai hajat hidup orang banyak dikuasai negara; bumi, air, dan kekayaan alam dikuasai negara untuk sebesar-besar kemakmuran rakyat (ayat 2–3).', 'Prinsip: kebersamaan, efisiensi berkeadilan, berkelanjutan, berwawasan lingkungan, kemandirian (ayat 4).', 'Fakir miskin dan anak terlantar dipelihara negara; negara mengembangkan sistem jaminan sosial dan menyediakan fasilitas kesehatan dan pelayanan umum (pasal 34).'],
+          ex: 'Koperasi sebagai wujud asas kekeluargaan; PLN dan Pertamina sebagai BUMN; BPJS Kesehatan dan bantuan sosial untuk warga kurang mampu.',
+          trap: 'Kata kunci pasal 33 adalah "dikuasai negara" (bukan "dimiliki negara"). Kata kunci pasal 34 adalah "dipelihara" untuk fakir miskin dan anak terlantar.', rel: [] },
+        { ps: '35–37', bab: 'Bab XV, XVI', s: 'Simbol, ubah UUD', t: 'Bendera, bahasa, lambang, lagu, dan perubahan UUD', g: 'dasar',
+          pts: ['Bendera Merah Putih (35); bahasa negara Bahasa Indonesia (36).', 'Lambang negara Garuda Pancasila dengan semboyan Bhinneka Tunggal Ika (36A); lagu kebangsaan Indonesia Raya (36B).', 'Usul perubahan UUD minimal 1/3 anggota MPR, diajukan tertulis dengan alasan (pasal 37 ayat 1–2).', 'Sidang perubahan dihadiri minimal 2/3 anggota; putusan disetujui minimal 50% + 1 dari seluruh anggota (ayat 3–4).', 'Bentuk Negara Kesatuan Republik Indonesia tidak dapat dilakukan perubahan (ayat 5).'],
+          ex: 'Upacara bendera setiap Senin; surat dinas memakai bahasa Indonesia baku.',
+          trap: 'Angka kunci ubah UUD: 1/3 untuk usul, 2/3 untuk kuorum sidang, 50% + 1 untuk persetujuan. Yang dikunci mati hanya bentuk NKRI.', rel: [6] }
+      ];
+
+      const B = [
+        { t: 'Grasi, rehabilitasi, amnesti, abolisi', why: 'Keempatnya hak Presiden di pasal 14. Bedanya ada di apa yang diampuni dan siapa yang dimintai pertimbangan.',
+          kunci: 'MA untuk yang sudah divonis (grasi, rehabilitasi). DPR untuk yang bernuansa politik atau massal (amnesti, abolisi). Abolisi = proses dihentikan sebelum vonis.',
+          items: [
+            { n: 'Grasi', ref: 'Pasal 14 ayat 1', rows: [['Isi', 'Pengampunan berupa pengurangan, perubahan, atau penghapusan pelaksanaan pidana bagi terpidana.'], ['Pertimbangan', 'Mahkamah Agung'], ['Contoh', 'Terpidana yang sudah divonis memohon keringanan hukuman kepada Presiden.']] },
+            { n: 'Rehabilitasi', ref: 'Pasal 14 ayat 1', rows: [['Isi', 'Pemulihan hak, kedudukan, dan nama baik seseorang.'], ['Pertimbangan', 'Mahkamah Agung'], ['Contoh', 'Orang yang terbukti tidak bersalah dipulihkan nama baiknya.']] },
+            { n: 'Amnesti', ref: 'Pasal 14 ayat 2', rows: [['Isi', 'Penghapusan akibat hukum pidana bagi sekelompok orang atau pelaku tindak pidana tertentu.'], ['Pertimbangan', 'DPR'], ['Contoh', 'Pengampunan massal bagi kelompok yang terlibat pemberontakan politik.']] },
+            { n: 'Abolisi', ref: 'Pasal 14 ayat 2', rows: [['Isi', 'Penghentian proses hukum terhadap seseorang yang sedang berjalan.'], ['Pertimbangan', 'DPR'], ['Contoh', 'Penuntutan terhadap tokoh tertentu dihentikan sebelum ada vonis.']] }],
+          q: 'Seorang terpidana sudah divonis 10 tahun dan memohon keringanan hukuman kepada Presiden. Presiden memutuskan setelah memperhatikan pertimbangan MA. Apa nama haknya?', a: 0,
+          why2: 'Sudah divonis lalu hukumannya diringankan itu grasi, dan pertimbangannya dari MA. Rehabilitasi juga lewat MA, tetapi isinya memulihkan nama baik, bukan meringankan hukuman.' },
+        { t: 'MA, MK, dan KY', why: 'Tiga lembaga di Bab IX. Soal biasanya menanyakan ke mana sebuah perkara diajukan.',
+          kunci: 'Aturan di bawah UU lawan UU = MA. UU lawan UUD = MK. Etik hakim dan usul hakim agung = KY.',
+          items: [
+            { n: 'Mahkamah Agung', ref: 'Pasal 24A', rows: [['Wewenang', 'Kasasi; menguji peraturan di bawah UU terhadap UU.'], ['Hakim', 'Hakim agung: diusulkan KY, disetujui DPR, ditetapkan Presiden.'], ['Contoh', 'Perda yang dinilai melanggar UU diuji ke MA.']] },
+            { n: 'Mahkamah Konstitusi', ref: 'Pasal 24C', rows: [['Wewenang', 'Menguji UU terhadap UUD; sengketa kewenangan lembaga negara; bubarkan partai; sengketa hasil pemilu; putusan atas pendapat DPR soal pelanggaran Presiden.'], ['Hakim', '9 orang: 3 dari MA, 3 dari DPR, 3 dari Presiden.'], ['Contoh', 'Warga menggugat pasal UU yang dianggap melanggar UUD.']] },
+            { n: 'Komisi Yudisial', ref: 'Pasal 24B', rows: [['Wewenang', 'Mengusulkan hakim agung; menjaga kehormatan, keluhuran martabat, dan perilaku hakim.'], ['Status', 'Bukan pelaksana kekuasaan kehakiman; tidak mengadili perkara.'], ['Contoh', 'Memeriksa laporan dugaan pelanggaran etik hakim.']] }],
+          q: 'Warga menilai sebuah pasal dalam UU bertentangan dengan UUD 1945. Ke lembaga mana uji materinya diajukan?', a: 1,
+          why2: 'UU diuji terhadap UUD oleh MK. Jika yang diuji adalah perda atau peraturan lain di bawah UU, tempatnya MA.' },
+        { t: 'MPR, DPR, dan DPD', why: 'Tiga lembaga perwakilan yang mirip nama dan sering tertukar peran.',
+          kunci: 'MPR = DPR + DPD, tugasnya ubah UUD dan lantik. DPR = pembuat UU (dari partai). DPD = wakil daerah (perseorangan) yang tidak ikut memutuskan.',
+          items: [
+            { n: 'MPR', ref: 'Pasal 2–3', rows: [['Anggota', 'Anggota DPR + anggota DPD.'], ['Tugas', 'Mengubah dan menetapkan UUD, melantik Presiden dan Wakil Presiden, memberhentikan menurut UUD.'], ['Contoh', 'Pelantikan Presiden 20 Oktober 2024.']] },
+            { n: 'DPR', ref: 'Pasal 19–22B', rows: [['Anggota', 'Dipilih lewat pemilu, diusung partai politik.'], ['Tugas', 'Legislasi, anggaran, pengawasan; membentuk UU bersama Presiden.'], ['Contoh', 'Membahas RUU APBN bersama Presiden.']] },
+            { n: 'DPD', ref: 'Pasal 22C–22D', rows: [['Anggota', 'Perseorangan; jumlah wakil tiap provinsi sama.'], ['Tugas', 'Mengajukan dan ikut membahas RUU daerah, memberi pertimbangan, mengawasi. Tidak ikut memutuskan.'], ['Contoh', 'Mengajukan RUU tentang hubungan pusat dan daerah.']] }],
+          q: 'Anggotanya dipilih sebagai perseorangan, jumlah wakil tiap provinsi sama, dan hanya ikut membahas RUU tertentu tanpa ikut memutuskan. Lembaga apa ini?', a: 2,
+          why2: 'Peserta pemilu DPD adalah perseorangan, dan kewenangannya terbatas pada RUU daerah. DPR berasal dari partai, sedangkan MPR adalah gabungan DPR dan DPD.' },
+        { t: 'UU, Perppu, dan PP', why: 'Tiga produk hukum yang berurusan dengan Presiden dan DPR. Bedanya: siapa pembuat dan kapan dipakai.',
+          kunci: 'UU = DPR + Presiden. Perppu = Presiden sendiri, hanya saat kegentingan, lalu wajib disetujui DPR. PP = Presiden menjalankan UU.',
+          items: [
+            { n: 'Undang-Undang', ref: 'Pasal 5, 20', rows: [['Pembuat', 'DPR bersama Presiden (persetujuan bersama).'], ['Catatan', 'Tidak disahkan Presiden dalam 30 hari tetap sah.'], ['Contoh', 'UU HPP 7/2021.']] },
+            { n: 'Perppu', ref: 'Pasal 22', rows: [['Pembuat', 'Presiden sendiri, dalam hal ihwal kegentingan yang memaksa.'], ['Catatan', 'Harus mendapat persetujuan DPR pada persidangan berikut; bila ditolak, dicabut.'], ['Contoh', 'Perppu Cipta Kerja 2/2022, kemudian menjadi UU 6/2023.']] },
+            { n: 'Peraturan Pemerintah', ref: 'Pasal 5 ayat 2', rows: [['Pembuat', 'Presiden, untuk menjalankan UU sebagaimana mestinya.'], ['Catatan', 'Tidak butuh persetujuan DPR.'], ['Contoh', 'PP 94/2021 tentang Disiplin PNS.']] }],
+          q: 'Karena keadaan genting, Presiden menetapkan aturan setingkat UU tanpa menunggu pembahasan DPR. Aturan itu harus disetujui DPR pada persidangan berikutnya. Namanya?', a: 1,
+          why2: 'Aturan setingkat UU yang ditetapkan Presiden saat kegentingan memaksa adalah Perppu. PP hanya melaksanakan UU yang sudah ada.' },
+        { t: 'Warga negara dan penduduk', why: 'Pasal 26 membedakan dua status yang sering dianggap sama.',
+          kunci: 'Semua warga negara adalah penduduk, tetapi tidak semua penduduk adalah warga negara.',
+          items: [
+            { n: 'Warga negara', ref: 'Pasal 26 ayat 1', rows: [['Siapa', 'Orang bangsa Indonesia asli dan orang bangsa lain yang disahkan dengan UU sebagai warga negara.'], ['Hak khas', 'Memilih dalam pemilu, menjadi Presiden, ikut membela negara.'], ['Contoh', 'WNI pemilik KTP yang ikut Pemilu.']] },
+            { n: 'Penduduk', ref: 'Pasal 26 ayat 2', rows: [['Siapa', 'Warga negara Indonesia dan orang asing yang bertempat tinggal di Indonesia.'], ['Catatan', 'Mencakup WNA yang menetap.'], ['Contoh', 'Ekspatriat yang bekerja dan tinggal di Jakarta.']] }],
+          q: 'Seorang warga negara asing bekerja dan tinggal di Jakarta sejak 2015. Menurut pasal 26, apa statusnya?', a: 1,
+          why2: 'Orang asing yang bertempat tinggal di Indonesia berstatus penduduk. Ia tidak menjadi warga negara kecuali disahkan dengan UU.' },
+        { t: 'Interpelasi, angket, dan pendapat', why: 'Tiga hak DPR sebagai lembaga (pasal 20A ayat 2). Bedanya ada pada tujuannya.',
+          kunci: 'Interpelasi = tanya. Angket = selidiki. Menyatakan pendapat = bersikap.',
+          items: [
+            { n: 'Hak interpelasi', ref: 'Pasal 20A ayat 2', rows: [['Tujuan', 'Meminta keterangan kepada pemerintah tentang kebijakan penting dan strategis yang berdampak luas.'], ['Kata kunci', 'Bertanya']] },
+            { n: 'Hak angket', ref: 'Pasal 20A ayat 2', rows: [['Tujuan', 'Menyelidiki pelaksanaan UU atau kebijakan pemerintah yang penting dan diduga bertentangan dengan aturan.'], ['Kata kunci', 'Menyelidiki'], ['Contoh', 'Pansus Hak Angket KPK 2017.']] },
+            { n: 'Hak menyatakan pendapat', ref: 'Pasal 20A ayat 2', rows: [['Tujuan', 'Menyatakan sikap atas kebijakan pemerintah atau kejadian luar biasa, atau tindak lanjut interpelasi dan angket.'], ['Kata kunci', 'Bersikap']] }],
+          q: 'DPR membentuk panitia khusus untuk menyelidiki pelaksanaan sebuah kebijakan pemerintah yang diduga melanggar aturan. Hak apa yang digunakan?', a: 1,
+          why2: 'Menyelidiki adalah ciri hak angket. Interpelasi hanya meminta keterangan, belum menyelidiki.' },
+        { t: 'Angka kuorum: ubah UUD dan berhentikan Presiden', why: 'Dua prosedur dengan banyak angka mirip. Hafalkan sebagai dua deret terpisah.',
+          kunci: 'Ubah UUD: 1/3 – 2/3 – 50% + 1. Berhentikan Presiden: DPR 2/3 – MK 90 hari – MPR 30 hari, hadir 3/4, setuju 2/3.',
+          items: [
+            { n: 'Ubah UUD', ref: 'Pasal 37', rows: [['Usul', 'Minimal 1/3 anggota MPR'], ['Sidang', 'Dihadiri minimal 2/3 anggota MPR'], ['Putusan', 'Disetujui minimal 50% + 1 dari seluruh anggota'], ['Batas', 'Bentuk NKRI tidak dapat diubah']] },
+            { n: 'Berhentikan Presiden', ref: 'Pasal 7A–7B', rows: [['DPR', 'Paripurna dihadiri 2/3 anggota, usul disetujui 2/3 yang hadir'], ['MK', 'Memutus paling lama 90 hari'], ['MPR', 'Sidang paling lambat 30 hari; hadir minimal 3/4, setuju minimal 2/3 yang hadir'], ['Alasan', 'Pelanggaran hukum berat atau tidak lagi memenuhi syarat']] }],
+          q: 'Berapa minimal anggota MPR yang harus hadir agar sidang perubahan UUD sah (pasal 37)?', a: 0,
+          why2: 'Sidang perubahan UUD dihadiri minimal 2/3 anggota. Angka 3/4 adalah kehadiran MPR pada sidang pemberhentian Presiden.' },
+        { t: 'Pasal 27, 28, dan 30', why: 'Tiga pasal tentang hak dan kewajiban warga yang sering ditukar-tukar di soal.',
+          kunci: '27 = sama di hukum, kerja, bela negara. 28 = berserikat dan berpendapat (lalu HAM 28A–J). 30 = pertahanan dan keamanan.',
+          items: [
+            { n: 'Pasal 27', ref: 'Bab X', rows: [['Isi', 'Bersamaan di hadapan hukum dan pemerintahan; hak atas pekerjaan dan penghidupan layak; hak dan kewajiban ikut membela negara.'], ['Contoh', 'Pelamar CPNS diperlakukan sama dalam seleksi.']] },
+            { n: 'Pasal 28', ref: 'Bab X', rows: [['Isi', 'Kemerdekaan berserikat, berkumpul, dan mengeluarkan pikiran lisan dan tulisan.'], ['Contoh', 'Buruh membentuk serikat pekerja.']] },
+            { n: 'Pasal 30', ref: 'Bab XII', rows: [['Isi', 'Hak dan kewajiban warga dalam pertahanan dan keamanan; sistem pertahanan rakyat semesta; peran TNI dan Polri.'], ['Contoh', 'Siskamling dan Komponen Cadangan.']] }],
+          q: 'Kebebasan para buruh untuk membentuk serikat pekerja dijamin oleh pasal berapa?', a: 1,
+          why2: 'Kebebasan berserikat dan berkumpul ada di pasal 28 (dan diperkuat 28E ayat 3). Pasal 27 tentang kesamaan di hukum, pekerjaan, dan bela negara.' },
+        { t: 'Pasal 7, 7A, 7B, dan 7C', why: 'Satu keluarga pasal, tetapi tiap huruf mengatur hal yang berbeda.',
+          kunci: '7 = masa jabatan. 7A = alasan berhenti. 7B = prosedur berhenti. 7C = tidak boleh bubarkan DPR.',
+          items: [
+            { n: 'Pasal 7', ref: 'Masa jabatan', rows: [['Isi', 'Presiden dan Wakil memegang jabatan 5 tahun dan hanya dapat dipilih kembali satu kali masa jabatan.']] },
+            { n: 'Pasal 7A', ref: 'Alasan', rows: [['Isi', 'Dapat diberhentikan karena pengkhianatan terhadap negara, korupsi, penyuapan, tindak pidana berat lain, perbuatan tercela, atau tidak lagi memenuhi syarat.']] },
+            { n: 'Pasal 7B', ref: 'Prosedur', rows: [['Isi', 'Usul DPR, diperiksa MK, lalu diputus sidang MPR.']] },
+            { n: 'Pasal 7C', ref: 'Larangan', rows: [['Isi', 'Presiden tidak dapat membekukan dan/atau membubarkan DPR.']] }],
+          q: 'Pasal manakah yang menyatakan bahwa Presiden tidak dapat membubarkan DPR?', a: 3,
+          why2: 'Larangan membekukan atau membubarkan DPR ada di pasal 7C. Pasal 7A mengatur alasan pemberhentian, bukan larangan.' }
+      ];
+
+      let tab = 'peta', cat = 'all', q = '', cur = 0, bd = null;
+
+      box.innerHTML = `
+        <div class="pv-h"><h4>Peta pasal UUD 1945</h4><p>Pilih bab untuk membaca isi, contoh, dan jebakan soalnya. Tab Pembeda membandingkan pasal yang sering tertukar.</p></div>
+        <div class="pv-tabs" role="tablist"></div>
+        <div id="pvP-peta">
+          <label class="pv-search"><span class="sr">Cari pasal</span><input type="search" id="pvP-q" placeholder="Cari: grasi, MK, 20%, otonomi, 28I ..." autocomplete="off"></label>
+          <div class="pv-chips" id="pvP-cat"></div>
+          <div class="pv-grid" id="pvP-grid"></div>
+          <div id="pvP-det"></div>
+        </div>
+        <div id="pvP-beda" hidden></div>`;
+
+      const grid = $('#pvP-grid', box), det = $('#pvP-det', box), chips = $('#pvP-cat', box);
+      const hay = s => PV.norm([s.ps, s.bab, s.s, s.t, s.pts.join(' '), s.ex, s.trap].join(' '));
+      S.forEach(s => s._h = hay(s));
+      const vis = () => S.map((s, i) => i).filter(i => (cat === 'all' || S[i].g === cat) && (!q || S[i]._h.includes(PV.norm(q))));
+
+      const drawChips = () => {
+        chips.innerHTML = `<button class="pv-chip${cat === 'all' ? ' on' : ''}" data-c="all" style="--c:#14161C">Semua</button>` +
+          Object.keys(CAT).map(k => `<button class="pv-chip${cat === k ? ' on' : ''}" data-c="${k}" style="--c:${CAT[k].c}">${CAT[k].n}</button>`).join('');
+        $$('.pv-chip', chips).forEach(b => b.onclick = () => { cat = b.dataset.c; refresh(); });
+      };
+      const drawGrid = () => {
+        const v = vis();
+        if (!v.length) { grid.innerHTML = '<p class="pv-empty">Tidak ada bab yang cocok. Coba kata kunci lain atau pilih "Semua".</p>'; det.innerHTML = ''; return v; }
+        if (!v.includes(cur)) cur = v[0];
+        grid.innerHTML = v.map(i => { const s = S[i]; return `<button class="pv-tile${i === cur ? ' on' : ''}" data-i="${i}" style="--c:${CAT[s.g].c}" aria-pressed="${i === cur}"><b>Pasal ${PV.hl(s.ps, q)}</b><span>${PV.hl(s.s, q)}</span></button>`; }).join('');
+        $$('.pv-tile', grid).forEach(b => b.onclick = () => { cur = +b.dataset.i; refresh(true); });
+        return v;
+      };
+      const drawDet = (v, scroll) => {
+        if (!v.length) return;
+        const s = S[cur], c = CAT[s.g].c, pos = v.indexOf(cur);
+        det.innerHTML = `<article class="pv-det" style="--c:${c}">
+          <div class="pv-det-h"><span class="pv-badge">Pasal ${PV.hl(s.ps, q)}</span><div><h5>${PV.hl(s.t, q)}</h5><small>${s.bab} · ${CAT[s.g].n}</small></div></div>
+          <section class="pv-sec"><b>Isi pokok</b><ul class="pv-pts">${s.pts.map(p => `<li>${PV.hl(p, q)}</li>`).join('')}</ul></section>
+          <section class="pv-sec"><div class="pv-ex"><b>Contoh nyata</b>${PV.hl(s.ex, q)}</div></section>
+          <section class="pv-sec"><div class="pv-trap"><b>Jebakan soal</b>${PV.hl(s.trap, q)}</div></section>
+          ${s.rel.length ? `<section class="pv-sec"><b>Pembeda terkait</b><div class="pv-rel">${s.rel.map(r => `<button class="pv-chip" data-r="${r}" style="--c:${c}">${B[r].t}</button>`).join('')}</div></section>` : ''}
+          <div class="pv-nav">${pos > 0 ? `<button class="btn ghost" data-n="${v[pos - 1]}">Sebelumnya</button>` : '<span></span>'}${pos < v.length - 1 ? `<button class="btn" data-n="${v[pos + 1]}">Berikutnya</button>` : '<span></span>'}</div>
+        </article>`;
+        $$('[data-n]', det).forEach(b => b.onclick = () => { cur = +b.dataset.n; refresh(true); });
+        $$('[data-r]', det).forEach(b => b.onclick = () => { setTab('beda'); bd.go(+b.dataset.r); $('#pvP-beda', box).scrollIntoView({ block: 'start', behavior: 'smooth' }); });
+        if (scroll && det.scrollIntoView) det.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      };
+      const refresh = scroll => { drawChips(); drawDet(drawGrid(), scroll); };
+
+      $('#pvP-q', box).addEventListener('input', e => { q = e.target.value.trim(); refresh(); });
+
+      const setTab = tabs => {
+        tab = tabs;
+        $('#pvP-peta', box).hidden = tab !== 'peta';
+        $('#pvP-beda', box).hidden = tab !== 'beda';
+        $$('.pv-tabs button', box).forEach(b => { const on = b.dataset.k === tab; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+      };
+      PV.tabs(box, [{ k: 'peta', label: 'Peta bab' }, { k: 'beda', label: 'Pembeda' }], k => setTab(k));
+      bd = PV.pembeda($('#pvP-beda', box), B, '#6B46C1');
+      setTab('peta');
+      refresh();
     })();
 
     // ---------- Grafik batang: angka kunci UUD dan skor SKD ----------
@@ -6946,27 +7338,200 @@ button.sg-r:hover { background: #F0F8F8; border-color: #102C52; transform: trans
       growBars(box);
     })();
 
-    // ---------- 45 butir Pancasila + contoh konkret ----------
+    // ---------- 45 butir Pancasila v3: butir + contoh, pembeda, latihan ----------
     (function () {
       const D = [["Sila 1", "Ketuhanan Yang Maha Esa", "Kata kunci: ibadah, toleransi beragama, tidak memaksakan keyakinan.", [["Menyatakan kepercayaan dan ketaqwaan kepada Tuhan Yang Maha Esa.", "Memulai kegiatan kantor atau sekolah dengan berdoa menurut keyakinan masing-masing."], ["Percaya dan taqwa sesuai agama dan kepercayaan masing-masing, menurut dasar kemanusiaan yang adil dan beradab.", "Melaksanakan ibadah dengan tertib tanpa mengganggu hak orang lain."], ["Mengembangkan sikap hormat-menghormati dan bekerja sama antarpemeluk agama dan penganut kepercayaan yang berbeda.", "Warga lintas agama bergotong royong membersihkan lingkungan bersama."], ["Membina kerukunan hidup antarumat beragama dan penganut kepercayaan.", "Ikut menjaga keamanan saat perayaan hari besar agama lain, seperti Natal atau Idulfitri."], ["Agama dan kepercayaan adalah urusan hubungan pribadi manusia dengan Tuhan.", "Tidak menghakimi tingkat keimanan teman atau rekan kerja."], ["Mengembangkan sikap saling menghormati kebebasan menjalankan ibadah.", "Memberi waktu dan tempat bagi rekan yang akan salat atau beribadah."], ["Tidak memaksakan suatu agama atau kepercayaan kepada orang lain.", "Tidak mengajak atau menekan orang lain berpindah keyakinan."]]], ["Sila 2", "Kemanusiaan yang Adil dan Beradab", "Kata kunci: harkat martabat, tenggang rasa, kegiatan kemanusiaan.", [["Mengakui dan memperlakukan manusia sesuai harkat dan martabatnya sebagai makhluk Tuhan.", "Melayani warga di loket dengan ramah, termasuk lansia dan penyandang disabilitas."], ["Mengakui persamaan derajat, hak, dan kewajiban asasi tanpa membedakan suku, agama, jenis kelamin, kedudukan sosial, dan sebagainya.", "Rekrutmen dan layanan publik dilakukan tanpa membeda-bedakan latar belakang pelamar."], ["Mengembangkan sikap saling mencintai sesama manusia.", "Menjenguk tetangga atau rekan yang sakit."], ["Mengembangkan sikap tenggang rasa dan tepa selira.", "Tidak memutar musik keras saat tetangga sedang beristirahat atau berduka."], ["Mengembangkan sikap tidak semena-mena terhadap orang lain.", "Atasan tidak menyalahgunakan jabatan untuk menekan bawahan."], ["Menjunjung tinggi nilai-nilai kemanusiaan.", "Menolak perundungan (bullying) di sekolah dan tempat kerja."], ["Gemar melakukan kegiatan kemanusiaan.", "Menjadi donor darah atau relawan bencana."], ["Berani membela kebenaran dan keadilan.", "Melaporkan kecurangan atau pungutan liar lewat kanal resmi."], ["Bangsa Indonesia merasa dirinya bagian dari seluruh umat manusia.", "Mengirim bantuan kemanusiaan untuk korban bencana di negara lain."], ["Mengembangkan sikap hormat-menghormati dan bekerja sama dengan bangsa lain.", "Mengikuti pertukaran pelajar atau kerja sama pendidikan antarnegara dengan sopan dan saling menghargai."]]], ["Sila 3", "Persatuan Indonesia", "Kata kunci: cinta tanah air, rela berkorban, Bhinneka Tunggal Ika.", [["Menempatkan persatuan, kesatuan, serta kepentingan dan keselamatan bangsa di atas kepentingan pribadi atau golongan.", "Menerima keputusan pembangunan fasilitas umum meski lokasinya dekat rumah sendiri."], ["Sanggup dan rela berkorban untuk kepentingan negara dan bangsa bila diperlukan.", "Relawan atau petugas yang tetap bertugas saat bencana demi menolong warga."], ["Mengembangkan rasa cinta kepada tanah air dan bangsa.", "Menjaga kebersihan fasilitas umum dan tidak merusaknya."], ["Mengembangkan rasa kebanggaan berkebangsaan dan bertanah air Indonesia.", "Mengikuti upacara bendera dan memakai produk dalam negeri dengan bangga."], ["Memelihara ketertiban dunia berdasarkan kemerdekaan, perdamaian abadi, dan keadilan sosial.", "Indonesia mengirim Pasukan Garuda dalam misi perdamaian PBB."], ["Mengembangkan persatuan Indonesia atas dasar Bhinneka Tunggal Ika.", "Merayakan keberagaman lewat festival budaya daerah dan tidak mengejek suku lain."], ["Memajukan pergaulan demi persatuan dan kesatuan bangsa.", "Bergaul dan bekerja sama dengan teman dari berbagai daerah, misalnya lewat pertukaran pelajar antardaerah."]]], ["Sila 4", "Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan", "Kata kunci: musyawarah mufakat, tidak memaksakan kehendak, menghormati keputusan.", [["Setiap warga negara dan warga masyarakat mempunyai kedudukan, hak, dan kewajiban yang sama.", "Semua warga yang memenuhi syarat berhak memilih dalam Pemilu dengan satu suara yang bernilai sama."], ["Tidak boleh memaksakan kehendak kepada orang lain.", "Ketua rapat tidak memaksakan pendapatnya kepada peserta."], ["Mengutamakan musyawarah dalam mengambil keputusan untuk kepentingan bersama.", "Warga RT bermusyawarah menentukan jadwal ronda atau iuran kebersihan."], ["Musyawarah untuk mencapai mufakat diliputi semangat kekeluargaan.", "Rapat dilakukan dengan suasana santun, tanpa saling membentak."], ["Menghormati dan menjunjung tinggi setiap keputusan hasil musyawarah.", "Tetap mendukung keputusan rapat meski usulan pribadi tidak terpilih."], ["Dengan itikad baik dan rasa tanggung jawab menerima dan melaksanakan hasil musyawarah.", "Panitia melaksanakan tugas sesuai hasil rapat dengan sungguh-sungguh."], ["Dalam musyawarah diutamakan kepentingan bersama di atas kepentingan pribadi dan golongan.", "Rapat RW memilih lokasi pos ronda yang paling bermanfaat bagi seluruh warga."], ["Musyawarah dilakukan dengan akal sehat dan sesuai hati nurani yang luhur.", "Berpendapat dengan data dan alasan yang masuk akal, bukan emosi."], ["Keputusan dapat dipertanggungjawabkan secara moral kepada Tuhan, menjunjung harkat martabat manusia, nilai kebenaran dan keadilan, serta mengutamakan persatuan.", "Keputusan pengurus organisasi diumumkan terbuka dan tidak merugikan kelompok tertentu."], ["Memberikan kepercayaan kepada wakil-wakil yang dipercaya untuk melaksanakan pemusyawaratan.", "Warga memilih ketua RT atau wakil rakyat lewat pemilihan, lalu mempercayakan aspirasi kepada mereka."]]], ["Sila 5", "Keadilan Sosial bagi Seluruh Rakyat Indonesia", "Kata kunci: gotong royong, hak dan kewajiban seimbang, kerja keras, tidak pemborosan.", [["Mengembangkan perbuatan luhur yang mencerminkan sikap dan suasana kekeluargaan dan kegotongroyongan.", "Kerja bakti membersihkan selokan atau membangun balai desa."], ["Bersikap adil.", "Guru menilai siswa sesuai kemampuan, bukan karena kedekatan."], ["Menjaga keseimbangan antara hak dan kewajiban.", "Menuntut hak cuti sekaligus menyelesaikan kewajiban pekerjaan lebih dulu."], ["Menghormati hak-hak orang lain.", "Mengantre dengan tertib dan tidak menyerobot."], ["Suka memberi pertolongan kepada orang lain agar dapat berdiri sendiri.", "Memberi pelatihan usaha kepada tetangga agar mandiri, bukan sekadar memberi uang."], ["Tidak menggunakan hak milik untuk usaha-usaha yang bersifat pemerasan terhadap orang lain.", "Tidak memberi pinjaman dengan bunga mencekik (rentenir)."], ["Tidak menggunakan hak milik untuk hal-hal yang bersifat pemborosan dan gaya hidup mewah.", "Pejabat tidak memamerkan gaya hidup mewah dan hidup sederhana sesuai penghasilan."], ["Tidak menggunakan hak milik untuk bertentangan dengan atau merugikan kepentingan umum.", "Pemilik pabrik tidak membuang limbah ke sungai yang dipakai warga."], ["Suka bekerja keras.", "Menyelesaikan tugas tepat waktu dan terus meningkatkan kompetensi."], ["Suka menghargai hasil karya orang lain yang bermanfaat untuk kemajuan dan kesejahteraan bersama.", "Membeli produk UMKM lokal dan tidak membajak karya orang lain."], ["Suka melakukan kegiatan dalam rangka mewujudkan kemajuan yang merata dan berkeadilan sosial.", "Mendukung program pemerataan pendidikan dan layanan kesehatan hingga daerah terpencil."]]]];
       const box = $('#sim-butir');
-      box.innerHTML = `<h4>45 butir Pancasila dan contoh konkretnya</h4>
-        <p class="hint">Tap sila untuk melihat butir-butirnya. Jumlah butir: 7, 10, 7, 10, 11 (total 45).</p>
-        <div class="pks">${D.map((s, i) => `<button class="pk" data-i="${i}">${s[0]} (${s[3].length})</button>`).join('')}</div>
-        <div class="pk-detail" hidden></div>`;
-      const det = $('.pk-detail', box);
-      const pick = i => {
-        const s = D[i];
-        $$('.pk', box).forEach((b, j) => b.classList.toggle('is-active', i === j));
-        det.hidden = false;
-        det.style.animation = 'none'; void det.offsetWidth; det.style.animation = '';
-        det.innerHTML = `<div class="bt-head"><b>${s[0]}: ${s[1]}</b><span>${s[2]}</span></div>
-          <ol class="bt-list">${s[3].map((x, k) => `<li><span class="bt-n">${k + 1}</span><div><p>${x[0]}</p><em><b>Contoh:</b> ${x[1]}</em></div></li>`).join('')}</ol>
-          <div class="bt-ctl">${i > 0 ? `<button class="btn ghost" data-go="${i - 1}">Sebelumnya</button> ` : ''}${i < D.length - 1 ? `<button class="btn" data-go="${i + 1}">Sila berikutnya</button>` : ''}</div>`;
-        $$('[data-go]', det).forEach(b => b.onclick = () => pick(+b.dataset.go));
+      const PV = window.PV;
+      const SILA = [
+        { s: 'Ketuhanan', c: '#1F5FA8', lam: 'Bintang', n: 7 },
+        { s: 'Kemanusiaan', c: '#C2410C', lam: 'Rantai', n: 10 },
+        { s: 'Persatuan', c: '#B42318', lam: 'Pohon beringin', n: 7 },
+        { s: 'Kerakyatan', c: '#6B46C1', lam: 'Kepala banteng', n: 10 },
+        { s: 'Keadilan', c: '#2F7D32', lam: 'Padi dan kapas', n: 11 }
+      ];
+      // Kata kunci singkat tiap butir (urut sama dengan data)
+      const KEY = [
+        ['Percaya dan taqwa', 'Sesuai agama masing-masing', 'Hormat dan kerja sama antaragama', 'Kerukunan umat beragama', 'Agama urusan pribadi dengan Tuhan', 'Hormati kebebasan ibadah', 'Tidak memaksakan agama'],
+        ['Harkat dan martabat', 'Persamaan derajat', 'Saling mencintai', 'Tenggang rasa dan tepa selira', 'Tidak semena-mena', 'Junjung nilai kemanusiaan', 'Kegiatan kemanusiaan', 'Berani membela kebenaran', 'Bagian dari umat manusia', 'Hormat dan kerja sama bangsa lain'],
+        ['Persatuan di atas pribadi', 'Rela berkorban', 'Cinta tanah air', 'Bangga berbangsa', 'Ketertiban dunia', 'Bhinneka Tunggal Ika', 'Memajukan pergaulan'],
+        ['Kedudukan yang sama', 'Tidak memaksakan kehendak', 'Utamakan musyawarah', 'Semangat kekeluargaan', 'Hormati keputusan', 'Itikad baik dan tanggung jawab', 'Kepentingan bersama', 'Akal sehat dan hati nurani', 'Pertanggungjawaban moral', 'Percaya pada wakil'],
+        ['Gotong royong', 'Bersikap adil', 'Hak dan kewajiban seimbang', 'Hormati hak orang lain', 'Menolong agar mandiri', 'Tidak memeras', 'Tidak boros dan mewah', 'Tidak merugikan umum', 'Kerja keras', 'Hargai karya orang lain', 'Kemajuan merata']
+      ];
+      // Nomor urut global 1-45
+      let g = 0;
+      const ALL = [];
+      D.forEach((sl, si) => sl[3].forEach((x, bi) => { g++; ALL.push({ si, bi, g, k: KEY[si][bi], t: x[0], e: x[1] }); }));
+
+      const R = (si, bi) => `Sila ${si} butir ${bi}`;
+      const BD = [
+        { t: 'Hormat dan kerja sama', why: 'Kalimatnya mirip di tiga sila. Pembedanya: dengan siapa kita hormat dan bekerja sama.',
+          kunci: 'Beda keyakinan = Sila 1. Bangsa lain = Sila 2. Sesama anak bangsa untuk bersatu = Sila 3.',
+          items: [
+            { n: R(1, 3), ref: 'Sila 1', rows: [['Lawan kerja sama', 'Pemeluk agama dan kepercayaan yang berbeda.'], ['Contoh', 'Warga lintas agama bergotong royong membersihkan lingkungan.']] },
+            { n: R(2, 10), ref: 'Sila 2', rows: [['Lawan kerja sama', 'Bangsa lain.'], ['Contoh', 'Pertukaran pelajar atau kerja sama pendidikan antarnegara.']] },
+            { n: R(3, 7), ref: 'Sila 3', rows: [['Lawan kerja sama', 'Sesama bangsa Indonesia, demi persatuan dan kesatuan.'], ['Contoh', 'Pertukaran pelajar antardaerah.']] }],
+          q: 'Siswa dari Aceh dan Papua berteman dan mengerjakan proyek bersama lewat program pertukaran pelajar antardaerah.', a: 2,
+          why2: 'Pergaulan antarsesama anak bangsa demi persatuan adalah butir 7 Sila 3. Pertukaran dengan bangsa lain barulah Sila 2 butir 10.' },
+        { t: 'Kepentingan bersama di atas pribadi', why: 'Tiga butir berbeda sila sama-sama menomorduakan kepentingan pribadi. Lihat konteksnya.',
+          kunci: 'Skala bangsa dan negara = Sila 3. Di dalam rapat = Sila 4. Soal hak milik = Sila 5.',
+          items: [
+            { n: R(3, 1), ref: 'Sila 3', rows: [['Konteks', 'Persatuan, kesatuan, keselamatan bangsa dan negara.'], ['Contoh', 'Menerima pembangunan fasilitas umum dekat rumah sendiri.']] },
+            { n: R(4, 7), ref: 'Sila 4', rows: [['Konteks', 'Di dalam musyawarah.'], ['Contoh', 'Rapat RW memilih lokasi pos ronda yang paling bermanfaat bagi semua warga.']] },
+            { n: R(5, 8), ref: 'Sila 5', rows: [['Konteks', 'Penggunaan hak milik.'], ['Contoh', 'Pabrik tidak membuang limbah ke sungai yang dipakai warga.']] }],
+          q: 'Pemilik pabrik memasang penyaring agar limbah tidak mencemari sungai yang dipakai warga.', a: 2,
+          why2: 'Ada kata kunci hak milik (pabrik) dan kepentingan umum, jadi Sila 5 butir 8.' },
+        { t: 'Persamaan dan hak-kewajiban', why: 'Tiga butir yang memuat kata "hak dan kewajiban". Bedanya pada pokok yang ditekankan.',
+          kunci: 'Anti-diskriminasi = Sila 2. Kesetaraan warga dalam demokrasi = Sila 4. Hak dan kewajiban harus seimbang = Sila 5.',
+          items: [
+            { n: R(2, 2), ref: 'Sila 2', rows: [['Pokok', 'Persamaan derajat tanpa membedakan suku, agama, jenis kelamin, kedudukan sosial.'], ['Contoh', 'Rekrutmen dan layanan publik tanpa diskriminasi.']] },
+            { n: R(4, 1), ref: 'Sila 4', rows: [['Pokok', 'Setiap warga punya kedudukan, hak, dan kewajiban yang sama dalam bermasyarakat dan bernegara.'], ['Contoh', 'Satu orang satu suara bernilai sama di Pemilu.']] },
+            { n: R(5, 3), ref: 'Sila 5', rows: [['Pokok', 'Menjaga keseimbangan antara hak dan kewajiban.'], ['Contoh', 'Menuntut hak cuti setelah menyelesaikan kewajiban kerja.']] }],
+          q: 'Pegawai baru meminta hak cuti, tetapi lebih dulu menyelesaikan laporan yang menjadi kewajibannya.', a: 2,
+          why2: 'Yang ditekankan adalah keseimbangan hak dan kewajiban: Sila 5 butir 3.' },
+        { t: 'Berani, berkorban, dan peduli', why: 'Perilaku "baik" yang mirip tetapi masuk sila berbeda.',
+          kunci: 'Berani melawan ketidakadilan = Sila 2. Menolong sesama manusia = Sila 2 (kegiatan kemanusiaan). Berkorban demi negara = Sila 3.',
+          items: [
+            { n: R(2, 8), ref: 'Sila 2', rows: [['Pokok', 'Berani membela kebenaran dan keadilan.'], ['Contoh', 'Melaporkan pungutan liar lewat kanal resmi.']] },
+            { n: R(2, 7), ref: 'Sila 2', rows: [['Pokok', 'Gemar melakukan kegiatan kemanusiaan.'], ['Contoh', 'Menjadi donor darah atau relawan bencana.']] },
+            { n: R(3, 2), ref: 'Sila 3', rows: [['Pokok', 'Sanggup dan rela berkorban untuk kepentingan negara dan bangsa.'], ['Contoh', 'Petugas yang tetap bertugas saat bencana demi menolong warga.']] }],
+          q: 'ASN melaporkan pungutan liar yang dilakukan rekan kerjanya lewat kanal pengaduan resmi.', a: 0,
+          why2: 'Keberanian membela kebenaran dan keadilan adalah Sila 2 butir 8.' },
+        { t: 'Tidak memaksakan dan tidak semena-mena', why: 'Kata kerjanya mirip. Bedakan objek yang dipaksakan.',
+          kunci: 'Yang dipaksakan agama = Sila 1. Yang dipaksakan kehendak atau pendapat = Sila 4. Menyalahgunakan kekuasaan = Sila 2.',
+          items: [
+            { n: R(1, 7), ref: 'Sila 1', rows: [['Objek', 'Agama atau kepercayaan.'], ['Contoh', 'Tidak menekan teman agar berpindah keyakinan.']] },
+            { n: R(4, 2), ref: 'Sila 4', rows: [['Objek', 'Kehendak atau pendapat dalam keputusan bersama.'], ['Contoh', 'Ketua rapat tidak memaksakan pendapatnya.']] },
+            { n: R(2, 5), ref: 'Sila 2', rows: [['Objek', 'Perlakuan terhadap orang lain (tidak semena-mena).'], ['Contoh', 'Atasan tidak menyalahgunakan jabatan untuk menekan bawahan.']] }],
+          q: 'Ketua panitia mendengarkan usul semua anggota dan tidak memaksakan pendapatnya sendiri.', a: 1,
+          why2: 'Yang tidak dipaksakan adalah kehendak dalam pengambilan keputusan: Sila 4 butir 2.' },
+        { t: 'Tiga larangan hak milik (Sila 5)', why: 'Butir 6, 7, dan 8 Sila 5 sama-sama berawalan "tidak menggunakan hak milik untuk ...". Pembedanya ada pada akhir kalimat.',
+          kunci: 'P-B-U: Peras (butir 6), Boros (butir 7), Umum (butir 8).',
+          items: [
+            { n: R(5, 6), ref: 'Peras', rows: [['Larangan', 'Usaha yang bersifat pemerasan terhadap orang lain.'], ['Contoh', 'Rentenir dengan bunga mencekik.']] },
+            { n: R(5, 7), ref: 'Boros', rows: [['Larangan', 'Pemborosan dan gaya hidup mewah.'], ['Contoh', 'Pejabat memamerkan kemewahan, padahal seharusnya hidup sederhana sesuai penghasilan.']] },
+            { n: R(5, 8), ref: 'Umum', rows: [['Larangan', 'Bertentangan dengan atau merugikan kepentingan umum.'], ['Contoh', 'Pabrik membuang limbah ke sungai warga.']] }],
+          q: 'Seorang pengusaha menolak membeli mobil mewah hanya untuk pamer dan memilih hidup sesuai penghasilannya.', a: 1,
+          why2: 'Menghindari pemborosan dan gaya hidup mewah adalah Sila 5 butir 7 (Boros).' },
+        { t: 'Hubungan dengan dunia internasional', why: 'Dua sila memuat hubungan antarbangsa. Soal sering menjebak di Sila 3 butir 5.',
+          kunci: 'Solidaritas dan sopan santun antarbangsa = Sila 2. Menjaga ketertiban dan perdamaian dunia = Sila 3.',
+          items: [
+            { n: R(2, 9), ref: 'Sila 2', rows: [['Pokok', 'Bangsa Indonesia merasa bagian dari seluruh umat manusia.'], ['Contoh', 'Mengirim bantuan untuk korban bencana di negara lain.']] },
+            { n: R(2, 10), ref: 'Sila 2', rows: [['Pokok', 'Hormat-menghormati dan bekerja sama dengan bangsa lain.'], ['Contoh', 'Kerja sama pendidikan antarnegara.']] },
+            { n: R(3, 5), ref: 'Sila 3', rows: [['Pokok', 'Memelihara ketertiban dunia berdasarkan kemerdekaan, perdamaian abadi, dan keadilan sosial.'], ['Contoh', 'Pasukan Garuda dalam misi perdamaian PBB.']] }],
+          q: 'Indonesia mengirim pasukan penjaga perdamaian ke wilayah konflik di bawah bendera PBB.', a: 2,
+          why2: 'Memelihara ketertiban dan perdamaian dunia adalah Sila 3 butir 5, bukan Sila 2.' },
+        { t: 'Kekeluargaan', why: 'Kata "kekeluargaan" muncul di Sila 4 dan Sila 5.',
+          kunci: 'Kekeluargaan dalam suasana rapat = Sila 4. Kekeluargaan dan gotong royong dalam perbuatan = Sila 5.',
+          items: [
+            { n: R(4, 4), ref: 'Sila 4', rows: [['Konteks', 'Musyawarah untuk mencapai mufakat diliputi semangat kekeluargaan.'], ['Contoh', 'Rapat yang santun tanpa saling membentak.']] },
+            { n: R(5, 1), ref: 'Sila 5', rows: [['Konteks', 'Perbuatan luhur yang mencerminkan kekeluargaan dan kegotongroyongan.'], ['Contoh', 'Kerja bakti membersihkan selokan atau membangun balai desa.']] }],
+          q: 'Warga kerja bakti memperbaiki jembatan desa bersama-sama.', a: 1,
+          why2: 'Kerja bakti adalah perbuatan gotong royong, yaitu Sila 5 butir 1.' },
+        { t: 'Cinta dan bangga', why: 'Tiga butir tentang rasa. Perhatikan siapa yang dicintai atau dibanggakan.',
+          kunci: 'Cinta sesama manusia = Sila 2. Cinta tanah air = Sila 3. Bangga berbangsa = Sila 3.',
+          items: [
+            { n: R(2, 3), ref: 'Sila 2', rows: [['Objek', 'Sesama manusia.'], ['Contoh', 'Menjenguk tetangga atau rekan yang sakit.']] },
+            { n: R(3, 3), ref: 'Sila 3', rows: [['Objek', 'Tanah air dan bangsa.'], ['Contoh', 'Menjaga kebersihan fasilitas umum dan tidak merusaknya.']] },
+            { n: R(3, 4), ref: 'Sila 3', rows: [['Objek', 'Kebanggaan berkebangsaan dan bertanah air Indonesia.'], ['Contoh', 'Mengikuti upacara bendera dan memakai produk dalam negeri dengan bangga.']] }],
+          q: 'Siswa menjenguk teman sekelas yang sedang dirawat di rumah sakit.', a: 0,
+          why2: 'Perilaku saling mencintai sesama manusia adalah Sila 2 butir 3.' },
+        { t: 'Menghormati', why: 'Kata "menghormati" muncul di banyak sila. Lihat apa yang dihormati.',
+          kunci: 'Hormati kebebasan ibadah = Sila 1. Hormati keputusan rapat = Sila 4. Hormati hak orang lain = Sila 5.',
+          items: [
+            { n: R(1, 6), ref: 'Sila 1', rows: [['Yang dihormati', 'Kebebasan menjalankan ibadah.'], ['Contoh', 'Memberi waktu dan tempat bagi rekan yang akan beribadah.']] },
+            { n: R(4, 5), ref: 'Sila 4', rows: [['Yang dihormati', 'Keputusan hasil musyawarah.'], ['Contoh', 'Tetap mendukung keputusan rapat meski usulan pribadi tidak terpilih.']] },
+            { n: R(5, 4), ref: 'Sila 5', rows: [['Yang dihormati', 'Hak-hak orang lain.'], ['Contoh', 'Mengantre dengan tertib dan tidak menyerobot.']] }],
+          q: 'Seorang pegawai mengantre dengan tertib di loket dan tidak menyerobot.', a: 2,
+          why2: 'Mengantre berarti menghormati hak orang lain: Sila 5 butir 4.' }
+      ];
+
+      let tab = 'butir', si = 0, q = '', bd = null;
+      const lat = { n: 0, ok: 0, cur: null, mode: 'butir', done: false };
+
+      box.innerHTML = `
+        <div class="pv-h"><h4>45 butir Pancasila dan contohnya</h4><p>Pola jumlah butir: <b>7 · 10 · 7 · 10 · 11</b> = 45. Pilih sila, cari butir, atau latihan menebak sila.</p></div>
+        <div class="pv-tabs" role="tablist"></div>
+        <div id="pvB-butir">
+          <label class="pv-search"><span class="sr">Cari butir</span><input type="search" id="pvB-q" placeholder="Cari butir atau contoh: gotong royong, musyawarah, tenggang rasa ..." autocomplete="off"></label>
+          <div class="pv-silas" id="pvB-sila"></div>
+          <div id="pvB-det"></div>
+        </div>
+        <div id="pvB-beda" hidden></div>
+        <div id="pvB-lat" hidden></div>`;
+      const silaBar = $('#pvB-sila', box), det = $('#pvB-det', box);
+
+      const drawSila = () => {
+        silaBar.innerHTML = SILA.map((x, i) => `<button class="pv-sl${i === si && !q ? ' on' : ''}" data-i="${i}" style="--c:${x.c}" aria-pressed="${i === si && !q}"><b>${i + 1}</b><span>${x.s}</span><small>${x.n} butir</small></button>`).join('');
+        $$('.pv-sl', silaBar).forEach(b => b.onclick = () => { si = +b.dataset.i; if (q) { q = ''; $('#pvB-q', box).value = ''; } draw(true); });
       };
-      $$('.pk', box).forEach((b, i) => b.addEventListener('click', () => pick(i)));
-      pick(0);
+      const item = (x, k) => `<li class="pv-bi" style="--c:${SILA[x.si].c}">
+          <span class="pv-bn">${x.bi + 1}</span>
+          <div class="pv-bc">
+            <div class="pv-bk"><span>${PV.hl(x.k, k)}</span><small>${k ? 'Sila ' + (x.si + 1) + ' · ' : ''}butir ke-${x.g} dari 45</small></div>
+            <p>${PV.hl(x.t, k)}</p>
+            <div class="pv-ex"><b>Contoh</b>${PV.hl(x.e, k)}</div>
+          </div></li>`;
+      const draw = scroll => {
+        drawSila();
+        if (q) {
+          const k = PV.norm(q);
+          const hit = ALL.filter(x => PV.norm(x.k + ' ' + x.t + ' ' + x.e).includes(k));
+          det.innerHTML = `<div class="pv-det" style="--c:#14161C"><div class="pv-res">${hit.length} butir cocok dengan "<b>${q.replace(/[<>&]/g, '')}</b>"</div>` +
+            (hit.length ? `<ol class="pv-blist">${hit.map(x => item(x, q)).join('')}</ol>` : '<p class="pv-empty">Tidak ada butir yang cocok. Coba kata kunci lain.</p>') + '</div>';
+          return;
+        }
+        const x = SILA[si], d = D[si];
+        det.innerHTML = `<article class="pv-det" style="--c:${x.c}">
+          <div class="pv-det-h"><span class="pv-badge">Sila ${si + 1}</span><div><h5>${d[1]}</h5><small>Lambang: ${x.lam} · ${x.n} butir</small></div></div>
+          <p class="pv-kw">${d[2]}</p>
+          <ol class="pv-blist">${ALL.filter(a => a.si === si).map(a => item(a, '')).join('')}</ol>
+          <div class="pv-nav">${si > 0 ? '<button class="btn ghost" data-go="-1">Sila sebelumnya</button>' : '<span></span>'}${si < 4 ? '<button class="btn" data-go="1">Sila berikutnya</button>' : '<span></span>'}</div>
+        </article>`;
+        $$('[data-go]', det).forEach(b => b.onclick = () => { si += +b.dataset.go; draw(false); silaBar.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); });
+        if (scroll && det.scrollIntoView) det.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      };
+      $('#pvB-q', box).addEventListener('input', e => { q = e.target.value.trim(); draw(false); });
+
+      // ---- Latihan: tebak sila ----
+      const latHost = $('#pvB-lat', box);
+      const nextQ = () => { lat.cur = ALL[Math.floor(Math.random() * ALL.length)]; lat.done = false; drawLat(); };
+      const drawLat = () => {
+        if (!lat.cur) { nextQ(); return; }
+        const x = lat.cur, clue = lat.mode === 'butir' ? x.t : x.e;
+        latHost.innerHTML = `<div class="pv-det" style="--c:#0F7B7D">
+          <div class="pv-lat-top"><span>Skor <b>${lat.ok}</b> / ${lat.n}</span>
+            <div class="pv-mode" role="group" aria-label="Bentuk soal"><button data-m="butir" class="${lat.mode === 'butir' ? 'on' : ''}">Soal berupa butir</button><button data-m="contoh" class="${lat.mode === 'contoh' ? 'on' : ''}">Soal berupa perilaku</button></div></div>
+          <p class="pv-qt">${lat.mode === 'butir' ? 'Butir ini termasuk sila ke berapa?' : 'Perilaku ini mencerminkan sila ke berapa?'}</p>
+          <blockquote class="pv-clue">${clue}</blockquote>
+          <div class="pv-opts five">${SILA.map((s, i) => `<button class="pv-opt" data-a="${i}" style="--c:${s.c}"><b>${i + 1}</b><span>${s.s}</span></button>`).join('')}</div>
+          <div class="pv-out" aria-live="polite"></div>
+        </div>`;
+        $$('[data-m]', latHost).forEach(b => b.onclick = () => { lat.mode = b.dataset.m; lat.done = false; drawLat(); });
+        $$('.pv-opt', latHost).forEach(b => b.onclick = () => {
+          if (lat.done) return; lat.done = true;
+          const a = +b.dataset.a, ok = a === x.si; lat.n++; if (ok) lat.ok++;
+          $$('.pv-opt', latHost).forEach((e, j) => { e.disabled = true; if (j === x.si) e.classList.add('ok'); else if (j === a) e.classList.add('no'); });
+          $('.pv-out', latHost).innerHTML = `<div class="pv-fb ${ok ? 'good' : 'bad'}"><strong>${ok ? 'Tepat!' : 'Belum pas. Jawabannya Sila ' + (x.si + 1) + ' (' + SILA[x.si].s + ')'}</strong>
+            <span class="pv-ans"><b>Butir ${x.bi + 1}: ${x.k}.</b> ${x.t}</span><span class="pv-ans"><b>Contoh:</b> ${x.e}</span>
+            <button class="btn" id="pvB-next" style="margin-top:10px">Soal berikutnya</button></div>`;
+          $('#pvB-next', latHost).onclick = nextQ;
+        });
+        // skor di bar atas ikut diperbarui saat soal berikutnya digambar ulang
+      };
+
+      const setTab = k => {
+        tab = k;
+        $('#pvB-butir', box).hidden = k !== 'butir';
+        $('#pvB-beda', box).hidden = k !== 'beda';
+        latHost.hidden = k !== 'lat';
+        $$('.pv-tabs button', box).forEach(b => { const on = b.dataset.k === k; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+        if (k === 'lat') drawLat();
+      };
+      PV.tabs(box, [{ k: 'butir', label: 'Butir dan contoh' }, { k: 'beda', label: 'Pembeda' }, { k: 'lat', label: 'Latihan' }], setTab);
+      bd = PV.pembeda($('#pvB-beda', box), BD, '#C2410C');
+      setTab('butir');
+      draw(false);
     })();
 
     renderFlow('sim-alur-berhenti', 'Alur pemberhentian Presiden dan/atau Wakil (Pasal 7A-7B)', 'Hanya karena pelanggaran hukum berat atau tidak lagi memenuhi syarat. Tap titik untuk melompat.', [
@@ -11820,8 +12385,8 @@ addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(u)},{passive:
 .sg-toc::-webkit-scrollbar{display:none}
 .sg-toc button{flex:none;min-height:36px;padding:6px 14px;border:1.5px solid #E3E6EB;border-radius:99px;background:#fff;color:var(--ink,#14161C);font:700 13px/1 inherit;font-family:inherit;cursor:pointer;white-space:nowrap}
 .sg-toc button:hover,.sg-toc button:focus-visible{background:#FFE29A;border-color:#14161C}
-.sg-top{position:fixed;right:16px;bottom:84px;z-index:40;width:44px;height:44px;border-radius:50%;border:2px solid #14161C;background:#F8B461;font-size:20px;font-weight:800;cursor:pointer;display:none;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-.sg-top.on{display:block}
+.sg-up{position:fixed;right:16px;bottom:84px;z-index:40;width:44px;height:44px;border-radius:50%;border:2px solid #14161C;background:#F8B461;font-size:20px;font-weight:800;cursor:pointer;display:none;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.sg-up.on{display:block}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 <script>
@@ -11844,7 +12409,7 @@ addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(u)},{passive:
     });
   }
   new MutationObserver(function(){clearTimeout(t);t=setTimeout(build,120);}).observe(L,{childList:true,subtree:true});
-  var up=document.createElement('button'); up.className='sg-top'; up.type='button'; up.setAttribute('aria-label','Kembali ke atas'); up.textContent='\u2191';
+  var up=document.createElement('button'); up.className='sg-up'; up.type='button'; up.setAttribute('aria-label','Kembali ke atas'); up.textContent='\u2191';
   up.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});}; document.body.appendChild(up);
   window.addEventListener('scroll',function(){up.classList.toggle('on',!L.hidden&&window.scrollY>600);},{passive:true});
 })();
@@ -11938,7 +12503,7 @@ html body .lf{right:22px;bottom:calc(var(--bottombar-h,64px) + 34px + 68px + env
 html body.nav-away .lf{bottom:calc(22px + 68px + env(safe-area-inset-bottom,0px))}
 @media (min-width:900px){html body .lf{right:32px;bottom:100px}}
 /* tombol ↑ oranye kembar dengan tombol ↑ putih bawaan: disembunyikan */
-html body button.sg-top{display:none !important}
+html body button.sg-up{display:none !important}
 
 /* ===== Dialog traktir: versi minimalis (garis tipis, kartu putih, kontrol segmented) ===== */
 html body .kp-ov .kp-box { border:0; border-radius:26px; background:#fff; box-shadow:0 24px 60px rgba(16,24,40,.22), 0 2px 6px rgba(16,24,40,.06); }
