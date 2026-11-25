@@ -473,6 +473,7 @@
     .lg-dead rect { fill: var(--cream); stroke: #14161C; stroke-width: 1.6; }
     .lg-ln { stroke: #14161C; stroke-width: 1.6; }
     .lg-gap { fill: var(--ink); font-weight: 600; }
+    .bnd .lg-gap { font-size: 9.4px; }
 
     
     .bnd { width: 100%; max-width: 440px; display: block; margin: 10px auto 0; }
@@ -7466,7 +7467,7 @@ html[data-theme=dark] .th-pop{box-shadow:0 14px 36px rgba(0,0,0,.6)}
           <p class="hint">Empat istilah ini berjenjang, dari perasaan sampai perbuatan. Tap tiap anak tangga untuk melihat inti, contoh, dan jebakan soalnya.</p>
           ${(() => {
             const F = ['Perasaan batin pada tanah air', 'Sadar bersatu sebagai satu bangsa', 'Berani dan rela berkorban', 'Peran nyata dan kewajiban hukum'];
-            const C = ['rasa tumbuh jadi kesadaran bersama', 'kesadaran melahirkan kerelaan berkorban', 'pengorbanan diwujudkan dalam tindakan'];
+            const C = ['rasa tumbuh jadi kesadaran', 'sadar melahirkan kerelaan berkorban', 'korban diwujudkan dalam tindakan'];
             return `<svg class="bnd" viewBox="0 0 360 424" role="img" aria-label="Diagram jenjang dari cinta tanah air sampai bela negara">
             <defs><marker id="bnA" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1l6 3-6 3z" style="fill:#14161C"/></marker></defs>
             <text class="lg-bl" x="8" y="14" style="fill:var(--ink-soft)">BATIN: DI DALAM DIRI</text>
@@ -13168,6 +13169,23 @@ html body .kp-ov .kp-qris { display:block; width:100%; max-width:290px; height:a
   apply(getPref());
 })();
 </script>
+<style id="refresh-btn-css">
+.rf-row{display:flex;justify-content:flex-end;width:100%;box-sizing:border-box;max-width:var(--rf-max,none);margin:0 auto;padding:calc(10px + env(safe-area-inset-top,0px)) 18px 0}
+.rf-btn{position:relative;flex:none;z-index:2;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;padding:0;cursor:pointer;
+  background:var(--surface,#fff);color:var(--ink,#111418);border:2px solid var(--line,#E3E6EB);box-shadow:0 2px 10px rgba(16,24,40,.12);transition:transform .15s,box-shadow .15s}
+.rf-btn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.rf-btn:hover{transform:translateY(-2px)}.rf-btn:active{transform:translateY(1px)}
+.rf-btn.is-spin svg{animation:rfspin .7s linear infinite}
+@keyframes rfspin{to{transform:rotate(360deg)}}
+html[data-theme=dark] .rf-btn{background:rgba(8,12,26,.85);color:#5CF0FF;border-color:rgba(34,228,255,.55);box-shadow:0 0 18px rgba(34,228,255,.35),0 6px 18px rgba(0,0,0,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+@media print{.rf-btn{display:none}}
+@media (prefers-reduced-motion:reduce){.rf-btn.is-spin svg{animation-duration:1.6s}}
+</style>
+<button type="button" class="rf-btn" id="rfBtn" aria-label="Muat ulang halaman" title="Muat ulang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg></button>
+<script>
+(function(){var b=document.getElementById('rfBtn');if(!b)return;var row=document.createElement('div');row.className='rf-row';document.body.insertBefore(row,document.body.firstChild);row.appendChild(b);
+b.addEventListener('click',function(){b.classList.add('is-spin');b.disabled=true;setTimeout(function(){location.reload()},250)});})();
+</script>
 <style id="neon-dark">
 /* ===== NEON DARK — lapisan terakhir, hanya aktif di tema gelap ===== */
 html[data-theme=dark]{
@@ -13285,6 +13303,31 @@ html[data-theme=dark] .k-soal{--bg-k:rgba(181,140,255,.15);--fg-k:#C9A8FF}
 html[data-theme=dark] .k-analogi{--bg-k:rgba(255,62,165,.14);--fg-k:#FF7DBE}
 html[data-theme=dark] .k-istilah{--bg-k:rgba(43,255,166,.13);--fg-k:#5CFFBC}
 html[data-theme=dark] body .ar-kick,html[data-theme=dark] body .ar-new{background:rgba(255,194,26,.14) !important;color:#FFD866 !important;border:1.5px solid rgba(255,194,26,.65) !important;box-shadow:0 0 14px rgba(255,194,26,.35);text-shadow:0 0 8px rgba(255,194,26,.5)}
+
+/* Kontras: konten berlatar terang yang tadinya ikut teks putih */
+html[data-theme=dark] .mb b{background:linear-gradient(transparent 58%,rgba(255,194,26,.38) 58%) !important;color:#FFF3C4}
+html[data-theme=dark] .mc.key .mb b{background:linear-gradient(transparent 58%,rgba(255,62,165,.42) 58%) !important;color:#FFE1F0}
+html[data-theme=dark] .mb .tb b{background:none !important}
+html[data-theme=dark] .memo{background:linear-gradient(150deg,rgba(255,194,26,.16),rgba(255,154,28,.07)) !important;border:1.5px solid rgba(255,194,26,.5) !important;color:#FFEFC0 !important;box-shadow:0 0 20px rgba(255,194,26,.15) !important}
+html[data-theme=dark] .memo b,html[data-theme=dark] .memo strong{color:#FFD866}
+html[data-theme=dark] .tb.st tbody tr,html[data-theme=dark] .tb.st tbody tr:nth-child(even){background:#0D1322 !important}
+html[data-theme=dark] .tb.st tbody tr:nth-child(even){background:#101831 !important}
+/* diagram SVG */
+html[data-theme=dark] .bn{filter:none}
+html[data-theme=dark] .bn .r{fill:#0F1630;stroke:rgba(34,228,255,.38)}
+html[data-theme=dark] .bn.on .r{fill:color-mix(in srgb,var(--c) 22%,#0D1322);stroke:var(--c)}
+html[data-theme=dark] .bn.on{filter:drop-shadow(0 0 10px color-mix(in srgb,var(--c) 70%,transparent))}
+html[data-theme=dark] .bn .b{stroke:rgba(255,255,255,.25)}
+html[data-theme=dark] .bn .t{fill:#EDF3FF}
+html[data-theme=dark] .bn .f{fill:#AEBBDA}
+html[data-theme=dark] .bnd marker path{fill:#5CF0FF !important}
+html[data-theme=dark] body .fn{background:linear-gradient(150deg,rgba(25,240,210,.13),rgba(25,240,210,.04)) !important;border:1.5px solid rgba(25,240,210,.4) !important;box-shadow:0 0 16px rgba(25,240,210,.12) !important}
+html[data-theme=dark] .fn b{color:#EDF3FF}html[data-theme=dark] .fn span{color:#BFD0F0}
+html[data-theme=dark] .stg .pg{fill:#0F1630;stroke:#5CF0FF}
+html[data-theme=dark] .stg .pt{fill:#EDF3FF}
+html[data-theme=dark] .mkm-pg b{background:#0D1322 !important;color:#EDF3FF !important;border-color:rgba(34,228,255,.5) !important}
+html[data-theme=dark] .mkm-pgt{background:#0A1020 !important;border-color:rgba(34,228,255,.4) !important}
+html[data-theme=dark] .pv-bk span,html[data-theme=dark] .pv-sl b,html[data-theme=dark] .pv-ex b,html[data-theme=dark] .pv-trap b,html[data-theme=dark] .pv-kunci b{color:color-mix(in srgb,var(--c,#5CF0FF) 40%,#fff) !important;text-shadow:0 0 10px color-mix(in srgb,var(--c,#5CF0FF) 55%,transparent)}
 @media (prefers-reduced-motion:reduce){html[data-theme=dark] *{transition:none !important}}
 </style>
 
