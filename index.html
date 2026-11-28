@@ -11666,7 +11666,7 @@ tkp:[]};
         msg.textContent=j.hasil==='diperbarui'?'Skor terbaikmu di paket ini diperbarui.':j.hasil==='tidak-lebih-baik'?'Skor lamamu di paket ini lebih tinggi, jadi tetap dipakai.':'Berhasil masuk ranking!';
         go.textContent='Terkirim';
         rkSegar(pk);
-      }catch(e){msg.textContent=(e&&e.name==='AbortError'?'Server terlalu lama merespons':(e&&e.message)||'Gagal mengirim')+'. Coba lagi ya.';go.disabled=false}
+      }catch(e){msg.textContent=(e&&e.name==='AbortError'?'Server terlalu lama merespons':/failed to fetch|networkerror|load failed|network request/i.test((e&&e.message)||'')?'Tidak bisa terhubung ke server ranking (cek sinyal atau coba lagi sebentar)':(e&&e.message)||'Gagal mengirim')+'. Coba lagi ya.';go.disabled=false}
     };
   }
   // ===== Sertifikat lucu-lucuan: digambar di canvas, 100% di perangkat sendiri (tidak dikirim ke server) =====
@@ -11845,7 +11845,7 @@ tkp:[]};
       msg.textContent=j.hasil==='diperbarui'?'Skor terbaikmu di paket ini diperbarui.':j.hasil==='tidak-lebih-baik'?'Skor lamamu di paket ini lebih tinggi, jadi tetap dipakai.':'Skormu otomatis masuk ranking atas nama '+nama+'!';
       rkSegar(pk);
     }catch(e){
-      msg.textContent=(e&&e.name==='AbortError'?'Server terlalu lama merespons':(e&&e.message)||'Gagal mengirim')+'. Skor belum masuk ranking, tekan Kirim ulang.';
+      msg.textContent=(e&&e.name==='AbortError'?'Server terlalu lama merespons':/failed to fetch|networkerror|load failed|network request/i.test((e&&e.message)||'')?'Tidak bisa terhubung ke server ranking (cek sinyal atau coba lagi sebentar)':(e&&e.message)||'Gagal mengirim')+'. Skor belum masuk ranking, tekan Kirim ulang.';
       if(go){go.style.display='';go.onclick=()=>rkKirim(sc,pk,nama,detik)}
     }
   }
@@ -14759,6 +14759,20 @@ html body a.bk-line:hover .bk-go svg{transform:translate(2px,-2px)}
 /* Layar pertama langsung tampil penuh. JS besar saat buka membuat animasi fade macet di tengah (tampilan pudar). Animasi tetap jalan untuk perpindahan halaman berikutnya. */
 html:not(.app-ready) .view.is-active,
 html:not(.app-ready) .view.is-active > .view-inner{animation:none!important;opacity:1!important;transform:none!important}
+</style>
+<style id="ar-back-fix">
+/* Tombol kembali di hasil/pembahasan tryout: ringkas, rapi, tidak mencolok */
+html body #ar #arTopBack,html body #ar #arHistTop{
+  display:inline-flex!important;align-items:center;gap:6px;width:auto!important;min-height:0!important;
+  margin:2px 0 14px!important;padding:8px 16px 8px 12px!important;
+  font-size:14px!important;font-weight:700!important;line-height:1.2!important;letter-spacing:0!important;
+  border:1.5px solid var(--n-line,#DCE1E9)!important;border-radius:99px!important;
+  background:var(--surface,#fff)!important;color:var(--ink-soft,#4B5160)!important;box-shadow:none!important;
+  transition:border-color .15s,color .15s,background .15s}
+html body #ar #arTopBack:hover,html body #ar #arHistTop:hover{border-color:var(--brand,#102C52)!important;color:var(--ink,#14161C)!important}
+html body #ar #arTopBack:active,html body #ar #arHistTop:active{background:var(--brand-soft,#E6ECF5)!important}
+html body #ar #arTopBack:focus-visible,html body #ar #arHistTop:focus-visible{outline:2px solid var(--brand,#102C52);outline-offset:2px}
+html body #ar>.ar-row:has(#arTopBack),html body #ar>.ar-row:has(#arHistTop){display:block;margin:0;padding:0;position:static;border:0;background:none}
 </style>
 <style id="hero-clock-css">
 .hero-clock{display:none}
