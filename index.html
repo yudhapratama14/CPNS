@@ -2921,7 +2921,8 @@ html[data-theme=dark] .upd-badge{background:#12251B;color:#BFEBD5;border-color:#
         </li>
       </ul>
 
-      <div class="nav-goal"><strong>450+</strong>target skor dari maksimal 550</div>
+      <div class="nav-tip" aria-live="off"><b>Tips hari ini</b><p id="navTip"></p></div>
+      <div class="nav-goal"><strong>450+</strong>target skor dari maksimal 550<div class="ng-bar" aria-hidden="true"><i></i></div></div>
       <div class="nav-me"><a href="https://www.instagram.com/yud.prt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.linkedin.com/in/muhammad-yudha-pratama-b217742b7/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="9" width="4" height="12" rx="1"/><circle cx="5" cy="5" r="2.2"/><path d="M10 9h3.8v1.8c.7-1.3 2.1-2.1 3.9-2.1 3.1 0 4.3 2 4.3 5.1V21h-4v-6.2c0-1.5-.5-2.4-1.8-2.4s-2.2.9-2.2 2.5V21h-4z"/></svg></a><a href="https://yudhapratama14.github.io/BelajarInggris/" target="_blank" rel="noopener noreferrer" aria-label="Belajar Inggris dari nol sampai jago" title="Belajar Inggris dari nol sampai jago"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 4 5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5z"/><path d="M12 6.5v13"/></svg></a><a href="#traktir" data-kopi aria-label="Traktir kopi" title="Traktir kopi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M8 3v2M12 3v2"/></svg></a></div>
     </nav>
 
@@ -5145,7 +5146,8 @@ const TOP = () => LESSONS.filter(l => !l.hid);
       $$('[data-qm]').forEach(b => b.onclick = () => { cur.qm = b.dataset.qm; cur.pick = null; cur.q = 0; renderLesson(); window.scrollTo({ top: 0 }); });
       $$('.qf button').forEach(b => b.onclick = () => { cur.qf = b.dataset.qf || null; cur.q = 0; cur.pick = null; clr(); renderLesson(); });
       if ((cur.qm || 'contoh') !== 'latih') return;
-      $$('.lt-dots button').forEach(b => b.onclick = () => { cur.q = +b.dataset.qi; cur.pick = null; renderLesson(); });
+      const toQ = () => { const go = () => { const el = $('.qz .qhd') || $('.qz'); if (!el) { window.scrollTo({ top: 0 }); return; } window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - 84) }); }; go(); requestAnimationFrame(go); };
+      $$('.lt-dots button').forEach(b => b.onclick = () => { cur.q = +b.dataset.qi; cur.pick = null; renderLesson(); toQ(); });
       const n = qzOf(cur.l, cur.qf).length || 1;
       $$('.qz .opt').forEach(b => b.onclick = () => {
         const qs = qzOf(cur.l, cur.qf), qi = (cur.q || 0) % qs.length, q = qs[qi], ok = (+b.dataset.j === q.a);
@@ -5159,7 +5161,7 @@ const TOP = () => LESSONS.filter(l => !l.hid);
       if (nx) nx.onclick = () => {
         const nq = ((cur.q || 0) + 1) % n;
         if (nq === 0) clr();
-        cur.q = nq; cur.pick = null; renderLesson();
+        cur.q = nq; cur.pick = null; renderLesson(); toQ();
       };
       try { const rg = $('.lt-res .lt-ring'); if (rg && cur.pick != null && parseFloat(rg.style.getPropertyValue('--p')) >= 80) burstConfetti(); } catch (e) {}
       if (cur.pick != null) { const d = $('.qz .pk-detail'); if (d && d.scrollIntoView) setTimeout(() => d.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 80); }
@@ -8852,8 +8854,15 @@ const TOP = () => LESSONS.filter(l => !l.hid);
     lesson.appendChild(c);
     if (window.kopiLog) window.kopiLog('tampil', 'akhir-materi');
   }
-  new MutationObserver(() => setTimeout(kartuAkhir, 0)).observe(lesson, { childList: true });
-  new MutationObserver(() => setTimeout(kartuAkhir, 0)).observe(lesson, { attributes: true, attributeFilter: ['hidden'] });
+  function saranAkhir() {
+    if (!aktif() || lesson.querySelector('.saran-strip')) return;
+    const d = document.createElement('div');
+    d.innerHTML = '<div class="saran-strip"><span class="ss-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 9.5h7M8.5 12.5h4"/></svg></span><div class="ss-tx"><strong>Ada saran atau nemu yang salah?</strong><span>Soal keliru, materi kurang pas, atau bug. Kirim aja, gue baca satu-satu.</span></div><button type="button" data-saran>Kirim saran</button></div>';
+    lesson.appendChild(d.firstChild);
+  }
+  const akhir = () => setTimeout(() => { kartuAkhir(); saranAkhir(); }, 0);
+  new MutationObserver(akhir).observe(lesson, { childList: true });
+  new MutationObserver(akhir).observe(lesson, { attributes: true, attributeFilter: ['hidden'] });
   hitung();
 })();
 </script>
@@ -15060,6 +15069,46 @@ html[data-theme=dark] body #sim-butir .pv-bk small{background:color-mix(in srgb,
 @media(min-width:900px){html body .hero .home-logo{display:block;top:22px;right:28px;width:150px;height:76px}}
 html[data-theme=dark] .sr-box{border-color:var(--n-line)}
 html[data-theme=dark] .sr-kat button.is-on{background:#3B4A7A;border-color:#5566A0}
+</style>
+<style id="nav-desktop-v2">
+.nav-tip{display:none}
+@media (min-width:900px){
+  html body #nav{display:flex;flex-direction:column;top:14px;left:14px;right:auto;bottom:auto;height:calc(100vh - 28px);width:calc(var(--sidebar-w) - 14px);padding:22px 14px 14px;border:2px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 1px 2px rgba(16,24,40,.05),0 14px 34px rgba(16,24,40,.06)}
+  html body #nav::before{content:"";position:absolute;z-index:0;right:-46px;top:-46px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(230,151,37,.20),rgba(230,151,37,0) 70%);pointer-events:none}
+  html body #nav>*{position:relative;z-index:1}
+  html body #nav .brand{margin:0 0 20px;padding:0 6px}
+  html body #nav .nav-list{gap:6px}
+  html body #nav .nav-list::before{content:"MENU";display:block;padding:0 14px 6px;font:800 11px/1 var(--font,inherit);letter-spacing:.16em;color:var(--ink-faint,#8A91A0)}
+  html body #nav .nav-btn{padding:12px 14px;border-radius:16px;gap:14px;transition:background .18s,color .18s,box-shadow .18s}
+  html body #nav .nav-btn:not(.is-active):not([data-view="tryout"]):hover{background:var(--bg)}
+  html body #nav .nav-btn.is-active,html body #nav .nav-btn[data-view="tryout"].is-active{background:var(--brand-soft) !important;border-color:transparent !important;box-shadow:inset 4px 0 0 var(--brand)}
+  html body #nav .nav-tip{display:block;margin:18px 2px 0;padding:14px 16px;border:2px solid var(--line);border-radius:20px;background:var(--cream,#FBF5EA)}
+  html body #nav .nav-tip b{display:block;margin:0 0 6px;font:800 11px/1 var(--font,inherit);letter-spacing:.14em;text-transform:uppercase;color:#E69725}
+  html body #nav .nav-tip p{margin:0;font-size:13.5px;line-height:1.5;font-weight:600;color:var(--ink-soft)}
+  html body #nav .nav-goal{position:static;order:3;margin:auto 2px 0;padding:16px 18px;border-radius:20px}
+  html body #nav .ng-bar{margin-top:12px;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+  html body #nav .ng-bar i{display:block;height:100%;width:82%;border-radius:inherit;background:linear-gradient(90deg,#102C52,#E69725)}
+  html body #nav .nav-me{order:4;margin-top:12px;gap:6px}
+  html body #nav .nav-me a{width:36px;height:36px}
+}
+@media (min-width:900px) and (max-height:760px){html body #nav .nav-tip{display:none}}
+</style>
+<script id="nav-tip-js">
+(function(){var e=document.getElementById('navTip');if(!e)return;
+var T=['Sehari satu bab tapi konsisten, lebih ampuh daripada maraton semalam.','Habis baca materi, langsung kerjakan 5 soal biar nempel di kepala.','Pelajari soal yang salah, bukan cuma yang benar.','Ketemu soal yang bikin macet? Lompati dulu, balik lagi kalau waktu sisa.','Belajar 25 menit, istirahat 5 menit. Otak juga butuh napas.','Cek ulang satuan dan yang ditanya sebelum pilih jawaban.'];
+var d=new Date(),n=Math.floor((d-new Date(d.getFullYear(),0,0))/864e5);e.textContent=T[n%T.length]})();
+</script>
+<style id="saran-strip-css">
+.saran-strip{display:flex;align-items:center;gap:14px;margin:12px 0 8px;padding:14px 16px;border:2px solid var(--line,#E3E6EB);border-radius:20px;background:var(--surface,#fff)}
+.saran-strip .ss-ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--brand-soft,#E6ECF5);color:var(--brand,#102C52)}
+.saran-strip .ss-tx{min-width:0;flex:1}
+.saran-strip .ss-tx strong{display:block;font-size:15px;font-weight:800;line-height:1.3;color:var(--ink,#14161C)}
+.saran-strip .ss-tx span{display:block;margin-top:2px;font-size:13px;line-height:1.45;color:var(--ink-soft,#4A5058)}
+.saran-strip button{flex:none;min-height:40px;padding:0 18px;border:2px solid var(--line,#E3E6EB);border-radius:99px;background:transparent;color:var(--ink,#14161C);font-family:inherit;font-weight:800;font-size:14px;cursor:pointer;transition:background .15s,border-color .15s}
+.saran-strip button:hover{background:var(--bg,#F6F7F9);border-color:var(--brand,#102C52)}
+html body #lesson .saran-strip{max-width:none;margin-inline:0}
+@media (max-width:560px){.saran-strip{flex-wrap:wrap}.saran-strip .ss-tx{flex-basis:calc(100% - 60px)}.saran-strip button{width:100%}}
+@media print{.saran-strip{display:none}}
 </style>
 <script id="timer-saran-js">
 (function(){
