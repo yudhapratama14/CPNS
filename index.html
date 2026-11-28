@@ -8329,7 +8329,7 @@ const TOP = () => LESSONS.filter(l => !l.hid);
         '<div class="kn-tx"><strong>Terbantu dengan materinya?</strong>' +
         '<span>Kalau berkenan, boleh traktir kopi untuk bantu update soal baru.</span>' +
         (window.__QRIS_SRC ? '<img class="kn-qr" src="' + window.__QRIS_SRC + '" alt="QRIS, scan dari aplikasi apa saja" width="720" height="833"><small class="kn-qn">Scan dari aplikasi bank atau e-wallet apa saja. Nominal bebas.</small>' : '') +
-        '<a class="kn-go" href="#traktir" data-kopi>' + (window.__QRIS_SRC ? 'Opsi lain / simpan QRIS' : '\u2615 Traktir kopi') + '</a></div>' +
+        '<a class="kn-go" href="#traktir" data-kopi>' + (window.__QRIS_SRC ? 'Opsi lain / simpan QRIS' : 'Traktir kopi') + '</a></div>' +
         '<button type="button" class="kn-x" aria-label="Tutup">\u2715</button>';
       document.body.appendChild(nudge);
       nudge.classList.add('is-show');
@@ -8848,7 +8848,7 @@ const TOP = () => LESSONS.filter(l => !l.hid);
     c.setAttribute('role', 'button'); c.tabIndex = 0;
     c.innerHTML = '<div class="kopi-ic" aria-hidden="true">' + ikon() + '</div>' +
       '<div class="kopi-tx"><strong>Sudah sampai di sini. Terbantu?</strong><span>Kalau materinya bermanfaat, boleh traktir kopi. Nominal bebas.</span></div>' +
-      '<a class="kopi-btn" href="#traktir" data-kopi tabindex="-1">\u2615 Traktir kopi</a>';
+      '<a class="kopi-btn" href="#traktir" data-kopi tabindex="-1">Traktir kopi</a>';
     lesson.appendChild(c);
     if (window.kopiLog) window.kopiLog('tampil', 'akhir-materi');
   }
@@ -11819,7 +11819,7 @@ tkp:[]};
       const up=prevT!==null&&total>prevT;
       const msg=up?'Skor lo naik '+(total-prevT)+' poin dari hasil terbaik sebelumnya. Mantap! Kalau latihan di sini kepake, lo bisa traktir kopi biar gue terus nambah soal dan materi. Sepenuhnya opsional.':'Satu tryout kelar, kerja bagus. Kalau materi dan soal di sini kepake, lo bisa traktir kopi buat bantu gue terus update isinya. Sepenuhnya opsional.';
       const c=root.querySelector('#ar>.card');
-      if(c&&!sessionStorage.getItem('arena-kopi-x'))c.insertAdjacentHTML('afterend','<div class="card ar-kopi ar-nm"><strong class="nm-t">'+(up?'Skor naik!':'Terbantu latihan ini?')+'</strong><p class="nm-d">'+msg+'</p><div class="nm-g"><a class="btn" href="#traktir" data-kopi data-src="tryout">☕ Traktir kopi</a><button type="button" class="btn ghost" id="arKopiX">Nanti aja</button></div></div>');
+      if(c&&!sessionStorage.getItem('arena-kopi-x'))c.insertAdjacentHTML('afterend','<div class="card ar-kopi ar-nm"><div class="kopi-ic" aria-hidden="true">'+((document.querySelector('#kopiHome .kopi-ic svg')||{}).outerHTML||'\u2615')+'</div><strong class="nm-t">'+(up?'Skor naik!':'Terbantu latihan ini?')+'</strong><p class="nm-d">'+msg+'</p><div class="nm-g"><a class="btn" href="#traktir" data-kopi data-src="tryout">Traktir kopi</a><button type="button" class="btn ghost" id="arKopiX">Nanti aja</button></div></div>');
       const x=document.getElementById('arKopiX');if(x)x.onclick=()=>{sessionStorage.setItem('arena-kopi-x','1');const k=x.closest('.ar-kopi');if(k)k.remove()};if(Date.now()-(+localStorage.getItem('kopi-pop-at')||0)>18e5){localStorage.setItem('kopi-pop-at',String(Date.now()));if(window.kopiLog)window.kopiLog('tampil','tryout-popup');setTimeout(()=>{if(document.querySelector('.kp-ov.is-open'))return;const a=document.createElement('a');a.href='#traktir';a.setAttribute('data-kopi','');a.dataset.src='tryout';a.hidden=true;document.body.appendChild(a);a.click();a.remove()},1500)}}}catch(e){}
     // Sertifikat + ranking otomatis: nama sudah diisi di awal, jadi tidak ada form atau tombol tambahan
     try{const c2=root.querySelector('#ar>.card');if(c2){
@@ -14785,6 +14785,159 @@ html body #kopiHome .kopi-cute .kc-s2{animation-delay:.6s}
 html body #kopiHome .kopi-btn:focus-visible{outline:3px solid #FFE08A;outline-offset:4px}
 @media (prefers-reduced-motion:reduce){html body #kopiHome:not(.kopi-ok) .kopi-btn::before,html body #kopiHome .kopi-cute *{animation:none !important}}
 </style>
+<style id="kopi-v5">
+/* ===== kopi-v5: semua kotak traktir kopi dibikin ulang (gummy button + cangkir joget) ===== */
+@keyframes kv5Dance{
+  0%,100%{transform:none}
+  4%{transform:translateY(2px) scale(1.14,.84)}
+  9%{transform:translateY(-9px) scale(.9,1.14)}
+  14%{transform:translateY(2px) scale(1.14,.84)}
+  19%{transform:translateY(-9px) scale(.9,1.14)}
+  24%{transform:translateY(2px) scale(1.14,.84)}
+  29%{transform:none}
+  35%{transform:translateX(-4px) rotate(-17deg)}
+  41%{transform:translateX(4px) rotate(17deg)}
+  47%{transform:translateX(-4px) rotate(-17deg)}
+  53%{transform:translateX(4px) rotate(17deg)}
+  58%{transform:none}
+  65%{transform:translateY(3px) scale(1.14,.82)}
+  71%{transform:translateY(-16px) rotate(200deg) scale(.95,1.1)}
+  77%{transform:translateY(-2px) rotate(360deg)}
+  81%{transform:translateY(2px) rotate(360deg) scale(1.16,.82)}
+  85%{transform:rotate(360deg)}
+  89%{transform:perspective(140px) rotateX(40deg) translateY(1px)}
+  94%{transform:perspective(140px) rotateX(40deg) rotate(8deg)}
+  97%{transform:perspective(140px) rotateX(40deg) rotate(-8deg)}
+}
+@keyframes kv5Blush{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+@keyframes kv5Chat{0%{opacity:0;transform:scale(.3)}5%{opacity:1;transform:scale(1.1)}9%,54%{opacity:1;transform:scale(1)}59%{transform:scale(1.1,.9)}65%,93%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.3)}}
+@keyframes kv5Wiggle{0%{transform:rotate(-12deg) translateX(-2px)}100%{transform:rotate(12deg) translateX(2px)}}
+@keyframes kv5Heart{0%,66%{opacity:0;transform:translate(0,4px) scale(.4)}72%{opacity:1;transform:translate(2px,-4px) scale(1)}92%,100%{opacity:0;transform:translate(10px,-30px) scale(.7)}}
+@keyframes kv5Pulse{0%,58%,100%{transform:none}66%{transform:translateY(-3px) scale(1.04)}74%{transform:translateY(0) scale(.985)}82%{transform:translateY(-1px) scale(1.015)}90%{transform:none}}
+@keyframes kv5Shine{0%,55%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+@keyframes kv5Arrow{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@keyframes kv5Twinkle{0%,100%{opacity:.25;transform:scale(.7) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(20deg)}}
+
+/* --- kartu: beranda + ujung materi --- */
+html body #kopiHome:not(.kopi-ok),html body .kopi.kopi-inline{display:grid !important;grid-template-columns:auto minmax(0,1fr) !important;grid-template-areas:"ic tx" "btn btn" "quote quote" "wall wall" !important;align-items:center !important;gap:0 16px !important;padding:18px !important;position:relative !important;overflow:hidden !important;isolation:isolate !important;border:2px solid #FFD27A !important;border-radius:28px !important;background-color:#FFEFC2 !important;background-image:radial-gradient(circle at 1.5px 1.5px,rgba(224,140,10,.2) 1.5px,transparent 2px),linear-gradient(135deg,#FFF7DD 0%,#FFE3A0 100%) !important;background-size:16px 16px,100% 100% !important;background-repeat:repeat,no-repeat !important;box-shadow:0 3px 0 #FFC24D,0 22px 36px -18px rgba(230,130,0,.6) !important;cursor:pointer !important;transition:transform .18s cubic-bezier(.2,1.3,.4,1),box-shadow .18s ease !important}
+html body #kopiHome:not(.kopi-ok){margin:6px 0 18px !important}
+html body .kopi.kopi-inline{margin:24px 0 8px !important}
+html body #kopiHome:not(.kopi-ok):hover,html body .kopi.kopi-inline:hover{transform:translateY(-3px) rotate(-.4deg) !important;box-shadow:0 6px 0 #FFC24D,0 28px 40px -18px rgba(230,130,0,.7) !important}
+html body #kopiHome:not(.kopi-ok):active,html body .kopi.kopi-inline:active{transform:translateY(1px) scale(.99) !important}
+html body #kopiHome:not(.kopi-ok)::before,html body .kopi.kopi-inline::before{display:block !important;content:"" !important;position:absolute !important;right:-46px !important;top:-46px !important;left:auto !important;bottom:auto !important;width:170px !important;height:170px !important;border-radius:50% !important;background:radial-gradient(circle,rgba(255,255,255,.8),rgba(255,255,255,0) 70%) !important;opacity:1 !important;animation:none !important;pointer-events:none !important;z-index:-1 !important}
+html body #kopiHome:not(.kopi-ok)::after,html body .kopi.kopi-inline::after{display:block !important;content:"\2726" !important;position:absolute !important;right:20px !important;top:14px !important;left:auto !important;bottom:auto !important;font-size:17px !important;color:#F29A00 !important;opacity:1 !important;animation:kv5Twinkle 2.4s ease-in-out infinite !important;pointer-events:none !important;z-index:0 !important}
+
+/* --- maskot cangkir --- */
+html body #kopiHome:not(.kopi-ok) .kopi-ic,html body .kopi.kopi-inline .kopi-ic{grid-area:ic !important;position:relative !important;width:78px !important;height:78px !important;display:grid !important;place-items:center !important;border:3px solid #fff !important;border-radius:50% !important;background:radial-gradient(circle at 30% 25%,#fff,#FFF2D0) !important;box-shadow:0 0 0 3px #FFC24D,0 12px 18px -8px rgba(180,100,0,.6) !important;animation:none !important;overflow:visible !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic svg,html body .kopi.kopi-inline .kopi-ic svg{width:48px !important;height:48px !important;overflow:visible !important;transform-origin:50% 92%;animation:kv5Dance 4.2s ease-in-out infinite}
+html body #kopiHome:not(.kopi-ok) .kopi-ic::after,html body .kopi.kopi-inline .kopi-ic::after{position:absolute;content:"\2665";right:-6px;top:-2px;color:#FF5C7A;font-size:17px;line-height:1;opacity:0;pointer-events:none;animation:kv5Heart 4.2s ease-out infinite}
+html body #kopiHome:not(.kopi-ok) .kopi-ic::before,html body .kopi.kopi-inline .kopi-ic::before{content:"Terima kasih ya! \2665";position:absolute;left:-2px;bottom:calc(100% + 8px);white-space:nowrap;padding:6px 12px;border:2px solid #FFD27A;border-radius:16px 16px 16px 4px;background:#fff;color:#2A1600;font:800 12.5px/1 var(--font,inherit);box-shadow:0 6px 12px -6px rgba(120,70,0,.4);transform-origin:0 100%;animation:kv5Chat 4.2s ease-in-out infinite;pointer-events:none;z-index:2}
+html body #kopiHome:not(.kopi-ok) .kopi-ic svg circle,html body .kopi.kopi-inline .kopi-ic svg circle{transform-box:fill-box;transform-origin:center;animation:kv5Blush 1.4s ease-in-out infinite}
+html body #kopiHome:not(.kopi-ok):hover .kopi-ic svg,html body .kopi.kopi-inline:hover .kopi-ic svg{animation:kv5Wiggle .42s ease-in-out infinite alternate}
+
+/* --- teks --- */
+html body #kopiHome:not(.kopi-ok) .kopi-tx,html body .kopi.kopi-inline .kopi-tx{grid-area:tx !important;min-width:0 !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx strong,html body .kopi.kopi-inline .kopi-tx strong{display:block !important;font-size:20px !important;font-weight:900 !important;line-height:1.2 !important;letter-spacing:-.015em !important;color:#2A1600 !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx span,html body .kopi.kopi-inline .kopi-tx span{display:block !important;margin-top:5px !important;font-size:15px !important;line-height:1.5 !important;color:#6A4A12 !important;max-width:58ch !important;-webkit-line-clamp:unset !important;overflow:visible !important}
+
+/* --- tombol gummy --- */
+html body #kopiHome:not(.kopi-ok) .kopi-btn,html body .kopi.kopi-inline .kopi-btn{grid-area:btn !important;position:relative !important;overflow:hidden !important;isolation:isolate !important;display:inline-flex !important;align-items:center !important;justify-content:center !important;gap:10px !important;width:100% !important;min-height:60px !important;margin:14px 0 0 !important;padding:0 28px !important;border:0 !important;border-radius:999px !important;background:linear-gradient(180deg,#FFCF55 0%,#FF9F1C 100%) !important;color:#2A1600 !important;font:900 18px/1 var(--font,inherit) !important;letter-spacing:.005em !important;text-decoration:none !important;white-space:nowrap !important;cursor:pointer !important;box-shadow:0 6px 0 #C46A00,0 16px 24px -8px rgba(255,140,0,.7),inset 0 2px 0 rgba(255,255,255,.65) !important;animation:kv5Pulse 2.4s ease-in-out infinite !important;transition:box-shadow .12s ease,background .12s ease !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn::before,html body .kopi.kopi-inline .kopi-btn::before{content:"" !important;position:absolute !important;inset:0 !important;z-index:0 !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.7) 50%,transparent 65%) !important;opacity:1 !important;transform:translateX(-130%);animation:kv5Shine 3s ease-in-out infinite !important;pointer-events:none}
+html body #kopiHome:not(.kopi-ok) .kopi-btn::after,html body .kopi.kopi-inline .kopi-btn::after{content:"\2192" !important;display:inline-block !important;position:relative !important;z-index:1 !important;margin:0 !important;font-size:22px !important;line-height:1 !important;animation:kv5Arrow 1.2s ease-in-out infinite !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn span,html body .kopi.kopi-inline .kopi-btn span,html body #kopiHome:not(.kopi-ok) .kopi-btn svg,html body .kopi.kopi-inline .kopi-btn svg{position:relative;z-index:1}
+html body #kopiHome:not(.kopi-ok) .kopi-btn svg.kopi-cute,html body .kopi.kopi-inline .kopi-btn svg.kopi-cute{width:38px !important;height:38px !important;margin:-6px 0 -6px -8px !important;overflow:visible !important;fill:none !important;transform-origin:50% 92%;animation:kv5Dance 4.2s ease-in-out -1.7s infinite !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn .kc-cup,html body .kopi.kopi-inline .kopi-btn .kc-cup{animation:none !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn:hover,html body .kopi.kopi-inline .kopi-btn:hover{background:linear-gradient(180deg,#FFD96E 0%,#FFAA2E 100%) !important;filter:none !important;animation:none !important;transform:translateY(-2px) !important;box-shadow:0 8px 0 #C46A00,0 20px 28px -8px rgba(255,140,0,.75),inset 0 2px 0 rgba(255,255,255,.7) !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn:active,html body .kopi.kopi-inline .kopi-btn:active{animation:none !important;transform:translateY(5px) !important;box-shadow:0 1px 0 #C46A00,0 6px 10px -4px rgba(255,140,0,.6),inset 0 2px 0 rgba(255,255,255,.5) !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn:focus-visible,html body .kopi.kopi-inline .kopi-btn:focus-visible{outline:3px solid #2A1600 !important;outline-offset:3px !important}
+
+@media (max-width:640px){
+  html body #kopiHome:not(.kopi-ok),html body .kopi.kopi-inline{padding:16px !important;gap:0 14px !important;border-radius:24px !important}
+  html body #kopiHome:not(.kopi-ok) .kopi-ic,html body .kopi.kopi-inline .kopi-ic{width:66px !important;height:66px !important}
+  html body #kopiHome:not(.kopi-ok) .kopi-ic svg,html body .kopi.kopi-inline .kopi-ic svg{width:40px !important;height:40px !important}
+  html body #kopiHome:not(.kopi-ok) .kopi-tx strong,html body .kopi.kopi-inline .kopi-tx strong{font-size:18px !important}
+  html body #kopiHome:not(.kopi-ok) .kopi-tx span,html body .kopi.kopi-inline .kopi-tx span{font-size:14px !important}
+  html body #kopiHome:not(.kopi-ok) .kopi-btn,html body .kopi.kopi-inline .kopi-btn{min-height:58px !important;font-size:17px !important}
+}
+@media (min-width:900px){
+  html body #kopiHome:not(.kopi-ok){grid-template-columns:auto minmax(0,1fr) auto !important;grid-template-areas:"ic tx btn" "quote quote quote" "wall wall wall" !important;padding:22px 26px !important;gap:0 24px !important}
+  html body .kopi.kopi-inline{grid-template-columns:auto minmax(0,1fr) auto !important;grid-template-areas:"ic tx btn" !important;padding:22px 26px !important;gap:0 24px !important}
+  html body #kopiHome:not(.kopi-ok) .kopi-btn,html body .kopi.kopi-inline .kopi-btn{width:auto !important;margin:0 !important;padding:0 34px !important}
+  html body #kopiHome:not(.kopi-ok) .kopi-btn,html body .kopi.kopi-inline .kopi-btn{margin:0 !important}
+}
+
+/* --- popup melayang (.kn) --- */
+html body .kn{border:2px solid #FFD27A;border-radius:24px;background:linear-gradient(135deg,#FFF7DD,#FFE3A0);box-shadow:0 3px 0 #FFC24D,0 24px 40px -16px rgba(230,130,0,.65);padding:16px 44px 16px 16px;gap:14px;align-items:center}
+html body .kn-ic{flex:none;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px #FFC24D;font-size:0}
+html body .kn-ic svg{width:38px;height:38px;overflow:visible;transform-origin:50% 92%;animation:kv5Dance 4.2s ease-in-out infinite}
+html body .kn-tx strong{font-size:16px;font-weight:900;color:#2A1600}
+html body .kn-tx span{color:#6A4A12}
+html body .kn-go{padding:12px 22px;border:0;color:#2A1600;font-weight:900;font-size:15px;background:linear-gradient(180deg,#FFCF55,#FF9F1C);box-shadow:0 5px 0 #C46A00,inset 0 2px 0 rgba(255,255,255,.65);animation:kv5Pulse 2.4s ease-in-out infinite;transition:box-shadow .12s}
+html body .kn-go:hover{filter:none;background:linear-gradient(180deg,#FFD96E,#FFAA2E)}
+html body .kn-go:active{animation:none;transform:translateY(4px);box-shadow:0 1px 0 #C46A00,inset 0 2px 0 rgba(255,255,255,.5)}
+html body .kn-x{color:#6A4A12}
+
+/* --- Arena Tryout (.ar-kopi) --- */
+html body #ar .ar-kopi.ar-nm{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:2px;align-items:center;padding:16px;border:2px solid #FFD27A;border-radius:24px;background:linear-gradient(135deg,#FFF7DD,#FFE3A0);box-shadow:0 3px 0 #FFC24D,0 20px 32px -18px rgba(230,130,0,.6)}
+html body #ar .ar-kopi .kopi-ic{grid-row:1/3;position:relative;width:64px;height:64px;display:grid;place-items:center;border:3px solid #fff;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#FFF2D0);box-shadow:0 0 0 3px #FFC24D}
+html body #ar .ar-kopi .kopi-ic svg{width:40px;height:40px;overflow:visible;transform-origin:50% 92%;animation:kv5Dance 4.2s ease-in-out infinite}
+html body #ar .ar-kopi.ar-nm .nm-t{font-size:17px;font-weight:900;margin:0;color:#2A1600}
+html body #ar .ar-kopi .nm-d{color:#6A4A12}
+html body #ar .ar-kopi .nm-g{grid-column:1/-1;margin-top:14px}
+html body #ar .ar-kopi .nm-g .btn:not(.ghost){border:0 !important;color:#2A1600 !important;font-weight:900;font-size:15px;background:linear-gradient(180deg,#FFCF55,#FF9F1C) !important;box-shadow:0 5px 0 #C46A00,inset 0 2px 0 rgba(255,255,255,.65) !important;animation:kv5Pulse 2.4s ease-in-out infinite}
+html body #ar .ar-kopi .nm-g .btn:not(.ghost):active{animation:none;transform:translateY(4px);box-shadow:0 1px 0 #C46A00}
+html body #ar .ar-kopi .nm-g .btn.ghost{background:rgba(255,255,255,.7);border:2px solid #F3D48A;color:#6A4A12}
+
+/* --- menu samping + panel Tentang: cangkir ikut joget --- */
+html body .nav-kopi svg,html body .ab-kopi .ab-ic svg{transform-origin:50% 90%;animation:kv5Dance 4.2s ease-in-out infinite}
+
+html body #kopiHome:not(.kopi-ok),html body .kopi.kopi-inline{padding-top:46px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote{margin-top:12px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-wall{margin-top:12px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic,html body .kopi.kopi-inline .kopi-ic{align-self:start !important}
+
+/* --- tombol: putih, flat (tanpa bubble/oren) --- */
+html body #kopiHome:not(.kopi-ok) .kopi-btn,html body .kopi.kopi-inline .kopi-btn,html body #kopiHome:not(.kopi-ok) .kopi-btn:hover,html body .kopi.kopi-inline .kopi-btn:hover,html body #kopiHome:not(.kopi-ok) .kopi-btn:active,html body .kopi.kopi-inline .kopi-btn:active{background:#fff !important;border:2px solid #E6D3A6 !important;border-radius:14px !important;color:#2A1600 !important;animation:none !important;transition:border-color .15s,transform .15s,box-shadow .15s !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn,html body .kopi.kopi-inline .kopi-btn{min-height:54px !important;font-size:17px !important;box-shadow:0 1px 2px rgba(60,40,0,.08) !important;transform:none}
+html body #kopiHome:not(.kopi-ok) .kopi-btn::before,html body .kopi.kopi-inline .kopi-btn::before{display:none !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn:hover,html body .kopi.kopi-inline .kopi-btn:hover{border-color:#F29A00 !important;transform:translateY(-1px) !important;box-shadow:0 6px 14px -8px rgba(120,70,0,.4) !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn:active,html body .kopi.kopi-inline .kopi-btn:active{transform:translateY(1px) !important;box-shadow:none !important}
+html body .kn-go,html body .kn-go:hover,html body .kn-go:active,html body #ar .ar-kopi .nm-g .btn:not(.ghost),html body #ar .ar-kopi .nm-g .btn:not(.ghost):active{background:#fff !important;border:2px solid #E6D3A6 !important;border-radius:14px !important;color:#2A1600 !important;box-shadow:0 1px 2px rgba(60,40,0,.08) !important;animation:none !important}
+html body .kn-go:hover{border-color:#F29A00 !important}
+
+html body #kopiHome:not(.kopi-ok) .kopi-btn svg.kopi-cute,html body .kopi.kopi-inline .kopi-btn svg.kopi-cute{display:none !important}
+
+/* --- ringkas (v5) --- */
+html body #kopiHome:not(.kopi-ok),html body .kopi.kopi-inline{padding:14px 16px 16px !important;padding-top:42px !important;border-radius:22px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic,html body .kopi.kopi-inline .kopi-ic{width:58px !important;height:58px !important;box-shadow:0 0 0 2px #FFC24D,0 8px 12px -8px rgba(180,100,0,.6) !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic svg,html body .kopi.kopi-inline .kopi-ic svg{width:36px !important;height:36px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx strong,html body .kopi.kopi-inline .kopi-tx strong{font-size:17px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx span,html body .kopi.kopi-inline .kopi-tx span{font-size:13.5px !important;line-height:1.45 !important;margin-top:3px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn,html body .kopi.kopi-inline .kopi-btn{min-height:46px !important;font-size:16px !important;margin-top:10px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn::after,html body .kopi.kopi-inline .kopi-btn::after{font-size:19px !important}
+@media (min-width:900px){
+  html body #kopiHome:not(.kopi-ok),html body .kopi.kopi-inline{padding:14px 22px 16px !important;padding-top:42px !important}
+  html body #kopiHome:not(.kopi-ok) .kopi-ic,html body .kopi.kopi-inline .kopi-ic{width:62px !important;height:62px !important}
+  html body #kopiHome:not(.kopi-ok) .kopi-btn,html body .kopi.kopi-inline .kopi-btn{margin-top:0 !important;min-height:48px !important}
+}
+
+/* --- mode gelap --- */
+html[data-theme=dark] body #kopiHome:not(.kopi-ok),html[data-theme=dark] body .kopi.kopi-inline{border-color:#5A4318 !important;background-color:#241B0C !important;background-image:radial-gradient(circle at 1.5px 1.5px,rgba(255,178,60,.12) 1.5px,transparent 2px),linear-gradient(135deg,#2B2110 0%,#1D1609 100%) !important;box-shadow:0 3px 0 #5A4318,0 22px 36px -18px rgba(0,0,0,.7) !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok)::before,html[data-theme=dark] body .kopi.kopi-inline::before{background:radial-gradient(circle,rgba(255,178,60,.16),rgba(255,178,60,0) 70%) !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-ic,html[data-theme=dark] body .kopi.kopi-inline .kopi-ic{background:radial-gradient(circle at 30% 25%,#fff,#FFF1CF) !important;border-color:#2B2110 !important;box-shadow:0 0 0 3px #F5A83A,0 12px 18px -8px rgba(0,0,0,.6) !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-tx strong,html[data-theme=dark] body .kopi.kopi-inline .kopi-tx strong{color:#FFF3D6 !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-tx span,html[data-theme=dark] body .kopi.kopi-inline .kopi-tx span{color:#D9C49B !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-btn,html[data-theme=dark] body .kopi.kopi-inline .kopi-btn{background:#fff !important;border-color:#E6D3A6 !important;color:#2A1600 !important;box-shadow:none !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-btn:hover,html[data-theme=dark] body .kopi.kopi-inline .kopi-btn:hover{background:#fff !important;border-color:#F29A00 !important}
+html[data-theme=dark] body .kn,html[data-theme=dark] body #ar .ar-kopi.ar-nm{border-color:#5A4318;background:linear-gradient(135deg,#2B2110,#1D1609);box-shadow:0 3px 0 #5A4318,0 24px 40px -16px rgba(0,0,0,.7)}
+html[data-theme=dark] body .kn-tx strong,html[data-theme=dark] body #ar .ar-kopi.ar-nm .nm-t{color:#FFF3D6}
+html[data-theme=dark] body .kn-tx span,html[data-theme=dark] body #ar .ar-kopi .nm-d,html[data-theme=dark] body .kn-x{color:#D9C49B}
+html[data-theme=dark] body #ar .ar-kopi .nm-g .btn.ghost{background:rgba(255,255,255,.06);border-color:#5A4318;color:#E8D3A6}
+
+@media (prefers-reduced-motion:reduce){
+  html body #kopiHome:not(.kopi-ok) .kopi-ic svg,html body .kopi.kopi-inline .kopi-ic svg,html body #kopiHome:not(.kopi-ok) .kopi-ic svg circle,html body .kopi.kopi-inline .kopi-ic svg circle,html body #kopiHome:not(.kopi-ok) .kopi-ic::before,html body .kopi.kopi-inline .kopi-ic::before,html body #kopiHome:not(.kopi-ok) .kopi-btn,html body .kopi.kopi-inline .kopi-btn,html body #kopiHome:not(.kopi-ok) .kopi-btn::before,html body .kopi.kopi-inline .kopi-btn::before,html body #kopiHome:not(.kopi-ok) .kopi-btn::after,html body .kopi.kopi-inline .kopi-btn::after,html body #kopiHome:not(.kopi-ok) .kopi-btn svg.kopi-cute,html body .kopi.kopi-inline .kopi-btn svg.kopi-cute,html body #kopiHome:not(.kopi-ok)::after,html body .kopi.kopi-inline::after,html body #kopiHome:not(.kopi-ok) .kopi-ic::before,html body .kopi.kopi-inline .kopi-ic::before,html body #kopiHome:not(.kopi-ok) .kopi-ic::after,html body .kopi.kopi-inline .kopi-ic::after,html body .kn-ic svg,html body .kn-go,html body #ar .ar-kopi .kopi-ic svg,html body #ar .ar-kopi .nm-g .btn,html body .nav-kopi svg,html body .ab-kopi .ab-ic svg{animation:none !important}
+}
+</style>
 <style id="first-paint-fix">
 /* Layar pertama langsung tampil penuh. JS besar saat buka membuat animasi fade macet di tengah (tampilan pudar). Animasi tetap jalan untuk perpindahan halaman berikutnya. */
 html:not(.app-ready) .view.is-active,
@@ -14812,6 +14965,70 @@ html body #ar>.ar-row:has(#arTopBack),html body #ar>.ar-row:has(#arHistTop){disp
   .hc-t small{font-size:20px;letter-spacing:0;color:var(--ink-soft,#4B5160)}
   .hc-d{margin-top:8px;font-size:14px;font-weight:600;color:var(--ink-soft,#4B5160)}
 }
+</style>
+<style id="pv-v2">
+/* ===== pv-v2: 45 butir Pancasila, tampilan baru ===== */
+html body #sim-butir .pv-silas{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 12px;margin:2px 0 4px;scrollbar-width:none;scroll-snap-type:x proximity}
+html body #sim-butir .pv-silas::-webkit-scrollbar{display:none}
+@media (min-width:700px){html body #sim-butir .pv-silas{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible}}
+html body #sim-butir .pv-sl{position:relative;flex:none;min-width:164px;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"n s" "n m";column-gap:11px;row-gap:1px;align-items:center;justify-items:start;padding:10px 14px 10px 10px;border:1.5px solid var(--pv-line);border-bottom:1.5px solid var(--pv-line);border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.05);scroll-snap-align:start;transition:transform .15s,box-shadow .15s,border-color .15s,background .15s}
+@media (min-width:700px){
+  html body #sim-butir .pv-sl{min-width:0;grid-template-areas:"n m" "s s";row-gap:9px;padding:12px;align-items:center}
+  html body #sim-butir .pv-sl small{justify-self:end;white-space:nowrap;font-size:11.5px;padding:2px 8px;border-radius:99px;background:var(--bg,#F6F7F9);font-weight:700}
+  html body #sim-butir .pv-sl span{font-size:14px;letter-spacing:-.01em}
+}
+html body #sim-butir .pv-sl b{grid-area:n;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c);font-size:17px;font-weight:800;line-height:1;transition:background .15s,color .15s}
+html body #sim-butir .pv-sl span{grid-area:s;font-size:14px;font-weight:800;line-height:1.2;color:var(--pv-ink)}
+html body #sim-butir .pv-sl small{grid-area:m;font-size:12px;line-height:1.2;color:var(--pv-soft)}
+html body #sim-butir .pv-sl:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--c) 50%,var(--pv-line));box-shadow:0 10px 18px -12px color-mix(in srgb,var(--c) 70%,transparent)}
+html body #sim-butir .pv-sl.on{background:color-mix(in srgb,var(--c) 9%,#fff);border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 12px 20px -14px var(--c)}
+html body #sim-butir .pv-sl.on b{background:var(--c);color:#fff}
+html body #sim-butir .pv-sl.on span{color:var(--pv-ink)}
+html body #sim-butir .pv-sl.on small{color:var(--pv-soft);background:color-mix(in srgb,var(--c) 14%,#fff)}
+
+html body #sim-butir .pv-det{margin-top:10px;padding:0;overflow:hidden;background:#fff;border:1.5px solid color-mix(in srgb,var(--c) 30%,var(--pv-line));border-radius:24px;box-shadow:0 18px 30px -24px color-mix(in srgb,var(--c) 70%,transparent)}
+html body #sim-butir .pv-det-h{display:flex;gap:14px;align-items:center;margin:0;padding:18px 22px;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 15%,#fff) 0%,color-mix(in srgb,var(--c) 4%,#fff) 100%);border-bottom:1.5px solid color-mix(in srgb,var(--c) 18%,var(--pv-line))}
+html body #sim-butir .pv-badge{padding:7px 14px;border-radius:99px;background:var(--c);color:#fff;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 6px 12px -6px var(--c)}
+html body #sim-butir .pv-det-h h5{margin:0 0 2px;font-size:21px;line-height:1.25;font-weight:800;letter-spacing:-.01em}
+html body #sim-butir .pv-det-h small{font-size:13px;color:var(--pv-soft)}
+html body #sim-butir .pv-kw{position:relative;margin:18px 22px 0;padding:13px 16px 13px 54px;border-radius:16px;background:color-mix(in srgb,var(--c) 7%,#fff);border:1.5px dashed color-mix(in srgb,var(--c) 38%,var(--pv-line));font-size:14.5px;line-height:1.6;color:var(--pv-ink)}
+html body #sim-butir .pv-kw::before{content:"";position:absolute;left:16px;top:13px;width:24px;height:24px;background:var(--c);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='15' r='4'/%3E%3Cpath d='m11 12 9-9M16 7l3 3M14 9l2 2'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='15' r='4'/%3E%3Cpath d='m11 12 9-9M16 7l3 3M14 9l2 2'/%3E%3C/svg%3E") center/contain no-repeat}
+html body #sim-butir .pv-res{padding:18px 22px 0;margin:0}
+html body #sim-butir .pv-empty{margin:18px 22px 22px}
+html body #sim-butir .pv-blist{gap:12px;padding:18px 22px 6px}
+html body #sim-butir .pv-bi.pv-bi{gap:14px;padding:16px 18px;background:#fff;border:1.5px solid var(--pv-line) !important;border-radius:18px !important;box-shadow:0 1px 2px rgba(16,24,40,.05);transition:box-shadow .15s,border-color .15s,transform .15s}
+html body #sim-butir .pv-bi.pv-bi:hover{border-color:color-mix(in srgb,var(--c) 40%,var(--pv-line)) !important;box-shadow:0 12px 22px -16px color-mix(in srgb,var(--c) 60%,transparent);transform:translateY(-1px)}
+html body #sim-butir .pv-bn{width:36px;height:36px;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--c);font-size:15px;font-weight:800}
+html body #sim-butir .pv-bk{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:5px 12px;margin:2px 0 7px}
+html body #sim-butir .pv-bk span{font-size:16px;font-weight:800;line-height:1.3;color:var(--pv-ink)}
+html body #sim-butir .pv-bk small{padding:3px 10px;border-radius:99px;background:var(--bg,#F6F7F9);font-size:11.5px;font-weight:700;color:var(--pv-soft);white-space:nowrap}
+html body #sim-butir .pv-bc>p{margin:0 0 11px;font-size:15px;line-height:1.7}
+html body #sim-butir .pv-bc .pv-ex{padding:11px 14px;border-radius:14px;background:color-mix(in srgb,var(--c) 7%,#fff);font-size:14px;line-height:1.65}
+html body #sim-butir .pv-bc .pv-ex b{display:inline-block;margin:0 9px 0 0;padding:3px 9px;border-radius:99px;background:var(--c);color:#fff;font-size:10.5px;letter-spacing:.09em;vertical-align:1px}
+html body #sim-butir .pv-nav{margin:0;padding:12px 22px 22px}
+@media (max-width:520px){
+  html body #sim-butir .pv-det-h{padding:16px;gap:12px}
+  html body #sim-butir .pv-det-h h5{font-size:19px}
+  html body #sim-butir .pv-kw{margin:14px 14px 0}
+  html body #sim-butir .pv-res{padding:14px 14px 0}
+  html body #sim-butir .pv-blist{padding:14px 14px 4px}
+  html body #sim-butir .pv-bi.pv-bi{gap:12px;padding:14px}
+  html body #sim-butir .pv-bn{width:32px;height:32px}
+  html body #sim-butir .pv-nav{padding:10px 14px 16px}
+}
+/* mode gelap */
+html[data-theme=dark] body #sim-butir .pv-bn{color:color-mix(in srgb,var(--c) 35%,#fff) !important;text-shadow:none !important}
+html[data-theme=dark] body #sim-butir .pv-bk span{color:var(--pv-ink) !important;text-shadow:none !important}
+html[data-theme=dark] body #sim-butir .pv-sl,html[data-theme=dark] body #sim-butir .pv-det,html[data-theme=dark] body #sim-butir .pv-bi.pv-bi{background:var(--surface)}
+html[data-theme=dark] body #sim-butir .pv-sl b,html[data-theme=dark] body #sim-butir .pv-bn{background:color-mix(in srgb,var(--c) 22%,var(--surface))}
+html[data-theme=dark] body #sim-butir .pv-sl.on{background:color-mix(in srgb,var(--c) 16%,var(--surface))}
+html[data-theme=dark] body #sim-butir .pv-sl.on b{background:var(--c);color:#fff !important;text-shadow:none !important}
+html[data-theme=dark] body #sim-butir .pv-det-h{background:linear-gradient(135deg,color-mix(in srgb,var(--c) 24%,var(--surface)) 0%,color-mix(in srgb,var(--c) 6%,var(--surface)) 100%)}
+html[data-theme=dark] body #sim-butir .pv-kw,html[data-theme=dark] body #sim-butir .pv-bc .pv-ex{background:color-mix(in srgb,var(--c) 12%,var(--surface))}
+html[data-theme=dark] body #sim-butir .pv-bc .pv-ex b{background:var(--c);color:#fff !important;text-shadow:none !important}
+@media (min-width:700px){html[data-theme=dark] body #sim-butir .pv-sl small,html[data-theme=dark] body #sim-butir .pv-sl.on small{background:color-mix(in srgb,var(--c) 12%,var(--surface))}}
+html[data-theme=dark] body #sim-butir .pv-bk small{background:color-mix(in srgb,var(--c) 10%,var(--surface))}
+@media (prefers-reduced-motion:reduce){html body #sim-butir .pv-sl,html body #sim-butir .pv-bi.pv-bi{transition:none}html body #sim-butir .pv-sl:hover,html body #sim-butir .pv-bi.pv-bi:hover{transform:none}}
 </style>
 <style id="timer-saran-css">
 .ab-saran{display:block;width:100%;margin:10px 0 0;padding:10px 14px;border:2px solid #E3E6EB;border-radius:14px;background:#fff;color:inherit;font:700 14px/1.3 inherit;cursor:pointer}
