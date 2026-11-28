@@ -2867,32 +2867,7 @@ html[data-theme=dark] .ctt .tk-wr b{color:#FF8A8A}
 .upd-ic{flex:none;width:22px;height:22px;display:grid;place-items:center;border-radius:50%;background:#1FA971;color:#fff;font-weight:800;font-size:13px;margin-top:1px}
 html[data-theme=dark] .upd-badge{background:#12251B;color:#BFEBD5;border-color:#2E8F69}
 </style><style id="info-cpns-css">
-#view-info .inf-sub{margin:6px 0 16px;color:var(--ink-soft)}
-.inf-now{display:grid;gap:8px;padding:16px;border:2px solid var(--line);border-radius:16px;background:var(--surface)}
-.inf-now b{display:block;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
-.inf-now strong{display:block;font-size:18px;line-height:1.3}
-.inf-now small{color:var(--ink-soft);font-size:14px}
-.inf-h{margin:28px 0 12px;font-size:20px}
-.inf-list{display:grid;gap:8px;counter-reset:inf}
-.inf-row{display:grid;grid-template-columns:30px 1fr;gap:4px 12px;align-items:start;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--surface)}
-.inf-no{grid-row:span 2;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;background:var(--brand-soft,#E3F6EE);color:var(--brand-strong,#0A1F3D)}
-.inf-nm{font-weight:700;line-height:1.35}
-.inf-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:14px;color:var(--ink-soft)}
-.inf-chip{padding:2px 9px;border-radius:999px;font-size:12px;font-weight:800;background:var(--line);color:var(--ink-soft)}
-.inf-row.on{border-color:#2E9B6A}.inf-row.on .inf-chip{background:#E3F6EE;color:#14754B}
-.inf-row.next .inf-chip{background:#FCF3DC;color:#8A5E00}
-.inf-row.done{opacity:.55}
-.inf-row.soon{opacity:.55}
-.inf-cari{width:100%;padding:12px 14px;margin-bottom:10px;font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:12px}
-.inf-ins{display:grid;gap:6px;grid-template-columns:1fr}
 @media(min-width:700px){.inf-ins{grid-template-columns:1fr 1fr}}
-.inf-ins li{display:flex;gap:10px;align-items:baseline;padding:10px 12px;border:2px solid var(--line);border-radius:12px;background:var(--surface);font-weight:600}
-.inf-ins li i{flex:none;min-width:22px;font-style:normal;font-weight:800;color:var(--ink-soft)}
-.inf-empty{margin-top:10px;color:var(--ink-soft)}
-.inf-src{margin-top:20px;font-size:13px;color:var(--ink-soft)}
-html[data-theme=dark] .inf-row.on .inf-chip{background:rgba(46,155,106,.2);color:#6FE0A8}
-html[data-theme=dark] .inf-row.next .inf-chip{background:rgba(217,154,11,.2);color:#F2C86A}
-html[data-theme=dark] .inf-row.on{border-color:#2A4836}
 .hero .rf-btn.nav-theme{right:62px}
 .nav-theme .th-ic-moon{display:contents}
 .hero .subhello,.hero .hero-chips{padding-right:100px}
@@ -2925,9 +2900,9 @@ html[data-theme=dark] .inf-row.on{border-color:#2A4836}
           </button>
         </li>
               <li>
-          <button class="nav-btn" data-view="info">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r=".6"/></svg>
-            <span>Jadwal CPNS</span>
+          <button type="button" class="nav-btn nav-kopi" data-kopi data-src="menu" aria-label="Traktir kopi">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3.5v2.2M12 3.5v2.2"/></svg>
+            <span>Traktir kopi</span>
           </button>
         </li>
       </ul>
@@ -3010,6 +2985,7 @@ html[data-theme=dark] .inf-row.on{border-color:#2A4836}
               <div class="kopi-tx"><strong>Terbantu belajar di sini?</strong><span>Kalau materi dan soalnya kepake, lo bisa traktir kopi buat bantu gue terus update isinya. Nominal bebas.</span></div>
               <a class="kopi-btn" href="#traktir" data-kopi tabindex="-1">☕ Traktir kopi</a>
             </div>
+            <a class="bk-line" href="https://s.shopee.co.id/5fqfVSM9xg?exp_info=tt_wgBr8JAV" target="_blank" rel="noopener noreferrer sponsored nofollow"><span aria-hidden="true">📘</span><span>Buku yang bikin gue lolos CPNS DKI 2024: <b>THE MASTER SKD CPNS</b></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
             </header>
             <h3 class="sec">Subtes</h3><div class="tiles" id="tiles"></div>
             <h3 class="sec" id="secMateri">Semua materi</h3><button type="button" class="f-reset" id="fReset" hidden>Tampilkan semua materi</button>
@@ -3092,25 +3068,6 @@ html[data-theme=dark] .inf-row.on{border-color:#2A4836}
         </div>
       </section>
 
-      <section id="view-info" class="view" aria-labelledby="judul-info">
-        <div class="view-inner">
-          <h1 id="judul-info">Jadwal CPNS 2026</h1>
-          <p class="inf-sub">Jadwal seleksi dan daftar instansi, sesuai lampiran Surat Dinas BKN.</p>
-          <div id="infNow" class="inf-now" aria-live="polite"></div>
-
-          <h2 class="inf-h">Jadwal Seleksi Pengadaan CPNS TA 2026</h2>
-          <ol id="infJadwal" class="inf-list"></ol>
-
-          <h2 class="inf-h">Daftar Instansi</h2>
-          <label class="sr-only" for="infCari">Cari instansi</label>
-          <input id="infCari" class="inf-cari" type="search" placeholder="Cari instansi…" autocomplete="off">
-          <ol id="infInstansi" class="inf-ins"></ol>
-          <p id="infKosong" class="inf-empty" hidden>Instansi tidak ditemukan.</p>
-
-          <p class="inf-src">Sumber: Badan Kepegawaian Negara, Lampiran Surat Dinas Nomor 7758/B-KS.04.01/SD/K/2026, 24 November 2026. Jadwal bisa berubah, cek pengumuman resmi di sscasn.bkn.go.id.</p>
-        </div>
-      </section>
-
       <aside class="ab" aria-label="Tentang pembuat">
         <div class="ab-rib"><span>Dibuat oleh</span><b>Saku CPNS</b></div>
         <div class="ab-body">
@@ -3125,6 +3082,11 @@ html[data-theme=dark] .inf-row.on{border-color:#2A4836}
             </div>
           </div>
           <p class="ab-bio">Gue Yudha. Tahun 2024 gue <b>lolos CPNS Pemprov DKI Jakarta</b>, sekarang kerja di Dinas Pendidikan. Aplikasi ini gue bikin sendiri biar yang lagi nyiapin SKD punya tempat belajar yang enak dipakai. Nemu materi yang keliru atau kurang? Kabarin aja lewat DM. Kalau lo ngerasa kebantu dan mau traktir kopi, gue terima dengan senang hati.</p>
+          <a class="ab-promo ab-book" href="https://s.shopee.co.id/5fqfVSM9xg?exp_info=tt_wgBr8JAV" target="_blank" rel="noopener noreferrer sponsored nofollow">
+            <span class="ab-pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 7.5h6M9 11h4"/></svg></span>
+            <span class="ab-ptx"><span class="ab-tag">Rekomendasi gue</span><strong>THE MASTER SKD CPNS &amp; Kedinasan 2026/2027</strong><span class="ab-pd">Buku yang bikin gue lolos CPNS DKI 2024</span></span>
+            <span class="ab-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </a>
           <a class="ab-promo" href="https://yudhapratama14.github.io/BelajarInggris/" target="_blank" rel="noopener noreferrer">
             <span class="ab-pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 4 5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5z"/><path d="M12 6.5v13"/></svg></span>
             <span class="ab-ptx"><span class="ab-tag">Sekalian belajar</span><strong>Belajar Inggris</strong><span class="ab-pd">Mulai dari dasar, bisa dicicil tiap hari</span></span>
@@ -3164,7 +3126,7 @@ html[data-theme=dark] .inf-row.on{border-color:#2A4836}
       // Tiap pindah menu (Belajar, Arena, Info) dicatat, jadi back HP kembali ke menu sebelumnya, bukan langsung ke beranda
       if (!_popping && _prevView !== 'view-' + name) hpush({ view: name });
     }
-    $$('.nav-btn').forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
+    $$('.nav-btn:not([data-kopi])').forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
     // Back di layar awal tidak langsung menutup aplikasi: perlu ditekan dua kali dalam 2 detik
     let _exitT = 0;
     try { if (!history.state) { history.replaceState({ root: 1 }, ''); history.pushState({ home: 1 }, ''); } } catch (e) { }
@@ -11240,8 +11202,8 @@ tkp:[]};
     '</svg>';
   function bfHtml(){
     const ks=[14,13,12,11,10,9,8,7,6,5,4,3,2,1,'acak'];
-    return '<div class="card ar-bf"><div class="ar-bf-top"><span class="ar-bf-ic" aria-hidden="true">\u2694\uFE0F</span><div><h3>Battlefield</h3><p>Adu skor dengan peserta lain, kalahkan juara.</p></div></div>'+
-      '<div class="ar-bf-say" id="bfSay" aria-hidden="true"><span id="bfSayT">'+BF_SAY[0][0]+'</span><small id="bfSayS">'+BF_SAY[0][1]+'</small></div><div class="ar-bf-run" id="bfRun" aria-hidden="true"><div class="ar-bf-rider" id="bfRd">'+BF_RIDER+'</div><div class="ar-bf-ti" id="bfTi"><div class="ar-bf-lab" id="bfLab">SKD</div>'+BF_TITAN+'</div><div class="ar-bf-fin" id="bfFin">Berhasil meraih NIP \uD83C\uDF89</div><div class="ar-bf-conf"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="ar-bf-steps" id="bfSteps" aria-hidden="true"><span>SKD</span><span>SKB</span><span>Test Tambahan</span><span>NIP</span></div>'+
+    return '<div class="card ar-bf"><div class="ar-bf-top"><span class="ar-bf-ic" aria-hidden="true"><svg class="bf-sw" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><g class="sw sw-a"><path d="M16 2.5l2.4 3V19h-4.8V5.5z" fill="#DDE3EE" stroke="#4E5A7A" stroke-width="1.3" stroke-linejoin="round"/><path d="M16 4.5V19" stroke="#fff" stroke-width="1" opacity=".7"/><rect x="11" y="19" width="10" height="2.6" rx="1.2" fill="#E3A12B" stroke="#4E5A7A" stroke-width="1.2"/><rect x="14.6" y="21.6" width="2.8" height="6" rx="1" fill="#6B4A2B" stroke="#4E5A7A" stroke-width="1.1"/><circle cx="16" cy="29" r="1.5" fill="#E3A12B" stroke="#4E5A7A" stroke-width="1"/></g><g class="sw sw-b"><path d="M16 2.5l2.4 3V19h-4.8V5.5z" fill="#DDE3EE" stroke="#4E5A7A" stroke-width="1.3" stroke-linejoin="round"/><path d="M16 4.5V19" stroke="#fff" stroke-width="1" opacity=".7"/><rect x="11" y="19" width="10" height="2.6" rx="1.2" fill="#E3A12B" stroke="#4E5A7A" stroke-width="1.2"/><rect x="14.6" y="21.6" width="2.8" height="6" rx="1" fill="#6B4A2B" stroke="#4E5A7A" stroke-width="1.1"/><circle cx="16" cy="29" r="1.5" fill="#E3A12B" stroke="#4E5A7A" stroke-width="1"/></g><g class="sw-spark"><path d="M16 7.5l1.2 3.3 3.3 1.2-3.3 1.2L16 16.5l-1.2-3.3-3.3-1.2 3.3-1.2z" fill="#FFC53D" stroke="#E3A12B" stroke-width=".8" stroke-linejoin="round"/></g></svg></span><div><h3>Battlefield</h3><p>Adu skor dengan peserta lain, kalahkan juara.</p></div></div>'+
+      '<div class="ar-bf-say" id="bfSay" aria-hidden="true"><span id="bfSayT">'+BF_SAY[0][0]+'</span><small id="bfSayS">'+BF_SAY[0][1]+'</small></div><div class="ar-bf-run" id="bfRun" aria-hidden="true"><div class="ar-bf-rider" id="bfRd">'+BF_RIDER+'</div><div class="ar-bf-ti" id="bfTi"><div class="ar-bf-lab" id="bfLab">SKD</div>'+BF_TITAN+'</div><div class="ar-bf-fin" id="bfFin">Berhasil meraih NIP \uD83C\uDF89</div><div class="ar-bf-conf"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>'+
       '<div class="ar-bf-l" id="bfPkL">Pilih paket</div>'+
       '<div class="ar-bf-pk" role="group" aria-labelledby="bfPkL">'+ks.map(k=>'<button type="button" data-bp="'+k+'" aria-pressed="'+(String(k)===BF.pk)+'" class="'+(String(k)===BF.pk?'on':'')+'">'+(k==='acak'?'Acak':'P'+k)+'</button>').join('')+'</div>'+
       '<div class="ar-bf-board" id="bfBoard" aria-live="polite">Memuat papan juara...</div>'+
@@ -11393,8 +11355,8 @@ tkp:[]};
     for(const g in QUOTA){n[g]=Math.min(QUOTA[g],P[g].length);tot+=n[g]}
     const full=tot===110,mins=Math.max(5,Math.round(100*tot/110));
     let B={};try{B=JSON.parse(localStorage.getItem('arena-best')||'{}')}catch(e){}
-    const card=(k,t,d,nw)=>'<div class="card"><h3>'+t+(nw?' <span class="ar-new">'+nw+'</span>':'')+'</h3>'+(d?'<p>'+d+'</p>':'')+'<p class="ar-champ" data-ch="'+k+'"></p>'+(B[k]?'<div class="ar-best"><span>🏆 Skor terbaik</span><b>'+B[k].t+'</b><small>dari '+B[k].m+'</small></div>':'')+'<div class="ar-row"><button class="btn" data-pk="'+k+'">Mulai '+t+'</button><button class="btn ghost" data-rk="'+k+'">Ranking</button></div></div>';
-    root.innerHTML='<div id="ar" class="ar-home"><span class="ar-kick">EDISI NOVEMBER 2026</span><h1 id="judul-tryout">Arena Tryout</h1><p class="ar-lead">Simulasi SKD lengkap dengan skor langsung, sertifikat otomatis, dan ranking. Soal diperbarui setiap hari.</p><div class="ar-who"><span>Peserta: <b>'+rkEsc(arNama())+'</b></span><button type="button" class="btn ghost" id="arWho">Ganti nama</button></div><div class="ar-chips"><span>'+(full?'110 soal':tot+' soal')+'</span><span>'+mins+' menit</span><span>TWK '+n.twk+'</span><span>TIU '+n.tiu+'</span><span>TKP '+n.tkp+'</span></div><div class="ar-amb"><div class="ar-amb-h"><b>Ambang batas</b><span>'+AR_PROF[arProf].n+'</span></div><div class="ar-amb-g"><span>TWK<b>'+THR.twk+'</b></span><span>TIU<b>'+THR.tiu+'</b></span><span>TKP<b>'+THR.tkp+'</b></span></div><p>Skor: TWK dan TIU 5 poin per soal benar, TKP 1 sampai 5.</p></div>'+bfHtml()+'<h2 class="ar-h2">Langkah 2 dari 2 · Pilih paket tryout</h2>'+card(14,'Paket 14','Paket terbaru, saatnya salip semua peserta dan rebut Rank 1!','BARU')+card(13,'Paket 13','Rebut Rank 1: kejar skor tertinggi dan salip semua peserta!','BARU')+card(12,'Paket 12','Gas terus, salip semua peserta, dan rebut Rank 1 di paket ini!','BARU')+card(11,'Paket 11','Tancap gas, kalahkan semua peserta, dan rebut Rank 1 di paket ini!','BARU')+card(10,'Paket 10','Jangan kasih kendor. Gaspol sampai Rank 1!')+card(9,'Paket 9','Jangan mau kalah, kejar skor sempurna dan puncaki ranking semua peserta!')+card(8,'Paket 8','Ayo bertarung, taklukkan semua lawan, dan rebut singgasana Rank 1!')+card(7,'Paket 7','Gempur paket ini habis-habisan, jadilah peserta nomor satu di ranking!')+card(6,'Paket 6','Waktunya adu skor: lewati semua peserta dan tempati Rank 1!')+card(5,'Paket 5','Tantang semua peserta, kejar skor tertinggi, dan rebut mahkota Rank 1!')+card(4,'Paket 4','Buktikan kamu yang terbaik, salip semua peserta menuju Rank 1!')+card(3,'Paket 3','Masuk arena, kerahkan semua kemampuanmu, dan rebut posisi Rank 1!')+card(2,'Paket 2','Tancap gas di paket ini, kalahkan semua peserta dan duduki puncak ranking!')+card(1,'Paket 1','Coba paket ini, fight, dan rebut Rank 1 dari semua peserta!')+card('acak','Paket Acak','Siap menghadapi apa pun? Rebut Rank 1 dari semua peserta lewat paket acak ini!')+'</div>';
+    const card=(k,t,d,nw)=>'<div class="card pk'+(nw?' pk-new':'')+'"><span class="pk-no" aria-hidden="true">'+k+'</span><h3>'+t+(nw?' <span class="ar-new">'+nw+'</span>':'')+'</h3>'+(d?'<p>'+d+'</p>':'')+'<p class="ar-champ" data-ch="'+k+'"></p>'+(B[k]?'<div class="ar-best"><span>🏆 Skor terbaik</span><b>'+B[k].t+'</b><small>dari '+B[k].m+'</small></div>':'')+'<div class="ar-row"><button class="btn" data-pk="'+k+'">Mulai '+t+'</button><button class="btn ghost" data-rk="'+k+'">Ranking</button></div></div>';
+    root.innerHTML='<div id="ar" class="ar-home"><span class="ar-kick">EDISI NOVEMBER 2026</span><h1 id="judul-tryout">Arena Tryout</h1><p class="ar-lead">Simulasi SKD lengkap dengan skor langsung, sertifikat otomatis, dan ranking. Soal diperbarui setiap hari.</p><div class="ar-who"><span class="ar-av" aria-hidden="true">'+rkEsc((arNama()||'?').trim().charAt(0).toUpperCase()||'?')+'</span><span class="ar-wn"><small>Peserta</small><b>'+rkEsc(arNama())+'</b></span><button type="button" class="btn ghost" id="arWho"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17z"/></svg>Ganti nama</button></div><div class="ar-chips"><span>'+(full?'110 soal':tot+' soal')+'</span><span>'+mins+' menit</span><span>TWK '+n.twk+'</span><span>TIU '+n.tiu+'</span><span>TKP '+n.tkp+'</span></div>'+bfHtml()+'<h2 class="ar-h2">Langkah 2 dari 2 · Pilih paket tryout</h2>'+card(14,'Paket 14','Paket terbaru, saatnya salip semua peserta dan rebut Rank 1!','BARU')+card(13,'Paket 13','Rebut Rank 1: kejar skor tertinggi dan salip semua peserta!','BARU')+card(12,'Paket 12','Gas terus, salip semua peserta, dan rebut Rank 1 di paket ini!','BARU')+card(11,'Paket 11','Tancap gas, kalahkan semua peserta, dan rebut Rank 1 di paket ini!','BARU')+card(10,'Paket 10','Jangan kasih kendor. Gaspol sampai Rank 1!')+card(9,'Paket 9','Jangan mau kalah, kejar skor sempurna dan puncaki ranking semua peserta!')+card(8,'Paket 8','Ayo bertarung, taklukkan semua lawan, dan rebut singgasana Rank 1!')+card(7,'Paket 7','Gempur paket ini habis-habisan, jadilah peserta nomor satu di ranking!')+card(6,'Paket 6','Waktunya adu skor: lewati semua peserta dan tempati Rank 1!')+card(5,'Paket 5','Tantang semua peserta, kejar skor tertinggi, dan rebut mahkota Rank 1!')+card(4,'Paket 4','Buktikan kamu yang terbaik, salip semua peserta menuju Rank 1!')+card(3,'Paket 3','Masuk arena, kerahkan semua kemampuanmu, dan rebut posisi Rank 1!')+card(2,'Paket 2','Tancap gas di paket ini, kalahkan semua peserta dan duduki puncak ranking!')+card(1,'Paket 1','Coba paket ini, fight, dan rebut Rank 1 dari semua peserta!')+card('acak','Paket Acak','Siap menghadapi apa pun? Rebut Rank 1 dari semua peserta lewat paket acak ini!')+'</div>';
     root.querySelectorAll('[data-pk]').forEach(b=>b.onclick=()=>start(P,n,mins,b.dataset.pk==='acak'?'acak':+b.dataset.pk));
     root.querySelectorAll('[data-prof]').forEach(b=>b.onclick=()=>{setProf(b.dataset.prof)});
     root.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>rkLihat(b.dataset.rk==='acak'?'acak':+b.dataset.rk));
@@ -14006,67 +13968,6 @@ window.TWKX=[
      ['Waktu pengurusan lima hari lebih baik daripada dua hari.', 'Tidak sesuai dengan isi teks.']]);
 })();
 </script>
-<script id="info-cpns">
-(function(){
-  var J=[
-  ['Pengumuman Seleksi','25 November s.d. 09 Desember 2026','2026-11-25','2026-12-09'],
-  ['Pendaftaran Seleksi','27 November s.d. 21 Desember 2026','2026-11-27','2026-12-21'],
-  ['Seleksi Administrasi','27 November 2026 s.d. 04 Januari 2027','2026-11-27','2027-01-04'],
-  ['Pengumuman Hasil Seleksi Administrasi','05 s.d. 08 Januari 2027','2027-01-05','2027-01-08'],
-  ['Masa sanggah','09 s.d. 11 Januari 2027','2027-01-09','2027-01-11'],
-  ['Jawab Sanggah','09 s.d. 13 Januari 2027','2027-01-09','2027-01-13'],
-  ['Pengumuman pasca masa sanggah','14 s.d. 16 Januari 2027','2027-01-14','2027-01-16'],
-  ['Pemetaan Lokasi SKD CPNS','17 s.d. 22 Januari 2027','2027-01-17','2027-01-22'],
-  ['Penjadwalan SKD CPNS','23 s.d. 26 Januari 2027','2027-01-23','2027-01-26'],
-  ['Pengumuman Daftar Peserta, Waktu dan Tempat Seleksi SKD CPNS','27 Januari s.d. 01 Februari 2027','2027-01-27','2027-02-01'],
-  ['Pelaksanaan SKD CPNS','02 s.d. 21 Februari 2027','2027-02-02','2027-02-21'],
-  ['Pengolahan Nilai SKD CPNS','17 s.d. 28 Februari 2027','2027-02-17','2027-02-28'],
-  ['Pengumuman Hasil SKD CPNS','01 s.d. 07 Maret 2027','2027-03-01','2027-03-07'],
-  ['Pemetaan Titik Lokasi SKB CPNS dengan CAT','16 s.d. 17 Maret 2027','2027-03-16','2027-03-17'],
-  ['Pemilihan Titik Lokasi SKB CPNS dengan CAT oleh peserta','18 s.d. 20 Maret 2027','2027-03-18','2027-03-20'],
-  ['Penjadwalan SKB CPNS dengan CAT','21 s.d. 23 Maret 2027','2027-03-21','2027-03-23'],
-  ['Pengumuman Daftar Peserta, Waktu dan Tempat SKB CPNS dengan CAT','24 s.d. 29 Maret 2027','2027-03-24','2027-03-29'],
-  ['Pelaksanaan SKB CPNS','30 Maret s.d. 06 April 2027','2027-03-30','2027-04-06'],
-  ['Pelaksanaan SKB CPNS Non CAT','03 s.d. 12 April 2027','2027-04-03','2027-04-12'],
-  ['Integrasi Nilai SKD dan SKB CPNS','13 s.d. 17 April 2027','2027-04-13','2027-04-17'],
-  ['Pengumuman Hasil CPNS','15 s.d. 20 April 2027','2027-04-15','2027-04-20'],
-  ['Masa sanggah','21 s.d. 23 April 2027','2027-04-21','2027-04-23'],
-  ['Jawab sanggah','21 s.d. 24 April 2027','2027-04-21','2027-04-24'],
-  ['Pengolahan seleksi hasil sanggah','25 s.d. 28 April 2027','2027-04-25','2027-04-28'],
-  ['Pengumuman pasca masa sanggah','29 April s.d. 02 Mei 2027','2027-04-29','2027-05-02'],
-  ['Pengisian DRH NIP CPNS','03 s.d. 17 Mei 2027','2027-05-03','2027-05-17'],
-  ['Usul Penetapan NIP CPNS','08 s.d. 22 Mei 2027','2027-05-08','2027-05-22']];
-  var I=['Kementerian Pendidikan Tinggi, Sains, dan Teknologi','Kementerian Pendidikan Dasar dan Menengah','Kementerian Kesehatan','Kementerian Agama','Kementerian Kehutanan','Badan Pengawasan Keuangan dan Pembangunan','Kementerian Koperasi','Badan Gizi Nasional','Mahkamah Agung','Kementerian Pemuda dan Olahraga','Kejaksaan Agung','Badan Pusat Statistik','Badan Pemeriksa Keuangan','Kementerian Kelautan dan Perikanan','Kementerian Hukum','Kementerian Imigrasi dan Pemasyarakatan','Kementerian Hak Asasi Manusia','Badan Intelijen Negara','Kementerian Kependudukan dan Pembangunan Keluarga','Kementerian Luar Negeri','Kementerian Keuangan','Kementerian Pertanian','Badan Siber dan Sandi Negara','Kepolisian Negara Republik Indonesia'];
-  var BL=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-  function D(t){var p=t.split('-');return new Date(+p[0],+p[1]-1,+p[2])}
-  function fmt(d){return d.getDate()+' '+BL[d.getMonth()]+' '+d.getFullYear()}
-  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  var L=document.getElementById('infJadwal'); if(!L)return;
-  var now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate()),DAY=864e5;
-  var on=[],nxt=null;
-  L.innerHTML=J.map(function(r,i){
-    var a=D(r[2]),b=D(r[3]),st,lb;
-    if(today>b){st='done';lb='Selesai'}else if(today>=a){st='on';lb='Berlangsung';on.push(r)}else{st='';lb='Akan datang';if(!nxt)nxt=r}
-    if(st==='' && nxt===r)st='next';if(st===''||st==='next')st+=' soon';
-    return '<li class="inf-row '+st+'"><span class="inf-no">'+(i+1)+'</span><span class="inf-nm">'+esc(r[0])+'</span><span class="inf-meta"><span class="inf-chip">'+lb+'</span>'+esc(r[1])+'</span></li>';
-  }).join('');
-  var N=document.getElementById('infNow'),h='';
-  if(on.length){
-    h='<b>Sedang berlangsung</b>'+on.map(function(r){return '<strong>'+esc(r[0])+'</strong>'}).join('');
-    var reg=J[1],e=D(reg[3]);
-    if(today<=e){var n=Math.round((e-today)/DAY);h+='<small>Pendaftaran ditutup '+fmt(e)+(n>0?' ('+n+' hari lagi)':' (hari ini)')+'.</small>'}
-  }else if(nxt){h='<b>Tahap berikutnya</b><strong>'+esc(nxt[0])+'</strong><small>Mulai '+fmt(D(nxt[2]))+'.</small>'}
-  else h='<b>Status</b><strong>Seluruh tahapan jadwal sudah lewat.</strong>';
-  N.innerHTML=h;
-  var T=document.getElementById('infInstansi'),Q=document.getElementById('infCari'),K=document.getElementById('infKosong');
-  function draw(q){
-    q=(q||'').toLowerCase().trim();var c=0;
-    T.innerHTML=I.map(function(n,i){return [i+1,n]}).filter(function(x){return !q||x[1].toLowerCase().indexOf(q)>-1}).map(function(x){c++;return '<li><i>'+x[0]+'.</i><span>'+esc(x[1])+'</span></li>'}).join('');
-    K.hidden=c>0;
-  }
-  draw('');Q.addEventListener('input',function(){draw(Q.value)});
-})();
-</script>
 <style id="materi-ux2">
 #lesson .lc.materi{max-width:72ch;margin-inline:auto}
 #lesson .lc.materi p,#lesson .lc.materi li{line-height:1.8;font-size:16px;text-wrap:pretty}
@@ -14387,6 +14288,135 @@ html[data-theme=dark] body .kopi:not(.kopi-ok),html[data-theme=dark] body #kopiH
   #lesson .tb.st td.res{font-weight:700;color:var(--ink)}
 }
 html[data-theme=dark] #lesson .tb.st.stn td:first-child{color:#06101F}
+
+/* Kartu "Tentang pembuat" tidak tampil di Arena Tryout */
+#main:has(#view-tryout.is-active) > .ab{display:none!important}
+
+/* ===== Arena Tryout: header rapi, tanpa gelembung ===== */
+html body #ar.ar-home .ar-kick{border-radius:6px}
+html body #ar.ar-home .ar-who{padding:10px 10px 10px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);gap:12px;margin:0 0 12px}
+html body #ar.ar-home>.ar-who{justify-self:stretch;min-width:0;max-width:none}
+html body #ar.ar-home .ar-who>span{color:var(--ink-soft);font-size:14px}
+html body #ar.ar-home .ar-who b{color:var(--ink);font-size:15px}
+html body #ar.ar-home .ar-who .btn{min-height:34px;padding:0 14px;border-radius:10px;font-size:13px;border:1.5px solid var(--line);background:transparent;box-shadow:none}
+html body #ar.ar-home .ar-chips{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:0 0 12px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+html body #ar.ar-home .ar-chips span{grid-column:span 2;padding:11px 6px;border:0;border-left:1.5px solid var(--line);border-radius:0;background:none;text-align:center;font-size:14px;font-weight:800;line-height:1.2}
+html body #ar.ar-home .ar-chips span:nth-child(-n+2){grid-column:span 3}
+html body #ar.ar-home .ar-chips span:nth-child(n+3){border-top:1.5px solid var(--line)}
+html body #ar.ar-home .ar-chips span:nth-child(1),html body #ar.ar-home .ar-chips span:nth-child(3){border-left:0}
+@media(min-width:700px){
+  html body #ar.ar-home .ar-chips{grid-template-columns:repeat(5,1fr)}
+  html body #ar.ar-home .ar-chips span,html body #ar.ar-home .ar-chips span:nth-child(-n+2){grid-column:auto;border-top:0}
+  html body #ar.ar-home .ar-chips span:nth-child(3){border-left:1.5px solid var(--line)}
+}
+html body #ar.ar-home>.ar-amb{padding:14px 16px 12px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);margin:0 0 18px}
+html body #ar.ar-home .ar-amb-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 10px;font-size:14px;color:var(--ink)}
+html body #ar.ar-home .ar-amb-h span{font-size:12.5px;color:var(--ink-soft)}
+html body #ar.ar-home .ar-amb-g{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
+html body #ar.ar-home .ar-amb-g span{padding:10px 6px;border:0;border-left:1.5px solid var(--line);border-radius:0;background:none;text-align:center;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--ink-soft)}
+html body #ar.ar-home .ar-amb-g span:first-child{border-left:0}
+html body #ar.ar-home .ar-amb-g b{display:block;margin-top:2px;font-size:26px;line-height:1.1;letter-spacing:0;color:var(--ink)}
+html body #ar.ar-home .ar-amb>p{margin:10px 0 0;font-size:13px}
+html body #ar.ar-home .card.ar-bk{padding:16px 18px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface)}
+html body #ar.ar-home .ar-bk h3{margin:0 0 4px;font-size:18px}
+html body #ar.ar-home .ar-bk p{margin:0 0 12px;font-size:14px}
+html body #ar.ar-home .ar-bk .ar-row{margin:0;padding:0}
+html body #ar.ar-home .ar-bk .ar-row .btn{flex:0 0 auto;width:auto;min-height:42px;padding:0 22px}
+html body #ar.ar-home .btn,html body #ar.ar-home .card>.ar-row .btn{border-radius:12px}
+html body #ar.ar-home .ar-bf-pk button{border-radius:10px}
+html body #ar.ar-home .ar-best,html body #ar.ar-home .ar-new,html body #ar.ar-home .ar-champ{border-radius:10px}
+html[data-theme=dark] body #ar.ar-home .ar-who,html[data-theme=dark] body #ar.ar-home .ar-chips,html[data-theme=dark] body #ar.ar-home>.ar-amb,html[data-theme=dark] body #ar.ar-home .ar-amb-g,html[data-theme=dark] body #ar.ar-home .card.ar-bk,html[data-theme=dark] body #ar.ar-home .ar-who .btn{border-color:var(--n-line)}
+html[data-theme=dark] body #ar.ar-home .ar-chips span,html[data-theme=dark] body #ar.ar-home .ar-amb-g span{border-color:var(--n-line);background:transparent}
+
+/* ===== Peserta / Ganti nama ===== */
+html body #ar.ar-home .ar-who{display:flex;align-items:center;gap:12px;padding:12px 12px 12px 14px;border:1.5px solid var(--line);border-radius:16px;background:linear-gradient(135deg,var(--surface) 0%,var(--brand-soft,#EEF2F8) 160%)}
+html body #ar.ar-home .ar-who .ar-av{flex:none;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:var(--brand);color:#fff;font-size:18px;font-weight:800;line-height:1}
+html body #ar.ar-home .ar-who .ar-wn{flex:1;min-width:0;display:grid;gap:1px}
+html body #ar.ar-home .ar-who .ar-wn small{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+html body #ar.ar-home .ar-who .ar-wn b{font-size:17px;font-weight:800;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html body #ar.ar-home .ar-who .btn{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 13px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--brand-strong,var(--ink));font-size:13px;font-weight:800;box-shadow:none}
+html body #ar.ar-home .ar-who .btn:hover{border-color:var(--brand);background:var(--brand-soft,#EEF2F8)}
+html[data-theme=dark] body #ar.ar-home .ar-who{background:var(--surface);border-color:var(--n-line)}
+html[data-theme=dark] body #ar.ar-home .ar-who .ar-av{color:#06101F}
+html[data-theme=dark] body #ar.ar-home .ar-who .btn{background:transparent;border-color:var(--n-line);color:var(--ink)}
+
+/* ===== Battlefield: kartu lebih rapi ===== */
+html body #ar.ar-home .card.ar-bf{padding:18px;border:1.5px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#FFF6E3 0,var(--surface) 130px)}
+html body #ar.ar-home .ar-bf-top{display:flex;align-items:center;gap:14px;margin:0 0 16px}
+html body #ar.ar-home .ar-bf-ic{flex:none;width:46px;height:46px;display:grid;place-items:center;border:1.5px solid #F0D9A8;border-radius:13px;background:#FFFDF8;font-size:24px}
+html body #ar.ar-home .ar-bf-top h3{margin:0;font-size:21px;line-height:1.2}
+html body #ar.ar-home .ar-bf-top p{margin:2px 0 0;font-size:14px;color:var(--ink-soft)}
+html body #ar.ar-home .ar-bf-l{margin:0 0 8px;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+html body #ar.ar-home .ar-bf-pk{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 14px}
+html body #ar.ar-home .ar-bf-pk button{min-height:42px;padding:0;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);font-size:15px;font-weight:800;color:var(--ink);box-shadow:none;transition:border-color .15s,background .15s}
+html body #ar.ar-home .ar-bf-pk button:last-child{grid-column:span 2}
+html body #ar.ar-home .ar-bf-pk button:hover:not(.on){border-color:var(--brand);background:var(--brand-soft,#EEF2F8)}
+html body #ar.ar-home .ar-bf-pk button.on{border-color:var(--brand);background:var(--brand);color:#fff}
+@media(min-width:620px){html body #ar.ar-home .ar-bf-pk{grid-template-columns:repeat(8,1fr)}html body #ar.ar-home .ar-bf-pk button:last-child{grid-column:span 1}}
+html body #ar.ar-home .ar-bf-board{margin:0 0 16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);font-size:14px;line-height:1.55;color:var(--ink-soft)}
+html body #ar.ar-home .ar-bf-board.is-off{background:#F7F8FA}
+html body #ar.ar-home .ar-bf-board p{margin:0}
+html body #ar.ar-home .ar-bf-board li{border-radius:10px}
+html body #ar.ar-home .ar-bf-retry{display:inline-flex;align-items:center;min-height:34px;margin-top:10px;padding:0 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--brand-strong,var(--ink));font-size:13px;font-weight:800}
+html body #ar.ar-home .ar-bf-retry:hover{border-color:var(--brand)}
+html body #ar.ar-home .ar-bf>.ar-row{display:grid;grid-template-columns:1.6fr 1fr;gap:10px;margin:0;padding:0}
+html body #ar.ar-home .ar-bf>.ar-row .btn{width:100%;min-height:50px;padding:0 12px;border-radius:12px;font-size:15px}
+html[data-theme=dark] body #ar.ar-home .card.ar-bf{border-color:var(--n-line);background:linear-gradient(180deg,#241E10 0,var(--surface) 130px)}
+html[data-theme=dark] body #ar.ar-home .ar-bf-ic{border-color:var(--n-line);background:var(--surface)}
+html[data-theme=dark] body #ar.ar-home .ar-bf-pk button{border-color:var(--n-line);background:var(--surface);color:var(--ink)}
+html[data-theme=dark] body #ar.ar-home .ar-bf-pk button.on{background:var(--brand);border-color:var(--brand);color:#06101F}
+html[data-theme=dark] body #ar.ar-home .ar-bf-board,html[data-theme=dark] body #ar.ar-home .ar-bf-board.is-off{border-color:var(--n-line);background:#121418}
+html[data-theme=dark] body #ar.ar-home .ar-bf-retry{border-color:var(--n-line);background:transparent;color:var(--ink)}
+
+/* ===== Pedang Battlefield bergerak ===== */
+html body #ar.ar-home .ar-bf-ic .bf-sw{display:block;overflow:visible}
+.bf-sw .sw{transform-origin:16px 16px}
+.bf-sw .sw-a{animation:bfSwA 1.7s ease-in-out infinite}
+.bf-sw .sw-b{animation:bfSwB 1.7s ease-in-out infinite}
+.bf-sw .sw-spark{transform-origin:16px 11px;opacity:0;animation:bfSpark 1.7s ease-out infinite}
+@keyframes bfSwA{0%{transform:rotate(12deg)}32%{transform:rotate(44deg)}40%{transform:rotate(38deg)}48%{transform:rotate(45deg)}100%{transform:rotate(12deg)}}
+@keyframes bfSwB{0%{transform:rotate(-12deg)}32%{transform:rotate(-44deg)}40%{transform:rotate(-38deg)}48%{transform:rotate(-45deg)}100%{transform:rotate(-12deg)}}
+@keyframes bfSpark{0%,30%{opacity:0;transform:scale(.3)}36%{opacity:1;transform:scale(1.25)}56%{opacity:0;transform:scale(1.6)}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.bf-sw .sw-a{animation:none;transform:rotate(45deg)}.bf-sw .sw-b{animation:none;transform:rotate(-45deg)}.bf-sw .sw-spark{animation:none}}
+
+/* ===== Kartu paket tryout ===== */
+html body #ar.ar-home .card.pk{display:grid;grid-template-columns:44px 1fr;column-gap:14px;row-gap:0;align-items:start;padding:16px;border:1.5px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:none;transition:border-color .15s,box-shadow .15s}
+html body #ar.ar-home .card.pk:hover{border-color:var(--brand);box-shadow:0 10px 22px -16px rgba(16,44,82,.45)}
+html body #ar.ar-home .pk .pk-no{grid-row:1/3;width:44px;height:44px;display:grid;place-items:center;border-radius:12px;background:var(--brand-soft,#EEF2F8);color:var(--brand-strong,var(--brand));font-size:19px;font-weight:800;line-height:1}
+html body #ar.ar-home .pk.pk-new .pk-no{background:#FFF1D6;color:#8A5A00}
+html body #ar.ar-home .pk>h3{grid-column:2;display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0;font-size:18px;line-height:1.25}
+html body #ar.ar-home .pk .ar-new{margin:0;padding:3px 8px;border:0;border-radius:6px;background:#FFD66B;color:#4A3200;font-size:11px;font-weight:800;letter-spacing:.08em}
+html body #ar.ar-home .pk>p:not(.ar-champ){grid-column:2;margin:4px 0 0;font-size:14px;line-height:1.5;color:var(--ink-soft)}
+html body #ar.ar-home .pk>.ar-champ{grid-column:1/-1;margin:12px 0 0;font-size:13.5px}
+html body #ar.ar-home .pk>.ar-champ:empty{display:none}
+html body #ar.ar-home .pk>.ar-best{grid-column:1/-1;justify-self:start;margin:12px 0 0;border-radius:10px}
+html body #ar.ar-home .pk>.ar-row{grid-column:1/-1;display:grid;grid-template-columns:1.6fr 1fr;gap:10px;margin:14px 0 0;padding:0}
+html body #ar.ar-home .pk>.ar-row .btn{width:100%;min-height:46px;padding:0 12px;border-radius:12px;font-size:15px}
+html[data-theme=dark] body #ar.ar-home .card.pk{border-color:var(--n-line);background:var(--surface)}
+html[data-theme=dark] body #ar.ar-home .pk .pk-no{background:rgba(255,255,255,.07);color:var(--ink)}
+html[data-theme=dark] body #ar.ar-home .pk.pk-new .pk-no{background:#2C2414;color:#F2C86A}
+</style>
+<style id="book-affiliate">
+.bk-line{display:flex;align-items:center;gap:8px;width:fit-content;max-width:100%;margin:12px 0 0;padding:8px 14px 8px 12px;border:2px solid #E3E6EB;border-radius:18px;background:linear-gradient(120deg,#FFF1D6,#FFF8EA);font-size:13px;line-height:1.4;color:var(--ink-soft,#4A5058);text-decoration:none;box-shadow:0 1px 2px rgba(16,24,40,.05);transition:transform .15s}
+.bk-line:hover{transform:translateY(-2px)}
+.bk-line:active{transform:translateY(1px)}
+html[data-theme=dark] .bk-line{border-color:var(--n-line,#222F57);background:linear-gradient(120deg,#2C2414,#1A1710)}
+@keyframes bkTwitch{0%,70%,100%{transform:none}74%{transform:translateX(-3px) rotate(-1deg) scale(1.03)}78%{transform:translateX(3px) rotate(1deg) scale(1.03)}82%{transform:translateX(-2px) rotate(-.6deg) scale(1.02)}86%{transform:translateX(2px) rotate(.6deg) scale(1.02)}90%{transform:none}}
+.bk-line{animation:bkTwitch 3.6s ease-in-out infinite;transform-origin:left center}
+.bk-line:hover,.bk-line:focus-visible{animation:none}
+@media(prefers-reduced-motion:reduce){.bk-line{transition:none;animation:none}}
+.bk-line b{color:var(--ink,#14161C);font-weight:800;text-decoration:underline;text-decoration-color:rgba(230,151,37,.8);text-decoration-thickness:2px;text-underline-offset:3px}
+.bk-line small{flex:none;padding:0 7px;border:1.5px solid var(--line,#E3E6EB);border-radius:99px;font-size:10px;font-weight:700;color:var(--ink-faint,#5F6678)}
+.bk-line svg{flex:none;width:13px;height:13px}
+.bk-line:hover b{text-decoration-color:#E69725}
+.bk-line:focus-visible{outline:3px solid #102C52;outline-offset:3px;border-radius:6px}
+html[data-theme=dark] .bk-line:focus-visible{outline-color:#444E6A}
+.ab .ab-book{background:radial-gradient(rgba(230,151,37,.20) 1px,transparent 1.5px) 0 0/12px 12px,linear-gradient(120deg,#FFF1D6,#FFF8EA 60%,#E6ECF5)}
+.ab .ab-book .ab-pic{background:#E69725;color:#0A1F3D}
+.ab-disc{margin-top:2px;font-size:11.5px;line-height:1.4;color:var(--ink-faint,#5F6678)}
+html[data-theme=dark] .ab .ab-book{background:radial-gradient(rgba(230,151,37,.14) 1px,transparent 1.5px) 0 0/12px 12px,linear-gradient(120deg,#2C2414,#1A1710 60%,#0E141E)}
+html[data-theme=dark] .ab .ab-book .ab-pic{background:#E69725;color:#0A1F3D}
+html[data-theme=dark] .ab-disc{color:var(--ink-faint,#8D9BC0)}
 </style>
 </body>
 </html>
