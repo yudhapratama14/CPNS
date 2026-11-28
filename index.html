@@ -3113,8 +3113,8 @@ html[data-theme=dark] .upd-badge{background:#12251B;color:#BFEBD5;border-color:#
             <a class="ab-li" href="https://www.linkedin.com/in/muhammad-yudha-pratama-b217742b7/" target="_blank" rel="noopener noreferrer"><span class="ab-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="9" width="4" height="12" rx="1"/><circle cx="5" cy="5" r="2.2"/><path d="M10 9h3.8v1.8c.7-1.3 2.1-2.1 3.9-2.1 3.1 0 4.3 2 4.3 5.1V21h-4v-6.2c0-1.5-.5-2.4-1.8-2.4s-2.2.9-2.2 2.5V21h-4z"/></svg></span><span class="ab-lt"><b>LinkedIn</b><small>Kenalan, yuk</small></span></a>
             <a class="ab-kopi" href="#traktir" data-kopi><span class="ab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h2a2.5 2.5 0 0 1 0 5h-2"/><g class="ab-steam"><path d="M8 3v2M12 3v2"/></g></svg></span><span class="ab-lt"><b>Traktir kopi</b><small>Biar gue rajin update</small></span></a>
           </div>
-          <button type="button" class="ab-saran" data-saran>Kirim saran atau laporan</button>
-          <p class="ab-foot">Semoga NIP lo cepet keluar. Sampai ketemu di barisan ASN! &#127470;&#127465;</p>
+          <button type="button" class="ab-saran" data-saran><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 9.5h7M8.5 12.5h4"/></svg><span>Kirim saran atau laporan</span></button>
+          <p class="ab-foot">Semoga NIP lo cepet keluar. Sampai ketemu di barisan ASN! <svg class="ab-flag" viewBox="0 0 18 12" width="18" height="12" role="img" aria-label="Indonesia"><rect width="18" height="6" fill="#E70011"/><rect y="6" width="18" height="6" fill="#fff"/><rect x=".5" y=".5" width="17" height="11" rx="2" fill="none" stroke="rgba(0,0,0,.18)"/></svg></p>
         </div>
       </aside>
 
@@ -8517,7 +8517,282 @@ const TOP = () => LESSONS.filter(l => !l.hid);
     ['Adaptif', 'Mampu menyesuaikan diri terhadap perubahan tugas, teknologi, dan lingkungan kerja.', 'TKP'],
     ['LAPOR!', 'Layanan Aspirasi dan Pengaduan Online Rakyat, kanal nasional pengaduan pelayanan publik.', 'TKP'],
     ['Literasi digital', 'Kemampuan menggunakan, menilai, dan berperilaku bijak di ruang digital.', 'TKP'],
-    ['Orientasi pelayanan', 'Mengutamakan kebutuhan penerima layanan sesuai prosedur.', 'TKP']
+    ['Orientasi pelayanan', 'Mengutamakan kebutuhan penerima layanan sesuai prosedur.', 'TKP'],
+    ['Sidang BPUPKI', 'Sidang pertama 29 Mei sampai 1 Juni 1945 membahas dasar negara. Sidang kedua 10 sampai 17 Juli 1945 membahas rancangan UUD, wilayah, dan kewarganegaraan.', 'TWK'],
+    ['Panitia Sembilan', 'Panitia kecil bentukan BPUPKI yang menyusun naskah Piagam Jakarta pada 22 Juni 1945.', 'TWK'],
+    ['Hari Lahir Pancasila', '1 Juni 1945, saat Soekarno berpidato tentang dasar negara di sidang BPUPKI. Ditetapkan sebagai hari libur nasional lewat Keppres 24 Tahun 2016.', 'TWK'],
+    ['Kongres Pemuda II', 'Kongres 27 sampai 28 Oktober 1928 di Batavia yang melahirkan Sumpah Pemuda.', 'TWK'],
+    ['Taman Siswa', 'Perguruan yang didirikan Ki Hajar Dewantara pada 1922 di Yogyakarta untuk pendidikan rakyat pribumi.', 'TWK'],
+    ['Muhammadiyah', 'Organisasi pembaruan Islam dan pendidikan yang didirikan K.H. Ahmad Dahlan pada 1912.', 'TWK'],
+    ['Nahdlatul Ulama', 'Organisasi kemasyarakatan Islam yang didirikan K.H. Hasyim Asyari di Surabaya pada 1926.', 'TWK'],
+    ['Tanam Paksa', 'Cultuurstelsel: sistem tanam wajib masa kolonial Belanda yang dimulai Gubernur Jenderal Van den Bosch pada 1830.', 'TWK'],
+    ['Sumpah Palapa', 'Sumpah Gajah Mada, patih Majapahit, untuk mempersatukan Nusantara.', 'TWK'],
+    ['Perjanjian Linggarjati', 'Perundingan Indonesia dan Belanda tahun 1946 (ditandatangani 1947). Belanda mengakui secara de facto Jawa, Madura, dan Sumatra.', 'TWK'],
+    ['Perjanjian Renville', 'Perjanjian Indonesia dan Belanda pada Januari 1948 di atas kapal USS Renville. Wilayah RI makin menyempit.', 'TWK'],
+    ['Perjanjian Roem-Royen', 'Perjanjian 7 Mei 1949 yang membuka jalan pengembalian pemerintah RI ke Yogyakarta dan perundingan KMB.', 'TWK'],
+    ['Konferensi Meja Bundar', 'KMB di Den Haag, 23 Agustus sampai 2 November 1949. Belanda mengakui kedaulatan Indonesia pada 27 Desember 1949.', 'TWK'],
+    ['Republik Indonesia Serikat', 'Bentuk negara federal hasil KMB (1949). Dibubarkan dan kembali menjadi negara kesatuan pada 17 Agustus 1950.', 'TWK'],
+    ['Trikora', 'Tri Komando Rakyat, 19 Desember 1961, untuk membebaskan Irian Barat dari Belanda.', 'TWK'],
+    ['Pepera 1969', 'Penentuan Pendapat Rakyat yang mengesahkan Papua (Irian Barat) sebagai bagian dari Indonesia.', 'TWK'],
+    ['Orde Baru', 'Masa pemerintahan Presiden Soeharto, sekitar 1966 sampai 1998. Berakhir dengan Reformasi.', 'TWK'],
+    ['Tanggal 17 Agustus 1945', 'Hari Proklamasi Kemerdekaan, dibacakan Soekarno-Hatta. UUD 1945 disahkan PPKI sehari kemudian, 18 Agustus 1945.', 'TWK'],
+    ['Konstitusi', 'Hukum dasar suatu negara, tertulis maupun tidak. Konstitusi Indonesia adalah UUD 1945.', 'TWK'],
+    ['Negara hukum', 'Negara yang kekuasaannya dibatasi hukum. Ditegaskan Pasal 1 ayat (3) UUD 1945.', 'TWK'],
+    ['Kedaulatan rakyat', 'Kekuasaan tertinggi di tangan rakyat dan dilaksanakan menurut UUD (Pasal 1 ayat 2).', 'TWK'],
+    ['Sistem presidensial', 'Presiden menjadi kepala negara sekaligus kepala pemerintahan, dan dipilih langsung oleh rakyat.', 'TWK'],
+    ['Eksekutif', 'Cabang kekuasaan yang menjalankan undang-undang dan pemerintahan: Presiden dibantu para menteri.', 'TWK'],
+    ['Legislatif', 'Cabang kekuasaan pembuat undang-undang. Di Indonesia dijalankan DPR bersama Presiden, dengan DPD dan MPR sebagai lembaga lain.', 'TWK'],
+    ['Yudikatif', 'Cabang kekuasaan kehakiman yang menegakkan hukum: Mahkamah Agung, badan peradilan di bawahnya, dan Mahkamah Konstitusi.', 'TWK'],
+    ['Checks and balances', 'Sistem saling mengawasi dan mengimbangi antarlembaga negara agar tidak ada kekuasaan yang berlebihan.', 'TWK'],
+    ['Luber Jurdil', 'Asas pemilu: Langsung, Umum, Bebas, Rahasia, Jujur, dan Adil (Pasal 22E UUD 1945).', 'TWK'],
+    ['KPU', 'Komisi Pemilihan Umum: penyelenggara pemilu yang bersifat nasional, tetap, dan mandiri.', 'TWK'],
+    ['Bawaslu', 'Badan Pengawas Pemilu: mengawasi penyelenggaraan pemilu.', 'TWK'],
+    ['KPK (lembaga)', 'Komisi Pemberantasan Korupsi: lembaga independen pemberantasan korupsi. Dasarnya UU 30 Tahun 2002 yang diubah UU 19 Tahun 2019.', 'TWK'],
+    ['Ombudsman', 'Lembaga pengawas pelayanan publik dan penerima laporan maladministrasi (UU 37 Tahun 2008).', 'TWK'],
+    ['Komnas HAM', 'Komisi Nasional Hak Asasi Manusia, lembaga mandiri yang mengkaji, memantau, dan memediasi HAM (UU 39 Tahun 1999).', 'TWK'],
+    ['TNI', 'Alat negara di bidang pertahanan (Pasal 30 UUD 1945).', 'TWK'],
+    ['Polri', 'Alat negara yang menjaga keamanan dan ketertiban masyarakat serta menegakkan hukum (Pasal 30 UUD 1945).', 'TWK'],
+    ['Undang-Undang', 'Peraturan yang dibuat DPR bersama Presiden. Kedudukannya sejajar dengan Perppu dalam hierarki peraturan.', 'TWK'],
+    ['TAP MPR', 'Ketetapan MPR. Dalam hierarki peraturan (UU 12 Tahun 2011) berada di bawah UUD 1945 dan di atas undang-undang.', 'TWK'],
+    ['Peraturan Presiden', 'Peraturan yang dibuat Presiden untuk menjalankan UU atau menyelenggarakan kekuasaan pemerintahan. Berada di bawah Peraturan Pemerintah.', 'TWK'],
+    ['Peraturan daerah', 'Perda: peraturan yang dibuat kepala daerah bersama DPRD provinsi atau kabupaten/kota. Urutan paling bawah dalam hierarki.', 'TWK'],
+    ['Omnibus law', 'Metode penyusunan UU yang menggabungkan dan mengubah banyak UU sekaligus dalam satu undang-undang.', 'TWK'],
+    ['Pasal 31 UUD 1945', 'Hak setiap warga atas pendidikan. Ayat (4) mewajibkan anggaran pendidikan paling sedikit 20 persen dari APBN dan APBD.', 'TWK'],
+    ['Pasal 29 UUD 1945', 'Negara berdasar Ketuhanan Yang Maha Esa dan menjamin kemerdekaan tiap penduduk memeluk agama dan beribadah.', 'TWK'],
+    ['Pasal 28 UUD 1945', 'Pasal 28A sampai 28J memuat hak asasi manusia dan kewajiban asasi.', 'TWK'],
+    ['Asas praduga tak bersalah', 'Seseorang dianggap tidak bersalah sampai ada putusan pengadilan yang berkekuatan hukum tetap.', 'TWK'],
+    ['KUHP baru', 'UU 1 Tahun 2023 tentang Kitab Undang-Undang Hukum Pidana, mulai berlaku 2 Januari 2026.', 'TWK'],
+    ['Dekonsentrasi', 'Pelimpahan wewenang pemerintah pusat kepada gubernur sebagai wakil pemerintah pusat di daerah.', 'TWK'],
+    ['Tugas pembantuan', 'Penugasan dari pemerintah pusat kepada daerah atau desa untuk melaksanakan tugas tertentu, lengkap dengan pembiayaannya.', 'TWK'],
+    ['Otonomi khusus', 'Kewenangan khusus yang diberikan kepada daerah tertentu, misalnya Aceh dan Papua.', 'TWK'],
+    ['Negara kepulauan', 'Negara yang seluruhnya terdiri dari satu atau lebih gugusan pulau. Diakui dalam Konvensi Hukum Laut PBB (UNCLOS) 1982.', 'TWK'],
+    ['Laut teritorial', 'Laut sejauh 12 mil laut dari garis pangkal. Negara berdaulat penuh di dalamnya.', 'TWK'],
+    ['Zona tambahan', 'Jalur laut sampai 24 mil laut dari garis pangkal untuk pengawasan bea cukai, imigrasi, fiskal, dan saniter.', 'TWK'],
+    ['Landas kontinen', 'Dasar laut dan tanah di bawahnya di luar laut teritorial. Negara pantai punya hak berdaulat atas sumber dayanya.', 'TWK'],
+    ['Ketahanan nasional', 'Kondisi dinamis suatu bangsa dalam menghadapi ancaman, tantangan, hambatan, dan gangguan (ATHG). Diukur dengan Astagatra.', 'TWK'],
+    ['Geopolitik', 'Kebijakan dan strategi negara yang dipengaruhi letak dan kondisi geografisnya.', 'TWK'],
+    ['ATHG', 'Ancaman, Tantangan, Hambatan, dan Gangguan terhadap kelangsungan hidup bangsa dan negara.', 'TWK'],
+    ['Primordialisme', 'Paham yang terlalu mengutamakan ikatan asal-usul seperti suku, agama, dan daerah.', 'TWK'],
+    ['Separatisme', 'Gerakan yang ingin memisahkan diri dari negara. Bertentangan dengan semangat NKRI.', 'TWK'],
+    ['Etnosentrisme', 'Menganggap budaya sendiri paling baik lalu menilai budaya lain dengan ukuran sendiri.', 'TWK'],
+    ['Intoleransi', 'Sikap tidak mau menghargai perbedaan keyakinan, pendapat, atau budaya orang lain.', 'TWK'],
+    ['Pluralisme', 'Pengakuan bahwa masyarakat terdiri dari banyak kelompok yang berbeda dan hidup berdampingan.', 'TWK'],
+    ['Sosial budaya', 'Aspek hubungan antarmanusia dan nilai tradisi dalam masyarakat. Sikap yang diharapkan: menghargai keragaman dan menjaga harmoni.', 'TWK'],
+    ['Zona Integritas', 'Predikat unit kerja yang berkomitmen menjadi Wilayah Bebas dari Korupsi (WBK) dan Wilayah Birokrasi Bersih dan Melayani (WBBM).', 'TWK'],
+    ['LHKPN', 'Laporan Harta Kekayaan Penyelenggara Negara, dilaporkan kepada KPK secara berkala.', 'TWK'],
+    ['Pungutan liar', 'Pungli: pungutan tidak resmi yang tidak ada dasar hukumnya.', 'TWK'],
+    ['Justice collaborator', 'Pelaku tindak pidana yang bukan pelaku utama, bersedia bekerja sama membongkar perkara, dan mendapat perlakuan khusus.', 'TWK'],
+    ['Kode etik', 'Aturan perilaku dan etika yang wajib dipatuhi anggota profesi atau organisasi, termasuk ASN.', 'TWK'],
+    ['PNS', 'Pegawai Negeri Sipil: ASN yang diangkat sebagai pegawai tetap dan memiliki NIP (UU 20 Tahun 2023).', 'TWK'],
+    ['PPPK', 'Pegawai Pemerintah dengan Perjanjian Kerja: ASN yang diangkat berdasarkan perjanjian kerja untuk jangka waktu tertentu.', 'TWK'],
+    ['Sistem merit', 'Pengelolaan ASN berdasarkan kualifikasi, kompetensi, dan kinerja secara adil, tanpa diskriminasi.', 'TWK'],
+    ['SKD', 'Seleksi Kompetensi Dasar: tes TWK, TIU, dan TKP yang dilaksanakan dengan CAT.', 'TWK'],
+    ['SKB', 'Seleksi Kompetensi Bidang: tes sesuai kebutuhan jabatan yang dilakukan setelah SKD.', 'TWK'],
+    ['Passing grade', 'Nilai minimal tiap subtes SKD agar peserta dinyatakan memenuhi syarat. Angka resmi mengikuti ketentuan terbaru panitia seleksi.', 'TWK'],
+    ['CAT', 'Computer Assisted Test: ujian berbasis komputer yang hasilnya langsung terlihat.', 'TWK'],
+    ['SSCASN', 'Portal Sistem Seleksi CASN untuk pendaftaran seleksi ASN secara nasional.', 'TWK'],
+    ['Sinonim', 'Kata yang maknanya sama atau mirip dengan kata lain.', 'TWK'],
+    ['Antonim', 'Kata yang maknanya berlawanan dengan kata lain.', 'TWK'],
+    ['Homofon', 'Kata yang bunyinya sama tetapi tulisan dan maknanya berbeda, misalnya bang dan bank.', 'TWK'],
+    ['Homograf', 'Kata yang tulisannya sama tetapi lafal dan maknanya berbeda, misalnya apel (buah) dan apel (upacara).', 'TWK'],
+    ['Polisemi', 'Satu kata dengan beberapa makna yang masih berkaitan, misalnya kepala.', 'TWK'],
+    ['Afiksasi', 'Proses pembentukan kata dengan imbuhan: awalan, akhiran, sisipan, atau gabungan.', 'TWK'],
+    ['Frasa', 'Gabungan dua kata atau lebih yang tidak melebihi batas fungsi kalimat dan tidak memiliki predikat.', 'TWK'],
+    ['Klausa', 'Satuan gramatikal yang memiliki predikat, bisa berdiri sebagai kalimat atau menjadi bagian kalimat.', 'TWK'],
+    ['Konjungsi', 'Kata penghubung, misalnya dan, tetapi, karena, sehingga, dan meskipun.', 'TWK'],
+    ['Kalimat majemuk', 'Kalimat yang terdiri dari dua klausa atau lebih.', 'TWK'],
+    ['Kalimat utama', 'Kalimat yang memuat gagasan pokok paragraf. Letaknya bisa di awal, akhir, atau di awal dan akhir.', 'TWK'],
+    ['Paragraf deduktif', 'Gagasan utama di awal paragraf, lalu dijelaskan oleh kalimat penjelas.', 'TWK'],
+    ['Paragraf induktif', 'Penjelasan atau contoh lebih dulu, gagasan utama muncul di akhir paragraf.', 'TWK'],
+    ['Kata serapan', 'Kata dari bahasa lain yang disesuaikan ejaan dan lafalnya ke dalam bahasa Indonesia.', 'TWK'],
+    ['Diksi', 'Pilihan kata yang tepat sesuai makna dan konteks.', 'TWK'],
+    ['Kohesi dan koherensi', 'Kohesi: keterkaitan bentuk antarkalimat. Koherensi: keterkaitan makna sehingga paragraf padu.', 'TWK'],
+    ['Penulisan di', 'Di- sebagai awalan ditulis serangkai dengan kata kerja (dibaca). Di sebagai kata depan ditulis terpisah (di rumah).', 'TWK'],
+    ['Huruf kapital', 'Dipakai pada awal kalimat, nama orang, nama geografi, nama bulan, hari, dan awal kutipan langsung.', 'TWK'],
+    ['Bilangan prima', 'Bilangan lebih dari 1 yang hanya habis dibagi 1 dan dirinya sendiri. Satu-satunya prima genap adalah 2.', 'TIU'],
+    ['Bilangan komposit', 'Bilangan lebih dari 1 yang memiliki lebih dari dua faktor.', 'TIU'],
+    ['KPK (kelipatan)', 'Kelipatan Persekutuan Terkecil: kelipatan terkecil yang sama dari dua bilangan atau lebih. Dipakai untuk soal jadwal berulang.', 'TIU'],
+    ['FPB', 'Faktor Persekutuan Terbesar: faktor terbesar yang sama dari dua bilangan atau lebih. Dipakai untuk membagi sama banyak.', 'TIU'],
+    ['Bilangan kuadrat', 'Hasil kali sebuah bilangan dengan dirinya sendiri: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100.', 'TIU'],
+    ['Bilangan kubik', 'Hasil pangkat tiga: 1, 8, 27, 64, 125, 216.', 'TIU'],
+    ['Faktorial', 'n! adalah hasil kali bilangan bulat positif dari 1 sampai n. Misalnya 5! = 120.', 'TIU'],
+    ['Barisan aritmetika', 'Barisan dengan selisih tetap (beda) antarsuku. Un = a + (n-1)b.', 'TIU'],
+    ['Barisan geometri', 'Barisan dengan rasio tetap antarsuku. Un = a x r pangkat (n-1).', 'TIU'],
+    ['Deret kuadrat', 'Pola angka dari bilangan kuadrat atau selisih yang bertambah teratur, misalnya 1, 4, 9, 16, 25.', 'TIU'],
+    ['Diskon', 'Potongan harga. Harga akhir = harga awal x (100% - diskon).', 'TIU'],
+    ['Untung dan rugi', 'Untung = harga jual - harga beli. Persentase untung = untung / harga beli x 100%.', 'TIU'],
+    ['Bunga tunggal', 'Bunga yang dihitung hanya dari modal awal: B = M x i x t.', 'TIU'],
+    ['Jarak, kecepatan, waktu', 'Jarak = kecepatan x waktu. Kecepatan rata-rata = total jarak dibagi total waktu.', 'TIU'],
+    ['Debit', 'Volume per satuan waktu. Debit = volume / waktu.', 'TIU'],
+    ['Usia', 'Soal umur: selisih umur selalu tetap, sedangkan perbandingan umur berubah seiring waktu.', 'TIU'],
+    ['Peluang', 'Banyak kejadian yang diinginkan dibagi banyak seluruh kejadian yang mungkin.', 'TIU'],
+    ['Permutasi', 'Banyak susunan jika urutan diperhatikan.', 'TIU'],
+    ['Kombinasi', 'Banyak pilihan jika urutan tidak diperhatikan.', 'TIU'],
+    ['Teorema Pythagoras', 'Pada segitiga siku-siku, kuadrat sisi miring sama dengan jumlah kuadrat dua sisi lainnya. Tripel populer: 3-4-5, 5-12-13, 8-15-17.', 'TIU'],
+    ['Luas dan keliling', 'Persegi panjang: L = p x l, K = 2(p + l). Lingkaran: L = pi r kuadrat, K = 2 pi r.', 'TIU'],
+    ['Volume balok dan kubus', 'Balok: p x l x t. Kubus: s pangkat tiga.', 'TIU'],
+    ['Jumlah sudut segitiga', 'Jumlah tiga sudut dalam segitiga selalu 180 derajat.', 'TIU'],
+    ['Eksponen', 'Bilangan berpangkat. Misalnya a pangkat m x a pangkat n = a pangkat (m+n).', 'TIU'],
+    ['Akar kuadrat', 'Kebalikan dari kuadrat. Akar 144 = 12.', 'TIU'],
+    ['Persamaan linear', 'Persamaan dengan variabel berpangkat satu. Dua variabel diselesaikan dengan eliminasi atau substitusi.', 'TIU'],
+    ['Pertidaksamaan', 'Hubungan lebih besar atau lebih kecil. Tanda berbalik jika kedua ruas dikali atau dibagi bilangan negatif.', 'TIU'],
+    ['Pecahan campuran', 'Gabungan bilangan bulat dan pecahan. Ubah ke pecahan biasa sebelum menghitung.', 'TIU'],
+    ['Desimal ke pecahan', 'Contoh: 0,25 = 1/4, 0,5 = 1/2, 0,75 = 3/4, 0,125 = 1/8.', 'TIU'],
+    ['Rasio', 'Perbandingan dua besaran sejenis, ditulis a:b atau a/b.', 'TIU'],
+    ['Premis mayor', 'Pernyataan umum dalam silogisme, misalnya semua pegawai wajib disiplin.', 'TIU'],
+    ['Premis minor', 'Pernyataan khusus dalam silogisme, misalnya Budi adalah pegawai.', 'TIU'],
+    ['Kuantor', 'Kata penentu jumlah dalam pernyataan: semua, sebagian, tidak ada.', 'TIU'],
+    ['Implikasi', 'Pernyataan jika p maka q. Hanya salah ketika p benar dan q salah.', 'TIU'],
+    ['Biimplikasi', 'p jika dan hanya jika q: p dan q selalu bernilai kebenaran sama.', 'TIU'],
+    ['Silogisme hipotetik', 'Jika p maka q, jika q maka r, maka jika p maka r.', 'TIU'],
+    ['Hukum De Morgan', 'Negasi (p dan q) = (tidak p) atau (tidak q). Negasi (p atau q) = (tidak p) dan (tidak q).', 'TIU'],
+    ['Kesimpulan valid', 'Kesimpulan yang pasti benar jika semua premis benar, tanpa menambah asumsi dari luar.', 'TIU'],
+    ['Analogi verbal', 'Hubungan antarkata: sinonim, antonim, bagian-keseluruhan, alat-fungsi, sebab-akibat. Cari hubungan pasangan pertama, lalu terapkan ke pasangan kedua.', 'TIU'],
+    ['Rotasi', 'Perputaran gambar pada titik tertentu, misalnya 90, 180, atau 270 derajat.', 'TIU'],
+    ['Refleksi', 'Pencerminan gambar terhadap garis tertentu. Bayangan sama besar tetapi terbalik.', 'TIU'],
+    ['Translasi', 'Pergeseran gambar tanpa mengubah bentuk, ukuran, dan arah.', 'TIU'],
+    ['Pola gambar', 'Perubahan yang berulang pada gambar: jumlah, posisi, arah, warna, atau bentuk. Cek satu perubahan dulu, baru tambah yang lain.', 'TIU'],
+    ['Akuntabel', 'Bertanggung jawab atas amanah, kewenangan, dan hasil kerja secara jujur dan terbuka. Salah satu nilai BerAKHLAK.', 'TKP'],
+    ['Kompeten', 'Terus belajar dan mengembangkan kapabilitas, serta melaksanakan tugas dengan kualitas terbaik. Salah satu nilai BerAKHLAK.', 'TKP'],
+    ['Harmonis', 'Saling peduli dan menghargai perbedaan, serta membantu orang lain. Salah satu nilai BerAKHLAK.', 'TKP'],
+    ['Loyal', 'Berdedikasi dan mengutamakan kepentingan bangsa dan negara, menjaga nama baik sesama ASN, pimpinan, dan negara. Salah satu nilai BerAKHLAK.', 'TKP'],
+    ['Pelayanan prima', 'Layanan yang cepat, tepat, ramah, dan sesuai standar sehingga memenuhi atau melampaui harapan penerima layanan.', 'TKP'],
+    ['Standar pelayanan', 'Tolok ukur penyelenggaraan layanan, memuat persyaratan, prosedur, waktu, biaya, dan produk layanan (UU 25 Tahun 2009).', 'TKP'],
+    ['Survei Kepuasan Masyarakat', 'SKM: pengukuran tingkat kepuasan penerima layanan sebagai bahan perbaikan layanan.', 'TKP'],
+    ['Keterbukaan informasi', 'Hak publik memperoleh informasi badan publik (UU 14 Tahun 2008). Pengelolanya adalah PPID.', 'TKP'],
+    ['Maladministrasi', 'Penyimpangan pelayanan publik seperti menunda berlarut, tidak melayani, dan meminta imbalan di luar ketentuan.', 'TKP'],
+    ['Etika publik', 'Nilai moral yang menjadi pedoman pejabat dan pegawai pemerintah dalam melayani masyarakat.', 'TKP'],
+    ['Sinergi', 'Kerja sama yang hasil bersamanya lebih besar daripada kerja sendiri-sendiri.', 'TKP'],
+    ['Koordinasi', 'Penyelarasan kegiatan antarpihak agar tidak tumpang tindih dan tujuan tercapai.', 'TKP'],
+    ['Mediasi', 'Penyelesaian konflik dengan bantuan pihak ketiga yang netral.', 'TKP'],
+    ['Pemangku kepentingan', 'Stakeholder: pihak yang terpengaruh atau memengaruhi kegiatan organisasi.', 'TKP'],
+    ['Skala prioritas', 'Mengurutkan pekerjaan berdasarkan tingkat penting dan mendesak.', 'TKP'],
+    ['Matriks Eisenhower', 'Pembagian tugas berdasarkan penting dan mendesak: kerjakan sekarang, jadwalkan, delegasikan, atau hentikan.', 'TKP'],
+    ['Sasaran Kinerja Pegawai', 'SKP: rencana dan target kinerja yang dinilai tiap tahun bagi PNS.', 'TKP'],
+    ['Umpan balik', 'Masukan terhadap hasil kerja. Sikap yang baik: menerima terbuka dan menindaklanjuti.', 'TKP'],
+    ['Pola pikir bertumbuh', 'Growth mindset: keyakinan bahwa kemampuan dapat berkembang lewat usaha dan belajar.', 'TKP'],
+    ['Disiplin', 'Ketaatan pada aturan dan waktu kerja tanpa menunggu diawasi.', 'TKP'],
+    ['Moderasi beragama', 'Cara pandang yang tidak ekstrem dalam beragama: menghormati perbedaan dan menjaga persatuan.', 'TKP'],
+    ['Ekstremisme', 'Sikap atau tindakan yang berlebihan dan memaksakan pandangan, sering menjadi pintu masuk radikalisme.', 'TKP'],
+    ['Terorisme', 'Perbuatan kekerasan atau ancaman yang menimbulkan teror luas, demi tujuan ideologi, politik, atau gangguan keamanan.', 'TKP'],
+    ['Deradikalisasi', 'Upaya mengubah pemahaman radikal agar kembali sejalan dengan nilai kebangsaan.', 'TKP'],
+    ['Keamanan siber', 'Perlindungan sistem, jaringan, dan data dari akses dan serangan tidak sah.', 'TKP'],
+    ['Kata sandi kuat', 'Panjang, unik untuk tiap akun, dan sebaiknya dilengkapi autentikasi dua faktor.', 'TKP'],
+    ['Autentikasi dua faktor', 'Verifikasi login lewat dua bukti, misalnya kata sandi ditambah kode sekali pakai.', 'TKP'],
+    ['Malware', 'Perangkat lunak berbahaya seperti virus, ransomware, dan spyware.', 'TKP'],
+    ['Disinformasi', 'Informasi salah yang sengaja disebarkan. Misinformasi: informasi salah yang disebarkan tanpa niat menipu.', 'TKP'],
+    ['Cek fakta', 'Memeriksa kebenaran informasi ke sumber resmi sebelum percaya atau membagikannya.', 'TKP'],
+    ['Jejak digital', 'Rekam aktivitas online yang sulit dihapus. Hati-hati dengan unggahan.', 'TKP'],
+    ['UU PDP', 'UU 27 Tahun 2022 tentang Pelindungan Data Pribadi. Data pribadi tidak boleh disebarkan tanpa dasar yang sah.', 'TKP'],
+    ['UU ITE', 'UU 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik, diubah dengan UU 19 Tahun 2016 dan UU 1 Tahun 2024.', 'TKP'],
+    ['SPBE', 'Sistem Pemerintahan Berbasis Elektronik (Perpres 95 Tahun 2018): pemerintahan memakai TIK untuk layanan lebih baik.', 'TKP'],
+    ['Kecerdasan buatan', 'AI: sistem yang meniru kemampuan berpikir manusia. Pakai sebagai alat bantu, periksa hasilnya, dan jangan masukkan data rahasia.', 'TKP'],
+    ['Etika bermedia sosial', 'Bijak menulis dan membagikan: tidak menyebar hoaks, ujaran kebencian, atau data pribadi orang lain.', 'TKP'],
+    ['Grasi', 'Pengampunan dari Presiden berupa perubahan, peringanan, pengurangan, atau penghapusan pelaksanaan pidana. Diberikan dengan pertimbangan Mahkamah Agung (Pasal 14 ayat 1 UUD 1945).', 'TWK'],
+    ['Rehabilitasi', 'Pemulihan hak seseorang dalam kemampuan, kedudukan, dan harkat martabatnya. Diberikan Presiden dengan pertimbangan Mahkamah Agung (Pasal 14 ayat 1).', 'TWK'],
+    ['Amnesti', 'Pengampunan berupa penghapusan akibat hukum pidana bagi orang atau kelompok tertentu. Diberikan Presiden dengan pertimbangan DPR (Pasal 14 ayat 2).', 'TWK'],
+    ['Abolisi', 'Penghapusan proses penuntutan terhadap seseorang. Diberikan Presiden dengan pertimbangan DPR (Pasal 14 ayat 2).', 'TWK'],
+    ['Hak prerogatif', 'Hak istimewa yang dimiliki Presiden sebagai kepala negara untuk bertindak sendiri, misalnya mengangkat dan memberhentikan menteri.', 'TWK'],
+    ['Pasal 14 UUD 1945', 'Grasi dan rehabilitasi dengan pertimbangan MA, amnesti dan abolisi dengan pertimbangan DPR.', 'TWK'],
+    ['Pasal 2 UUD 1945', 'MPR terdiri dari anggota DPR dan anggota DPD yang dipilih melalui pemilu, bersidang sedikitnya sekali dalam lima tahun.', 'TWK'],
+    ['Pasal 5 UUD 1945', 'Presiden berhak mengajukan rancangan undang-undang kepada DPR dan menetapkan peraturan pemerintah.', 'TWK'],
+    ['Pasal 6A UUD 1945', 'Presiden dan wakil presiden dipilih langsung sebagai satu pasangan. Menang jika lebih dari 50 persen suara dan sedikitnya 20 persen di lebih dari setengah jumlah provinsi.', 'TWK'],
+    ['Pasal 7 UUD 1945', 'Presiden dan wakil presiden memegang jabatan lima tahun dan sesudahnya dapat dipilih kembali hanya untuk satu kali masa jabatan.', 'TWK'],
+    ['Pasal 7A UUD 1945', 'Presiden dapat diberhentikan dalam masa jabatan karena pelanggaran hukum berat (pengkhianatan, korupsi, penyuapan, tindak pidana berat, perbuatan tercela) atau tidak lagi memenuhi syarat.', 'TWK'],
+    ['Pasal 10 UUD 1945', 'Presiden memegang kekuasaan tertinggi atas Angkatan Darat, Angkatan Laut, dan Angkatan Udara.', 'TWK'],
+    ['Pasal 11 UUD 1945', 'Presiden menyatakan perang, membuat perdamaian, dan membuat perjanjian dengan negara lain dengan persetujuan DPR.', 'TWK'],
+    ['Pasal 20 UUD 1945', 'DPR memegang kekuasaan membentuk undang-undang. Setiap RUU dibahas DPR dan Presiden untuk mendapat persetujuan bersama.', 'TWK'],
+    ['Pasal 22 UUD 1945', 'Presiden berhak menetapkan Perppu dalam hal ihwal kegentingan yang memaksa. Perppu harus mendapat persetujuan DPR pada persidangan berikutnya.', 'TWK'],
+    ['Pasal 22D UUD 1945', 'DPD dapat mengajukan RUU tertentu (otonomi daerah, hubungan pusat dan daerah, sumber daya alam) dan ikut membahasnya.', 'TWK'],
+    ['Pasal 23 UUD 1945', 'APBN ditetapkan setiap tahun dengan undang-undang dan dilaksanakan secara terbuka dan bertanggung jawab untuk sebesar-besar kemakmuran rakyat.', 'TWK'],
+    ['Pasal 24 UUD 1945', 'Kekuasaan kehakiman merdeka, dilakukan Mahkamah Agung dan badan peradilan di bawahnya serta Mahkamah Konstitusi.', 'TWK'],
+    ['Pasal 24C UUD 1945', 'Kewenangan MK: menguji UU terhadap UUD, memutus sengketa antarlembaga negara, membubarkan partai, memutus sengketa hasil pemilu, dan memutus pendapat DPR soal pelanggaran presiden.', 'TWK'],
+    ['Pasal 36 UUD 1945', 'Bahasa negara adalah Bahasa Indonesia.', 'TWK'],
+    ['Pasal 36A UUD 1945', 'Lambang negara ialah Garuda Pancasila dengan semboyan Bhinneka Tunggal Ika.', 'TWK'],
+    ['Pasal 37 UUD 1945', 'Perubahan UUD diusulkan sedikitnya sepertiga anggota MPR. Sidang dihadiri sedikitnya dua pertiga anggota dan disetujui sedikitnya 50 persen tambah satu. Bentuk negara kesatuan tidak dapat diubah.', 'TWK'],
+    ['Pasal 18 UUD 1945', 'Pemerintahan daerah: NKRI dibagi atas provinsi, yang dibagi lagi atas kabupaten dan kota. Daerah menjalankan otonomi seluas-luasnya.', 'TWK'],
+    ['Pasal 27 UUD 1945', 'Warga bersamaan kedudukan di dalam hukum dan pemerintahan, berhak atas pekerjaan, dan wajib ikut membela negara.', 'TWK'],
+    ['Pasal 30 UUD 1945', 'Setiap warga berhak dan wajib ikut serta dalam usaha pertahanan dan keamanan negara. TNI dan Polri adalah alatnya.', 'TWK'],
+    ['Pasal 32 UUD 1945', 'Negara memajukan kebudayaan nasional Indonesia dan menghormati bahasa daerah sebagai kekayaan budaya.', 'TWK'],
+    ['Pasal 34 UUD 1945', 'Fakir miskin dan anak terlantar dipelihara oleh negara. Negara juga mengembangkan sistem jaminan sosial.', 'TWK'],
+    ['Pasal 1 UUD 1945', 'Ayat (1) negara kesatuan berbentuk republik. Ayat (2) kedaulatan di tangan rakyat. Ayat (3) negara hukum.', 'TWK'],
+    ['Pasal 33 ayat 3', 'Bumi, air, dan kekayaan alam dikuasai negara dan dipergunakan untuk sebesar-besar kemakmuran rakyat.', 'TWK'],
+    ['Pemakzulan', 'Impeachment: pemberhentian presiden dalam masa jabatan melalui proses DPR, Mahkamah Konstitusi, lalu MPR.', 'TWK'],
+    ['Mosi tidak percaya', 'Pernyataan parlemen bahwa tidak lagi mempercayai pemerintah. Lazim dalam sistem parlementer, bukan sistem presidensial.', 'TWK'],
+    ['Hak menyatakan pendapat', 'Hak DPR menyatakan pendapat atas kebijakan pemerintah atau kejadian luar biasa. Bersama interpelasi dan angket, ini hak lembaga DPR.', 'TWK'],
+    ['Sistem bikameral', 'Parlemen dua kamar. Di Indonesia lembaga perwakilan terdiri dari DPR dan DPD, dan keduanya bersidang bersama dalam MPR.', 'TWK'],
+    ['Referendum', 'Pemungutan suara langsung rakyat untuk memutuskan satu hal penting.', 'TWK'],
+    ['Golput', 'Golongan putih: tidak menggunakan hak pilih dalam pemilu.', 'TWK'],
+    ['Pemilu serentak', 'Pemilu legislatif dan pemilu presiden dilaksanakan pada hari yang sama.', 'TWK'],
+    ['Presidential threshold', 'Ambang batas pencalonan presiden. Mahkamah Konstitusi menghapusnya lewat putusan pada Januari 2025.', 'TWK'],
+    ['Parliamentary threshold', 'Ambang batas perolehan suara partai agar mendapat kursi di DPR. Pada Pemilu 2024 besarnya 4 persen suara sah nasional. MK meminta aturannya diubah untuk pemilu berikutnya.', 'TWK'],
+    ['Hakim konstitusi', 'Sembilan hakim MK, tiga diajukan Mahkamah Agung, tiga oleh DPR, dan tiga oleh Presiden, ditetapkan dengan keputusan Presiden.', 'TWK'],
+    ['Yurisprudensi', 'Putusan hakim terdahulu yang diikuti hakim lain dalam perkara serupa.', 'TWK'],
+    ['Peninjauan kembali', 'PK: upaya hukum luar biasa ke Mahkamah Agung terhadap putusan berkekuatan hukum tetap, berdasarkan alasan tertentu seperti bukti baru.', 'TWK'],
+    ['Banding', 'Upaya hukum biasa ke pengadilan tinggi atas putusan pengadilan tingkat pertama.', 'TWK'],
+    ['Hukum pidana', 'Hukum yang mengatur perbuatan terlarang dan sanksinya. Negara yang menuntut.', 'TWK'],
+    ['Hukum perdata', 'Hukum yang mengatur hubungan antarperseorangan, misalnya warisan, perjanjian, dan perkawinan.', 'TWK'],
+    ['Delik aduan', 'Tindak pidana yang baru dituntut jika ada pengaduan dari pihak yang dirugikan.', 'TWK'],
+    ['Tindak pidana korupsi', 'Perbuatan melawan hukum yang memperkaya diri dan merugikan keuangan atau perekonomian negara (UU 31 Tahun 1999 jo UU 20 Tahun 2001).', 'TWK'],
+    ['APBN', 'Anggaran Pendapatan dan Belanja Negara, rencana keuangan tahunan yang ditetapkan dengan undang-undang.', 'TWK'],
+    ['APBD', 'Anggaran Pendapatan dan Belanja Daerah, ditetapkan dengan Perda.', 'TWK'],
+    ['Inflasi', 'Kenaikan harga barang dan jasa secara umum dan terus-menerus.', 'TWK'],
+    ['Bank Indonesia', 'Bank sentral yang bersifat independen. Tugas utamanya menjaga stabilitas nilai rupiah.', 'TWK'],
+    ['Pajak', 'Iuran wajib rakyat kepada negara berdasarkan undang-undang tanpa imbalan langsung.', 'TWK'],
+    ['Ketuhanan Yang Maha Esa', 'Sila pertama Pancasila, berlambang bintang. Menekankan kebebasan beragama dan toleransi antarumat.', 'TWK'],
+    ['Kemanusiaan yang adil dan beradab', 'Sila kedua, berlambang rantai. Menekankan persamaan derajat dan menghormati HAM.', 'TWK'],
+    ['Persatuan Indonesia', 'Sila ketiga, berlambang pohon beringin. Menekankan cinta tanah air dan persatuan.', 'TWK'],
+    ['Kerakyatan yang dipimpin oleh hikmat kebijaksanaan dalam permusyawaratan/perwakilan', 'Sila keempat, berlambang kepala banteng. Menekankan musyawarah untuk mufakat.', 'TWK'],
+    ['Keadilan sosial bagi seluruh rakyat Indonesia', 'Sila kelima, berlambang padi dan kapas. Menekankan keadilan dan kesejahteraan bersama.', 'TWK'],
+    ['Garuda Pancasila', 'Lambang negara. Jumlah bulu: 17 pada tiap sayap, 8 pada ekor, 19 di pangkal ekor, dan 45 di leher, merujuk pada 17 Agustus 1945.', 'TWK'],
+    ['Sang Saka Merah Putih', 'Bendera negara. Merah berarti berani dan putih berarti suci. Ukuran 2:3.', 'TWK'],
+    ['Indonesia Raya', 'Lagu kebangsaan ciptaan W.R. Supratman, pertama kali diperdengarkan pada Kongres Pemuda II, 28 Oktober 1928.', 'TWK'],
+    ['UU 24 Tahun 2009', 'Undang-undang tentang Bendera, Bahasa, dan Lambang Negara, serta Lagu Kebangsaan.', 'TWK'],
+    ['Pergerakan nasional', 'Perjuangan terorganisasi melalui organisasi modern, dimulai Budi Utomo (1908), bukan lagi perlawanan fisik di daerah.', 'TWK'],
+    ['Devide et impera', 'Politik pecah belah Belanda untuk melemahkan perlawanan rakyat.', 'TWK'],
+    ['Agresi Militer Belanda I', 'Serangan Belanda pada 21 Juli 1947, menyalahi Perjanjian Linggarjati.', 'TWK'],
+    ['Agresi Militer Belanda II', 'Serangan Belanda pada 19 Desember 1948 yang menduduki Yogyakarta. Dibalas Serangan Umum 1 Maret 1949.', 'TWK'],
+    ['PDRI', 'Pemerintah Darurat Republik Indonesia di Sumatra Barat, dipimpin Syafruddin Prawiranegara sejak 22 Desember 1948.', 'TWK'],
+    ['Pertempuran 10 November', 'Pertempuran Surabaya 1945, diperingati sebagai Hari Pahlawan.', 'TWK'],
+    ['Bandung Lautan Api', 'Peristiwa 24 Maret 1946 ketika rakyat membakar Bandung bagian selatan sebelum ditinggalkan.', 'TWK'],
+    ['Pemilu 1955', 'Pemilu pertama Indonesia: memilih anggota DPR (29 September) dan Konstituante (15 Desember).', 'TWK'],
+    ['Konstituante', 'Badan pembuat UUD hasil Pemilu 1955. Dibubarkan lewat Dekrit Presiden 5 Juli 1959.', 'TWK'],
+    ['Demokrasi Liberal', 'Masa 1950 sampai 1959 dengan sistem parlementer dan kabinet sering berganti.', 'TWK'],
+    ['Demokrasi Terpimpin', 'Masa 1959 sampai 1966 dengan kekuasaan terpusat pada Presiden Soekarno.', 'TWK'],
+    ['Tritura', 'Tiga Tuntutan Rakyat, 10 Januari 1966, antara lain pembubaran PKI dan penurunan harga.', 'TWK'],
+    ['Majas', 'Gaya bahasa kiasan, misalnya metafora, personifikasi, hiperbola, ironi, dan litotes.', 'TWK'],
+    ['Metafora', 'Perbandingan langsung tanpa kata pembanding, misalnya bunga desa.', 'TWK'],
+    ['Hiperbola', 'Pernyataan yang dilebih-lebihkan, misalnya suaranya menggelegar membelah langit.', 'TWK'],
+    ['Personifikasi', 'Benda mati diperlakukan seperti manusia, misalnya angin berbisik.', 'TWK'],
+    ['Kalimat aktif dan pasif', 'Aktif: subjek melakukan pekerjaan (Dia menulis surat). Pasif: subjek dikenai pekerjaan (Surat ditulis olehnya).', 'TWK'],
+    ['Singkatan dan akronim', 'Singkatan dieja huruf demi huruf (KPK). Akronim dibaca sebagai kata (Bappenas).', 'TWK'],
+    ['Hiperkorek', 'Kesalahan karena berlebihan membakukan, misalnya menulis sekedar, padahal bakunya sekadar.', 'TWK'],
+    ['Tanda koma', 'Dipakai untuk memisahkan unsur dalam perincian, anak kalimat, dan kata seru atau penghubung antarkalimat.', 'TWK'],
+    ['Aturan habis dibagi', 'Habis dibagi 3 jika jumlah digit habis dibagi 3. Habis dibagi 9 jika jumlah digit habis dibagi 9. Habis dibagi 4 jika dua digit terakhir habis dibagi 4.', 'TIU'],
+    ['Bilangan genap ganjil', 'Genap + genap = genap. Ganjil + ganjil = genap. Ganjil x ganjil = ganjil. Genap x apa pun = genap.', 'TIU'],
+    ['Persentase naik turun', 'Naik 20 persen lalu turun 20 persen tidak kembali ke awal, hasilnya 96 persen dari semula.', 'TIU'],
+    ['Selisih kuadrat', 'a kuadrat - b kuadrat = (a - b)(a + b). Berguna untuk menghitung cepat, misalnya 51 x 49.', 'TIU'],
+    ['Kuadrat jumlah', '(a + b) kuadrat = a kuadrat + 2ab + b kuadrat.', 'TIU'],
+    ['Rata-rata gabungan', 'Jumlah seluruh nilai dibagi jumlah seluruh data. Bukan rata-rata dari dua rata-rata, kecuali jumlah datanya sama.', 'TIU'],
+    ['Kelipatan dan sisa', 'Jika n dibagi a bersisa r, maka n - r habis dibagi a.', 'TIU'],
+    ['Jam dan sudut', 'Jarum menit bergerak 6 derajat per menit, jarum jam 0,5 derajat per menit.', 'TIU'],
+    ['Kalender', 'Satu tahun biasa 365 hari, tahun kabisat 366 hari. Tahun kabisat habis dibagi 4.', 'TIU'],
+    ['Pernyataan ekuivalen', 'Jika p maka q ekuivalen dengan jika tidak q maka tidak p (kontraposisi).', 'TIU'],
+    ['Konvers dan invers', 'Konvers dari jika p maka q adalah jika q maka p. Invers adalah jika tidak p maka tidak q. Keduanya tidak selalu benar.', 'TIU'],
+    ['Kesimpulan semua dan sebagian', 'Dari sebagian tidak bisa disimpulkan semua. Dari semua boleh disimpulkan sebagian.', 'TIU'],
+    ['Resolusi konflik', 'Cara menyelesaikan perbedaan dengan dialog, mencari titik temu, dan menjaga hubungan kerja.', 'TKP'],
+    ['Kepemimpinan', 'Kemampuan memengaruhi dan mengarahkan orang lain mencapai tujuan bersama dengan memberi teladan.', 'TKP'],
+    ['Delegasi', 'Melimpahkan tugas kepada orang lain beserta kewenangan yang diperlukan.', 'TKP'],
+    ['SOP', 'Standar Operasional Prosedur: pedoman tertulis langkah kerja agar hasil konsisten.', 'TKP'],
+    ['Reformasi birokrasi', 'Pembaruan sistem pemerintahan agar bersih, efektif, efisien, dan melayani.', 'TKP'],
+    ['Good governance', 'Tata kelola pemerintahan yang baik: transparan, akuntabel, partisipatif, adil, dan taat hukum.', 'TKP'],
+    ['Transparansi', 'Keterbukaan informasi dan proses agar dapat diawasi publik.', 'TKP'],
+    ['Diskriminasi', 'Perlakuan tidak adil karena suku, agama, ras, gender, atau kondisi tertentu. Pelayanan publik harus tanpa diskriminasi.', 'TKP'],
+    ['Layanan ramah disabilitas', 'Layanan yang menyediakan akses setara bagi penyandang disabilitas (UU 8 Tahun 2016).', 'TKP'],
+    ['Kearifan lokal', 'Nilai dan kebiasaan baik masyarakat setempat yang perlu dihargai saat bertugas di daerah.', 'TKP'],
+    ['Tenggat waktu', 'Deadline: batas waktu penyelesaian tugas. Sikap yang baik: rencanakan, kabari dini jika terkendala.', 'TKP'],
+    ['Manajemen stres', 'Mengelola tekanan kerja dengan istirahat cukup, berbagi cerita, dan memilah tugas, bukan melampiaskan ke orang lain.', 'TKP'],
+    ['Pengaduan masyarakat', 'Laporan publik tentang layanan yang buruk atau penyimpangan. Harus ditindaklanjuti sesuai prosedur dan tenggat.', 'TKP'],
   ];
   const norm = t => String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -14695,16 +14970,25 @@ html[data-theme=dark] .bk-line:focus-visible{outline-color:#444E6A}
     var mq=window.matchMedia('(hover:hover) and (pointer:fine)');
     if(!mq.matches) return;
     var map=[[/\btap teks\b/g,'klik teks'],[/\btap nomor\b/g,'klik nomor'],[/\bKetuk untuk\b/g,'Klik untuk'],[/\bketuk untuk\b/g,'klik untuk'],[/\bTap\b/g,'Klik'],[/\bgeser\b/g,'geser']];
+    var re=/\b(tap|Tap|Ketuk|ketuk)\b/;
+    function rewrite(t){var v=t.nodeValue;if(!re.test(v))return;map.forEach(function(m){v=v.replace(m[0],m[1]);});if(v!==t.nodeValue)t.nodeValue=v;}
     function fix(root){
+      if(root.nodeType===3){rewrite(root);return;}
+      if(root.nodeType!==1)return;
       var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
-      while((n=w.nextNode())){ if(/\b(tap|Tap|Ketuk|ketuk)\b/.test(n.nodeValue)) list.push(n); }
-      list.forEach(function(t){var v=t.nodeValue;map.forEach(function(m){v=v.replace(m[0],m[1]);});if(v!==t.nodeValue)t.nodeValue=v;});
+      while((n=w.nextNode())){ if(re.test(n.nodeValue)) list.push(n); }
+      list.forEach(rewrite);
     }
-    var busy=false;
-    function run(){ if(busy)return; busy=true; requestAnimationFrame(function(){ try{ var m=document.getElementById('main'); if(m) fix(m); }catch(e){} busy=false; }); }
+    /* hanya periksa node yang BARU ditambahkan, bukan seluruh #main tiap ada perubahan (mis. jam beranda tiap detik) */
+    var queue=[],busy=false;
+    function run(recs){
+      for(var i=0;i<recs.length;i++){var a=recs[i].addedNodes;for(var j=0;j<a.length;j++)queue.push(a[j]);}
+      if(busy||!queue.length)return; busy=true;
+      requestAnimationFrame(function(){ var q=queue;queue=[];busy=false; try{ for(var k=0;k<q.length;k++){ if(q[k].isConnected) fix(q[k]); } }catch(e){} });
+    }
     var target=document.getElementById('main'); if(!target) return;
     new MutationObserver(run).observe(target,{childList:true,subtree:true});
-    run();
+    fix(target);
   }catch(e){}
 })();
 </script>
@@ -15263,6 +15547,44 @@ html body .ab .ab-bio{margin:18px 0 16px}
   html body #lesson > .saran-strip{padding:14px}
   html body .ab .ab-body{padding:18px 16px 16px}
 }
+
+/* ===== Rapihin footer kartu pembuat ===== */
+html body .ab .ab-links{container-type:inline-size;display:block;margin-top:16px}
+html body .ab .ab-links-in{display:contents}
+html body .ab .ab-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+html body .ab .ab-links a{min-width:0;justify-content:flex-start}
+html body .ab .ab-lt{flex:1;min-width:0}
+html body .ab .ab-lt b{white-space:normal;overflow-wrap:anywhere}
+html body .ab .ab-lt small{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.3}
+@media (max-width:759px){
+  html body .ab .ab-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html body .ab .ab-kopi{grid-column:1 / -1;justify-content:center}
+  html body .ab .ab-kopi .ab-lt{flex:0 1 auto}
+}
+@media (max-width:359px){
+  html body .ab .ab-links{grid-template-columns:1fr}
+}
+html body .ab .ab-saran{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:340px;margin:14px auto 0;padding:11px 22px;border:2px solid var(--line,#E3E6EB);border-radius:99px;background:var(--surface,#fff);color:var(--ink,#111418);font:700 14px/1.3 var(--font,inherit);transition:transform .15s,border-color .15s,background .15s}
+html body .ab .ab-saran svg{flex:none;width:18px;height:18px}
+html body .ab .ab-saran:hover{border-color:var(--brand,#102C52);background:var(--bg,#F6F7F9);transform:translateY(-2px)}
+html body .ab .ab-saran:active{transform:translateY(1px)}
+html body .ab .ab-saran:focus-visible{outline:3px solid #6C5CE7;outline-offset:3px}
+html body .ab .ab-saran + .ab-foot{margin-top:18px}
+html body .ab .ab-foot{display:block;text-align:center;line-height:1.6;padding-bottom:2px;text-wrap:balance}
+html body .ab .ab-flag{display:inline-block;vertical-align:-2px;margin-left:6px;border-radius:2px}
+/* jangan ketutup tombol FAB di pojok kanan bawah */
+html body #main > .ab{margin-bottom:80px}
+@media (min-width:1280px){html body .ab .ab-saran{grid-column:1 / -1}}
+html[data-theme=dark] body .ab .ab-saran,html[data-theme=dark] .ab .ab-saran{background:var(--surface);border-color:var(--n-line);color:var(--ink)}
+
+/* ===== Performa scroll ===== */
+/* header sticky Arena hampir opaque, blur-nya nyaris tak terlihat tapi mahal dirender saat scroll */
+#ar .ar-top,html body #ar.ar-cat>.ar-top{-webkit-backdrop-filter:none;backdrop-filter:none}
+#ar .ar-top{background:rgba(255,255,255,.96)}
+/* mode gelap: gradien latar ditaruh di layer fixed sendiri, bukan background-attachment:fixed (repaint tiap scroll) */
+html[data-theme=dark] body{background:#060914 !important;background-attachment:scroll !important}
+html[data-theme=dark] body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(70% 38% at 8% -6%,rgba(34,228,255,.13),transparent 62%),radial-gradient(55% 32% at 104% 8%,rgba(255,62,165,.10),transparent 62%),radial-gradient(70% 40% at 50% 112%,rgba(167,139,255,.13),transparent 64%)}
 </style>
 </body>
 </html>
