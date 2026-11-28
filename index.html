@@ -2982,10 +2982,10 @@ html[data-theme=dark] .upd-badge{background:#12251B;color:#BFEBD5;border-color:#
               </div>
             <div class="kopi" id="kopiHome" data-kopi role="button" tabindex="0" aria-label="Traktir kopi: buka pilihan cara traktir">
               <div class="kopi-ic" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true"><g class="cup-st" fill="none" stroke="#14161C" stroke-width="2" stroke-linecap="round"><path d="M18 14q-3-3 0-6M26 14q-3-3 0-6"/></g><path d="M36 25h2a5 5 0 0 1 0 10h-4" fill="none" stroke="#14161C" stroke-width="2.5"/><path d="M9 20h27v10a13.5 13.5 0 0 1-27 0z" fill="#fff" stroke="#14161C" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="22.5" cy="20" rx="13.5" ry="3" fill="#8A5A3B" stroke="#14161C" stroke-width="2"/><path d="M16 30q2-3 4 0M25 30q2-3 4 0M20.5 34q2 2.5 4 0" fill="none" stroke="#14161C" stroke-width="2" stroke-linecap="round"/><circle cx="14.5" cy="34" r="2" fill="#F4A6A0"/><circle cx="30.5" cy="34" r="2" fill="#F4A6A0"/><path d="M7 44h31" stroke="#14161C" stroke-width="2.5" stroke-linecap="round"/></svg></div>
-              <div class="kopi-tx"><strong>Terbantu belajar di sini?</strong><span>Kalau materi dan soalnya kepake, lo bisa traktir kopi buat bantu gue terus update isinya. Nominal bebas.</span></div>
-              <a class="kopi-btn" href="#traktir" data-kopi tabindex="-1">☕ Traktir kopi</a>
+              <div class="kopi-tx"><strong>Terbantu belajar di sini?</strong><span>Materi dan soal di sini gratis. Kalau kepake, lo bisa traktir kopi buat bantu gue terus update isinya. Nominal bebas.</span></div>
+              <a class="kopi-btn" href="#traktir" data-kopi tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3.5v2.2M12 3.5v2.2"/></svg><span>Traktir kopi</span></a>
             </div>
-            <a class="bk-line" href="https://s.shopee.co.id/5fqfVSM9xg?exp_info=tt_wgBr8JAV" target="_blank" rel="noopener noreferrer sponsored nofollow"><span aria-hidden="true">📘</span><span>Buku yang bikin gue lolos CPNS DKI 2024: <b>THE MASTER SKD CPNS</b></span><span class="bk-go">Cek<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+            <a class="bk-line" aria-label="Lihat buku yang bikin gue lolos CPNS DKI 2024, buka di Shopee" href="https://s.shopee.co.id/5fqfVSM9xg?exp_info=tt_wgBr8JAV" target="_blank" rel="noopener noreferrer sponsored nofollow"><span class="bk-ic" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M9 7h6"/></svg></span><span class="bk-tx">Buku yang bikin gue <b>lolos CPNS DKI 2024</b></span><span class="bk-go">Cek<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
             </header>
             <h3 class="sec">Subtes</h3><div class="tiles" id="tiles"></div>
             <h3 class="sec" id="secMateri">Semua materi</h3><button type="button" class="f-reset" id="fReset" hidden>Tampilkan semua materi</button>
@@ -14452,6 +14452,196 @@ html[data-theme=dark] .bk-line b{text-decoration-color:rgba(237,243,255,.5)}
 .bk-line:hover b{text-decoration-color:#102C52}
 .bk-line:focus-visible{outline:3px solid #102C52;outline-offset:3px;border-radius:6px}
 html[data-theme=dark] .bk-line:focus-visible{outline-color:#444E6A}
+</style>
+<style id="desktop-v2">
+/* ===== desktop-v2: tata letak khusus layar >= 900px ===== */
+@media (min-width:900px){
+  html body{
+    --sidebar-w:240px;
+    --dk-w:1080px;
+    --dk-g:max(0px,calc((100vw - var(--sidebar-w) - var(--dk-w)) / 2));
+  }
+  /* satu container, satu lebar: semua blok sejajar */
+  html body #main{padding:40px clamp(24px,3vw,48px) 88px}
+  html body .view-inner{max-width:var(--dk-w);margin-inline:auto}
+
+  /* sidebar lebih ramping */
+  html body #nav{padding:28px 16px 20px}
+  html body .nav-goal{padding:14px 16px}
+
+  /* elemen melayang: parkir di gutter kanan, bukan nempel tepi window */
+  html body .fab{right:max(28px,calc(var(--dk-g) / 2 - 28px));bottom:32px}
+  html body .lf{right:max(24px,calc(var(--dk-g) / 2 - 62px));bottom:32px}
+  html body .mkm{right:max(8px,calc(var(--dk-g) / 2 - 33px))}
+
+  /* ===== Halaman materi: header, tab, isi, penutup = tepi kiri-kanan yang sama ===== */
+  html body #lesson{max-width:none}
+  html body #lesson > .goal{max-width:78ch}
+  html body #lesson > .tabs2{max-width:480px}
+  html body #lesson .lc,
+  html body #lesson .lc.materi,
+  html body #lesson .lc-act,
+  html body #lesson .kopi-inline{max-width:none;margin-inline:0}
+  /* teks panjang tetap enak dibaca, tapi kartu/tabel/ilustrasi boleh lebar */
+  html body #lesson .lc.materi > p,
+  html body #lesson .lc.materi li,
+  html body #lesson .lc.materi .analogi p{max-width:80ch}
+  html body #lesson .sbt{flex-wrap:wrap;overflow:visible;padding-bottom:8px}
+
+  /* ilustrasi kisah: kiri-rata, selalu selebar kolomnya */
+  html body .sx-l{max-width:none;margin:0}
+  html body .sx{gap:20px}
+  /* hint khas layar sentuh disembunyikan di desktop */
+  html body .hs-st::after{display:none}
+}
+
+/* ilustrasi + narasi 2 kolom, rasio lebih seimbang, hanya jika kartunya cukup lebar */
+@media (min-width:900px){
+  @container (min-width:720px){
+    html body .sx{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px}
+  }
+}
+
+/* ===== Beranda: manfaatkan lebar, kurangi scroll ===== */
+@media (min-width:1100px){
+  html body header.home{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:16px 20px;align-items:stretch;
+  }
+  html body header.home > *{margin:0;min-width:0}
+  html body header.home > .hero,
+  html body header.home > .sg-bar,
+  html body header.home > .sg-quick{grid-column:1 / -1}
+  html body header.home > .mk-row{grid-column:1;grid-row:4;align-self:center}
+  html body header.home > .upd-badge{grid-column:2;grid-row:4;max-width:none;width:auto;align-self:center}
+  html body header.home > .kopi{grid-column:1 / -1;grid-row:5}
+  html body header.home > .bk-line{grid-column:1 / -1;grid-row:6}
+}
+@media (min-width:1200px){
+  html body .lgrid-home{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+@media (min-width:1100px){
+  /* sisakan gutter kanan 104px supaya maskot / FAB / Daftar isi tidak menimpa konten */
+  html body #main{padding-left:40px;padding-right:104px}
+  html body{--dk-g:calc(104px + max(0px,calc((100vw - var(--sidebar-w) - 144px - var(--dk-w)) / 2)))}
+  html body .fab{right:max(24px,calc(var(--dk-g) / 2 - 28px))}
+  html body .mkm{right:max(16px,calc(var(--dk-g) / 2 - 33px))}
+  html body .lf{right:max(28px,calc(var(--dk-g) / 2 - 24px))}
+  html body .lf-toc{width:48px;height:48px;padding:0;justify-content:center;border-radius:50%}
+  html body .lf-toc span{display:none}
+  /* rapatkan jarak antar kartu beranda */
+  html body header.home > *{margin:0 !important}
+}
+@media (min-width:1600px){
+  html body .lf-toc{width:auto;height:auto;padding:10px 16px 10px 12px;border-radius:99px}
+  html body .lf-toc span{display:inline}
+  html body .lf{right:max(28px,calc(var(--dk-g) / 2 - 62px))}
+}
+
+</style>
+
+<script id="desktop-v2-js">
+(function(){
+  try{
+    var mq=window.matchMedia('(hover:hover) and (pointer:fine)');
+    if(!mq.matches) return;
+    var map=[[/\btap teks\b/g,'klik teks'],[/\btap nomor\b/g,'klik nomor'],[/\bKetuk untuk\b/g,'Klik untuk'],[/\bketuk untuk\b/g,'klik untuk'],[/\bTap\b/g,'Klik'],[/\bgeser\b/g,'geser']];
+    function fix(root){
+      var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
+      while((n=w.nextNode())){ if(/\b(tap|Tap|Ketuk|ketuk)\b/.test(n.nodeValue)) list.push(n); }
+      list.forEach(function(t){var v=t.nodeValue;map.forEach(function(m){v=v.replace(m[0],m[1]);});if(v!==t.nodeValue)t.nodeValue=v;});
+    }
+    var busy=false;
+    function run(){ if(busy)return; busy=true; requestAnimationFrame(function(){ try{ var m=document.getElementById('main'); if(m) fix(m); }catch(e){} busy=false; }); }
+    var target=document.getElementById('main'); if(!target) return;
+    new MutationObserver(run).observe(target,{childList:true,subtree:true});
+    run();
+  }catch(e){}
+})();
+</script>
+<style id="kopi-v3">
+/* kopi-v3 */
+html body #kopiHome:not(.kopi-ok){display:grid !important;grid-template-columns:auto minmax(0,1fr) !important;grid-template-areas:"ic tx" "btn btn" "quote quote" "wall wall" !important;align-items:center !important;gap:14px 14px !important;padding:16px !important;margin:6px 0 18px !important;border:2px solid transparent !important;border-radius:22px !important;background-color:#FFF5DB !important;background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22%3E%3Crect x=%220%22 y=%220%22 width=%22100%25%22 height=%22100%25%22 rx=%2221%22 fill=%22none%22 stroke=%22%23E8B84A%22 stroke-width=%224%22 stroke-linecap=%22round%22 stroke-dasharray=%227 7%22%3E%3Canimate attributeName=%22stroke-dashoffset%22 from=%220%22 to=%22-14%22 dur=%221.1s%22 repeatCount=%22indefinite%22/%3E%3C/rect%3E%3C/svg%3E"),linear-gradient(135deg,#FFF9E8 0%,#FFF0CC 100%) !important;background-repeat:no-repeat !important;background-size:100% 100%,100% 100% !important;background-origin:border-box !important;background-clip:border-box !important;box-shadow:0 1px 2px rgba(16,24,40,.04),0 14px 30px -18px rgba(190,130,10,.45) !important;transform:none !important;animation:none !important;transition:box-shadow .2s ease,transform .2s ease !important}
+html body #kopiHome:not(.kopi-ok):hover{transform:translateY(-2px) !important;box-shadow:0 1px 2px rgba(16,24,40,.04),0 18px 34px -16px rgba(190,130,10,.55) !important}
+html body #kopiHome:not(.kopi-ok):active{transform:none !important}
+html body #kopiHome:not(.kopi-ok)::before,
+html body #kopiHome:not(.kopi-ok)::after{display:none !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic{grid-area:ic !important;width:52px !important;height:52px !important;display:grid !important;place-items:center !important;border:1.5px solid #EDD79C !important;border-radius:50% !important;background:#fff !important;animation:none !important;box-shadow:none !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic svg{width:30px !important;height:30px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx{grid-area:tx !important;min-width:0 !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx strong{display:block !important;font-size:18px !important;line-height:1.25 !important;letter-spacing:-.01em !important;color:#14161C !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx span{display:block !important;margin-top:4px !important;font-size:14.5px !important;line-height:1.55 !important;color:#5E4B2B !important;max-width:60ch !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn{grid-area:btn !important;animation:none !important;display:inline-flex !important;align-items:center !important;justify-content:center !important;gap:9px !important;min-height:52px !important;padding:0 26px !important;border:0 !important;border-radius:999px !important;background:#F0A12A !important;color:#1A1405 !important;font:800 15.5px/1 var(--font,inherit) !important;letter-spacing:.005em !important;text-decoration:none !important;white-space:nowrap !important;box-shadow:0 4px 0 #B26F0B !important;transition:transform .12s ease,box-shadow .12s ease,background .15s ease !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn svg{width:20px !important;height:20px !important;flex:none !important;fill:none !important;stroke:currentColor !important;stroke-width:2 !important;stroke-linecap:round !important;stroke-linejoin:round !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn::after{content:"→" !important;margin:0 !important;animation:none !important;transition:transform .15s ease !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn:hover{background:#F7B040 !important;filter:none !important;transform:translateY(-1px) !important;box-shadow:0 5px 0 #B26F0B !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn:hover::after{transform:translateX(3px) !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn:active{transform:translateY(3px) !important;box-shadow:0 1px 0 #B26F0B !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote{grid-area:quote !important;margin:0 !important;display:flex !important;gap:10px !important;overflow-x:auto !important;scroll-snap-type:x mandatory !important;scrollbar-width:none !important;-webkit-overflow-scrolling:touch !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote::-webkit-scrollbar{display:none !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote figure{flex:0 0 88% !important;scroll-snap-align:start !important;margin:0 !important;padding:12px 14px !important;background:rgba(255,255,255,.78) !important;border:1px solid #F0DFB0 !important;border-left:4px solid #E8B64A !important;border-radius:14px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote figure:only-child{flex:1 1 100% !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote blockquote{margin:0 !important;font-size:14px !important;line-height:1.55 !important;color:#4A3B22 !important;display:-webkit-box !important;-webkit-line-clamp:3 !important;-webkit-box-orient:vertical !important;overflow:hidden !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote figcaption{margin-top:8px !important;font-size:12.5px !important;font-weight:800 !important;color:#8A5200 !important}
+html body #kopiHome:not(.kopi-ok) .kopi-wall{grid-area:wall !important;width:100% !important;margin:0 !important;padding:11px 14px !important;gap:12px !important;background:rgba(255,255,255,.9) !important;border:1px solid #F0DFB0 !important;border-radius:14px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-wall:hover{background:#fff !important;border-color:#E8C86A !important}
+html body #kopiHome:not(.kopi-ok) .kw-sum b{font-size:14.5px !important}
+html body #kopiHome:not(.kopi-ok) .kw-go{white-space:nowrap !important}
+html body #kopiHome:not(.kopi-ok) .kw-go::after{content:" ›" !important}
+@media (max-width:640px){html body #kopiHome:not(.kopi-ok){padding:14px !important;gap:12px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic{width:44px !important;height:44px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic svg{width:26px !important;height:26px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx strong{font-size:17px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx span{font-size:14px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-btn{width:100% !important;min-height:54px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote{margin-inline:-2px !important;padding:0 2px 2px !important}}
+@media (min-width:900px){html body #kopiHome:not(.kopi-ok){grid-template-columns:auto minmax(0,1fr) auto !important;grid-template-areas:"ic tx btn" "quote quote quote" "wall wall wall" !important;padding:20px 24px !important;gap:18px 20px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic{width:60px !important;height:60px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-ic svg{width:34px !important;height:34px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx strong{font-size:20px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-tx span{font-size:15px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px !important;overflow:visible !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote:has(figure:only-child){grid-template-columns:minmax(0,1fr) !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote figure{flex:none !important;padding:14px 16px !important}
+html body #kopiHome:not(.kopi-ok) .kopi-quote blockquote{font-size:14.5px !important}}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok){background-color:#1E1810 !important;background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22%3E%3Crect x=%220%22 y=%220%22 width=%22100%25%22 height=%22100%25%22 rx=%2221%22 fill=%22none%22 stroke=%22%238A7437%22 stroke-width=%224%22 stroke-linecap=%22round%22 stroke-dasharray=%227 7%22%3E%3Canimate attributeName=%22stroke-dashoffset%22 from=%220%22 to=%22-14%22 dur=%221.1s%22 repeatCount=%22indefinite%22/%3E%3C/rect%3E%3C/svg%3E"),linear-gradient(135deg,#251E0F 0%,#1B160B 100%) !important;border-color:transparent !important;box-shadow:none !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-ic{background:#FFF1CF !important;border-color:#E8C86A !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-tx strong{color:#F3EEE0 !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-tx span{color:#CDBA95 !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-btn{background:#F5A83A !important;color:#1A1405 !important;box-shadow:0 4px 0 #9A5E0C !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-btn:hover{background:#FFB752 !important;box-shadow:0 5px 0 #9A5E0C !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-btn:active{box-shadow:0 1px 0 #9A5E0C !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-quote figure,
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-wall{background:var(--surface,#171B26) !important;border-color:#3A3322 !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-quote figure{border-left-color:#E8B64A !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-quote blockquote{color:#DCCFB4 !important}
+html[data-theme=dark] body #kopiHome:not(.kopi-ok) .kopi-quote figcaption{color:#FFB257 !important}
+@media (prefers-reduced-motion:reduce){html body #kopiHome:not(.kopi-ok),html body #kopiHome .kopi-btn,html body #kopiHome .kopi-btn::after{transition:none !important}}
+@media (prefers-reduced-motion:reduce){html body #kopiHome:not(.kopi-ok){background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22%3E%3Crect x=%220%22 y=%220%22 width=%22100%25%22 height=%22100%25%22 rx=%2221%22 fill=%22none%22 stroke=%22%23E8B84A%22 stroke-width=%224%22 stroke-linecap=%22round%22 stroke-dasharray=%227 7%22%3E%3C/rect%3E%3C/svg%3E"),linear-gradient(135deg,#FFF9E8 0%,#FFF0CC 100%) !important}html[data-theme=dark] body #kopiHome:not(.kopi-ok){background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22%3E%3Crect x=%220%22 y=%220%22 width=%22100%25%22 height=%22100%25%22 rx=%2221%22 fill=%22none%22 stroke=%22%238A7437%22 stroke-width=%224%22 stroke-linecap=%22round%22 stroke-dasharray=%227 7%22%3E%3C/rect%3E%3C/svg%3E"),linear-gradient(135deg,#251E0F 0%,#1B160B 100%) !important}}
+
+</style>
+<style id="bk-v2">
+/* ===== bk-v2: banner buku ===== */
+html body a.bk-line{
+  display:flex;align-items:center;gap:12px;
+  min-height:60px;padding:10px 10px 10px 12px;
+  border-radius:18px;font-size:14px;line-height:1.4;font-weight:500;
+  color:rgba(255,255,255,.92);animation:none;
+}
+html body a.bk-line .bk-ic{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.12);color:#F6C25B}
+html body a.bk-line .bk-ic svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+html body a.bk-line .bk-tx{flex:1;min-width:0;text-wrap:balance}
+html body a.bk-line b{color:#fff;font-weight:800;text-decoration:none}
+html body a.bk-line .bk-go{flex:none;height:40px;padding:0 16px 0 18px;gap:6px;font-size:14px;white-space:nowrap}
+html body a.bk-line .bk-go svg{width:15px;height:15px;transition:transform .15s ease}
+html body a.bk-line:hover .bk-go svg{transform:translate(2px,-2px)}
+@media (max-width:420px){
+  html body a.bk-line{gap:10px;padding:10px 8px 10px 10px;font-size:13.5px}
+  html body a.bk-line .bk-ic{width:36px;height:36px;border-radius:11px}
+  html body a.bk-line .bk-go{padding:0 14px 0 16px}
+}
+
 </style>
 </body>
 </html>
