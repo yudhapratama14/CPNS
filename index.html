@@ -2913,12 +2913,6 @@ html[data-theme=dark] .upd-badge{background:#12251B;color:#BFEBD5;border-color:#
             <span>Arena Tryout</span>
           </button>
         </li>
-        <li>
-          <button class="nav-btn" data-view="timer" id="navTimer">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4l2.5 2M9.5 3h5"/></svg>
-            <span>Timer</span>
-          </button>
-        </li>
               <li>
           <button type="button" class="nav-btn nav-kopi" data-kopi data-src="menu" aria-label="Traktir kopi">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3.5v2.2M12 3.5v2.2"/></svg>
@@ -2942,6 +2936,7 @@ html[data-theme=dark] .upd-badge{background:#12251B;color:#BFEBD5;border-color:#
               <h1 id="judul-belajar" class="sr-only">Beranda</h1>
               <div class="hero">
                 <div class="home-logo" role="img" aria-label="Logo Saku CPNS"></div>
+                <div class="hero-clock" id="heroClock" aria-hidden="true"><div class="hc-t"><span id="hcHM">00:00</span><small id="hcS">00</small></div><div class="hc-d" id="hcD"></div></div>
                 <p class="hello">Halo, Pejuang CPNS!</p>
                 <p class="subhello">Gas belajar, target 450+ dari maksimal 550</p>
                 <div class="hero-chips" aria-hidden="true"><span><i style="background:#35A7A9"></i>TWK</span><span><i style="background:#F8B461"></i>TIU</span><span><i style="background:#A58BD6"></i>TKP</span><span><i style="background:#E69725"></i>Tryout</span></div>
@@ -3084,72 +3079,6 @@ html[data-theme=dark] .upd-badge{background:#12251B;color:#BFEBD5;border-color:#
             <p>Arena dibuka di tahap berikutnya. Sambil menunggu, asah dulu materinya lewat latihan soal di tiap bab.</p>
             <div class="arena-f"><span>110 soal</span><span>100 menit</span><span>Skor langsung</span></div>
             <button type="button" class="btn" onclick="var b=document.querySelector('.nav-btn[data-view=&quot;belajar&quot;]');if(b)b.click();">Mulai dari Ruang Belajar</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ TIMER BELAJAR ============ -->
-      <section id="view-timer" class="view" aria-labelledby="judul-timer">
-        <div class="view-inner tm">
-          <h1 id="judul-timer">Timer Belajar</h1>
-          <p class="tm-lead">Belajar per sesi fokus, istirahat teratur. Menit belajarmu dihitung otomatis tiap hari.</p>
-
-          <div class="card tm-card">
-            <div class="tm-modes" role="group" aria-label="Mode timer">
-              <button type="button" class="tm-m is-on" data-m="f">Fokus</button>
-              <button type="button" class="tm-m" data-m="b">Istirahat</button>
-              <button type="button" class="tm-m" data-m="l">Istirahat panjang</button>
-            </div>
-            <div class="tm-ring">
-              <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="tm-bg" cx="60" cy="60" r="54"/><circle class="tm-fg" id="tmArc" cx="60" cy="60" r="54"/></svg>
-              <div class="tm-mid"><div class="tm-time" id="tmTime">25:00</div><div class="tm-lbl" id="tmLbl">Fokus</div></div>
-            </div>
-            <div class="tm-ctl">
-              <button type="button" class="btn" id="tmGo">Mulai</button>
-              <button type="button" class="btn ghost" id="tmReset">Ulang</button>
-              <button type="button" class="btn ghost" id="tmSkip">Lewati</button>
-            </div>
-            <p class="tm-msg" id="tmMsg" role="status" aria-live="polite"></p>
-            <div class="tm-set">
-              <span class="tm-sl">Durasi fokus</span>
-              <div class="tm-chips" id="tmDur" role="group" aria-label="Durasi fokus">
-                <button type="button" data-f="15">15</button><button type="button" data-f="25" class="is-on">25</button><button type="button" data-f="45">45</button><button type="button" data-f="50">50</button>
-              </div>
-              <label class="tm-snd"><input type="checkbox" id="tmSound" checked> Bunyi saat selesai</label>
-            </div>
-          </div>
-
-          <div class="card tm-stat">
-            <h3>Menit belajar</h3>
-            <div class="tm-today"><b id="tmToday">0 menit</b><span>hari ini</span></div>
-            <div class="tm-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="tmBar"><i id="tmBarI"></i></div>
-            <div class="tm-row">
-              <label class="tm-tg">Target harian
-                <select id="tmTarget"><option value="60">1 jam</option><option value="90">1,5 jam</option><option value="120" selected>2 jam</option><option value="180">3 jam</option><option value="240">4 jam</option></select>
-              </label>
-              <span class="tm-pill" id="tmSes">0 sesi</span>
-              <span class="tm-pill" id="tmStk">Beruntun 0 hari</span>
-            </div>
-            <div class="tm-week" id="tmWeek" aria-label="Menit belajar 7 hari terakhir"></div>
-            <p class="tm-note">Hari dihitung beruntun kalau belajar minimal 10 menit. Data tersimpan di perangkat ini.</p>
-          </div>
-
-          <div class="card tm-rm" id="rmCard">
-            <h3>Pengingat belajar</h3>
-            <p class="tm-rm-p">Notifikasi harian biar belajarmu nggak bolong. Aktif selama aplikasi masih terbuka atau berjalan di latar belakang.</p>
-            <div class="tm-row tm-rm-row">
-              <label class="tm-snd"><input type="checkbox" id="rmOn"> Aktifkan pengingat</label>
-              <label class="tm-tg">Jam <input type="time" id="rmTime" value="19:00"></label>
-            </div>
-            <label class="tm-snd tm-rm-skip"><input type="checkbox" id="rmSkip" checked> Lewati kalau hari ini sudah belajar 10 menit atau lebih</label>
-            <div class="tm-ctl tm-rm-ctl"><button type="button" class="btn ghost" id="rmTest">Coba notifikasi</button></div>
-            <p class="tm-note" id="rmSt" role="status" aria-live="polite"></p>
-          </div>
-
-          <div class="card tm-sr">
-            <h3>Kotak saran</h3>
-            <p>Ada ide, bug, atau soal dan materi yang keliru? Kirim langsung ke pembuat. Tidak ditampilkan ke publik.</p>
-            <button type="button" class="btn" data-saran>Tulis saran</button>
           </div>
         </div>
       </section>
@@ -11232,7 +11161,14 @@ tkp:[]};
   const svClear=()=>{try{localStorage.removeItem(SVK)}catch(e){}};
   const svLoad=()=>{try{const o=JSON.parse(localStorage.getItem(SVK)||'null');return o&&o.v===1&&o.items&&o.items.length&&o.left>0&&!(window.twkStale&&window.twkStale(o))?o:null}catch(e){return null}};
   document.addEventListener('visibilitychange',()=>{if(document.hidden)sv()});window.addEventListener('pagehide',sv);
-  function runTick(){clearInterval(tick);tick=setInterval(()=>{S.left--;if(S.left%10===0)sv();const t=document.getElementById('arT');if(t){t.textContent=fmt(S.left);t.classList.toggle('low',S.left<300)}if(S.left===600||S.left===300)arWarn('Sisa waktu '+(S.left/60)+' menit');if(S.left<=0){arWarn('Waktu habis. Tryout diakhiri otomatis.');finish()}},1000);}
+  const wl={l:null,get(){try{if(navigator.wakeLock&&!document.hidden&&!wl.l)navigator.wakeLock.request('screen').then(x=>{wl.l=x;x.addEventListener('release',()=>{wl.l=null})}).catch(()=>{})}catch(e){}},off(){try{wl.l&&wl.l.release()}catch(e){}wl.l=null}};
+  // Timer berbasis jam: akurat walau browser menahan interval. Waktu berhenti saat halaman tersembunyi (layar mati atau pindah tab).
+  function runTick(){clearInterval(tick);let last=Date.now(),acc=0;
+    const step=()=>{S.left--;if(S.left%10===0)sv();const t=document.getElementById('arT');if(t){t.textContent=fmt(S.left);t.classList.toggle('low',S.left<300)}if(S.left===600||S.left===300)arWarn('Sisa waktu '+(S.left/60)+' menit');if(S.left<=0){arWarn('Waktu habis. Tryout diakhiri otomatis.');finish()}};
+    if(window.__arVis)document.removeEventListener('visibilitychange',window.__arVis);
+    window.__arVis=()=>{last=Date.now();if(!document.hidden&&S&&!S.done)wl.get()};document.addEventListener('visibilitychange',window.__arVis);
+    wl.get();
+    tick=setInterval(()=>{const now=Date.now();if(document.hidden){last=now;return}acc+=Math.min(now-last,3000);last=now;while(acc>=1000&&S&&!S.done){acc-=1000;step()}},500);}
   // ===== Battlefield: adu skor dengan peserta lain per paket =====
   const BF={pk:'14',top:null};
   const bfNama=k=>k==='acak'?'Acak':String(k);
@@ -11636,11 +11572,11 @@ tkp:[]};
     const r=document.getElementById('arR');if(r){r.classList.toggle('on',!!S.flag[k]);r.setAttribute('aria-pressed',!!S.flag[k]);r.textContent=S.flag[k]?'Batal ragu-ragu':'Tandai ragu-ragu'}
   }
   function pick(j){
-    S.ans[S.i]=j;
+    S.ans[S.i]=j;sv();
     root.querySelectorAll('.ar-o').forEach(o=>{const on=+o.dataset.j===j;o.classList.toggle('on',on);o.setAttribute('aria-pressed',on)});
     liveUpd();
   }
-  function flip(){S.flag[S.i]=!S.flag[S.i];liveUpd()}
+  function flip(){S.flag[S.i]=!S.flag[S.i];liveUpd();sv()}
   function draw(){
     sv();
     const x=S.items[S.i],last=S.i===S.items.length-1,nr=Object.keys(S.flag).filter(k=>S.flag[k]).length;
@@ -11850,7 +11786,7 @@ tkp:[]};
     };
   }
   function finish(){
-    clearInterval(tick);if(S)S.done=true;svClear();const sc={twk:0,tiu:0,tkp:0},mx={twk:0,tiu:0,tkp:0},byL={},rev=[];
+    clearInterval(tick);wl.off();if(S)S.done=true;svClear();const sc={twk:0,tiu:0,tkp:0},mx={twk:0,tiu:0,tkp:0},byL={},rev=[];
     S.items.forEach((x,k)=>{const a=S.ans[k];let pt=0,m=5;
       if(x.g==='tkp'){pt=a===undefined?0:x.s[a]}else pt=a===x.a?5:0;
       sc[x.g]+=pt;mx[x.g]+=m;const L=byL[x.id]=byL[x.id]||[0,0];L[0]+=pt;L[1]+=m;
@@ -14819,53 +14755,21 @@ html body a.bk-line:hover .bk-go svg{transform:translate(2px,-2px)}
 }
 
 </style>
+<style id="first-paint-fix">
+/* Layar pertama langsung tampil penuh. JS besar saat buka membuat animasi fade macet di tengah (tampilan pudar). Animasi tetap jalan untuk perpindahan halaman berikutnya. */
+html:not(.app-ready) .view.is-active,
+html:not(.app-ready) .view.is-active > .view-inner{animation:none!important;opacity:1!important;transform:none!important}
+</style>
+<style id="hero-clock-css">
+.hero-clock{display:none}
+@media(min-width:900px){
+  .hero-clock{display:block;position:absolute;right:28px;top:50%;transform:translateY(-50%);text-align:right;pointer-events:none;color:var(--ink,#14161C)}
+  .hc-t{display:flex;align-items:baseline;justify-content:flex-end;gap:6px;font-weight:800;font-size:44px;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .hc-t small{font-size:20px;letter-spacing:0;color:var(--ink-soft,#4B5160)}
+  .hc-d{margin-top:8px;font-size:14px;font-weight:600;color:var(--ink-soft,#4B5160)}
+}
+</style>
 <style id="timer-saran-css">
-.tm .tm-lead{margin:0 0 16px;color:var(--ink-soft,#4B5160);line-height:1.6}
-.tm .card{margin:0 0 18px}
-.tm-modes{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px}
-.tm-m{flex:1 1 auto;min-height:40px;padding:0 14px;border:1.5px solid #DCE1E9;border-radius:99px;background:#fff;color:#3A4152;font:700 13.5px/1 inherit;cursor:pointer}
-.tm-m.is-on{background:var(--brand,#102C52);border-color:var(--brand,#102C52);color:#fff}
-.tm-ring{position:relative;width:min(280px,76vw);aspect-ratio:1;margin:0 auto 18px}
-.tm-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
-.tm-ring circle{fill:none;stroke-width:8}
-.tm-bg{stroke:#E3E6EB}
-.tm-fg{stroke:var(--brand,#102C52);stroke-linecap:round;stroke-dasharray:339.292;stroke-dashoffset:0;transition:stroke-dashoffset .4s linear,stroke .2s}
-.tm.is-break .tm-fg{stroke:#147B54}
-.tm-mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.tm-time{font-size:clamp(40px,12vw,56px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
-.tm-lbl{margin-top:6px;font-size:14px;font-weight:700;color:var(--ink-soft,#4B5160)}
-.tm-ctl{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.tm-ctl .btn{min-height:46px;padding:0 24px;border-radius:99px;font-weight:800}
-.tm-msg{min-height:22px;margin:12px 0 0;text-align:center;font-size:14px;color:var(--ink-soft,#4B5160)}
-.tm-set{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;justify-content:center;margin-top:8px;padding-top:14px;border-top:1.5px dashed #E3E6EB}
-.tm-sl{font-size:13px;font-weight:700;color:var(--ink-soft,#4B5160)}
-.tm-chips{display:flex;gap:6px}
-.tm-chips button{min-width:44px;min-height:34px;border:1.5px solid #DCE1E9;border-radius:99px;background:#fff;font:700 13px/1 inherit;color:inherit;cursor:pointer}
-.tm-chips button.is-on{background:var(--brand-soft,#E6ECF5);border-color:var(--brand,#102C52)}
-.tm-chips button:disabled{opacity:.45;cursor:not-allowed}
-.tm-snd{display:inline-flex;align-items:center;gap:6px;font-size:13px;cursor:pointer}
-.tm-stat h3,.tm-sr h3{margin:0 0 8px}
-.tm-today{display:flex;align-items:baseline;gap:8px}
-.tm-today b{font-size:28px;letter-spacing:-.01em}
-.tm-today span{color:var(--ink-soft,#4B5160);font-size:14px}
-.tm-bar{height:12px;margin:10px 0 14px;border:1.5px solid #E3E6EB;border-radius:99px;background:#F1F3F7;overflow:hidden}
-.tm-bar i{display:block;height:100%;width:0;background:#147B54;border-radius:99px;transition:width .4s}
-.tm-row{display:flex;gap:8px 10px;flex-wrap:wrap;align-items:center}
-.tm-tg{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
-.tm-tg select{min-height:34px;padding:0 8px;border:1.5px solid #DCE1E9;border-radius:10px;background:#fff;font:600 13px/1 inherit;color:inherit}
-.tm-pill{padding:5px 12px;border:1.5px solid #E3E6EB;border-radius:99px;background:var(--brand-soft,#E6ECF5);font-size:12.5px;font-weight:800}
-.tm-week{display:flex;align-items:flex-end;gap:8px;height:120px;margin:16px 0 4px;padding:0 2px}
-.tm-d{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px;min-width:0}
-.tm-d i{display:block;width:100%;max-width:34px;min-height:3px;border-radius:6px 6px 3px 3px;background:#C9D3E3}
-.tm-d.now i{background:var(--brand,#102C52)}
-.tm-d small{font-size:11px;font-weight:700;color:var(--ink-soft,#4B5160)}
-.tm-d.now small{color:inherit}
-.tm-d em{font-style:normal;font-size:10.5px;color:var(--ink-soft,#4B5160);min-height:13px}
-.tm-note{margin:8px 0 0;font-size:12.5px;line-height:1.5;color:var(--ink-soft,#4B5160)}
-.tm-sr p{margin:0 0 12px;line-height:1.6;color:var(--ink-soft,#4B5160)}
-#navTimer.tm-on{position:relative}
-#navTimer.tm-on::after{content:'';position:absolute;top:8px;right:calc(50% - 20px);width:9px;height:9px;border-radius:50%;background:#E5484D;box-shadow:0 0 0 2px #fff}
-@media(min-width:900px){#navTimer.tm-on::after{top:50%;right:14px;transform:translateY(-50%)}}
 .ab-saran{display:block;width:100%;margin:10px 0 0;padding:10px 14px;border:2px solid #E3E6EB;border-radius:14px;background:#fff;color:inherit;font:700 14px/1.3 inherit;cursor:pointer}
 .ab-saran:hover{border-color:#102C52}
 /* modal saran */
@@ -14889,24 +14793,8 @@ html body a.bk-line:hover .bk-go svg{transform:translate(2px,-2px)}
 .sr-ok{text-align:center;padding:10px 0}
 .sr-ok b{display:block;margin:0 0 6px;font-size:18px}
 @media(min-width:900px){html body .hero .home-logo{display:block;top:22px;right:28px;width:150px;height:76px}}
-html[data-theme=dark] .tm-m,html[data-theme=dark] .tm-chips button,html[data-theme=dark] .tm-tg select,html[data-theme=dark] .ab-saran{border-color:var(--n-line);background:var(--surface);color:#D2D6DF}
-html[data-theme=dark] .tm-m.is-on{background:#3B4A7A;border-color:#5566A0;color:#fff}
-html[data-theme=dark] .tm-bg{stroke:var(--n-line)}
-html[data-theme=dark] .tm-bar{background:#121418;border-color:var(--n-line)}
-html[data-theme=dark] .tm-d i{background:#3A4766}
-html[data-theme=dark] .tm-d.now i{background:#7F93D1}
 html[data-theme=dark] .sr-box{border-color:var(--n-line)}
 html[data-theme=dark] .sr-kat button.is-on{background:#3B4A7A;border-color:#5566A0}
-.tm-rm h3{margin:0 0 8px}
-.tm-rm-p{margin:0 0 12px;line-height:1.6;color:var(--ink-soft,#4B5160)}
-.tm-rm-row{margin:0 0 10px;justify-content:space-between}
-.tm-tg input[type=time]{min-height:34px;padding:0 8px;border:1.5px solid #DCE1E9;border-radius:10px;background:#fff;font:600 13px/1 inherit;color:inherit}
-.tm-rm-skip{display:flex;margin:0 0 12px;line-height:1.4}
-.tm-rm-ctl{justify-content:flex-start}
-.tm-rm-ctl .btn{min-height:40px;padding:0 18px}
-.tm-rm .tm-note.err{color:#C62828}
-html[data-theme=dark] .tm-tg input[type=time]{border-color:var(--n-line);background:var(--surface);color:#D2D6DF}
-@media(prefers-reduced-motion:reduce){.tm-fg,.tm-bar i{transition:none}}
 </style>
 <script id="timer-saran-js">
 (function(){
@@ -14916,162 +14804,6 @@ html[data-theme=dark] .tm-tg input[type=time]{border-color:var(--n-line);backgro
   var pad=function(n){return String(n).padStart(2,'0')};
   var dayKey=function(d){d=d||new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};
   var fmtMin=function(m){m=Math.round(m);if(m<60)return m+' menit';var h=Math.floor(m/60),r=m%60;return h+' jam'+(r?' '+r+' menit':'')};
-
-  /* ================= TIMER BELAJAR ================= */
-  var root=$('#view-timer .tm');
-  if(root){
-    var KEY='tm-state',LOG='tm-log',TG='tm-target',SND='tm-snd';
-    var log={};try{log=JSON.parse(ls.get(LOG)||'{}')||{}}catch(e){log={}}
-    var saveLog=function(){var k=Object.keys(log).sort();while(k.length>60)delete log[k.shift()];ls.set(LOG,JSON.stringify(log))};
-    var addSec=function(sec,sess){sec=Math.max(0,Math.round(sec));if(!sec&&!sess)return;var k=dayKey(),o=log[k]||(log[k]={s:0,n:0});o.s+=sec;if(sess)o.n++;saveLog()};
-
-    var st={mode:'f',fmin:25,cycle:0,running:false,endAt:0,left:1500,counted:0};
-    try{var sv=JSON.parse(ls.get(KEY)||'null');if(sv&&typeof sv==='object')for(var kk in st)if(sv[kk]!==undefined)st[kk]=sv[kk]}catch(e){}
-    if([15,25,45,50].indexOf(st.fmin)<0)st.fmin=25;
-    var LEN=function(){return st.mode==='f'?st.fmin*60:st.mode==='b'?300:900};
-    var save=function(){ls.set(KEY,JSON.stringify(st))};
-    var rem=function(){return st.running?Math.max(0,Math.round((st.endAt-Date.now())/1000)):st.left};
-    var flush=function(){if(st.mode!=='f')return;var el=Math.max(0,LEN()-rem()),d=el-st.counted;if(d>0){addSec(d);st.counted=el}save()};
-
-    var elT=$('#tmTime'),elL=$('#tmLbl'),elArc=$('#tmArc'),elGo=$('#tmGo'),elMsg=$('#tmMsg'),nav=$('#navTimer');
-    var MODE={f:'Fokus',b:'Istirahat',l:'Istirahat panjang'},C=2*Math.PI*54,origTitle=document.title,timer=null,lastFlush=0,lastDraw='';
-    var msg=function(t){elMsg.textContent=t||''};
-
-    function render(){
-      var r=rem(),L=LEN(),mm=pad(Math.floor(r/60)),ss=pad(r%60);
-      elT.textContent=mm+':'+ss;elL.textContent=MODE[st.mode];
-      elArc.style.strokeDashoffset=String(C*(1-(L?r/L:0)));
-      root.classList.toggle('is-break',st.mode!=='f');
-      elGo.textContent=st.running?'Jeda':(st.left<LEN()&&st.mode&&st.left>0?'Lanjut':'Mulai');
-      root.querySelectorAll('.tm-m').forEach(function(b){b.classList.toggle('is-on',b.dataset.m===st.mode)});
-      root.querySelectorAll('#tmDur button').forEach(function(b){b.classList.toggle('is-on',+b.dataset.f===st.fmin);b.disabled=st.running||st.mode!=='f'&&false});
-      if(nav)nav.classList.toggle('tm-on',st.running);
-      document.title=st.running?'('+mm+':'+ss+') '+MODE[st.mode]+' · '+origTitle:origTitle;
-    }
-    function todaySec(){var o=log[dayKey()],base=o?o.s:0;if(st.running&&st.mode==='f')base+=Math.max(0,LEN()-rem()-st.counted);return base}
-    function streak(){var n=0,d=new Date();var t=log[dayKey(d)];if(!(t&&t.s>=600))d.setDate(d.getDate()-1);
-      for(var i=0;i<400;i++){var o=log[dayKey(d)];if(o&&o.s>=600){n++;d.setDate(d.getDate()-1)}else break}return n}
-    function drawStat(){
-      var tgt=+(ls.get(TG)||120),sec=todaySec(),min=sec/60,o=log[dayKey()]||{n:0};
-      var sig=[Math.floor(sec/60),tgt,o.n].join('|')+'|'+Object.keys(log).length;
-      $('#tmToday').textContent=fmtMin(min);
-      var pc=Math.min(100,Math.round(min/tgt*100));$('#tmBarI').style.width=pc+'%';
-      var bar=$('#tmBar');bar.setAttribute('aria-valuenow',String(pc));
-      $('#tmSes').textContent=o.n+' sesi';var sk=streak();$('#tmStk').textContent='Beruntun '+sk+' hari';
-      if(sig===lastDraw)return;lastDraw=sig;
-      var DN=['Min','Sen','Sel','Rab','Kam','Jum','Sab'],days=[],mx=tgt*60;
-      for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);var k=dayKey(d),x=log[k]?log[k].s:0;if(i===0)x=sec;days.push({k:k,n:DN[d.getDay()],s:x,now:i===0});if(x>mx)mx=x}
-      $('#tmWeek').innerHTML=days.map(function(z){var h=Math.max(3,Math.round(z.s/mx*80));
-        return '<div class="tm-d'+(z.now?' now':'')+'" title="'+z.n+': '+fmtMin(z.s/60)+'"><em>'+(z.s>=60?Math.round(z.s/60):'')+'</em><i style="height:'+h+'px"></i><small>'+z.n+'</small></div>'}).join('');
-    }
-    var ac=null;
-    function audio(){try{var A=window.AudioContext||window.webkitAudioContext;if(!ac&&A)ac=new A();if(ac&&ac.state==='suspended')ac.resume()}catch(e){}}
-    function beep(){
-      if($('#tmSound').checked&&ac){try{[0,.25,.5].forEach(function(d){var o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime+d;o.frequency.value=880;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.25,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+.2);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+.22)})}catch(e){}}
-      try{if(navigator.vibrate)navigator.vibrate([200,100,200])}catch(e){}
-    }
-    function stopTick(){if(timer){clearInterval(timer);timer=null}}
-    function startTick(){stopTick();timer=setInterval(tick,500)}
-    function setMode(m){stopTick();st.mode=m;st.running=false;st.left=LEN();st.counted=0;save();render();drawStat()}
-    function finish(quiet){
-      var was=st.mode;st.left=0;st.running=false;
-      if(was==='f'){var el=LEN()-st.counted;if(el>0)addSec(el);st.counted=LEN();addSec(0,true);st.cycle++}
-      var next=was==='f'?(st.cycle%4===0?'l':'b'):'f';
-      setMode(next);lastDraw='';drawStat();
-      msg(was==='f'?'Sesi fokus selesai. Waktunya '+(next==='l'?'istirahat panjang 15 menit':'istirahat 5 menit')+'.':'Istirahat selesai. Siap lanjut fokus?');
-      if(!quiet){beep();if(document.hidden)notify(was==='f'?'Sesi fokus selesai':'Istirahat selesai',was==='f'?(next==='l'?'Istirahat panjang 15 menit dulu.':'Istirahat 5 menit dulu.'):'Siap lanjut fokus?','tm-selesai')}
-    }
-    function tick(){
-      var r=rem();
-      if(r<=0){finish();return}
-      var now=Date.now();if(now-lastFlush>10000){lastFlush=now;flush()}
-      var sig=elT.textContent;render();if(elT.textContent!==sig)drawStat();
-    }
-    function start(){audio();st.endAt=Date.now()+st.left*1000;st.running=true;lastFlush=Date.now();save();msg('');render();startTick()}
-    function pause(){flush();st.left=rem();st.running=false;stopTick();save();render();drawStat()}
-
-    elGo.addEventListener('click',function(){st.running?pause():start()});
-    $('#tmReset').addEventListener('click',function(){if(st.running)flush();setMode(st.mode);msg('')});
-    $('#tmSkip').addEventListener('click',function(){if(st.running||st.left<LEN())flush();setMode(st.mode==='f'?'b':'f');msg('')});
-    root.querySelectorAll('.tm-m').forEach(function(b){b.addEventListener('click',function(){if(b.dataset.m===st.mode)return;if(st.running||st.left<LEN())flush();setMode(b.dataset.m);msg('')})});
-    root.querySelectorAll('#tmDur button').forEach(function(b){b.addEventListener('click',function(){if(st.running)return;st.fmin=+b.dataset.f;if(st.mode==='f'){st.left=LEN();st.counted=0}save();render()})});
-    var sel=$('#tmTarget');sel.value=ls.get(TG)||'120';if(sel.value!==(ls.get(TG)||'120'))sel.value='120';
-    sel.addEventListener('change',function(){ls.set(TG,sel.value);lastDraw='';drawStat()});
-    var sn=$('#tmSound');sn.checked=ls.get(SND)!=='0';sn.addEventListener('change',function(){ls.set(SND,sn.checked?'1':'0')});
-
-    document.addEventListener('visibilitychange',function(){if(document.hidden){if(st.running)flush()}else if(st.running){tick()}});
-    window.addEventListener('pagehide',function(){if(st.running)flush()});
-
-    // pulihkan sesi yang berjalan saat halaman ditutup
-    if(st.running){if(rem()<=0){render();finish(true)}else{lastFlush=Date.now();render();startTick()}}
-    else{if(!(st.left>0&&st.left<=LEN()))st.left=LEN();render()}
-    drawStat();
-  }
-
-
-  /* ================= PENGINGAT BELAJAR ================= */
-  var RM='rm-cfg',RML='rm-last';
-  var rmCfg=function(){var c={on:false,t:'19:00',skip:true};try{var v=JSON.parse(ls.get(RM)||'null');if(v&&typeof v==='object'){if(typeof v.on==='boolean')c.on=v.on;if(/^\d{2}:\d{2}$/.test(v.t||''))c.t=v.t;if(typeof v.skip==='boolean')c.skip=v.skip}}catch(e){}return c};
-  var rmSave=function(c){ls.set(RM,JSON.stringify(c))};
-  var canNotif=function(){return 'Notification' in window};
-  var perm=function(){return canNotif()?Notification.permission:'unsupported'};
-  var todayMin=function(){try{var l=JSON.parse(ls.get('tm-log')||'{}')||{},o=l[dayKey()];return o?o.s/60:0}catch(e){return 0}};
-  function notify(title,body,tag){
-    if(perm()!=='granted')return Promise.resolve(false);
-    var opt={body:body,tag:tag||'saku-cpns',renotify:true,data:{url:location.href}};
-    return (navigator.serviceWorker&&navigator.serviceWorker.getRegistration?navigator.serviceWorker.getRegistration():Promise.resolve(null))
-      .then(function(reg){if(reg&&reg.showNotification)return reg.showNotification(title,opt).then(function(){return true});new Notification(title,opt);return true})
-      .catch(function(){try{new Notification(title,opt);return true}catch(e){return false}});
-  }
-  var rmEl={on:$('#rmOn'),t:$('#rmTime'),skip:$('#rmSkip'),test:$('#rmTest'),st:$('#rmSt')};
-  function rmStatus(){
-    if(!rmEl.st)return;var c=rmCfg(),p=perm();rmEl.st.className='tm-note';
-    if(p==='unsupported'){rmEl.st.textContent='Browser ini belum mendukung notifikasi. Coba buka lewat Chrome, atau pasang aplikasinya ke layar utama.';rmEl.st.className='tm-note err';return}
-    if(p==='denied'){rmEl.st.textContent='Notifikasi diblokir di pengaturan browser. Izinkan dulu untuk situs ini, lalu aktifkan lagi.';rmEl.st.className='tm-note err';return}
-    if(!c.on){rmEl.st.textContent='Pengingat mati.';return}
-    var tdy=todayMin();
-    rmEl.st.textContent='Aktif setiap hari pukul '+c.t.replace(':','.')+'.'+(tdy>=1?' Hari ini kamu sudah belajar '+fmtMin(tdy)+'.':' Hari ini kamu belum belajar.');
-  }
-  function rmCheck(){
-    var c=rmCfg();if(!c.on||perm()!=='granted')return;
-    var now=new Date(),p=c.t.split(':'),due=new Date(now.getFullYear(),now.getMonth(),now.getDate(),+p[0],+p[1],0);
-    var late=(now-due)/60000;
-    if(late<0||late>120)return;                         // hanya dalam 2 jam setelah jam pengingat
-    if(ls.get(RML)===dayKey())return;                   // sudah dikirim hari ini
-    ls.set(RML,dayKey());
-    if(c.skip&&todayMin()>=10)return;
-    var m=todayMin();
-    notify('Waktunya belajar',m>=1?'Kamu sudah '+fmtMin(m)+' hari ini. Satu sesi lagi?':'Satu sesi fokus 25 menit saja dulu. Yuk mulai.','rm-harian');
-  }
-  if(rmEl.on){
-    var c0=rmCfg();rmEl.on.checked=c0.on&&perm()==='granted';rmEl.t.value=c0.t;rmEl.skip.checked=c0.skip;
-    if(c0.on&&perm()!=='granted'){c0.on=false;rmSave(c0)}
-    var upd=function(){var c=rmCfg();c.t=rmEl.t.value||'19:00';c.skip=rmEl.skip.checked;rmSave(c);rmStatus()};
-    rmEl.on.addEventListener('change',function(){
-      var c=rmCfg();
-      if(!rmEl.on.checked){c.on=false;rmSave(c);rmStatus();return}
-      if(!canNotif()){rmEl.on.checked=false;rmStatus();return}
-      var go=function(p){
-        if(p==='granted'){c.on=true;c.t=rmEl.t.value||'19:00';c.skip=rmEl.skip.checked;rmSave(c);ls.del(RML);rmStatus();rmCheck()}
-        else{rmEl.on.checked=false;c.on=false;rmSave(c);rmStatus()}
-      };
-      try{var r=Notification.requestPermission(function(p){go(p)});if(r&&r.then)r.then(go)}catch(e){rmEl.on.checked=false;rmStatus()}
-    });
-    rmEl.t.addEventListener('change',function(){ls.del(RML);upd();rmCheck()});
-    rmEl.skip.addEventListener('change',upd);
-    rmEl.test.addEventListener('click',function(){
-      var go=function(p){
-        if(p!=='granted'){rmStatus();return}
-        notify('Tes pengingat','Kalau ini muncul, pengingat belajarmu siap jalan.','rm-tes').then(function(ok){if(!ok){rmEl.st.textContent='Notifikasi gagal ditampilkan di perangkat ini.';rmEl.st.className='tm-note err'}})
-      };
-      if(!canNotif()){rmStatus();return}
-      if(perm()==='granted')go('granted');
-      else try{var r=Notification.requestPermission(function(p){go(p)});if(r&&r.then)r.then(go)}catch(e){rmStatus()}
-    });
-    rmStatus();rmCheck();
-    setInterval(function(){rmCheck();if(!document.hidden)rmStatus()},30000);
-    document.addEventListener('visibilitychange',function(){if(!document.hidden){rmCheck();rmStatus()}});
-  }
 
   /* ================= KOTAK SARAN ================= */
   var KAT=[['saran','Saran'],['bug','Bug'],['soal-salah','Soal salah'],['materi-keliru','Materi keliru'],['lainnya','Lainnya']];
@@ -15125,6 +14857,27 @@ html[data-theme=dark] .tm-tg input[type=time]{border-color:var(--n-line);backgro
     ta.focus();
   }
   document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-saran]');if(!t)return;e.preventDefault();buka(t)});
+})();
+</script>
+<script id="hero-clock-js">
+(function(){
+  var hm=document.getElementById('hcHM'),sc=document.getElementById('hcS'),dt=document.getElementById('hcD');if(!hm)return;
+  var p2=function(n){return String(n).padStart(2,'0')},last='';
+  var zona=function(d){var o=-d.getTimezoneOffset()/60;return o===7?'WIB':o===8?'WITA':o===9?'WIT':'UTC'+(o>=0?'+':'')+o};
+  function draw(){
+    var d=new Date();hm.textContent=p2(d.getHours())+':'+p2(d.getMinutes());sc.textContent=p2(d.getSeconds());
+    var k=d.toDateString();if(k!==last){last=k;var t;try{t=d.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}catch(e){t=k}dt.textContent=t+' · '+zona(d)}
+  }
+  function loop(){if(!document.hidden&&hm.offsetParent!==null)draw();setTimeout(loop,1000-(Date.now()%1000)+20)}
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)draw()});
+  draw();loop();
+})();
+</script>
+<script id="app-ready-js">
+(function(){
+  var r=document.documentElement;
+  function go(){r.classList.add('app-ready');['pointerdown','keydown','popstate'].forEach(function(e){window.removeEventListener(e,go,true)})}
+  ['pointerdown','keydown','popstate'].forEach(function(e){window.addEventListener(e,go,true)});
 })();
 </script>
 </body>
